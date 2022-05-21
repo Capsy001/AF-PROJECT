@@ -1,5 +1,5 @@
 import Router from "@koa/router"
-import { addUser, login } from "../api/user.api.js";
+import { addUser, loginuser } from "../api/user.api.js";
 
 const usersRouter = new Router(
     {
@@ -7,21 +7,38 @@ const usersRouter = new Router(
     }
 );
 
-usersRouter.post('/', (ctx) =>
+usersRouter.post('/new', async(ctx) =>
 {
-    const user = ctx.request.body;
-    ctx.body = addUser(user);
-    ctx.set('Content-Type', 'application/json');
-    ctx.status = 201;
+    const user = await ctx.request.body;
+    
+    const newuser = await addUser(user);
+    if(newuser){
+        ctx.body = newuser;
+        ctx.set('Content-Type', 'application/json');
+        ctx.status = 201;
+    }else{
+        ctx.body = 'user error';
+        ctx.set('Content-Type', 'application/json');
+        ctx.status = 201;
+    }
+    
 });
 
-usersRouter.get('/:email', (ctx) =>
+usersRouter.post('/login', async(ctx) =>
 {
-    const email = ctx.params.email;
+    const user = await ctx.request.body;
     
-    ctx.body = login(email);
-    ctx.set('Content-Type', 'application/json');
-    ctx.status = 200;
+    const isuser = await loginuser(user);
+    if(isuser){
+        ctx.body = isuser;
+        ctx.set('Content-Type', 'application/json');
+        ctx.status = 200;
+    }else{
+        ctx.body = 'usernotvalid';
+        ctx.set('Content-Type', 'application/json');
+        ctx.status = 200;
+    }
+    
 });
 
 export default usersRouter;

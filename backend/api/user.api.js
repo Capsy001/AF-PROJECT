@@ -1,4 +1,5 @@
 import { randomUUID } from 'crypto';
+import { save, login} from '../dao/users.dao.js';
 
 //map to store userdata
 const users = new Map();
@@ -10,8 +11,8 @@ const defaultUser =
 {
     name: "John Doe",
     email: "john@abc.com",
+    username:"john0",
     password: "123",
-    uid: "john",
     role: "trader"
 };
 
@@ -19,8 +20,8 @@ const defaultUser2 =
 {
     name: "Kate Winslet",
     email: "kate@abc.com",
+    username:"kate0",
     password: "123",
-    uid: "kate",
     role: "customer"
 };
 
@@ -28,50 +29,35 @@ users.set(defaultUser.email, defaultUser);
 users.set(defaultUser2.email, defaultUser);
 
 //function for registering
-export const addUser = (user) =>
+export const addUser = async(user) =>
 {
-    console.log("add user running");
-    const matchedUser = users.get(user.email);
-
-    if (matchedUser)
-    {
-        console.log("user exist");
-        return { result: "exist"};
-    }
 
     const newUser = {
         name: user.name,
         email: user.email,
+        username:user.username,
         password: user.password,
-        uid: randomUUID(),
         role: user.role
     };
-
-    users.set(newUser.email, newUser);
-    console.log(users);
-
-    return {result: "registered"};
+    const result = await save(newUser);
+    console.log(result)
+    return result;
 };
 
 
 
 //function for login
-export const login = (email) =>
+export const loginuser = async (user) =>
 {
 
-    console.log(email);
-
-    const user = users.get(email);
-
-    if (typeof user==='undefined')
-    {
-        return {result: "noUser"}
-    }
-    else
-    {
-        return user;
-    }
+    const userlogin = {
+        email:user.email,
+        password:user.password
+    };
+    const result = await login(userlogin);
+    return result;
 
     
 }
 
+export default {addUser, loginuser};

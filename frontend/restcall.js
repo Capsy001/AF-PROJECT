@@ -6,7 +6,7 @@ export async function login(email, password)
 {
   const user = { email: email, password: password };
 
-  await axios.get("http://localhost:3000/users/"+email).then(response =>
+  await axios.post("http://localhost:3000/users/", user).then(response =>
     {
     const data = response.data;
 

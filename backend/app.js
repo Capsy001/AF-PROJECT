@@ -1,7 +1,6 @@
 import Koa from "koa";
 import bodyParser from "koa-bodyparser";
 import usersRouter from "./router/users.router.js";
-import itemsRouter from "./router/items.router.js";
 import cors from '@koa/cors'
 
 const app = new Koa();
@@ -9,7 +8,6 @@ app.use(bodyParser());
 app.use(cors());
 
 app.use(usersRouter.routes()).use(usersRouter.allowedMethods());
-app.use(itemsRouter.routes()).use(itemsRouter.allowedMethods());
 
 app.use(ctx =>
 {
