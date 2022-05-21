@@ -3,6 +3,8 @@ import { Component } from "react";
 import "./login.css";
 import { Link } from "react-router-dom";
 import { login } from "../restcall";
+import { Button } from "@mui/material";
+
 
 export default class Login extends Component {
   constructor(props) {
@@ -35,8 +37,15 @@ export default class Login extends Component {
       <div className="loginForm">
         <h2>Login</h2>
 
-        <Link to="/register">
-          <button className="buttonMargin">Register</button>
+        <Link style={{textDecoration: 'none'}} to="/register">
+          <Button
+            size="small"
+            variant="contained"
+            color="success"
+            className="buttonMargin"
+          >
+            Register
+          </Button>
         </Link>
 
         <hr></hr>
@@ -51,9 +60,15 @@ export default class Login extends Component {
             <input required type="password" onChange={this.handlePassword} />
           </div>
 
-          <button className="buttonMargin" type="submit">
+          <Button
+            size="small"
+            variant="contained"
+            color="success"
+            className="buttonMargin"
+            type="submit"
+          >
             Submit
-          </button>
+          </Button>
         </form>
       </div>
     );

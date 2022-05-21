@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { useNavigate } from "react-router";
 import { Navigate } from "react-router";
 import { register } from "../restcall";
+import { Button } from "@mui/material";
 
 export default class Register extends Component {
   constructor(props) {
@@ -63,8 +64,15 @@ export default class Register extends Component {
       <div className="registerForm">
         <h2>Register</h2>
 
-        <Link to="/">
-          <button className="buttonMargin">Login</button>
+        <Link style={{ textDecoration: "none" }} to="/">
+          <Button
+            size="small"
+            variant="contained"
+            color="success"
+            className="buttonMargin"
+          >
+            Login
+          </Button>
         </Link>
 
         <hr></hr>
@@ -120,9 +128,16 @@ export default class Register extends Component {
 
           {this.state.submit}
 
-          <button id="Submit" className="buttonMargin" type="submit">
+          <Button
+            variant="contained"
+            color="success"
+            id="Submit"
+            size="small"
+            className="buttonMargin"
+            type="submit"
+          >
             Submit
-          </button>
+          </Button>
         </form>
       </div>
     );

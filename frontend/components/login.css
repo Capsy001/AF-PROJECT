@@ -18,25 +18,9 @@ label {
     width: 20%;
 }
 
-.buttonMargin {
-    margin: 5px 5px 5px 5px;
-    width: 20%;
 
-    background-color: #00e676;
-    border-radius: 3px;
-    border: 0px;
 
-}
 
-.buttonMargin:hover{
-    margin: 5px 5px 5px 5px;
-    width: 20%;
-
-    background-color: #7df1b9d3;
-    border-radius: 3px;
-    border: 0px;
-
-}
 
 h2{
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
@@ -60,3 +44,12 @@ table {
     width: 40%;
     margin: 0 auto;
 }
+
+.buttonMargin {
+  
+    margin: 5px 5px 5px 5px;
+    width: 15%; 
+
+
+}
+
