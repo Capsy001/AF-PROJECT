@@ -16,8 +16,12 @@ usersRouter.post('/new', async(ctx) =>
         ctx.body = newuser;
         ctx.set('Content-Type', 'application/json');
         ctx.status = 201;
+    }else if(newuser.includes('userexist')){
+        ctx.body = 'userexist';
+        ctx.set('Content-Type', 'application/json');
+        ctx.status = 201;
     }else{
-        ctx.body = 'user error';
+        ctx.body = 'db err';
         ctx.set('Content-Type', 'application/json');
         ctx.status = 201;
     }

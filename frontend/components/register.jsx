@@ -14,6 +14,7 @@ export default class Register extends Component {
     this.state = {
       name: "",
       email: "",
+      username: "",
       password: "",
       password2: "",
       role: "customer",
@@ -22,6 +23,10 @@ export default class Register extends Component {
 
   handleNameChange = (event) => {
     this.setState({ name: event.target.value });
+  };
+
+  handleUserNameChange = (event) => {
+    this.setState({ username: event.target.value });
   };
 
   handleEmailChange = (event) => {
@@ -46,6 +51,7 @@ export default class Register extends Component {
     const user = {
       email: this.state.email,
       name: this.state.name,
+      username: this.state.username,
       password: this.state.password,
       password2: this.state.password2,
       role: this.state.role,
@@ -89,6 +95,16 @@ export default class Register extends Component {
           </div>
 
           <div>
+            <label>Username</label>
+            <input
+              required
+              type="text"
+              value={this.state.username}
+              onChange={this.handleUserNameChange}
+            />
+          </div>
+
+          <div>
             <label>Email</label>
             <input
               required
@@ -121,8 +137,9 @@ export default class Register extends Component {
           <div>
             <label>Role</label>
             <select value={this.state.role} onChange={this.handleRoleChange}>
-              <option value="customer">Customer</option>
-              <option value="trader">Trader</option>
+              <option value="admin">admin</option>
+              <option value="student">student</option>
+              <option value="staff">staff</option>
             </select>
           </div>
 

@@ -4,9 +4,15 @@ import * as mongoose from 'mongoose';
 
 //register user
 export async function save ({name, username, email, password, role}){
-    const result = await users.insertOne({name, username, email, password, role});
-    //returns the inserted data
-    return result.insertedId;
+    const isavailableemail = await users.findOne({email:email});
+    const isavailableusername = await users.findOne({username:username});
+    if(isavailableemail || isavailableusername){
+        return 'userexist'
+    }else{
+        const result = await users.insertOne({name, username, email, password, role});
+        return result.insertedId;
+    }
+    
 }
 
 //login user

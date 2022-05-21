@@ -6,32 +6,27 @@ export async function login(email, password)
 {
   const user = { email: email, password: password };
 
-  await axios.post("http://localhost:3000/users/", user).then(response =>
+  await axios.post("http://localhost:3000/users/login", user).then(response =>
     {
     const data = response.data;
-
-    try
-    {
-      if (data.result == "noUser")
+      console.log(data)
+      if (data.includes("usernotvalid"))
       {
         alert("Invalid credentials!");
         window.location.href = "/";
         return;
-      }
-    } catch (error){
-        alert("Authorized!");
-    }
-
-    sessionStorage.setItem('logged', 'true');
-    sessionStorage.setItem('loggedName', data.name);
-    sessionStorage.setItem('loggedEmail', data.email);
-    sessionStorage.setItem('loggedRole', data.role);
-    sessionStorage.setItem('loggedUID', data.uid);
-
-    const name = sessionStorage.getItem('loggedName');
-    console.log(name + " logged in!");
+      }else{
+        sessionStorage.setItem('logged', 'true');
+        sessionStorage.setItem('loggedName', data.name);
+        sessionStorage.setItem('loggedEmail', data.email);
+        sessionStorage.setItem('loggedRole', data.role);
+        sessionStorage.setItem('loggedUID', data.uid);
     
-    window.location.href='/dashboard';
+        const name = sessionStorage.getItem('loggedName');
+        console.log(name + " logged in!");
+        
+        window.location.href='/dashboard';
+      }
     });
 }
 
@@ -39,25 +34,23 @@ export async function login(email, password)
 //function to register with rest api
 export async function register(user)
 {
-  await axios.post("http://localhost:3000/users/", user).then(response =>
+  await axios.post("http://localhost:3000/users/new", user).then(response =>
   {
     
     const data = response.data;
 
-    if (data.result == "exist")
+    if (data.includes("userexist"))
     {
-      alert("This email already exist!");
+      alert("This email/uesrname already exist!");
       return;
-    }
-
-    if (data.result == "registered")
-    {
+    }else if(data.includes('db err')){
+      alert("Error, please try again later!.");
+      return;
+    }else{
       alert("Registered successfully!");
       window.location.href="/"
-
     }
 
-    
     });
 
 
