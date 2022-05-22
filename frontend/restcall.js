@@ -10,7 +10,7 @@ export async function login(email, password)
     {
     const data = response.data;
       console.log(data)
-      if (data.includes("usernotvalid"))
+      if (!data.name)
       {
         alert("Invalid credentials!");
         window.location.href = "/";
