@@ -92,6 +92,12 @@ export default class Dashboard extends Component {
             </tr>
           </tbody>
         </table>
+        <Link to="/viewUsers">
+            <button className="buttonMargin">View Users</button>
+          </Link>
+          <Link to="/createSubmissions">
+            <button className="buttonMargin">Create Submissions</button>
+          </Link>
       </div>
     );
   }
