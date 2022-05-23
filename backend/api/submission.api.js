@@ -50,7 +50,7 @@ export const getAllSubmissions = () =>
 
 export const deleteSubmission = async id =>
 {
-    return removeById(id);
+    return await removeById(id);
 }
 
 export default {addSubmission, getAllSubmissions, deleteSubmission};
