@@ -23,11 +23,16 @@ export default class Register extends Component {
       password: "",
       password2: "",
       role: "customer",
+      isstudent:false,
+      registationnum:"",
     };
   }
 
   handleNameChange = (event) => {
     this.setState({ name: event.target.value });
+  };
+  handleregistationnumChange = (event) => {
+    this.setState({ registationnum: event.target.value });
   };
 
   handleUserNameChange = (event) => {
@@ -48,6 +53,11 @@ export default class Register extends Component {
 
   handleRoleChange = async(event) => {
     await this.setState({ role: event.target.value });
+    if((this.state.role).includes("student")){
+      await this.setState({ isstudent: true });
+    }else{
+      await this.setState({ isstudent: false });
+    }
   };
 
   handleSubmit = (event) => {
@@ -60,6 +70,7 @@ export default class Register extends Component {
       password: this.state.password,
       password2: this.state.password2,
       role: this.state.role,
+      reg: this.state.registationnum,
     };
 
 
@@ -124,7 +135,6 @@ export default class Register extends Component {
           </div>
           <br></br>
           <div>
-            <label>Password</label>
             <TextField
               label="Password"
               variant="outlined"
@@ -158,6 +168,18 @@ export default class Register extends Component {
               <MenuItem value={'student'}>student</MenuItem>
               <MenuItem value={'staff'}>staff</MenuItem>
             </Select>
+          </div>
+          <br></br>
+          <div>
+          {this.state.isstudent && <Box>
+            <TextField
+              label="Registation Number"
+              variant="outlined"
+              required
+              type="text"
+              value={this.state.registationnum}
+              onChange={this.handleregistationnumChange}
+            /></Box>}
           </div>
           <br></br>
           <Button

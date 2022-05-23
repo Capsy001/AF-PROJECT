@@ -13,7 +13,8 @@ export const addUser = async(user) =>
         email: user.email,
         username:user.username,
         password: user.password,
-        role: user.role
+        role: user.role,
+        reg: user.reg
     };
     const result = await save(newUser);
     console.log(result)
