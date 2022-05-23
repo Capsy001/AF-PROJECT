@@ -9,6 +9,8 @@ import AddItem from "./components/addItems";
 import EditItem from "./components/editItem";
 import ViewItem from "./components/viewItems";
 import ViewCart from "./components/viewCart";
+import ViewUsers from "./components/viewUsers";
+import CreateSubmission from "./components/Submission/createSubmission";
 
 export default class App extends Component {
   constructor(props) {
@@ -26,6 +28,8 @@ export default class App extends Component {
           <Route path="/editItems" element={<EditItem />} />
           <Route path="/viewItems" element={<ViewItem />} />
           <Route path="/viewCart" element={<ViewCart />} />
+          <Route path="/viewUsers" element={<ViewUsers />} />
+          <Route path="/createSubmissions" element={<CreateSubmission />} />
         </Routes>
       </BrowserRouter>
     );

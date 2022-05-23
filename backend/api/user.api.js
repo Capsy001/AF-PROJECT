@@ -1,5 +1,5 @@
 import { randomUUID } from 'crypto';
-import { save, login} from '../dao/users.dao.js';
+import { save, login, getAll, removeById} from '../dao/users.dao.js';
 
 //map to store userdata
 const users = new Map();
@@ -60,4 +60,28 @@ export const loginuser = async (user) =>
     
 }
 
-export default {addUser, loginuser};
+export const getAllUsers = () =>
+{
+    return  getAll();
+}
+
+export const deleteUser = async id =>
+{
+    return removeById(id);
+}
+
+// export const EditItem = (
+//     userid,
+//     { itemtitle, itemdesc, itemquantity}
+//   ) => {itemdesc
+//     const items = {
+//         userid,
+//       itemtitle: itemtitle,
+//       itemdesc: itemdesc,
+//       itemquantity: itemquantity,
+//     }
+//     users.set(userid, users)
+//     return users
+//   }
+
+export default {addUser, loginuser, getAllUsers, deleteUser};

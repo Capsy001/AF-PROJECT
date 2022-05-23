@@ -2,12 +2,14 @@ import Koa from "koa";
 import bodyParser from "koa-bodyparser";
 import usersRouter from "./router/users.router.js";
 import cors from '@koa/cors'
+import submissionsRouter from "./router/submission.router.js";
 
 const app = new Koa();
 app.use(bodyParser());
 app.use(cors());
 
 app.use(usersRouter.routes()).use(usersRouter.allowedMethods());
+app.use(submissionsRouter.routes()).use(submissionsRouter.allowedMethods());
 
 app.use(ctx =>
 {
