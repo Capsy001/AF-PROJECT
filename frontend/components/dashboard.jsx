@@ -73,6 +73,12 @@ export default class Dashboard extends Component {
         <h2>Dashboard</h2>
 
         <this.GetNav />
+        <Link to="/viewUsers">
+          <button className="buttonMargin">View Users</button>
+        </Link>
+        <Link to="/createSubmissions">
+          <button className="buttonMargin">Create Submissions</button>
+        </Link>
 
         <hr></hr>
         <h2>Hi {sessionStorage.getItem("loggedName")}</h2>
@@ -92,12 +98,6 @@ export default class Dashboard extends Component {
             </tr>
           </tbody>
         </table>
-        <Link to="/viewUsers">
-            <button className="buttonMargin">View Users</button>
-          </Link>
-          <Link to="/createSubmissions">
-            <button className="buttonMargin">Create Submissions</button>
-          </Link>
       </div>
     );
   }
