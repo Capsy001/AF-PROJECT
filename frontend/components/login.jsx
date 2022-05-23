@@ -4,6 +4,8 @@ import "./login.css";
 import { Link } from "react-router-dom";
 import { login } from "../restcall";
 import { Button } from "@mui/material";
+import Box from '@mui/material/Box';
+import TextField from '@mui/material/TextField';
 
 
 export default class Login extends Component {
@@ -49,27 +51,31 @@ export default class Login extends Component {
         </Link>
 
         <hr></hr>
-        <form onSubmit={this.handleSubmit}>
           <div>
-            <label>Email</label>
-            <input required type="email" onChange={this.handleEmail} />
-          </div>
-
-          <div>
-            <label>Password</label>
-            <input required type="password" onChange={this.handlePassword} />
-          </div>
-
-          <Button
-            size="small"
-            variant="contained"
-            color="success"
-            className="buttonMargin"
-            type="submit"
-          >
-            Submit
-          </Button>
-        </form>
+            <form onSubmit={this.handleSubmit}>
+              <Box
+                  component="form"
+                  sx={{
+                    '& > :not(style)': { m: 1, width: '25ch' },
+                  }}
+                  noValidate
+                  autoComplete="off"
+                >
+                
+                <TextField required  label="Email" variant="outlined" type="email" onChange={this.handleEmail} />
+                <TextField required  label="Password" variant="outlined" type="password" onChange={this.handlePassword} />
+                <Button
+                  size="small"
+                  variant="contained"
+                  color="success"
+                  className="buttonMargin"
+                  type="submit"
+                >
+                  Submit
+                </Button>
+              </Box>
+            </form>
+          </div>   
       </div>
     );
   }
