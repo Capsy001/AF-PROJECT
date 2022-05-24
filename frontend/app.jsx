@@ -9,6 +9,7 @@ import AddItem from "./components/addItems";
 import EditItem from "./components/editItem";
 import ViewItem from "./components/viewItems";
 import ViewCart from "./components/viewCart";
+import CreateGroup from "./components/createGroup";
 
 export default class App extends Component {
   constructor(props) {
@@ -19,13 +20,14 @@ export default class App extends Component {
     return (
       <BrowserRouter>
         <Routes>
-          <Route exact path="/" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/addItems" element={<AddItem />} />
           <Route path="/editItems" element={<EditItem />} />
           <Route path="/viewItems" element={<ViewItem />} />
           <Route path="/viewCart" element={<ViewCart />} />
+          <Route path="/createGroup" element={<CreateGroup />} />
+          <Route exact path="/" element={<Login />} />
         </Routes>
       </BrowserRouter>
     );
