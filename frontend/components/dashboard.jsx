@@ -3,7 +3,7 @@ import { Component } from "react";
 import { login } from "../restcall";
 import "./login.css";
 import { Link } from "react-router-dom";
-import { Button, Stack, AppBar, Toolbar } from "@mui/material";
+import { Button, Stack, AppBar, Toolbar, Divider } from "@mui/material";
 import styled from "@emotion/styled";
 
 export default class Dashboard extends Component {
@@ -101,21 +101,23 @@ export default class Dashboard extends Component {
       <div className="loginForm">
         <h2>Dashboard</h2>
 
-        <AppBar position="static" color="primary">
+        <AppBar position="static" color="success">
           <Toolbar variant="dense">
             <Link style={{ textDecoration: "none" }} to="/viewUsers">
-              <Button size="small" color="inherit">
+              <Button sx={{ color: "white" }} size="small" color="inherit">
                 View Users
               </Button>
             </Link>
+            <Divider orientation="vertical" variant="middle" flexItem />
             <Link style={{ textDecoration: "none" }} to="/createSubmissions">
-              <Button size="small" color="inherit">
+              <Button sx={{ color: "white" }} size="small" color="inherit">
                 Create Submissions
               </Button>
             </Link>
+            <Divider orientation="vertical" variant="middle" flexItem />
 
             <Link style={{ textDecoration: "none" }} to="/createGroup">
-              <Button size="small" color="inherit">
+              <Button sx={{ color: "white" }} size="small" color="inherit">
                 Create Group
               </Button>
             </Link>
