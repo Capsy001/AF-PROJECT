@@ -4,7 +4,10 @@ import Login from "./components/login";
 import Register from "./components/register";
 
 import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
+// Start dashboards
 import Dashboard from "./components/dashboard";
+import PanelDash from "./components/Panel/paneldashbord";
+// End dashboards
 import AddItem from "./components/addItems";
 import EditItem from "./components/editItem";
 import ViewItem from "./components/viewItems";
@@ -24,6 +27,7 @@ export default class App extends Component {
           <Route exact path="/" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/paneldashboard" element={<PanelDash />} />
           <Route path="/addItems" element={<AddItem />} />
           <Route path="/editItems" element={<EditItem />} />
           <Route path="/viewItems" element={<ViewItem />} />

@@ -53,17 +53,15 @@ export default class Login extends Component {
         <hr></hr>
           <div>
             <form onSubmit={this.handleSubmit}>
-              <Box
-                  component="form"
-                  sx={{
-                    '& > :not(style)': { m: 1, width: '25ch' },
-                  }}
-                  noValidate
-                  autoComplete="off"
-                >
-                
+                <div>
                 <TextField required  label="Email" variant="outlined" type="email" onChange={this.handleEmail} />
+                </div>
+                <br></br>
+                <div>
                 <TextField required  label="Password" variant="outlined" type="password" onChange={this.handlePassword} />
+                </div>
+                <br></br>
+                <div>
                 <Button
                   size="small"
                   variant="contained"
@@ -73,7 +71,7 @@ export default class Login extends Component {
                 >
                   Submit
                 </Button>
-              </Box>
+                </div>
             </form>
           </div>   
       </div>

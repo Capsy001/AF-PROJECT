@@ -1,7 +1,7 @@
 import React from "react";
 import { Component } from "react";
-import { login } from "../restcall";
-import "./login.css";
+import { login } from "../login";
+import "../login.css";
 import { Link } from "react-router-dom";
 
 export default class Dashboard extends Component {
@@ -23,7 +23,7 @@ export default class Dashboard extends Component {
   GetNav = () => {
     const role = sessionStorage.getItem("loggedRole");
 
-    if (role == "trader") {
+    if (role == "panel") {
       return (
         <div>
           <Link to="/addItems">
@@ -61,13 +61,9 @@ export default class Dashboard extends Component {
   componentWillMount() {
     const logged = sessionStorage.getItem("logged");
     const role = sessionStorage.getItem("loggedRole");
-
-    switch(role){
-      case "panel":
-        window.location.href = "/paneldashboard";
-        break;
+    if(!role.includes("panel")){
+        window.location.href = "/";
     }
-    
     if (logged == "false") {
       alert("User not logged in!");
       window.location.href = "/";
@@ -85,6 +81,11 @@ export default class Dashboard extends Component {
         </Link>
         <Link to="/createSubmissions">
           <button className="buttonMargin">Create Submissions</button>
+        </Link>
+        <Link to="/">
+        <button className="buttonMargin" onClick={this.handleLogout}>
+            Logout
+        </button>
         </Link>
 
         <hr></hr>
