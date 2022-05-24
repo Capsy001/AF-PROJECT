@@ -5,7 +5,12 @@ import { Link } from "react-router-dom";
 import { useNavigate } from "react-router";
 import { Navigate } from "react-router";
 import { register } from "../restcall";
-import { Button } from "@mui/material";
+import Button from '@mui/material/Button';
+import Box from '@mui/material/Box';
+import TextField from '@mui/material/TextField';
+import Select, { SelectChangeEvent } from '@mui/material/Select';
+import MenuItem from '@mui/material/MenuItem';
+import InputLabel from '@mui/material/InputLabel';
 
 export default class Register extends Component {
   constructor(props) {
@@ -18,11 +23,16 @@ export default class Register extends Component {
       password: "",
       password2: "",
       role: "customer",
+      isstudent:false,
+      registationnum:"",
     };
   }
 
   handleNameChange = (event) => {
     this.setState({ name: event.target.value });
+  };
+  handleregistationnumChange = (event) => {
+    this.setState({ registationnum: event.target.value });
   };
 
   handleUserNameChange = (event) => {
@@ -41,13 +51,18 @@ export default class Register extends Component {
     this.setState({ password2: event.target.value });
   };
 
-  handleRoleChange = (event) => {
-    this.setState({ role: event.target.value });
+  handleRoleChange = async(event) => {
+    await this.setState({ role: event.target.value });
+    if((this.state.role).includes("student")){
+      await this.setState({ isstudent: true });
+    }else{
+      await this.setState({ isstudent: false });
+    }
   };
 
   handleSubmit = (event) => {
     event.preventDefault();
-
+    console.log('user')
     const user = {
       email: this.state.email,
       name: this.state.name,
@@ -55,7 +70,9 @@ export default class Register extends Component {
       password: this.state.password,
       password2: this.state.password2,
       role: this.state.role,
+      reg: this.state.registationnum,
     };
+
 
     if (user.password != user.password2) {
       alert("Passwords do not match!");
@@ -83,68 +100,88 @@ export default class Register extends Component {
 
         <hr></hr>
 
-        <form onSubmit={this.handleSubmit}>
+          <form onSubmit={this.handleSubmit}>
           <div>
-            <label>Name</label>
-            <input
+            <TextField
+              label="Name"
+              variant="outlined"
               required
               type="text"
               value={this.state.name}
               onChange={this.handleNameChange}
             />
           </div>
-
+          <br></br>
           <div>
-            <label>Username</label>
-            <input
+            <TextField
+              label="Username"
+              variant="outlined"
               required
               type="text"
               value={this.state.username}
               onChange={this.handleUserNameChange}
             />
           </div>
-
+          <br></br>
           <div>
-            <label>Email</label>
-            <input
+            <TextField
+              label="Email"
+              variant="outlined"
               required
               type="email"
               value={this.state.email}
               onChange={this.handleEmailChange}
             />
           </div>
-
+          <br></br>
           <div>
-            <label>Password</label>
-            <input
+            <TextField
+              label="Password"
+              variant="outlined"
               required
               type="password"
               value={this.state.password}
               onChange={this.handlePasswordChange}
             />
           </div>
-
+          <br></br>
           <div>
-            <label>Re-enter Password</label>
-            <input
+            <TextField
+              label="Re-enter Password"
+              variant="outlined"
               required
               type="password"
               value={this.state.password2}
               onChange={this.handlePassword2Change}
             />
           </div>
-
+          <br></br>
           <div>
-            <label>Role</label>
-            <select value={this.state.role} onChange={this.handleRoleChange}>
-              <option value="admin">admin</option>
-              <option value="student">student</option>
-              <option value="staff">staff</option>
-            </select>
+          <InputLabel id="role">Role</InputLabel>
+            <Select
+              labelId="role"
+              value={this.state.role}
+              onChange={this.handleRoleChange}
+              label="Role"
+            >
+              <MenuItem value={'admin'}>admin</MenuItem>
+              <MenuItem value={'student'}>student</MenuItem>
+              <MenuItem value={'staff'}>staff</MenuItem>
+            </Select>
           </div>
-
-          {this.state.submit}
-
+          <br></br>
+          <div>
+          {this.state.isstudent && <Box>
+            <TextField
+              label="Registation Number"
+              variant="outlined"
+              required
+              type="text"
+              value={this.state.registationnum}
+              onChange={this.handleregistationnumChange}
+            /></Box>}
+          </div>
+          <br></br>
           <Button
             variant="contained"
             color="success"
@@ -155,7 +192,7 @@ export default class Register extends Component {
           >
             Submit
           </Button>
-        </form>
+          </form>
       </div>
     );
   }

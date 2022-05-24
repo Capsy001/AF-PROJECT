@@ -50,12 +50,8 @@ export async function register(user)
       alert("Registered successfully!");
       window.location.href="/"
     }
-
     });
-
-
 }
-
 
 //function to add item with rest api
 export async function addItem(item)

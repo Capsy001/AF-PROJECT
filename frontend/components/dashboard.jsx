@@ -82,7 +82,14 @@ export default class Dashboard extends Component {
 
   componentWillMount() {
     const logged = sessionStorage.getItem("logged");
+    const role = sessionStorage.getItem("loggedRole");
 
+    switch(role){
+      case "panel":
+        window.location.href = "/paneldashboard";
+        break;
+    }
+    
     if (logged == "false") {
       alert("User not logged in!");
       window.location.href = "/";

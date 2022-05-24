@@ -14,7 +14,7 @@ return cursor.toArray();
 }
 
 export async function removeById(id){
-    return await submissions.deleteOne(ctx.params._id);
+    return await submissions.deleteOne({_id:ObjectId(id)});
 }
 
 
