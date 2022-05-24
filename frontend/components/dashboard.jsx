@@ -102,7 +102,7 @@ export default class Dashboard extends Component {
         <h2>Dashboard</h2>
 
         <AppBar position="static" color="primary">
-          <Toolbar disableGutters variant="dense">
+          <Toolbar variant="dense">
             <Link style={{ textDecoration: "none" }} to="/viewUsers">
               <Button size="small" color="inherit">
                 View Users
