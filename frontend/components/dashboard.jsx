@@ -86,7 +86,7 @@ export default class Dashboard extends Component {
 
     switch(role){
       case "panel":
-        window.location.href = "/paneldashboard";
+        window.location.href = "/panel";
         break;
     }
     

@@ -4,7 +4,7 @@ import { login } from "../login";
 import "../login.css";
 import { Link } from "react-router-dom";
 
-export default class PanelDashboard extends Component {
+export default class evTopics extends Component {
   constructor() {
     super();
   }
