@@ -1,5 +1,5 @@
 import { randomUUID } from 'crypto';
-import { save, getAll, removeById} from '../dao/submissions.dao.js';
+import { save, getAll, removeById, getById} from '../dao/submissions.dao.js';
 
 //map to store userdata
 const submissions = new Map();
@@ -48,9 +48,28 @@ export const getAllSubmissions = () =>
     return  getAll();
 }
 
-export const deleteSubmission = async id =>
-{
-    return await removeById(id);
-}
+// export const deleteSubmission = async id =>
+// {
+//     return await removeById(id);
+// }
 
-export default {addSubmission, getAllSubmissions, deleteSubmission};
+export const deleteSubmission = (id) => {
+    if(!submissions.has(id)){
+        throw new Error('Not found for the ID ${id}');
+    }
+    submissions.removeById(id);
+        };
+
+        // export const getSubmission = (id) => {
+        //     const submission = submissions.get(id);
+        //     if(!submission){
+        // throw new Error('Not found foor the ${id}');
+        //     }
+        //     return submission;
+        //     };
+
+        export const getSubmission = async id => {
+            return await getById(id);
+        }
+
+export default {addSubmission, getAllSubmissions, deleteSubmission, getSubmission};
