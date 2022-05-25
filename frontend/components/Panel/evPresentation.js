@@ -4,7 +4,7 @@ import { login } from "../login";
 import "../login.css";
 import { Link } from "react-router-dom";
 
-export default class evPresentation extends Component {
+export default class EvPresentation extends Component {
   constructor() {
     super();
   }
@@ -23,12 +23,12 @@ export default class evPresentation extends Component {
   GetNav = () => {
       return (
         <div>
-          <Link to="/panel/evTopics">
-            <button className="buttonMargin">Evaluate topics</button>
+          <Link to="/panel">
+            <button className="buttonMargin">Panel dashboard</button>
           </Link>
 
-          <Link to="/panel/evPresentation">
-            <button className="buttonMargin">Evaluate presentation</button>
+          <Link to="/panel/evTopics">
+            <button className="buttonMargin">Evaluate topics</button>
           </Link>
 
           <button className="buttonMargin" onClick={this.handleLogout}>

@@ -11,9 +11,8 @@ import PanelDashboard from "./components/Panel/paneldashbord";
 // End dashboards
 
 //Start Panel routes
-import evTopics from "./components/Panel/evTopics.panel";
-import evPresentation from "./components/Panel/evPresentation.panel";
-//End Panel routes
+import EvTopics from "./components/Panel/evTopics";
+import EvPresentation from "./components/Panel/evPresentation";
 
 import AddItem from "./components/addItems";
 import EditItem from "./components/editItem";
@@ -35,8 +34,8 @@ export default class App extends Component {
           <Route path="/register" element={<Register />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/panel" element={<PanelDashboard />} />
-          <Route path="/panel/evTopics" element={<evTopics />} />
-          <Route path="/panel/evPresentation" element={<evPresentation />} />
+          <Route path="/panel/evTopics" element={<EvTopics />} />
+          <Route path="/panel/evPresentation" element={<EvPresentation />} />
           <Route path="/addItems" element={<AddItem />} />
           <Route path="/editItems" element={<EditItem />} />
           <Route path="/viewItems" element={<ViewItem />} />
