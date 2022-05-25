@@ -3,7 +3,7 @@ import { Component } from "react";
 import "./login.css";
 import { Link } from "react-router-dom";
 import { login } from "../restcall";
-import { Button } from "@mui/material";
+import { Button, Paper } from "@mui/material";
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 
@@ -37,31 +37,45 @@ export default class Login extends Component {
   render() {
     return (
       <div className="loginForm">
-        <h2>Login</h2>
+        
+          <h2>Login</h2>
 
-        <Link style={{textDecoration: 'none'}} to="/register">
-          <Button
-            size="small"
-            variant="contained"
-            color="success"
-            className="buttonMargin"
-          >
-            Register
-          </Button>
-        </Link>
+          <Link style={{ textDecoration: "none" }} to="/register">
+            <Button
+              size="small"
+              variant="contained"
+              color="success"
+              className="buttonMargin"
+            >
+              Register
+            </Button>
+          </Link>
 
-        <hr></hr>
-          <div>
+          <hr></hr>
+        <div>
+          <Paper sx={{ padding: "32px", width: "40%", textAlign:"center", justifyContent:"center", margin: "0 auto" }}>
             <form onSubmit={this.handleSubmit}>
-                <div>
-                <TextField required  label="Email" variant="outlined" type="email" onChange={this.handleEmail} />
-                </div>
-                <br></br>
-                <div>
-                <TextField required  label="Password" variant="outlined" type="password" onChange={this.handlePassword} />
-                </div>
-                <br></br>
-                <div>
+              <div>
+                <TextField
+                  required
+                  label="Email"
+                  variant="outlined"
+                  type="email"
+                  onChange={this.handleEmail}
+                />
+              </div>
+              <br></br>
+              <div>
+                <TextField
+                  required
+                  label="Password"
+                  variant="outlined"
+                  type="password"
+                  onChange={this.handlePassword}
+                />
+              </div>
+              <br></br>
+              <div>
                 <Button
                   size="small"
                   variant="contained"
@@ -71,9 +85,10 @@ export default class Login extends Component {
                 >
                   Submit
                 </Button>
-                </div>
+              </div>
             </form>
-          </div>   
+            </Paper>
+          </div>
       </div>
     );
   }

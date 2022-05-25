@@ -5,6 +5,16 @@ import { Link } from "react-router-dom";
 import { addItem, getAllItems, getAllItemsRaw } from "../restcall";
 import "./login.css";
 import axios from "axios";
+import { AppBar } from "@mui/material";
+import {
+  Button,
+  Stack,
+  AppBar,
+  Toolbar,
+  Divider,
+  createTheme,
+  colors,
+} from "@mui/material";
 
 export default class ViewUsers extends Component {
   constructor() {
@@ -97,6 +107,48 @@ export default class ViewUsers extends Component {
   render() {
     return (
       <div>
+        <AppBar position="static" color="success">
+          <Toolbar variant="dense">
+            <Link to="/dashboard">
+              <Button sx={{ color: "white" }} size="small" color="inherit">
+                Dashboard
+              </Button>
+            </Link>
+
+            <Divider orientation="vertical" variant="middle" flexItem />
+            <Link style={{ textDecoration: "none" }} to="/createSubmissions">
+              <Button sx={{ color: "white" }} size="small" color="inherit">
+                Create Submissions
+              </Button>
+            </Link>
+            <Divider orientation="vertical" variant="middle" flexItem />
+
+            <Link style={{ textDecoration: "none" }} to="/createGroup">
+              <Button sx={{ color: "white" }} size="small" color="inherit">
+                Create Group
+              </Button>
+            </Link>
+            <Divider orientation="vertical" variant="middle" flexItem />
+            <Link style={{ textDecoration: "none" }} to="/viewUsers">
+              <Button sx={{ color: "white" }} size="small" color="inherit">
+                View Users
+              </Button>
+            </Link>
+            <Divider orientation="vertical" variant="middle" flexItem />
+
+            <Link to="/">
+              <Button
+                sx={{ color: "yellow" }}
+                size="small"
+                color="inherit"
+                onClick={this.handleLogout}
+              >
+                Logout
+              </Button>
+            </Link>
+          </Toolbar>
+        </AppBar>
+
         <div className="loginForm">
           <h2>View Items</h2>
           <Link to="/dashboard">
@@ -126,12 +178,18 @@ export default class ViewUsers extends Component {
                       <td>{user.password}</td>
                       <td>{user.role}</td>
                       <td>
-                        <button data-key={user.id} onClick={this.handleAddToCart}>
+                        <button
+                          data-key={user.id}
+                          onClick={this.handleAddToCart}
+                        >
                           ++Cart
                         </button>
                       </td>
                       <td>
-                        <button data-key={user.id} onClick={this.handleAddToWishlist}>
+                        <button
+                          data-key={user.id}
+                          onClick={this.handleAddToWishlist}
+                        >
                           ++Wishlist
                         </button>
                       </td>

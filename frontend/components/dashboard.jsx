@@ -3,12 +3,20 @@ import { Component } from "react";
 import { login } from "../restcall";
 import "./login.css";
 import { Link } from "react-router-dom";
-import { Button, Stack, AppBar, Toolbar, Divider } from "@mui/material";
+import { Button, Stack, AppBar, Toolbar, Divider, createTheme, colors } from "@mui/material";
 import styled from "@emotion/styled";
 
 export default class Dashboard extends Component {
   constructor()
   {
+
+    const theme = createTheme({
+      palette: {
+        secondary: {
+          main: colors.orange[500]
+        }
+      }
+    });
    
     super();
   }
@@ -99,15 +107,14 @@ export default class Dashboard extends Component {
   render() {
     return (
       <div className="loginForm">
-        <h2>Dashboard</h2>
-
         <AppBar position="static" color="success">
           <Toolbar variant="dense">
-            <Link style={{ textDecoration: "none" }} to="/viewUsers">
+            <Link to="/dashboard">
               <Button sx={{ color: "white" }} size="small" color="inherit">
-                View Users
+                Dashboard
               </Button>
             </Link>
+
             <Divider orientation="vertical" variant="middle" flexItem />
             <Link style={{ textDecoration: "none" }} to="/createSubmissions">
               <Button sx={{ color: "white" }} size="small" color="inherit">
@@ -121,8 +128,28 @@ export default class Dashboard extends Component {
                 Create Group
               </Button>
             </Link>
+            <Divider orientation="vertical" variant="middle" flexItem />
+            <Link style={{ textDecoration: "none" }} to="/viewUsers">
+              <Button sx={{ color: "white" }} size="small" color="inherit">
+                View Users
+              </Button>
+            </Link>
+            <Divider orientation="vertical" variant="middle" flexItem />
+
+            <Link to="/">
+              <Button
+                sx={{ color: "yellow" }}
+                size="small"
+                color="inherit"
+                onClick={this.handleLogout}
+              >
+                Logout
+              </Button>
+            </Link>
           </Toolbar>
         </AppBar>
+
+        <h2>Dashboard</h2>
 
         <hr></hr>
         <h2>Hi {sessionStorage.getItem("loggedName")}</h2>
