@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { useNavigate } from "react-router";
 import { Navigate } from "react-router";
 import { createSubmission } from "../../submissionrestcall";
-import { Button } from "@mui/material";
+import { Button, AppBar, Toolbar, Divider } from "@mui/material";
 
 export default class CreateSubmission extends Component {
   constructor(props) {
@@ -51,6 +51,47 @@ export default class CreateSubmission extends Component {
   render() {
     return (
       <div className="registerForm">
+        <AppBar position="static" color="success">
+          <Toolbar variant="dense">
+            <Link to="/dashboard">
+              <Button sx={{ color: "white" }} size="small" color="inherit">
+                Dashboard
+              </Button>
+            </Link>
+
+            <Divider orientation="vertical" variant="middle" flexItem />
+            <Link style={{ textDecoration: "none" }} to="/createSubmissions">
+              <Button sx={{ color: "white" }} size="small" color="inherit">
+                Create Submissions
+              </Button>
+            </Link>
+            <Divider orientation="vertical" variant="middle" flexItem />
+
+            <Link style={{ textDecoration: "none" }} to="/createGroup">
+              <Button sx={{ color: "white" }} size="small" color="inherit">
+                Create Group
+              </Button>
+            </Link>
+            <Divider orientation="vertical" variant="middle" flexItem />
+            <Link style={{ textDecoration: "none" }} to="/viewUsers">
+              <Button sx={{ color: "white" }} size="small" color="inherit">
+                View Users
+              </Button>
+            </Link>
+            <Divider orientation="vertical" variant="middle" flexItem />
+
+            <Link to="/">
+              <Button
+                sx={{ color: "yellow" }}
+                size="small"
+                color="inherit"
+                onClick={this.handleLogout}
+              >
+                Logout
+              </Button>
+            </Link>
+          </Toolbar>
+        </AppBar>
         <h2>Create Submission</h2>
 
         {/* <Link style={{ textDecoration: "none" }} to="/">
@@ -96,7 +137,7 @@ export default class CreateSubmission extends Component {
               onChange={this.handleDeadlineChange}
             />
           </div>
-<br></br>
+          <br></br>
           <div>
             <input
               required

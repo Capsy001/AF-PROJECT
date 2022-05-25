@@ -11,6 +11,7 @@ import TextField from '@mui/material/TextField';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
 import InputLabel from '@mui/material/InputLabel';
+import { Button, Paper } from "@mui/material";
 
 export default class Register extends Component {
   constructor(props) {
@@ -100,99 +101,112 @@ export default class Register extends Component {
 
         <hr></hr>
 
+        <Paper
+          sx={{
+            padding: "32px",
+            width: "40%",
+            textAlign: "center",
+            justifyContent: "center",
+            margin: "0 auto",
+          }}
+        >
           <form onSubmit={this.handleSubmit}>
-          <div>
-            <TextField
-              label="Name"
-              variant="outlined"
-              required
-              type="text"
-              value={this.state.name}
-              onChange={this.handleNameChange}
-            />
-          </div>
-          <br></br>
-          <div>
-            <TextField
-              label="Username"
-              variant="outlined"
-              required
-              type="text"
-              value={this.state.username}
-              onChange={this.handleUserNameChange}
-            />
-          </div>
-          <br></br>
-          <div>
-            <TextField
-              label="Email"
-              variant="outlined"
-              required
-              type="email"
-              value={this.state.email}
-              onChange={this.handleEmailChange}
-            />
-          </div>
-          <br></br>
-          <div>
-            <TextField
-              label="Password"
-              variant="outlined"
-              required
-              type="password"
-              value={this.state.password}
-              onChange={this.handlePasswordChange}
-            />
-          </div>
-          <br></br>
-          <div>
-            <TextField
-              label="Re-enter Password"
-              variant="outlined"
-              required
-              type="password"
-              value={this.state.password2}
-              onChange={this.handlePassword2Change}
-            />
-          </div>
-          <br></br>
-          <div>
-          <InputLabel id="role">Role</InputLabel>
-            <Select
-              labelId="role"
-              value={this.state.role}
-              onChange={this.handleRoleChange}
-              label="Role"
+            <div>
+              <TextField
+                label="Name"
+                variant="outlined"
+                required
+                type="text"
+                value={this.state.name}
+                onChange={this.handleNameChange}
+              />
+            </div>
+            <br></br>
+            <div>
+              <TextField
+                label="Username"
+                variant="outlined"
+                required
+                type="text"
+                value={this.state.username}
+                onChange={this.handleUserNameChange}
+              />
+            </div>
+            <br></br>
+            <div>
+              <TextField
+                label="Email"
+                variant="outlined"
+                required
+                type="email"
+                value={this.state.email}
+                onChange={this.handleEmailChange}
+              />
+            </div>
+            <br></br>
+            <div>
+              <TextField
+                label="Password"
+                variant="outlined"
+                required
+                type="password"
+                value={this.state.password}
+                onChange={this.handlePasswordChange}
+              />
+            </div>
+            <br></br>
+            <div>
+              <TextField
+                label="Re-enter Password"
+                variant="outlined"
+                required
+                type="password"
+                value={this.state.password2}
+                onChange={this.handlePassword2Change}
+              />
+            </div>
+            <br></br>
+            <div>
+              <InputLabel id="role">Role</InputLabel>
+              <Select
+                labelId="role"
+                value={this.state.role}
+                onChange={this.handleRoleChange}
+                label="Role"
+              >
+                <MenuItem value={"admin"}>admin</MenuItem>
+                <MenuItem value={"student"}>student</MenuItem>
+                <MenuItem value={"staff"}>staff</MenuItem>
+              </Select>
+            </div>
+            <br></br>
+            <div>
+              {this.state.isstudent && (
+                <Box>
+                  <TextField
+                    label="Registation Number"
+                    variant="outlined"
+                    required
+                    type="text"
+                    value={this.state.registationnum}
+                    onChange={this.handleregistationnumChange}
+                  />
+                </Box>
+              )}
+            </div>
+            <br></br>
+            <Button
+              variant="contained"
+              color="success"
+              id="Submit"
+              size="small"
+              className="buttonMargin"
+              type="submit"
             >
-              <MenuItem value={'admin'}>admin</MenuItem>
-              <MenuItem value={'student'}>student</MenuItem>
-              <MenuItem value={'staff'}>staff</MenuItem>
-            </Select>
-          </div>
-          <br></br>
-          <div>
-          {this.state.isstudent && <Box>
-            <TextField
-              label="Registation Number"
-              variant="outlined"
-              required
-              type="text"
-              value={this.state.registationnum}
-              onChange={this.handleregistationnumChange}
-            /></Box>}
-          </div>
-          <br></br>
-          <Button
-            variant="contained"
-            color="success"
-            id="Submit"
-            size="small"
-            className="buttonMargin"
-            type="submit"
-          >
-            Submit
-          </Button>
+              Submit
+            </Button>
           </form>
+        </Paper>
       </div>
     );
   }
