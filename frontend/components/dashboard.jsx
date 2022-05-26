@@ -3,9 +3,21 @@ import { Component } from "react";
 import { login } from "../restcall";
 import "./login.css";
 import { Link } from "react-router-dom";
+import { Button, Stack, AppBar, Toolbar, Divider, createTheme, colors } from "@mui/material";
+import styled from "@emotion/styled";
 
 export default class Dashboard extends Component {
-  constructor() {
+  constructor()
+  {
+
+    const theme = createTheme({
+      palette: {
+        secondary: {
+          main: colors.orange[500]
+        }
+      }
+    });
+   
     super();
   }
 
@@ -20,47 +32,72 @@ export default class Dashboard extends Component {
     window.location.href = "/";
   };
 
-  GetNav = () => {
-    const role = sessionStorage.getItem("loggedRole");
+  // GetNav = () => {
+  //   const role = sessionStorage.getItem("loggedRole");
 
-    if (role == "trader") {
-      return (
-        <div>
-          <Link to="/addItems">
-            <button className="buttonMargin">Add Items</button>
-          </Link>
+  //   if (role == "trader") {
+  //     return (
+  //       <div>
+  //         <Link to="/addItems">
+  //           <Button
+  //             size="small"
+  //             variant="contained"
+  //             color="success" className="buttonMargin">Add Items</Button>
+  //         </Link>
 
-          <Link to="/editItems">
-            <button className="buttonMargin">Edit Items</button>
-          </Link>
+  //         <Link to="/editItems">
+  //           <Button
+  //             size="small"
+  //             variant="contained"
+  //             color="success"  className="buttonMargin">Edit Items</Button>
+  //         </Link>
 
-          <button className="buttonMargin" onClick={this.handleLogout}>
-            Logout
-          </button>
-        </div>
-      );
-    } else if (role == "customer") {
-      return (
-        <div>
-          <Link to="/viewItems">
-            <button className="buttonMargin">View Items</button>
-          </Link>
+  //         <Button
+  //             size="small"
+  //             variant="contained"
+  //             color="success" className="buttonMargin" onClick={this.handleLogout}>
+  //           Logout
+  //         </Button>
+  //       </div>
+  //     );
+  //   } else if (role == "customer") {
+  //     return (
+  //       <div>
+  //         <Link to="/viewItems">
+  //           <Button
+  //             size="small"
+  //             variant="contained"
+  //             color="success" className="buttonMargin">View Items</Button>
+  //         </Link>
 
-          <Link to="/viewCart">
-            <button className="buttonMargin">View Cart</button>
-          </Link>
+  //         <Link to="/viewCart">
+  //           <Button
+  //             size="small"
+  //             variant="contained"
+  //             color="success" className="buttonMargin">View Cart</Button>
+  //         </Link>
 
-          <button className="buttonMargin" onClick={this.handleLogout}>
-            Logout
-          </button>
-        </div>
-      );
-    }
-  };
+  //         <Button
+  //             size="small"
+  //             variant="contained"
+  //             color="success" className="buttonMargin" onClick={this.handleLogout}>
+  //           Logout
+  //         </Button>
+  //       </div>
+  //     );
+  //   }
+  // };
 
   componentWillMount() {
     const logged = sessionStorage.getItem("logged");
+    const role = sessionStorage.getItem("loggedRole");
 
+    switch(role){
+      case "panel":
+        window.location.href = "/panel";
+        break;
+    }
+    
     if (logged == "false") {
       alert("User not logged in!");
       window.location.href = "/";
@@ -70,9 +107,49 @@ export default class Dashboard extends Component {
   render() {
     return (
       <div className="loginForm">
-        <h2>Dashboard</h2>
+        <AppBar position="static" color="success">
+          <Toolbar variant="dense">
+            <Link to="/dashboard">
+              <Button sx={{ color: "white" }} size="small" color="inherit">
+                Dashboard
+              </Button>
+            </Link>
 
-        <this.GetNav />
+            <Divider orientation="vertical" variant="middle" flexItem />
+            <Link style={{ textDecoration: "none" }} to="/createSubmissions">
+              <Button sx={{ color: "white" }} size="small" color="inherit">
+                Create Submissions
+              </Button>
+            </Link>
+            <Divider orientation="vertical" variant="middle" flexItem />
+
+            <Link style={{ textDecoration: "none" }} to="/createGroup">
+              <Button sx={{ color: "white" }} size="small" color="inherit">
+                Create Group
+              </Button>
+            </Link>
+            <Divider orientation="vertical" variant="middle" flexItem />
+            <Link style={{ textDecoration: "none" }} to="/viewUsers">
+              <Button sx={{ color: "white" }} size="small" color="inherit">
+                View Users
+              </Button>
+            </Link>
+            <Divider orientation="vertical" variant="middle" flexItem />
+
+            <Link to="/">
+              <Button
+                sx={{ color: "yellow" }}
+                size="small"
+                color="inherit"
+                onClick={this.handleLogout}
+              >
+                Logout
+              </Button>
+            </Link>
+          </Toolbar>
+        </AppBar>
+
+        <h2>Dashboard</h2>
 
         <hr></hr>
         <h2>Hi {sessionStorage.getItem("loggedName")}</h2>
@@ -92,12 +169,6 @@ export default class Dashboard extends Component {
             </tr>
           </tbody>
         </table>
-        <Link to="/viewUsers">
-            <button className="buttonMargin">View Users</button>
-          </Link>
-          <Link to="/createSubmissions">
-            <button className="buttonMargin">Create Submissions</button>
-          </Link>
       </div>
     );
   }

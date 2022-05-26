@@ -1,5 +1,5 @@
 import Router from "@koa/router"
-import { addUser, loginuser } from "../api/user.api.js";
+import { addUser, getAllUsers, loginuser, deleteUser } from "../api/user.api.js";
 
 const usersRouter = new Router(
     {
@@ -27,6 +27,23 @@ usersRouter.post('/new', async(ctx) =>
     }
     
 });
+
+usersRouter.get('/', async ctx=>{
+    ctx.body= await getAllUsers();
+})
+
+usersRouter.delete('/:_id', async ctx=>{
+    const id = ctx.params.id;
+    await deleteUser(id);
+})
+
+// usersRouter.put('/:id', async ctx=> {
+//     const id = ctx.params.id;
+//     let user = ctx.request.body;
+//     user = await updateUser(user);
+//     ctx.response.status = 200;
+//     ctx.body = user;
+// })
 
 usersRouter.post('/login', async(ctx) =>
 {

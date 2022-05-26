@@ -1,32 +1,8 @@
 import { randomUUID } from 'crypto';
-import { save, login} from '../dao/users.dao.js';
-
-//map to store userdata
-const users = new Map();
+import { save, login, getAll, removeById} from '../dao/users.dao.js';
 
 
-//passwords are not encrypted for simplicity
-//email is a unique field but user id is also added
-const defaultUser =
-{
-    name: "John Doe",
-    email: "john@abc.com",
-    username:"john0",
-    password: "123",
-    role: "trader"
-};
 
-const defaultUser2 =
-{
-    name: "Kate Winslet",
-    email: "kate@abc.com",
-    username:"kate0",
-    password: "123",
-    role: "customer"
-};
-
-users.set(defaultUser.email, defaultUser);
-users.set(defaultUser2.email, defaultUser);
 
 //function for registering
 export const addUser = async(user) =>
@@ -37,7 +13,8 @@ export const addUser = async(user) =>
         email: user.email,
         username:user.username,
         password: user.password,
-        role: user.role
+        role: user.role,
+        reg: user.reg
     };
     const result = await save(newUser);
     console.log(result)
@@ -60,4 +37,28 @@ export const loginuser = async (user) =>
     
 }
 
-export default {addUser, loginuser};
+export const getAllUsers = () =>
+{
+    return  getAll();
+}
+
+export const deleteUser = async id =>
+{
+    return removeById(id);
+}
+
+// export const EditItem = (
+//     userid,
+//     { itemtitle, itemdesc, itemquantity}
+//   ) => {itemdesc
+//     const items = {
+//         userid,
+//       itemtitle: itemtitle,
+//       itemdesc: itemdesc,
+//       itemquantity: itemquantity,
+//     }
+//     users.set(userid, users)
+//     return users
+//   }
+
+export default {addUser, loginuser, getAllUsers, deleteUser};
