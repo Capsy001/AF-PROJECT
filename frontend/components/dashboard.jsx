@@ -3,23 +3,30 @@ import { Component } from "react";
 import { login } from "../restcall";
 import "./login.module.css";
 import { Link } from "react-router-dom";
-import { Button, Stack, AppBar, Toolbar, Divider, createTheme, colors } from "@mui/material";
+import {
+  Button,
+  Stack,
+  AppBar,
+  Toolbar,
+  Divider,
+  createTheme,
+  colors,
+} from "@mui/material";
 import styled from "@emotion/styled";
 import AppBarNav from "./appBarNav";
 
 export default class Dashboard extends Component {
-  constructor()
-  {
-
+  constructor() {
     const theme = createTheme({
       palette: {
         secondary: {
-          main: colors.orange[500]
-        }
-      }
+          main: colors.orange[500],
+        },
+      },
     });
-   
+
     super();
+    this.isAdmin = false;
   }
 
   handleLogout = (event) => {
@@ -93,12 +100,18 @@ export default class Dashboard extends Component {
     const logged = sessionStorage.getItem("logged");
     const role = sessionStorage.getItem("loggedRole");
 
-    switch(role){
+    if (sessionStorage.getItem("loggedRole") == "admin") {
+      this.isAdmin = true;
+    } else {
+      this.isAdmin = false;
+    }
+
+    switch (role) {
       case "panel":
         window.location.href = "/panel";
         break;
     }
-    
+
     if (logged == "false") {
       alert("User not logged in!");
       window.location.href = "/";
@@ -108,10 +121,7 @@ export default class Dashboard extends Component {
   render() {
     return (
       <div className="loginForm">
-
         <AppBarNav></AppBarNav>
-        
-        
 
         <h2>Dashboard</h2>
 
