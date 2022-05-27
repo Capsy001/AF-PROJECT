@@ -3,8 +3,10 @@ import { Component } from "react";
 import { login } from "../login";
 import "../login.css";
 import { Link } from "react-router-dom";
+import { Button, Paper } from "@mui/material";
+import TextField from '@mui/material/TextField';
 
-export default class EvTopics extends Component {
+export default class PanelDashboard extends Component {
   constructor() {
     super();
   }
@@ -23,8 +25,8 @@ export default class EvTopics extends Component {
   GetNav = () => {
       return (
         <div>
-          <Link to="/panel">
-            <button className="buttonMargin">Panel dashboard</button>
+          <Link to="/panel/evTopics">
+            <button className="buttonMargin">Evaluate topics</button>
           </Link>
 
           <Link to="/panel/evPresentation">
@@ -42,7 +44,7 @@ export default class EvTopics extends Component {
   componentWillMount() {
     const logged = sessionStorage.getItem("logged");
     const role = sessionStorage.getItem("loggedRole");
-    if(!role.includes("panel")){
+    if(!role.includes("student")){
         window.location.href = "/";
     }
     if (logged == "false") {
@@ -54,28 +56,38 @@ export default class EvTopics extends Component {
   render() {
     return (
       <div className="loginForm">
-        <h2>Dashboard</h2>
+        <h2>Register Topics</h2>
 
         <this.GetNav />
 
         <hr></hr>
-        <h2>Hi {sessionStorage.getItem("loggedName")}</h2>
-        <table>
-          <tbody>
-            <tr>
-              <th>Name</th>
-              <td>{sessionStorage.getItem("loggedName")}</td>
-            </tr>
-            <tr>
-              <th>Email</th>
-              <td>{sessionStorage.getItem("loggedEmail")}</td>
-            </tr>
-            <tr>
-              <th>Role</th>
-              <td>{sessionStorage.getItem("loggedRole")}</td>
-            </tr>
-          </tbody>
-        </table>
+        
+        <Paper sx={{ padding: "32px", width: "40%", textAlign:"center", justifyContent:"center", margin: "0 auto" }}>
+            <form onSubmit={this.handleSubmit}>
+                <div>
+                <TextField
+                    required
+                    label="Topic"
+                    variant="outlined"
+                    type="text"
+                    onChange={this.handleEmail}
+                />
+                </div>
+                <br></br>
+                <div>
+                <Button
+                    size="small"
+                    variant="contained"
+                    color="success"
+                    className="buttonMargin"
+                    type="submit"
+                >
+                    Submit
+                </Button>
+                </div>
+            </form>
+        </Paper>
+
       </div>
     );
   }
