@@ -3,9 +3,10 @@ import React from "react";
 import { Component } from "react";
 import { Link } from "react-router-dom";
 import { addItem, getAllItems, getAllItemsRaw } from "../restcall";
-import "./login.css";
+import "./login.module.css";
 import axios from "axios";
 import { AppBar } from "@mui/material";
+import AppBarNav from "./appBarNav";
 import {
   Button,
   Stack,
@@ -107,47 +108,7 @@ export default class ViewUsers extends Component {
   render() {
     return (
       <div>
-        <AppBar position="static" color="success">
-          <Toolbar variant="dense">
-            <Link to="/dashboard">
-              <Button sx={{ color: "white" }} size="small" color="inherit">
-                Dashboard
-              </Button>
-            </Link>
-
-            <Divider orientation="vertical" variant="middle" flexItem />
-            <Link style={{ textDecoration: "none" }} to="/createSubmissions">
-              <Button sx={{ color: "white" }} size="small" color="inherit">
-                Create Submissions
-              </Button>
-            </Link>
-            <Divider orientation="vertical" variant="middle" flexItem />
-
-            <Link style={{ textDecoration: "none" }} to="/createGroup">
-              <Button sx={{ color: "white" }} size="small" color="inherit">
-                Create Group
-              </Button>
-            </Link>
-            <Divider orientation="vertical" variant="middle" flexItem />
-            <Link style={{ textDecoration: "none" }} to="/viewUsers">
-              <Button sx={{ color: "white" }} size="small" color="inherit">
-                View Users
-              </Button>
-            </Link>
-            <Divider orientation="vertical" variant="middle" flexItem />
-
-            <Link to="/">
-              <Button
-                sx={{ color: "yellow" }}
-                size="small"
-                color="inherit"
-                onClick={this.handleLogout}
-              >
-                Logout
-              </Button>
-            </Link>
-          </Toolbar>
-        </AppBar>
+        <AppBarNav></AppBarNav>
 
         <div className="loginForm">
           <h2>View Items</h2>

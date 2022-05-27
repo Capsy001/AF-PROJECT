@@ -1,30 +1,50 @@
 import client from './index.js';
 
 const groups = client.db('store').collection('groups')
+const groupCounter= client.db('store').collection('counter')
 
 
-//register user
-export async function save ({name, username, email, password, role}){
-    const isavailableemail = await users.findOne({email:email});
-    const isavailableusername = await users.findOne({username:username});
-    if(isavailableemail || isavailableusername){
-        return 'userexist'
-    }else{
-        const result = await users.insertOne({name, username, email, password, role});
-        return result.insertedId;
-    }
+//create group
+export async function save ({member1, member2, member3, member4, groupid}){
     
+        const result = await groups.insertOne({member1, member2, member3, member4, groupid});
+        return result.insertedId;
 }
+    
+//getAndIncrementCount
+export async function groupCount (){
+    
+    const result = await groupCounter.findOne({ counterType: "group" });
+    
 
-//login user
-export async function login (user) {
-    const email = user.email;
-    const password = user.password;
-    const userdata = await users.findOne({email:email,password:password});
-    return userdata;
-}
+    const count = result.currentCount + 1;
+    console.log(`Counter is ${count}`);
+
+
+    const filter = { counterType: "group" }
+    const options = { upsert: false };
+    const updateDoc = {
+      $set: {
+        currentCount: count
+      },
+    };
+    
+
+
+    const result2 = await groupCounter.updateOne(filter, updateDoc, options);
+        return result;
+    }
+
+
+// login user
+// export async function login (user) {
+//     const email = user.email;
+//     const password = user.password;
+//     const userdata = await users.findOne({email:email,password:password});
+//     return userdata;
+// }
 
 
 
 //Export the functions
-export default {save, login};
+export default {save};

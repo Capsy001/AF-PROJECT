@@ -1,9 +1,11 @@
 import React from "react";
 import { Component } from "react";
 import { Link } from "react-router-dom";
-import { addItem } from "../restcall";
-import "./login.css";
+import { addItem } from "../../restcall";
+
 import { Button } from "@mui/material";
+
+import AppBarNav from "../appBarNav";
 import {
   Button,
   Stack,
@@ -32,10 +34,9 @@ export default class CreateGroup extends Component {
     };
   }
 
-  handleMember1 = (event) =>
-  {
+  handleMember1 = (event) => {
     this.setState({ member1: event.target.value });
-  }
+  };
 
   handleLogout = (event) => {
     sessionStorage.setItem("logged", "false");
@@ -52,47 +53,7 @@ export default class CreateGroup extends Component {
     return (
       <div>
         <div className="loginForm">
-          <AppBar position="static" color="success">
-            <Toolbar variant="dense">
-              <Link to="/dashboard">
-                <Button sx={{ color: "white" }} size="small" color="inherit">
-                  Dashboard
-                </Button>
-              </Link>
-
-              <Divider orientation="vertical" variant="middle" flexItem />
-              <Link style={{ textDecoration: "none" }} to="/createSubmissions">
-                <Button sx={{ color: "white" }} size="small" color="inherit">
-                  Create Submissions
-                </Button>
-              </Link>
-              <Divider orientation="vertical" variant="middle" flexItem />
-
-              <Link style={{ textDecoration: "none" }} to="/createGroup">
-                <Button sx={{ color: "white" }} size="small" color="inherit">
-                  Create Group
-                </Button>
-              </Link>
-              <Divider orientation="vertical" variant="middle" flexItem />
-              <Link style={{ textDecoration: "none" }} to="/viewUsers">
-                <Button sx={{ color: "white" }} size="small" color="inherit">
-                  View Users
-                </Button>
-              </Link>
-              <Divider orientation="vertical" variant="middle" flexItem />
-
-              <Link to="/">
-                <Button
-                  sx={{ color: "yellow" }}
-                  size="small"
-                  color="inherit"
-                  onClick={this.handleLogout}
-                >
-                  Logout
-                </Button>
-              </Link>
-            </Toolbar>
-          </AppBar>
+          <AppBarNav></AppBarNav>
 
           <h2>Create Group</h2>
 
@@ -161,11 +122,10 @@ export default class CreateGroup extends Component {
                   value={this.state.groupid}
                   onChange={this.handlePasswordChange}
                   disabled
-                
                 />
               </div>
               <Button
-                sx={{ width: "50%" }}
+                sx={{ width: "50%", margin: "5px" }}
                 variant="contained"
                 color="success"
                 id="Submit"
