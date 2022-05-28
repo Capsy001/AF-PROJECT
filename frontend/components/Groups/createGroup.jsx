@@ -51,10 +51,9 @@ export default class CreateGroup extends Component {
 
   handleSubmit=(event)=>{
     event.preventDefault();
-    // const groupId=getGroupId();
-    // console.log(groupId);
+    const groupId=getGroupId();
+    console.log(groupId);
 
-    addItem({ad:"sss"});
   }
 
   handleLogout = (event) => {
