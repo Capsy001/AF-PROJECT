@@ -60,10 +60,10 @@ submissionsRouter.get('/get/:id', async ctx=> {
     }
 })
 
-submissionsRouter.put('/:id', async ctx=> {
+submissionsRouter.put('/update/:id', async ctx=> {
     const id = ctx.params.id;
     let submission = ctx.request.body;
-    submission = await updateSubmission(id);
+    ctx.body = await updateSubmission(id,submission);
     ctx.response.status = 200;
     ctx.body = submission;
 })

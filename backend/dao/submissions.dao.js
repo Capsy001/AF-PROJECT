@@ -29,9 +29,10 @@ export const getById = async (id) =>{
     
 }
 
-export async function update(id, {title, desc, deadline, file}){
-    const result = await submissions.replaceOne({id}, {id, title, desc, deadline, file});
-    return result.ops[0];
+export async function update(id, submission){
+    const result = await submissions.replaceOne({"_id":ObjectId(id)}, {title:submission.title, desc:submission.desc, deadline:submission.deadline, file:submission.file});
+    console.log(result)
+    return result;
    };
 
 
