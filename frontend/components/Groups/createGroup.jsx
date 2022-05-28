@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 
 import { Button } from "@mui/material";
-import { getGroupId } from "../../ApiCalls/group.apicall";
+import { getGroupId, createGroup } from "../../ApiCalls/group.apicall";
 import { addItem } from "../../restcall";
 
 import AppBarNav from "../appBarNav";
@@ -49,10 +49,23 @@ export default class CreateGroup extends Component {
     this.setState({ member4: event.target.value });
   };
 
-  handleSubmit=(event)=>{
+  async handleSubmit(event){
     event.preventDefault();
-    const groupId=getGroupId();
-    console.log(groupId);
+    const groupId= await getGroupId();
+    console.log(`Id is ${groupId}`);
+  
+
+    const group={
+      member1: this.state.member1,
+      member2: this.state.member2,
+      member3: this.state.member3,
+      member4: this.state.member4,
+      groupId: groupId
+    }
+    createGroup(group);
+
+   // console.log(groupId);
+   // alert("Group created!");
 
   }
 
