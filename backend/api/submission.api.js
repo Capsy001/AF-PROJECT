@@ -56,8 +56,8 @@ export const deleteSubmission = async id =>
             return await getById(id);
         }
 
-        export const updateSubmission = async (id, {title, desc, deadline, file})=>{
-            return await update({id}, {id, title, desc, deadline, file});
+        export const updateSubmission = async (id, submission)=>{
+            return await update({id}, submission);
         }
 
 export default {addSubmission, getAllSubmissions, deleteSubmission, getSubmission, updateSubmission};
