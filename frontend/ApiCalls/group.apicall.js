@@ -11,12 +11,11 @@ export async function getGroupId()
       const groupId = response.data;
 
       console.log(groupId);
-      
+      return groupId;
       
     
   });
 
-  return groupId;
 }
 
 
