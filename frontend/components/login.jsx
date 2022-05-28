@@ -1,6 +1,6 @@
 import React from "react";
 import { Component } from "react";
-import "./login.css";
+import "./login.module.css";
 import { Link } from "react-router-dom";
 import { login } from "../restcall";
 import { Button, Paper } from "@mui/material";
@@ -36,12 +36,12 @@ export default class Login extends Component {
 
   render() {
     return (
-      <div className="loginForm">
+      <div className="loginForm" style={{textAlign: "center"}}>
         
           <h2>Login</h2>
 
           <Link style={{ textDecoration: "none" }} to="/register">
-            <Button
+            <Button sx={{textAlign:"center"}}
               size="small"
               variant="contained"
               color="success"
