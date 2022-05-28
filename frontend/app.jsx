@@ -21,6 +21,7 @@ import ViewCart from "./components/viewCart";
 import CreateGroup from "./components/createGroup";
 import ViewUsers from "./components/viewUsers";
 import CreateSubmission from "./components/Submission/createSubmission";
+import ViewSubmissions from "./components/Submission/viewSubmissions";
 
 export default class App extends Component {
   constructor(props) {
@@ -44,6 +45,7 @@ export default class App extends Component {
           <Route exact path="/" element={<Login />} />
           <Route path="/viewUsers" element={<ViewUsers />} />
           <Route path="/createSubmissions" element={<CreateSubmission />} />
+          <Route path="/viewSubmissions" element={<ViewSubmissions />} />
         </Routes>
       </BrowserRouter>
     );

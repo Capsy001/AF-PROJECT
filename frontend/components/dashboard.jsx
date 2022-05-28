@@ -122,7 +122,13 @@ export default class Dashboard extends Component {
               </Button>
             </Link>
             <Divider orientation="vertical" variant="middle" flexItem />
-
+            <Divider orientation="vertical" variant="middle" flexItem />
+            <Link style={{ textDecoration: "none" }} to="/createSubmissions">
+              <Button sx={{ color: "white" }} size="small" color="inherit">
+                Create Submissions
+              </Button>
+            </Link>
+            <Divider orientation="vertical" variant="middle" flexItem />
             <Link style={{ textDecoration: "none" }} to="/createGroup">
               <Button sx={{ color: "white" }} size="small" color="inherit">
                 Create Group

@@ -39,7 +39,7 @@ submissionsRouter.get('/', async ctx=>{
 
 submissionsRouter.delete('/:id', (ctx) => {
     const id = ctx.params.id;
-    deleteSubmission(id);
+    ctx.body =  deleteSubmission(id);
     ctx.status = 204;
 
 });
@@ -54,7 +54,7 @@ submissionsRouter.delete('/:id', (ctx) => {
 
 submissionsRouter.get('/:id', async ctx=> {
     const id = ctx.params.id;
-    ctx.body = await getSubmission(id);
+    await getSubmission(id);
 })
 
 export default submissionsRouter;

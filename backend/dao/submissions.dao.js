@@ -16,11 +16,11 @@ return cursor.toArray();
 }
 
 export async function removeById(id){
-    return await submissions.deleteOne({_id:ObjectId(id)});
+    return await submissions.deleteOne({id});
 }
 
 export const getById = async (id) =>{
-    return await submissions.findOne({_id:ObjectId(id)});
+    return await submissions.findOne({_id:id});
 }
 
 

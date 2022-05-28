@@ -32,9 +32,9 @@ usersRouter.get('/', async ctx=>{
     ctx.body= await getAllUsers();
 })
 
-usersRouter.delete('/:_id', async ctx=>{
+usersRouter.delete('/:id', async ctx=>{
     const id = ctx.params.id;
-    await deleteUser(id);
+    ctx.body= await deleteUser(id);
 })
 
 // usersRouter.put('/:id', async ctx=> {

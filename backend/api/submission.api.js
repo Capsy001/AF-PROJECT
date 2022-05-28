@@ -45,20 +45,20 @@ export const addSubmission = async(submission) =>
 
 export const getAllSubmissions = () =>
 {
-    return  getAll();
+    return getAll();
 }
 
-// export const deleteSubmission = async id =>
-// {
-//     return await removeById(id);
-// }
+export const deleteSubmission = async id =>
+{
+    return await removeById(id);
+}
 
-export const deleteSubmission = (id) => {
-    if(!submissions.has(id)){
-        throw new Error('Not found for the ID ${id}');
-    }
-    submissions.removeById(id);
-        };
+// export const deleteSubmission = (id) => {
+//     if(!submissions.has(id)){
+//         throw new Error("Not found for the ID `${id}`");
+//     }
+//     submissions.removeById(id);
+//         };
 
         // export const getSubmission = (id) => {
         //     const submission = submissions.get(id);
