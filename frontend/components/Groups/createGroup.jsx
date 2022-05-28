@@ -53,8 +53,13 @@ export default class CreateGroup extends Component {
     event.preventDefault();
 
     
-    const groupId= await getGroupId();
-    console.log(`Id isssss ${groupId}`);
+    try{
+      const groupId= await getGroupId();
+      await console.log('ry' + groupId);
+    }catch(e){
+      console.log(e);
+    }
+    
   
 
     const group={

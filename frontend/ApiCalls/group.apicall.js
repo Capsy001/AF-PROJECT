@@ -10,16 +10,16 @@ export async function getGroupId()
   {
     //sss
       const groupId = response.data;
-      console.log(groupId);
+      //console.log(groupId);
       id=groupId.currentCount;
       
       
     
   }).then(x=>{
-    console.log(id);
-    return id;
+    //console.log(id);
+    
   });
-
+  return id;
 }
 
 

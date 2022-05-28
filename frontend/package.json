@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "parcel index.html --no-hmr"
+    "clean:output": "rimraf dist",
+    "build": "npm run clean:output && parcel build src/index.html",
+    "start": "npm run clean:output && parcel index.html --no-hmr"
   },
   "author": "Ekanayake EMUY",
   "license": "ISC",
@@ -22,6 +24,7 @@
   },
   "devDependencies": {
     "buffer": "^6.0.3",
-    "process": "^0.11.10"
+    "process": "^0.11.10",
+    "rimraf": "^3.0.2"
   }
 }
