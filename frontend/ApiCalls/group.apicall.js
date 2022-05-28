@@ -4,18 +4,18 @@ import axios from "axios";
 //function to get groupID
 export async function getGroupId()
 {
-  const groupId=null;
+  
 
-  await axios.get("http://localhost:3000/items/").then(response =>
+  await axios.get("http://localhost:3000/groups/counter").then(response =>
   {
-      groupId = response.data.currentCount;
+      const groupId = response.data;
+
       console.log(groupId);
-      
+      return groupId;
       
     
   });
 
-  return groupId;
 }
 
 
