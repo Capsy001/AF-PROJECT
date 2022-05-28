@@ -1,11 +1,11 @@
 import Router from "@koa/router"
-// import koaBusboy from "koa-busboy";
+import koaBusboy from "koa-busboy";
 import fs from 'fs';
 import { save, getAll} from '../dao/publication.dao.js';
 
-// const uploader = koaBusboy({
-//     dest: './uploads/publications/'
-// })
+const uploader = koaBusboy({
+    dest: './uploads/publications/'
+})
 
 const publicationRouter = new Router(
     {
@@ -14,31 +14,31 @@ const publicationRouter = new Router(
 );
 
 
-// publicationRouter.post('/add',uploader, async(ctx) => {
+publicationRouter.post('/add',uploader, async(ctx) => {
 
-//     const data = ctx.request.body;
+    const data = ctx.request.body;
 
-//     const saveFileName = './uploads/publications/' + Math.floor(Math.random() * 1000) 
-//                         + ctx.request.files[0].filename;
+    const saveFileName = './uploads/publications/' + Math.floor(Math.random() * 1000) 
+                        + ctx.request.files[0].filename;
 
-//     const publication = {
-//         title: data.title,
-//         desc: data.desc,
-//         file: saveFileName
-//     };
+    const publication = {
+        title: data.title,
+        desc: data.desc,
+        file: saveFileName
+    };
 
-//     console.log(ctx.request.body);
+    console.log(ctx.request.body);
 
-//     fs.rename(ctx.request.files[0].path,saveFileName, function (err) {    
-//         console.log("renamed!");    
-//     });
+    fs.rename(ctx.request.files[0].path,saveFileName, function (err) {    
+        console.log("renamed!");    
+    });
 
-//     const result = await save(publication);
+    const result = await save(publication);
 
-//     ctx.body = result;
-//     ctx.set('Content-Type', 'application/json');
-//     ctx.status = 201;
+    ctx.body = result;
+    ctx.set('Content-Type', 'application/json');
+    ctx.status = 201;
 
-// });
+});
 
 export default publicationRouter;
