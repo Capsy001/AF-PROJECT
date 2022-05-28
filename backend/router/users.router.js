@@ -1,5 +1,5 @@
 import Router from "@koa/router"
-import { addUser, getAllUsers, getUser, deleteUser, updateUser } from "../api/user.api.js";
+import { addUser, getAllUsers, getUser, deleteUser, updateUser, loginuser } from "../api/user.api.js";
 
 const usersRouter = new Router(
     {

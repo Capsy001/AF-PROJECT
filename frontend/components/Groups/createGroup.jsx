@@ -1,9 +1,11 @@
 import React from "react";
 import { Component } from "react";
 import { Link } from "react-router-dom";
-import { addItem } from "../../restcall";
+
 
 import { Button } from "@mui/material";
+import { getGroupId } from "../../ApiCalls/group.apicall";
+import { addItem } from "../../restcall";
 
 import AppBarNav from "../appBarNav";
 import {
@@ -37,6 +39,23 @@ export default class CreateGroup extends Component {
   handleMember1 = (event) => {
     this.setState({ member1: event.target.value });
   };
+  handleMember2 = (event) => {
+    this.setState({ member2: event.target.value });
+  };
+  handleMember3 = (event) => {
+    this.setState({ member3: event.target.value });
+  };
+  handleMember4 = (event) => {
+    this.setState({ member4: event.target.value });
+  };
+
+  handleSubmit=(event)=>{
+    event.preventDefault();
+    // const groupId=getGroupId();
+    // console.log(groupId);
+
+    addItem({ad:"sss"});
+  }
 
   handleLogout = (event) => {
     sessionStorage.setItem("logged", "false");
@@ -86,7 +105,7 @@ export default class CreateGroup extends Component {
                   required
                   type="text"
                   value={this.state.member2}
-                  onChange={this.handleUserNameChange}
+                  onChange={this.handleMember2}
                 />
               </div>
               <br></br>
@@ -97,7 +116,7 @@ export default class CreateGroup extends Component {
                   required
                   type="text"
                   value={this.state.member3}
-                  onChange={this.handleEmailChange}
+                  onChange={this.handleMember3}
                 />
               </div>
               <br></br>
@@ -108,22 +127,12 @@ export default class CreateGroup extends Component {
                   required
                   type="text"
                   value={this.state.member4}
-                  onChange={this.handlePasswordChange}
+                  onChange={this.handleMember4}
                 />
               </div>
 
               <br></br>
-              <div>
-                <TextField
-                  label="Group ID"
-                  variant="outlined"
-                  required
-                  type="text"
-                  value={this.state.groupid}
-                  onChange={this.handlePasswordChange}
-                  disabled
-                />
-              </div>
+              
               <Button
                 sx={{ width: "50%", margin: "5px" }}
                 variant="contained"
@@ -132,6 +141,7 @@ export default class CreateGroup extends Component {
                 size="small"
                 className="buttonMargin"
                 type="submit"
+                onClick={this.handleSubmit}
               >
                 Submit
               </Button>

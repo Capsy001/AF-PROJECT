@@ -121,56 +121,9 @@ export default class Dashboard extends Component {
   render() {
     return (
       <div className="loginForm">
-{/* <<<<<<< HEAD */}
-        <AppBar position="static" color="success">
-          <Toolbar variant="dense">
-            <Link to="/dashboard">
-              <Button sx={{ color: "white" }} size="small" color="inherit">
-                Dashboard
-              </Button>
-            </Link>
 
-            <Divider orientation="vertical" variant="middle" flexItem />
-            <Link style={{ textDecoration: "none" }} to="/createSubmissions">
-              <Button sx={{ color: "white" }} size="small" color="inherit">
-                Create Submissions
-              </Button>
-            </Link>
-            <Divider orientation="vertical" variant="middle" flexItem />
-            <Link style={{ textDecoration: "none" }} to="/viewSubmissions">
-              <Button sx={{ color: "white" }} size="small" color="inherit">
-                View Submissions
-              </Button>
-            </Link>
-            <Divider orientation="vertical" variant="middle" flexItem />
-            <Link style={{ textDecoration: "none" }} to="/createGroup">
-              <Button sx={{ color: "white" }} size="small" color="inherit">
-                Create Group
-              </Button>
-            </Link>
-            <Divider orientation="vertical" variant="middle" flexItem />
-            <Link style={{ textDecoration: "none" }} to="/viewUsers">
-              <Button sx={{ color: "white" }} size="small" color="inherit">
-                View Users
-              </Button>
-            </Link>
-            <Divider orientation="vertical" variant="middle" flexItem />
-
-            <Link to="/">
-              <Button
-                sx={{ color: "yellow" }}
-                size="small"
-                color="inherit"
-                onClick={this.handleLogout}
-              >
-                Logout
-              </Button>
-            </Link>
-          </Toolbar>
-        </AppBar>
-{/* ======= */}
         <AppBarNav></AppBarNav>
-{/* >>>>>>> 07b88f808a9cc382d36e22b826958344ffb87ebc */}
+
 
         <h2>Dashboard</h2>
 
