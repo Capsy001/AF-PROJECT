@@ -4,46 +4,32 @@ import axios from "axios";
 //function to get groupID
 export async function getGroupId()
 {
-  
+  var id=null;
 
   await axios.get("http://localhost:3000/groups/counter").then(response =>
   {
       const groupId = response.data;
-
       console.log(groupId);
-      return groupId;
+      id=groupId.currentCount;
+      
       
     
+  }).then(x=>{
+    console.log(id);
+    return id;
   });
 
 }
 
 
-// //function to login with rest api
-// export async function login(email, password)
-// {
-//   const user = { email: email, password: password };
+//function to add group
+export async function createGroup(group)
+{
 
-//   await axios.post("http://localhost:3000/users/login", user).then(response =>
-//     {
-//     const data = response.data;
-//       console.log(data)
-//       if (!data.name)
-//       {
-//         alert("Invalid credentials!");
-//         window.location.href = "/";
-//         return;
-//       }else{
-//         sessionStorage.setItem('logged', 'true');
-//         sessionStorage.setItem('loggedName', data.name);
-//         sessionStorage.setItem('loggedEmail', data.email);
-//         sessionStorage.setItem('loggedRole', data.role);
-//         sessionStorage.setItem('loggedUID', data.uid);
+  await axios.post("http://localhost:3000/groups", group).then(response =>
+    {
+    const data = response.data;
     
-//         const name = sessionStorage.getItem('loggedName');
-//         console.log(name + " logged in!");
-        
-//         window.location.href='/dashboard';
-//       }
-//     });
-// }
+      
+    });
+}

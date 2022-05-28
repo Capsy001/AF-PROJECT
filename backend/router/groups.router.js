@@ -37,7 +37,7 @@ groupsRouter.get('/counter', async(ctx) =>
     if(counter){
         ctx.body = counter;
         ctx.set('Content-Type', 'application/json');
-        ctx.status = 201;
+        ctx.status = 200;
     }else{
         ctx.body = 'db err';
         ctx.set('Content-Type', 'application/json');
