@@ -1,7 +1,7 @@
 import React from "react";
 import { Component } from "react";
 import { login } from "../login";
-import "../login.css";
+import "../login.module.css";
 import { Link } from "react-router-dom";
 
 export default class PanelDashboard extends Component {

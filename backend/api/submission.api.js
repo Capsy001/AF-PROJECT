@@ -1,5 +1,5 @@
-import { randomUUID } from 'crypto';
-import { save, getAll, removeById} from '../dao/submissions.dao.js';
+import { v4 as uuidv4 } from 'uuid';
+import { save, getAll, removeById, getById, update} from '../dao/submissions.dao.js';
 
 //map to store userdata
 const submissions = new Map();
@@ -31,6 +31,7 @@ export const addSubmission = async(submission) =>
 {
 
     const newSubmission = {
+        id: uuidv4(),
         title: submission.title,
         desc: submission.desc,
         deadline:submission.deadline,
@@ -45,7 +46,7 @@ export const addSubmission = async(submission) =>
 
 export const getAllSubmissions = () =>
 {
-    return  getAll();
+    return getAll();
 }
 
 export const deleteSubmission = async id =>
@@ -53,4 +54,12 @@ export const deleteSubmission = async id =>
     return await removeById(id);
 }
 
-export default {addSubmission, getAllSubmissions, deleteSubmission};
+        export const getSubmission = async id => {
+            return await getById(id);
+        }
+
+        export const updateSubmission = async (id, {title, desc, deadline, file})=>{
+            return await update({id}, {id, title, desc, deadline, file});
+        }
+
+export default {addSubmission, getAllSubmissions, deleteSubmission, getSubmission, updateSubmission};

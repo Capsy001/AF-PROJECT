@@ -1,5 +1,5 @@
 import Router from "@koa/router"
-import { addSubmission, getAllSubmissions, deleteSubmission } from "../api/submission.api.js";
+import { addSubmission, getAllSubmissions, deleteSubmission, getSubmission, updateSubmission } from "../api/submission.api.js";
 
 const submissionsRouter = new Router(
     {
@@ -32,9 +32,24 @@ submissionsRouter.get('/', async ctx=>{
     ctx.body= await getAllSubmissions();
 })
 
-submissionsRouter.delete('/:_id', async ctx=>{
+submissionsRouter.delete('/:id', (ctx) => {
     const id = ctx.params.id;
-    await deleteSubmission(id);
+    ctx.body =  deleteSubmission(id);
+    ctx.status = 204;
+
+});
+
+submissionsRouter.get('/:id', async ctx=> {
+    const id = ctx.params.id;
+    ctx.body = await getSubmission(id);
+})
+
+submissionsRouter.put('/:id', async ctx=> {
+    const id = ctx.params.id;
+    let submission = ctx.request.body;
+    submission = await updateSubmission(id);
+    ctx.response.status = 200;
+    ctx.body = submission;
 })
 
 export default submissionsRouter;

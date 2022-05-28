@@ -2,7 +2,7 @@ import React from "react";
 import { Component } from "react";
 import { Link } from "react-router-dom";
 import { addItem } from "../restcall";
-import "./login.css";
+import "./login.module.css";
 
 export default class AddItem extends Component {
   constructor() {

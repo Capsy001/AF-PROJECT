@@ -2,19 +2,17 @@ import axios from "axios";
 import React from "react";
 import { Component } from "react";
 import { Link } from "react-router-dom";
-import { addItem, getAllItems, getAllItemsRaw } from "../restcall";
-import "./login.module.css";
+// import { addItem, getAllItems, getAllItemsRaw } from "../restcall";
 import axios from "axios";
 
-export default class ViewItem extends Component {
+export default class ViewSubmissions extends Component {
   constructor() {
     super();
 
     this.state = {
-      name: "",
-      price: "",
+      title: "",
+      deadline: "",
       desc: "",
-      uid: "",
       data: [],
     };
   }
@@ -31,23 +29,22 @@ export default class ViewItem extends Component {
       window.location.href = "/";
     }
 
-      axios.get("http://localhost:3000/items/").then((response) => {
+      axios.get("http://localhost:3000/submissions/").then((response) => {
         const data = response.data;
-        var items = [];
+        var submissions = [];
 
         const keys = Object.keys(data);
 
         for (var x in keys) {
-          items.push({
-            name: data[x][1].name,
-            price: data[x][1].price,
+          submissions.push({
+            title: data[x][1].title,
+            deadline: data[x][1].deadline,
             desc: data[x][1].desc,
             id: data[x][1].id,
-            uid: data[x][1].uid,
           });
         }
 
-        this.setState({ data: items });
+        this.setState({ data: submissions });
       });
 
       setTimeout(() => {
@@ -114,19 +111,19 @@ export default class ViewItem extends Component {
           {
             <table>
               <tbody>
-                {this.state.data.map((item) => {
+                {this.state.data.map((submissions) => {
                   return (
                     <tr>
-                      <td>{item.name}</td>
-                      <td>{item.price}</td>
-                      <td>{item.desc}</td>
+                      <td>{submissions.title}</td>
+                      <td>{submissions.deadline}</td>
+                      <td>{submissions.desc}</td>
                       <td>
-                        <button data-key={item.id} onClick={this.handleAddToCart}>
+                        <button data-key={submissions.id} onClick={this.handleAddToCart}>
                           ++Cart
                         </button>
                       </td>
                       <td>
-                        <button data-key={item.id} onClick={this.handleAddToWishlist}>
+                        <button data-key={submissions.id} onClick={this.handleAddToWishlist}>
                           ++Wishlist
                         </button>
                       </td>

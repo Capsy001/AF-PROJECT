@@ -3,7 +3,7 @@ import React from "react";
 import { Component } from "react";
 import { Link } from "react-router-dom";
 import { addItem, getAllItems, getAllItemsRaw } from "../restcall";
-import "./login.css";
+import "./login.module.css";
 import axios from "axios";
 
 export default class ViewCart extends Component {
