@@ -4,8 +4,8 @@ const submissions = client.db('store').collection('submissions');
 import * as mongoose from 'mongoose';
 // var ObjectId = mongoose.Types.ObjectId();
 
-export async function save ({title, desc, deadline, file}){
-        const result = await submissions.insertOne({title, desc, deadline, file});
+export async function save ({id, title, desc, deadline, file}){
+        const result = await submissions.insertOne({id, title, desc, deadline, file});
         return result.insertedId;
     }
 
@@ -20,10 +20,15 @@ export async function removeById(id){
 }
 
 export const getById = async (id) =>{
-    return await submissions.findOne({_id:id});
+    return await submissions.findOne({id});
 }
+
+export async function update(id, {title, desc, deadline, file}){
+    const result = await posts.replaceOne({id}, {id, title, desc, deadline, file});
+    return result.ops[0];
+   };
 
 
 
 //Export the functions
-export default {save, getAll, removeById, getById};
+export default {save, getAll, removeById, getById, update};
