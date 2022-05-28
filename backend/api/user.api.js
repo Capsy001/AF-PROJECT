@@ -1,5 +1,5 @@
-import { randomUUID } from 'crypto';
-import { save, login, getAll, removeById} from '../dao/users.dao.js';
+import { v4 as uuidv4 } from 'uuid';
+import { save, login, getAll, getById, removeById, update} from '../dao/users.dao.js';
 
 
 
@@ -9,6 +9,7 @@ export const addUser = async(user) =>
 {
 
     const newUser = {
+        id: uuidv4(),
         name: user.name,
         email: user.email,
         username:user.username,
@@ -39,26 +40,20 @@ export const loginuser = async (user) =>
 
 export const getAllUsers = () =>
 {
-    return  getAll();
+    return getAll();
 }
 
 export const deleteUser = async id =>
 {
-    return removeById(id);
+    return await removeById(id);
 }
 
-// export const EditItem = (
-//     userid,
-//     { itemtitle, itemdesc, itemquantity}
-//   ) => {itemdesc
-//     const items = {
-//         userid,
-//       itemtitle: itemtitle,
-//       itemdesc: itemdesc,
-//       itemquantity: itemquantity,
-//     }
-//     users.set(userid, users)
-//     return users
-//   }
+        export const getUser = async id => {
+            return await getById(id);
+        }
 
-export default {addUser, loginuser, getAllUsers, deleteUser};
+        export const updateUser = async (id, {name, email, username, password, role})=>{
+            return await update({id}, {id, name, email, username, password, role});
+        }
+
+export default {addUser, loginuser, getAllUsers, getUser, deleteUser, updateUser};

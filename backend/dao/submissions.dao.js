@@ -24,7 +24,7 @@ export const getById = async (id) =>{
 }
 
 export async function update(id, {title, desc, deadline, file}){
-    const result = await posts.replaceOne({id}, {id, title, desc, deadline, file});
+    const result = await submissions.replaceOne({id}, {id, title, desc, deadline, file});
     return result.ops[0];
    };
 
