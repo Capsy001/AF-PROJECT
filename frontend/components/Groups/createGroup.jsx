@@ -51,8 +51,10 @@ export default class CreateGroup extends Component {
 
   async handleSubmit(event){
     event.preventDefault();
+
+    
     const groupId= await getGroupId();
-    console.log(`Id is ${groupId}`);
+    console.log(`Id isssss ${groupId}`);
   
 
     const group={
