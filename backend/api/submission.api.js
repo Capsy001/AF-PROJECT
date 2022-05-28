@@ -1,4 +1,3 @@
-import { v4 as uuidv4 } from 'uuid';
 import { save, getAll, removeById, getById, update} from '../dao/submissions.dao.js';
 
 //map to store userdata
@@ -31,7 +30,6 @@ export const addSubmission = async(submission) =>
 {
 
     const newSubmission = {
-        id: uuidv4(),
         title: submission.title,
         desc: submission.desc,
         deadline:submission.deadline,
@@ -54,7 +52,7 @@ export const deleteSubmission = async id =>
     return await removeById(id);
 }
 
-        export const getSubmission = async id => {
+        export const getSubmission = async(id) => {
             return await getById(id);
         }
 

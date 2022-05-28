@@ -21,7 +21,7 @@ submissionsRouter.post('/new', async(ctx) =>
         ctx.set('Content-Type', 'application/json');
         ctx.status = 201;
     }else{
-        ctx.body = 'db err';
+        ctx.body = {err:'db err'};
         ctx.set('Content-Type', 'application/json');
         ctx.status = 201;
     }
@@ -39,9 +39,25 @@ submissionsRouter.delete('/:id', (ctx) => {
 
 });
 
-submissionsRouter.get('/:id', async ctx=> {
-    const id = ctx.params.id;
-    ctx.body = await getSubmission(id);
+submissionsRouter.get('/get/:id', async ctx=> {
+    try{
+        const id = ctx.params.id;
+        const data = await getSubmission(id);
+        if(data!==null){
+            ctx.body = data;
+            ctx.set('Content-Type', 'application/json');
+            ctx.status = 200;
+        }else{
+            ctx.body = {data:'nodata'};
+            ctx.set('Content-Type', 'application/json');
+            ctx.status = 200;
+        }
+        
+    }catch(e){
+        ctx.body = await e;
+        ctx.set('Content-Type', 'application/json');
+        ctx.status = 200;
+    }
 })
 
 submissionsRouter.put('/:id', async ctx=> {
