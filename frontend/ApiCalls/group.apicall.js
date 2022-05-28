@@ -8,6 +8,7 @@ export async function getGroupId()
 
   await axios.get("http://localhost:3000/groups/counter").then(response =>
   {
+    //sss
       const groupId = response.data;
       console.log(groupId);
       id=groupId.currentCount;
