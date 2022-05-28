@@ -1,7 +1,7 @@
 import React from "react";
 import { Component } from "react";
 import { login } from "../login";
-import "../login.css";
+import "../login.module.css";
 import { Link } from "react-router-dom";
 import { Button } from "@mui/material";
 import Box from '@mui/material/Box';

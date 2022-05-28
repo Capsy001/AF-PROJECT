@@ -1,22 +1,30 @@
 import React from "react";
 import { Component } from "react";
 import { login } from "../restcall";
-import "./login.css";
+import "./login.module.css";
 import { Link } from "react-router-dom";
-import { Button, Stack, AppBar, Toolbar, Divider, createTheme, colors } from "@mui/material";
+import {
+  Button,
+  Stack,
+  AppBar,
+  Toolbar,
+  Divider,
+  createTheme,
+  colors,
+} from "@mui/material";
 import styled from "@emotion/styled";
+import AppBarNav from "./appBarNav";
 
 export default class Dashboard extends Component {
-  constructor()
-  {
+  constructor() {
     const theme = createTheme({
       palette: {
         secondary: {
-          main: colors.orange[500]
-        }
-      }
+          main: colors.orange[500],
+        },
+      },
     });
-   
+
     super();
     this.isAdmin = false;
   }
@@ -92,18 +100,18 @@ export default class Dashboard extends Component {
     const logged = sessionStorage.getItem("logged");
     const role = sessionStorage.getItem("loggedRole");
 
-    if(sessionStorage.getItem("loggedRole") == 'admin'){
+    if (sessionStorage.getItem("loggedRole") == "admin") {
       this.isAdmin = true;
-    }else{
+    } else {
       this.isAdmin = false;
     }
 
-    switch(role){
+    switch (role) {
       case "panel":
         window.location.href = "/panel";
         break;
     }
-    
+
     if (logged == "false") {
       alert("User not logged in!");
       window.location.href = "/";
@@ -113,66 +121,7 @@ export default class Dashboard extends Component {
   render() {
     return (
       <div className="loginForm">
-        <AppBar position="static" color="success">
-          <Toolbar variant="dense">
-            <Link to="/dashboard">
-              <Button sx={{ color: "white" }} size="small" color="inherit">
-                Dashboard
-              </Button>
-            </Link>
-
-            <Divider orientation="vertical" variant="middle" flexItem />
-            <Link style={{ textDecoration: "none" }} to="/createSubmissions">
-              <Button sx={{ color: "white" }} size="small" color="inherit">
-                Create Submissions
-              </Button>
-            </Link>
-            <Divider orientation="vertical" variant="middle" flexItem />
-
-            <Link style={{ textDecoration: "none" }} to="/createGroup">
-              <Button sx={{ color: "white" }} size="small" color="inherit">
-                Create Group
-              </Button>
-            </Link>
-            <Divider orientation="vertical" variant="middle" flexItem />
-            <Link style={{ textDecoration: "none" }} to="/viewUsers">
-              <Button sx={{ color: "white" }} size="small" color="inherit">
-                View Users
-              </Button>
-            </Link>
-            <Divider orientation="vertical" variant="middle" flexItem />
-
-            { this.isAdmin ? 
-            
-            <Link style={{ textDecoration: "none" }} to="/adminPublication">
-              <Button sx={{ color: "white" }} size="small" color="inherit">
-                Publication
-              </Button>
-            </Link>
-
-            : 
-
-            <Link style={{ textDecoration: "none" }} to="/viewPublication">
-              <Button sx={{ color: "white" }} size="small" color="inherit">
-                Publication(s)
-              </Button>
-            </Link>
-            
-            }
-            <Divider orientation="vertical" variant="middle" flexItem />
-
-            <Link to="/">
-              <Button
-                sx={{ color: "yellow" }}
-                size="small"
-                color="inherit"
-                onClick={this.handleLogout}
-              >
-                Logout
-              </Button>
-            </Link>
-          </Toolbar>
-        </AppBar>
+        <AppBarNav></AppBarNav>
 
         <h2>Dashboard</h2>
 

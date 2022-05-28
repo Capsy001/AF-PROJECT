@@ -18,7 +18,7 @@ import AddItem from "./components/addItems";
 import EditItem from "./components/editItem";
 import ViewItem from "./components/viewItems";
 import ViewCart from "./components/viewCart";
-import CreateGroup from "./components/createGroup";
+import CreateGroup from "./components/groups/createGroup";
 import ViewUsers from "./components/viewUsers";
 import CreateSubmission from "./components/Submission/createSubmission";
 import Publication from "./components/Admin/publication";

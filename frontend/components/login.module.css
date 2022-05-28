@@ -12,19 +12,12 @@ label {
     display: block;
 }
 
-#Submit {
-
-    margin: 5px 5px 5px 5px;
-    
-}
-
-
-
-
 
 h2{
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     color: #00e676;
+    justify-content: center;
+    text-align: center;
 }
 
 form {
@@ -56,5 +49,8 @@ table {
 body{
     background-color: #eeeeee;
 }
+
+
+
 
 
