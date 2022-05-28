@@ -13,7 +13,6 @@ export default class ViewSubmissions extends Component {
       title: "",
       deadline: "",
       desc: "",
-      uid: "",
       data: [],
     };
   }
@@ -42,7 +41,6 @@ export default class ViewSubmissions extends Component {
             deadline: data[x][1].deadline,
             desc: data[x][1].desc,
             id: data[x][1].id,
-            uid: data[x][1].uid,
           });
         }
 

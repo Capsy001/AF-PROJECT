@@ -121,7 +121,7 @@ export default class Dashboard extends Component {
   render() {
     return (
       <div className="loginForm">
-<<<<<<< HEAD
+{/* <<<<<<< HEAD */}
         <AppBar position="static" color="success">
           <Toolbar variant="dense">
             <Link to="/dashboard">
@@ -137,10 +137,9 @@ export default class Dashboard extends Component {
               </Button>
             </Link>
             <Divider orientation="vertical" variant="middle" flexItem />
-            <Divider orientation="vertical" variant="middle" flexItem />
-            <Link style={{ textDecoration: "none" }} to="/createSubmissions">
+            <Link style={{ textDecoration: "none" }} to="/viewSubmissions">
               <Button sx={{ color: "white" }} size="small" color="inherit">
-                Create Submissions
+                View Submissions
               </Button>
             </Link>
             <Divider orientation="vertical" variant="middle" flexItem />
@@ -169,9 +168,9 @@ export default class Dashboard extends Component {
             </Link>
           </Toolbar>
         </AppBar>
-=======
+{/* ======= */}
         <AppBarNav></AppBarNav>
->>>>>>> 07b88f808a9cc382d36e22b826958344ffb87ebc
+{/* >>>>>>> 07b88f808a9cc382d36e22b826958344ffb87ebc */}
 
         <h2>Dashboard</h2>
 

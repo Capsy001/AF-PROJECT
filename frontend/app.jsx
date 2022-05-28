@@ -21,11 +21,11 @@ import ViewCart from "./components/viewCart";
 import CreateGroup from "./components/groups/createGroup";
 import ViewUsers from "./components/viewUsers";
 import CreateSubmission from "./components/Submission/createSubmission";
-<<<<<<< HEAD
+// <<<<<<< HEAD
 import ViewSubmissions from "./components/Submission/viewSubmissions";
-=======
+// =======
 import Publication from "./components/Admin/publication";
->>>>>>> 07b88f808a9cc382d36e22b826958344ffb87ebc
+// >>>>>>> 07b88f808a9cc382d36e22b826958344ffb87ebc
 
 export default class App extends Component {
   constructor(props) {
@@ -49,11 +49,11 @@ export default class App extends Component {
           <Route exact path="/" element={<Login />} />
           <Route path="/viewUsers" element={<ViewUsers />} />
           <Route path="/createSubmissions" element={<CreateSubmission />} />
-<<<<<<< HEAD
+{/* <<<<<<< HEAD */}
           <Route path="/viewSubmissions" element={<ViewSubmissions />} />
-=======
+{/* ======= */}
           <Route path="/adminPublication" element={<Publication />} />
->>>>>>> 07b88f808a9cc382d36e22b826958344ffb87ebc
+{/* >>>>>>> 07b88f808a9cc382d36e22b826958344ffb87ebc */}
         </Routes>
       </BrowserRouter>
     );

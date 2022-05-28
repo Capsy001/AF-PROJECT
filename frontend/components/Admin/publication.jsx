@@ -3,7 +3,7 @@ import { Component } from "react";
 import { Link } from "react-router-dom";
 import { createSubmission } from "../../submissionrestcall";
 import { Button, TextField, Chip, Divider, Stack, Input } from "@mui/material";
-import { Campaign, CloudUpload } from "@mui/icons-material";
+// import { Campaign, CloudUpload } from "@mui/icons-material";
 import CustomHeader from "../header/customheader";
 
 export default class Publication extends Component {
