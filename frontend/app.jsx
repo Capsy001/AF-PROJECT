@@ -27,6 +27,8 @@ import Publication from "./components/Admin/publication";
 import UpdateSubmission from "./components/Submission/updateSubmission";
 
 import ViewPublication from "./components/viewPublication";
+import CreateStudentSubmission from "./components/Submission/createStudentSubmission";
+import ViewStudentSubmissions from "./components/Submission/viewStudentSubmissions";
 
 
 export default class App extends Component {
@@ -58,6 +60,8 @@ export default class App extends Component {
 
           <Route path="/viewPublications" element={<ViewPublication />} />
           <Route path="/adminPublication" element={<Publication />} />
+          <Route path="/createStudentSubmissions" element={<CreateStudentSubmission />} />
+          <Route path="/viewStudentSubmissions" element={<ViewStudentSubmissions />} />
 
         </Routes>
       </BrowserRouter>

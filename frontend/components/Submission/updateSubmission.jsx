@@ -8,9 +8,9 @@ export default class UpdateSubmission extends Component {
         super(props);
         this.state={
             title:"",
-  desc:"",
-  deadline:"",
-  file:"",
+            desc:"",
+            deadline:"",
+            file:"",
         }
         
         }
@@ -57,9 +57,9 @@ alert("Updated Successfully")
 
     componentDidMount(){
 
-        const id = this.props.match.id;
+        const id = this.props.match.params.id;
     
-        axios.get(`http://localhost:3000/submissions/id`).then((res) =>{
+        axios.get(`http://localhost:3000/submissions/${id}`).then((res) =>{
     if(res.data.success){
     this.setState({
         title:res.data.post.title,

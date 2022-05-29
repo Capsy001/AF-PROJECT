@@ -6,7 +6,7 @@ import CustomHeader from "../header/customheader";
 import axios from "axios";
 import { Link } from "react-router-dom";
 
-export default class ViewSubmissions extends Component {
+export default class ViewStudentSubmissions extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -22,7 +22,7 @@ export default class ViewSubmissions extends Component {
   }
 
   componentDidMount(){
-    axios.get("http://localhost:3000/submissions").then(response =>
+    axios.get("http://localhost:3000/studentsubmissions").then(response =>
     {
       this.handleData(response.data);
     });
@@ -39,17 +39,20 @@ export default class ViewSubmissions extends Component {
             <div>
               <table>
                 <tr>
-                <td>Title</td>
-                <td>Description</td>
-                <td>Deadline</td>
+                <td>Group ID</td>
+                <td>Topic</td>
+                <td>Upload Date</td>
+                <td>File</td>
                 </tr>
               
               {(this.state.data).map(data => 
                 <tr>
-                        <td>{data.title}</td>
-                        <td>{data.desc}</td>
-                        <td> {data.deadline}</td>
-                     <td><Link to="/updateSubmission"><Button>Update</Button></Link></td>
+                        <td>{data.groupid}</td>
+                        <td>{data.topic}</td>
+                        <td> {data.uploaddate}</td>
+                        <td>{data.file}</td>
+                     <td><Button>Download</Button></td>
+                     <td><Link to="/updateStudentSubmission"><Button>Update</Button></Link></td>
                      <td><Button>Delete</Button></td>
                      </tr>
                 )

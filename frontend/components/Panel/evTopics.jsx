@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import { Button } from "@mui/material";
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
-import {getTopics} from '../../ApiCalls/topic.apicall';
+import {getTopics, updateTopicsts, banTopicsts} from '../../ApiCalls/topic.apicall';
 
 export default class EvTopics extends Component {
   constructor() {
@@ -45,6 +45,31 @@ export default class EvTopics extends Component {
     );
     
   };
+
+  handleapprove = async(event) =>{
+    try{
+      const id = event.target.dataset.key;
+      const data = await updateTopicsts(id,({status:'approved'}));
+      console.log(data);
+    }catch(e){
+      console.log(e)
+    }
+  }
+
+  handlereject = async(event) =>{
+    const id = event.target.dataset.key;
+    const data = await updateTopicsts(id,({status:'rejected'}));
+    console.log(data);
+  }
+
+  handleban = async(event) =>{
+    const topic = event.target.dataset.key;
+    const object={
+      topic:topic
+    }
+    const data = await banTopicsts(object);
+    console.log(data);
+  }
 
   async componentWillMount() {
     const logged = sessionStorage.getItem("logged");
@@ -85,9 +110,9 @@ export default class EvTopics extends Component {
                       <td>{item.description}</td>
                       <td>{item.status}</td>
                       <td>
-                      <input type="submit" data-key={item._id} style={{display:'inline'}} value='approve'/>&nbsp;
-                      <input type="submit" data-key={item._id} style={{display:'inline'}} value='reject'/>&nbsp;
-                      <input type="submit" data-key={item._id} style={{display:'inline'}} value='ban'/>
+                      <input type="submit" data-key={item._id} style={{display:'inline'}} value='approve' onClick={this.handleapprove}/>&nbsp;
+                      <input type="submit" data-key={item._id} style={{display:'inline'}} value='reject' onClick={this.handlereject}/>&nbsp;
+                      <input type="submit" data-key={item.topic} style={{display:'inline'}} value='ban' onClick={this.handleban}/>
                       </td>
                     </tr>
                   );

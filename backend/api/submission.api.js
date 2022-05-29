@@ -11,15 +11,13 @@ const defaultSubmission =
     title: "John Doe",
     desc: "john@abc.com",
     deadline:"john0",
-    file:"",
 };
 
 const defaultSubmission2 =
 {
     title: "Kate Winslet",
     desc: "kate@abc.com",
-    deadline:"kate0",
-    file:"",
+    deadline:"kate0"
 };
 
 submissions.set(defaultSubmission.desc, defaultSubmission);
@@ -32,8 +30,7 @@ export const addSubmission = async(submission) =>
     const newSubmission = {
         title: submission.title,
         desc: submission.desc,
-        deadline:submission.deadline,
-        file:submission.file
+        deadline:submission.deadline
     };
     const result = await save(newSubmission);
     console.log(result)

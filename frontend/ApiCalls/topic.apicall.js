@@ -21,4 +21,22 @@ export async function getTopics()
     return items;
 }
 
-export default {getTopics};
+//function to get all topics
+export async function updateTopicsts(id,status)
+{
+    var data = '';
+    await axios.put("http://localhost:3000/topics/update/" + id, status).then((response) => {
+        data = response.data;
+    });
+    return data;
+}
+
+export async function banTopicsts(topic)
+{
+    var data = '';
+    await axios.post("http://localhost:3000/topics/ban/" , topic).then((response) => {
+        data = response.data;
+    });
+    return data;
+}
+export default {getTopics, updateTopicsts, banTopicsts};

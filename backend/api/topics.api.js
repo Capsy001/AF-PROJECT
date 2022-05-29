@@ -1,4 +1,4 @@
-import { save, ban, updatestatus, getAll, removeById, getById, update} from '../dao/topics.dao.js';
+import { save, ban, updatestatus, getAll, removeById, getById} from '../dao/topics.dao.js';
 
 //function for add topic
 export const addTopic = async(topic) =>
@@ -30,7 +30,7 @@ export const updateTopic = async(id,topic) =>
 {
 
     const updatests = {
-        topic: topic.status
+        status: topic.status
     };
     const result = await updatestatus(id,updatests);
     console.log(result)
@@ -53,8 +53,5 @@ export const deleteSubmission = async id =>
             return await getById(id);
         }
 
-        export const updateSubmission = async (id, submission)=>{
-            return await update({id}, submission);
-        }
 
-export default {addTopic, banTopic, updateTopic, getAllSubmissions, deleteSubmission, getSubmission, updateSubmission};
+export default {addTopic, banTopic, updateTopic, getAllSubmissions, deleteSubmission, getSubmission};

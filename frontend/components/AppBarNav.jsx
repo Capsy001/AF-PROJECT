@@ -29,6 +29,12 @@ export default function AppBarNav() {
             </Button>
           </Link>
           <Divider orientation="vertical" variant="middle" flexItem />
+          <Link style={{ textDecoration: "none" }} to="/createStudentSubmissions">
+            <Button sx={{ color: "white" }} size="small" color="inherit">
+              Create Student Submissions
+            </Button>
+          </Link>
+          <Divider orientation="vertical" variant="middle" flexItem />
 
           <Link style={{ textDecoration: "none" }} to="/createGroup">
             <Button sx={{ color: "white" }} size="small" color="inherit">
@@ -39,6 +45,12 @@ export default function AppBarNav() {
           <Link style={{ textDecoration: "none" }} to="/viewUsers">
             <Button sx={{ color: "white" }} size="small" color="inherit">
               View Users
+            </Button>
+          </Link>
+          <Divider orientation="vertical" variant="middle" flexItem />
+          <Link style={{ textDecoration: "none" }} to="/viewStudentSubmissions">
+            <Button sx={{ color: "white" }} size="small" color="inherit">
+              View Student Submission
             </Button>
           </Link>
           <Divider orientation="vertical" variant="middle" flexItem />
