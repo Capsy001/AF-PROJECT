@@ -41,4 +41,13 @@ publicationRouter.post('/add',uploader, async(ctx) => {
 
 });
 
+publicationRouter.post('/getAll', async(ctx) => {
+
+    const result = await getAll();
+    console.log(result);
+    ctx.body = result;
+    ctx.status = 201;
+
+});
+
 export default publicationRouter;
