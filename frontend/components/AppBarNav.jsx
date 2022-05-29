@@ -43,6 +43,13 @@ export default function AppBarNav() {
           </Link>
           <Divider orientation="vertical" variant="middle" flexItem />
 
+          <Link style={{ textDecoration: "none" }} to="/viewPublications">
+            <Button sx={{ color: "white" }} size="small" color="inherit">
+              Publications
+            </Button>
+          </Link>
+          <Divider orientation="vertical" variant="middle" flexItem />
+
           <Link style={{ textDecoration: "none" }} to="/">
             <Button
               sx={{ color: "yellow" }}
