@@ -22,7 +22,7 @@ submissionsRouter.post('/new',uploader, async(ctx) =>
                         const submission = {
                             title: data.title,
                             desc: data.desc,
-                            deadline: data.desc,
+                            deadline: data.deadline,
                             file: saveFileName
                         };
                     

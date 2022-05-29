@@ -1,17 +1,10 @@
-import React from "react";
-import { Component } from "react";
-import { Link } from "react-router-dom";
-
-import { createSubmission } from "../../submissionrestcall";
-import { Button, TextField, Chip, Divider, Stack, Input } from "@mui/material";
-import { Campaign, CloudUpload } from "@mui/icons-material";
-
-import { Button, TextField, Chip, Divider, Input, CircularProgress, Typography, Box, Alert } from "@mui/material";
-import { Campaign, CloudUpload } from "@mui/icons-material";
-
+import { React,Component } from "react";
+import { Button, Chip, Input } from "@mui/material";
+import { CloudUpload } from "@mui/icons-material";
+import { Button, TextField, Chip, Divider, Input, CircularProgress, Typography, Box } from "@mui/material";
+import { CloudUpload } from "@mui/icons-material";
 import CustomHeader from "../header/customheader";
 import axios from "axios";
-
 export default class CreateSubmission extends Component {
   constructor(props) {
     super(props);
@@ -51,8 +44,9 @@ export default class CreateSubmission extends Component {
     var completed = 0;
 
     const submission = {
-      desc: this.state.desc,
       title: this.state.title,
+      desc: this.state.desc,
+      deadline: this.state.deadline,
       file: this.state.file
     };
 
@@ -71,7 +65,6 @@ export default class CreateSubmission extends Component {
     axios.post("http://localhost:3000/submissions/new", submission, config).then(response =>
     {
       const data = response.data;
-      //alert("Published!");
       document.getElementById("progress").style.display = "none";
       document.getElementById("alert").style.display = "flex";
     });
@@ -81,55 +74,32 @@ export default class CreateSubmission extends Component {
   render() {
 
     return (
-      <div className="registerForm">
+      <div>
         
         <CustomHeader />
 
         <div  style={{marginTop:'40px'}}>
-
-            <Divider>
-                <Chip 
-                label="Add Publication" 
-                icon={<Campaign />}
-                style={{padding:'20px',paddingLeft:'50px',paddingRight:'50px',fontSize:'15px'}}
-                />
-            </Divider>
-
         </div>
 
 
         <form onSubmit={this.handleSubmit} encType="multipart/form-data" method="post">
           <div>
-            <TextField id="title" label="Title" variant="outlined" fullWidth onChange={this.handleTitleChange}/>
+            <label>Title</label>
+            <input id="title" label="Title" onChange={this.handleTitleChange}/>
           </div>
           <br></br>
           <div>
-            <TextField
-                id="desc"
-                label="Publication Description"
-                multiline
-                rows={4}
-                defaultValue=""
-                fullWidth
-                onChange={this.handleDescChange}
+          <label>Description</label>
+            <input id="desc" label="Description" onChange={this.handleDescChange}
             />
           </div>
           <br></br>
           <div>
-            <TextField
-                id="deadline"
-                label="Deadline"
-                multiline
-                rows={4}
-                defaultValue=""
-                fullWidth
-                onChange={this.handleDeadlineChange}
+          <label>Deadline</label>
+            <input id="deadline" type="date" onChange={this.handleDeadlineChange}
             />
           </div>
-          <br></br>
-          
-
-            <Chip label="Upload Publication Files" style={{width:'100%'}} /> <br/><br/>      
+          <br></br>  
 
             <label htmlFor="file">
                 <Input id="file" name="file" type="file" style={{display:'none'}} onChange={this.handleFileChange} />
@@ -144,10 +114,6 @@ export default class CreateSubmission extends Component {
               :
               null
             }
-
-            <Alert onClose={() => {}} variant="filled" id="alert" style={{marginTop:'10px',display:'none'}}>
-            Successfully Published!
-            </Alert><br/>
 
             <Box sx={{ position: 'relative', display: 'inline-flex' }} id="progress" style={{marginTop:'10px',display:'none'}}>
             <CircularProgress variant="determinate" size={70} value={this.state.progressPrecentage}/>
@@ -173,16 +139,9 @@ export default class CreateSubmission extends Component {
             </Box>
           </Box>
 
-          <Button
-            variant="contained"
-            color="info"
-            id="Submit"
-            type="submit"
-            fullWidth
-            style={{margin:'0px', marginTop:'20px'}}
-          >
+          <button id="Submit" type="submit">
             Publish
-          </Button>
+          </button>
 
         </form>
       </div>
