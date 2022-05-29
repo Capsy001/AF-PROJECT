@@ -1,138 +1,61 @@
-import axios from "axios";
-import React from "react";
-import { Component } from "react";
-import { Link } from "react-router-dom";
-// import { addItem, getAllItems, getAllItemsRaw } from "../restcall";
+import { React, Component } from "react";
+import { Button} from "@mui/material";
+import { Campaign, FileDownload } from "@mui/icons-material";
+import { Campaign, CloudUpload } from "@mui/icons-material";
+import CustomHeader from "../header/customheader";
 import axios from "axios";
 
 export default class ViewSubmissions extends Component {
-  constructor() {
-    super();
-
+  constructor(props) {
+    super(props);
     this.state = {
-      title: "",
-      deadline: "",
-      desc: "",
-      data: [],
+      data : []
     };
+    this.handleData = this.handleData.bind(this);
   }
 
-
-
-  componentWillMount()
-  {
-
-
-    const logged = sessionStorage.getItem("logged");
-    if (logged == "false") {
-      alert("User not logged in!");
-      window.location.href = "/";
-    }
-
-      axios.get("http://localhost:3000/submissions/").then((response) => {
-        const data = response.data;
-        var submissions = [];
-
-        const keys = Object.keys(data);
-
-        for (var x in keys) {
-          submissions.push({
-            title: data[x][1].title,
-            deadline: data[x][1].deadline,
-            desc: data[x][1].desc,
-            id: data[x][1].id,
-          });
-        }
-
-        this.setState({ data: submissions });
-      });
-
-      setTimeout(() => {
-        console.log(this.state.data);
-      }, 500);
-    
+  handleData(subdata){
+    this.setState({
+      data:subdata
+    });
   }
 
-
-
-
-
-
-  handleAddToCart = (event) => {
-    
-
-    alert(event.target.dataset.key);
-
-
-  };
-
-  handleAddToWishlist = (event) =>
-  {
-    
-    alert(event.target.dataset.key);
-
-
-  };
-
-
-
-
-  handleLogout = (event) => {
-    sessionStorage.setItem("logged", "false");
-
-    sessionStorage.setItem("loggedName", "NotLogged!");
-    sessionStorage.setItem("loggedEmail", "NotLogged!");
-    sessionStorage.setItem("loggedRole", "NotLogged!");
-
-    sessionStorage.clear;
-    window.location.href = "/";
-  };
+  componentDidMount(){
+    axios.get("http://localhost:3000/submissions").then(response =>
+    {
+      this.handleData(response.data);
+    });
+  }
 
   render() {
+
     return (
       <div>
-        <div className="loginForm">
-          <h2>View Items</h2>
-          <Link to="/dashboard">
-            <button className="buttonMargin">Dashboard</button>
-          </Link>
+        
+        <CustomHeader />
 
-          <Link to="/viewCart">
-            <button className="buttonMargin">View Cart</button>
-          </Link>
-
-          <Link to="/">
-            <button className="buttonMargin" onClick={this.handleLogout}>
-              Logout
-            </button>
-          </Link>
-
-          <hr></hr>
-          {
-            <table>
-              <tbody>
-                {this.state.data.map((submissions) => {
-                  return (
-                    <tr>
-                      <td>{submissions.title}</td>
-                      <td>{submissions.deadline}</td>
-                      <td>{submissions.desc}</td>
-                      <td>
-                        <button data-key={submissions.id} onClick={this.handleAddToCart}>
-                          ++Cart
-                        </button>
-                      </td>
-                      <td>
-                        <button data-key={submissions.id} onClick={this.handleAddToWishlist}>
-                          ++Wishlist
-                        </button>
-                      </td>
-                    </tr>
-                  );
-                })}
-              </tbody>
-            </table>
-          }
+        <div  style={{marginTop:'40px'}}>
+            <div>
+              <table>
+                <tr>
+                <td>Title</td>
+                <td>Description</td>
+                <td>Deadline</td>
+                <td>File</td>
+                </tr>
+              
+              {(this.state.data).map(data => 
+                <tr>
+                        <td>{data.title}</td>
+                        <td>{data.desc}</td>
+                        <td> {data.deadline}</td>
+                        <td>{data.file}</td>
+                     <td><Button>Download</Button></td>
+                     </tr>
+                )
+              }
+              </table>
+            </div>
         </div>
       </div>
     );
