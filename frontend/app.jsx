@@ -23,7 +23,11 @@ import ViewUsers from "./components/viewUsers";
 import CreateSubmission from "./components/Submission/createSubmission";
 import ViewSubmissions from "./components/Submission/viewSubmissions";
 import Publication from "./components/Admin/publication";
+
 import UpdateSubmission from "./components/Submission/updateSubmission";
+
+import ViewPublication from "./components/viewPublication";
+
 
 export default class App extends Component {
   constructor(props) {
@@ -48,8 +52,13 @@ export default class App extends Component {
           <Route path="/viewUsers" element={<ViewUsers />} />
           <Route path="/createSubmissions" element={<CreateSubmission />} />
           <Route path="/viewSubmissions" element={<ViewSubmissions />} />
+
           <Route path="/adminPublication" element={<Publication />} />
           <Route path="/updateSubmission" element={<UpdateSubmission />} />
+
+          <Route path="/viewPublications" element={<ViewPublication />} />
+          <Route path="/adminPublication" element={<Publication />} />
+
         </Routes>
       </BrowserRouter>
     );
