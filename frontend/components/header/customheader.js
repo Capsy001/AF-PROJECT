@@ -79,7 +79,7 @@ class CustomHeader extends Component {
 
             { this.isAdmin ? 
             
-            <Link style={{ textDecoration: "none" }} to="/adminPublication">
+            <Link style={{ textDecoration: "none" }} to="/managePublications">
               <Button sx={{ color: "white" }} size="small" color="inherit">
                 Publication
               </Button>

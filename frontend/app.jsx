@@ -22,11 +22,13 @@ import CreateGroup from "./components/groups/createGroup";
 import ViewUsers from "./components/viewUsers";
 import CreateSubmission from "./components/Submission/createSubmission";
 import ViewSubmissions from "./components/Submission/viewSubmissions";
-import Publication from "./components/Admin/publication";
 
 import UpdateSubmission from "./components/Submission/updateSubmission";
 
 import ViewPublication from "./components/viewPublication"; 
+import ManagePublications from "./components/Admin/managePublications";
+import AddPublications from "./components/Admin/addPublication";
+import EditPublications from "./components/Admin/editPublications";
 
 export default class App extends Component {
   constructor(props) {
@@ -52,11 +54,12 @@ export default class App extends Component {
           <Route path="/createSubmissions" element={<CreateSubmission />} />
           <Route path="/viewSubmissions" element={<ViewSubmissions />} />
 
-          <Route path="/adminPublication" element={<Publication />} />
           <Route path="/updateSubmission" element={<UpdateSubmission />} />
 
           <Route path="/viewPublications" element={<ViewPublication />} />
-          <Route path="/adminPublication" element={<Publication />} />
+          <Route path="/addPublications" element={<AddPublications />} />
+          <Route path="/managePublications" element={<ManagePublications />} />
+          <Route path="/editPublications/:id" element={<EditPublications />} />
 
         </Routes>
       </BrowserRouter>
