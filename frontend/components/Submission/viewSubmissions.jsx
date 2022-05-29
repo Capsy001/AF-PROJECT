@@ -4,6 +4,7 @@ import { Campaign, FileDownload } from "@mui/icons-material";
 import { Campaign, CloudUpload } from "@mui/icons-material";
 import CustomHeader from "../header/customheader";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 export default class ViewSubmissions extends Component {
   constructor(props) {
@@ -51,6 +52,8 @@ export default class ViewSubmissions extends Component {
                         <td> {data.deadline}</td>
                         <td>{data.file}</td>
                      <td><Button>Download</Button></td>
+                     <td><Link to="/updateSubmission"><Button>Update</Button></Link></td>
+                     <td><Button>Delete</Button></td>
                      </tr>
                 )
               }

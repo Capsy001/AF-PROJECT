@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import { React,Component } from "react";
 import { Button, Chip, Input } from "@mui/material";
 import { CloudUpload } from "@mui/icons-material";
@@ -149,6 +148,4 @@ export default class CreateSubmission extends Component {
     );
   }
 }
-=======
 
->>>>>>> 4722346e2c74d78ea9835453ef6174e536b1c6ef

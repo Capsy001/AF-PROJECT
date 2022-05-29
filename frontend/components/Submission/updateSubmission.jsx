@@ -27,22 +27,20 @@ export default class UpdateSubmission extends Component {
         onSubmit = (e) =>{
         e.preventDefault();
         const id = this.props.match.params.id;
-        
         const {title,desc,deadline,file} = this.state;
-
         const data ={
             title:title,
-  desc:desc,
-  deadline:deadline,
-  file:file,
+            desc:desc,
+            deadline:deadline,
+            file:file,
         }
         console.log(data)
         
 
 
-        axios.put(`http://localhost:8070/submissions/update/${id}`,data).then((res) =>{
+        axios.put(`http://localhost:3000/submissions/update/${id}`,data).then((res) =>{
         if(res.data.success){
-alert("Room Details Updated Successfully")
+alert("Updated Successfully")
 
         this.setState(
         {title:"",
@@ -59,9 +57,9 @@ alert("Room Details Updated Successfully")
 
     componentDidMount(){
 
-        const id = this.props.match.params.id;
+        const id = this.props.match.id;
     
-        axios.get(`http://localhost:8070/submissions/${id}`).then((res) =>{
+        axios.get(`http://localhost:3000/submissions/id`).then((res) =>{
     if(res.data.success){
     this.setState({
         title:res.data.post.title,
@@ -82,59 +80,58 @@ alert("Room Details Updated Successfully")
 render() {
 return (
 <div>
-<div style={{marginLeft:"-100px", marginTop:"-1360px", padding:"10px"}}>
+<div>
 
-<div style={{marginLeft:"200px"}}>
-    <h1 className="h3 mb-3 font-weight-normal">Update excisting Room Details</h1>
-    <form className="needs-validation" noValidate style={{marginTop:"50px"}}>
+<div>
+        <form className="needs-validation" noValidate>
     <div className="colum1">
 
  
-<div className="form-group" style={{marginBottom:'25px'}}>
-<label style={{marginBottom:'5px'}}>Room Title</label>
-<input style={{marginLeft:'46px', border: '1px solid #4CAF50'}} type="text"
+<div>
+<label>Title</label>
+<input type="text"
 className="form-contorl"
 name="title"
-placeholder="Enter Room Title"
+placeholder="Title"
 value={this.state.title}
 onChange={this.handleInputChange} required/>
 </div>
 
 
 
-<div className="form-group" style={{marginBottom:'25px'}}>
-<label style={{marginBottom:'5px'}}>Room Number</label>
-<input style={{marginLeft:'24px', border: '1px solid #4CAF50'}} type="text"
+<div>
+<label>Description</label>
+<input type="text"
 className="form-contorl"
 name="desc"
-placeholder="Enter Room Number"
+placeholder="Description"
 value={this.state.desc}
 onChange={this.handleInputChange} required/>
 </div>
 
-<div className="form-group" style={{marginBottom:'25px'}}>
-<label style={{marginBottom:'5px'}}>Room Short Code</label>
-<input style={{marginLeft:'8px', border: '1px solid #4CAF50'}} type="text"
+<div>
+<label>Deadline</label>
+<input type="text"
 className="form-contorl"
 name="deadline"
-placeholder="Enter Room Short Code"
+placeholder="Deadline"
 value={this.state.deadline}
 onChange={this.handleInputChange} required/>
 </div>
 
-<div className="form-group" style={{marginBottom:'25px'}}>
-<label style={{marginBottom:'5px'}}>Discount</label>
-<input style={{marginLeft:'56px', border: '1px solid #4CAF50'}} type="text"
+<div>
+<label>File</label>
+<input type="text"
 className="form-contorl"
-name="Discount"
-placeholder="Enter Discount"
-value={this.state.Discount}
+name="file"
+placeholder="File"
+value={this.state.file}
 onChange={this.handleInputChange} required/>
 </div>
 </div>
 
 
-<button className="btn btn-success" type="submit" style={{marginTop:'15px', marginLeft:"100px", width:"200px"}} onClick={this.onSubmit}>
+<button className="btn btn-success" type="submit" onClick={this.onSubmit}>
     <i className="far fa-check-square"></i>
 &nbsp; UPDATE
 </button>
