@@ -6,7 +6,7 @@ import * as mongoose from 'mongoose';
 
 export async function save ({groupid, topic, description, status}){
         const banlistchk = await banTopics.findOne({topic:topic});
-        if({banlistchk}){
+        if(banlistchk !== null){
             status = 'rejected';
         }
         const result = await studentTopics.insertOne({groupid, topic, description, status});
@@ -15,7 +15,7 @@ export async function save ({groupid, topic, description, status}){
 
 export async function ban ({topic}){
     const banlistchk = await banTopics.findOne({topic:topic});
-    if(!banlistchk){
+    if(banlistchk !== null){
         const result = await banTopics.insertOne({topic});
         return result.insertedId;
     }else{
@@ -26,7 +26,7 @@ export async function ban ({topic}){
 }
 
 export async function updatestatus(id, topicupdate){
-    const result = await studentTopics.replaceOne({"_id":ObjectId(id)}, {status:topicupdate.status});
+    const result = await studentTopics.updateOne({"_id":ObjectId(id)}, {$set: {status:topicupdate.status}});
     console.log(result)
     return result;
 };
@@ -51,13 +51,9 @@ export const getById = async (id) =>{
     
 }
 
-export async function update(id, submission){
-    const result = await studentTopics.replaceOne({"_id":ObjectId(id)}, {title:submission.title, desc:submission.desc, deadline:submission.deadline, file:submission.file});
-    console.log(result)
-    return result;
-   };
+
 
 
 
 //Export the functions
-export default {save, ban, updatestatus, getAll, removeById, getById, update};
+export default {save, ban, updatestatus, getAll, removeById, getById};

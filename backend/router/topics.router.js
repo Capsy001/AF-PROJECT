@@ -1,5 +1,5 @@
 import Router from "@koa/router"
-import { addTopic, banTopic, updateTopic, getAllSubmissions, deleteSubmission, getSubmission, updateSubmission } from "../api/topics.api.js";
+import { addTopic, banTopic, updateTopic, getAllSubmissions, deleteSubmission, getSubmission } from "../api/topics.api.js";
 
 const topicRouter = new Router(
     {
@@ -44,9 +44,13 @@ topicRouter.post('/ban', async(ctx) =>
 topicRouter.put('/update/:id', async(ctx) =>
 {
     const id = ctx.params.id;
-    const topic = await ctx.request.body;
+    const data = await ctx.request.body;
+    console.log(data.status)
+    const topicup = {
+        status:data.status
+    }
     
-    const updatedstatus = await updateTopic(id,topic);
+    const updatedstatus = await updateTopic(id,topicup);
     try{
         ctx.body = updatedstatus;
         ctx.set('Content-Type', 'application/json');
