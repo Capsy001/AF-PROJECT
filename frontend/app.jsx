@@ -26,8 +26,7 @@ import Publication from "./components/Admin/publication";
 
 import UpdateSubmission from "./components/Submission/updateSubmission";
 
-import ViewPublication from "./components/viewPublication";
-
+import ViewPublication from "./components/viewPublication"; 
 
 export default class App extends Component {
   constructor(props) {
