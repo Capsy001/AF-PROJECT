@@ -3,6 +3,7 @@ import React from "react";
 import { Component } from "react";
 import { Link } from "react-router-dom";
 // import { addItem, getAllItems, getAllItemsRaw } from "../restcall";
+// import "./login.module.css";
 import axios from "axios";
 
 export default class ViewSubmissions extends Component {
@@ -11,8 +12,8 @@ export default class ViewSubmissions extends Component {
 
     this.state = {
       title: "",
-      deadline: "",
       desc: "",
+      deadline: "",
       data: [],
     };
   }
@@ -38,8 +39,8 @@ export default class ViewSubmissions extends Component {
         for (var x in keys) {
           submissions.push({
             title: data[x][1].title,
-            deadline: data[x][1].deadline,
             desc: data[x][1].desc,
+            deadline: data[x][1].deadline,
             id: data[x][1].id,
           });
         }
@@ -115,8 +116,8 @@ export default class ViewSubmissions extends Component {
                   return (
                     <tr>
                       <td>{submissions.title}</td>
-                      <td>{submissions.deadline}</td>
                       <td>{submissions.desc}</td>
+                      <td>{submissions.deadline}</td>
                       <td>
                         <button data-key={submissions.id} onClick={this.handleAddToCart}>
                           ++Cart

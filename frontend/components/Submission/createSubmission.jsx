@@ -1,22 +1,28 @@
 import React from "react";
 import { Component } from "react";
 import { Link } from "react-router-dom";
-import { useNavigate } from "react-router";
-import { Navigate } from "react-router";
+
 import { createSubmission } from "../../submissionrestcall";
-import { Button, AppBar, Toolbar, Divider } from "@mui/material";
-import AppBarNav from "../appBarNav";
+import { Button, TextField, Chip, Divider, Stack, Input } from "@mui/material";
+import { Campaign, CloudUpload } from "@mui/icons-material";
+
+import { Button, TextField, Chip, Divider, Input, CircularProgress, Typography, Box, Alert } from "@mui/material";
+import { Campaign, CloudUpload } from "@mui/icons-material";
+
+import CustomHeader from "../header/customheader";
+import axios from "axios";
 
 export default class CreateSubmission extends Component {
   constructor(props) {
     super(props);
-
     this.state = {
       title: "",
       desc: "",
       deadline: "",
-      file: ""
+      file: "",
+      progressPrecentage: 0,
     };
+    this.handleSubmit.config = this.handleSubmit.bind(this);
   }
 
   handleTitleChange = (event) => {
@@ -32,94 +38,152 @@ export default class CreateSubmission extends Component {
   };
 
   handleFileChange = (event) => {
-    this.setState({ file: event.target.value });
+    this.setState({ file: event.target.files[0] });
+  };
+
+  handleFileRemove = (event) =>{
+    this.setState({ file:'' });
   };
 
   handleSubmit = (event) => {
     event.preventDefault();
+    
+    var completed = 0;
 
     const submission = {
       desc: this.state.desc,
       title: this.state.title,
-      deadline: this.state.deadline,
       file: this.state.file
     };
 
+    document.getElementById("progress").style.display = "inline-flex";
 
-    createSubmission(submission);
+    const config = {
+      headers: {'content-type' : 'multipart/form-data'},
+      onUploadProgress: function(progressEvent){
+          completed = Math.round((progressEvent.loaded * 100) / progressEvent.total);
+          this.setState({ progressPrecentage: completed });
+        }
+    }
+
+    config.onUploadProgress = config.onUploadProgress.bind(this);
+
+    axios.post("http://localhost:3000/submissions/new", submission, config).then(response =>
+    {
+      const data = response.data;
+      //alert("Published!");
+      document.getElementById("progress").style.display = "none";
+      document.getElementById("alert").style.display = "flex";
+    });
+
   };
 
   render() {
+
     return (
       <div className="registerForm">
-        <AppBarNav></AppBarNav>
-        <h2>Create Submission</h2>
+        
+        <CustomHeader />
 
-        {/* <Link style={{ textDecoration: "none" }} to="/">
+        <div  style={{marginTop:'40px'}}>
+
+            <Divider>
+                <Chip 
+                label="Add Publication" 
+                icon={<Campaign />}
+                style={{padding:'20px',paddingLeft:'50px',paddingRight:'50px',fontSize:'15px'}}
+                />
+            </Divider>
+
+        </div>
+
+
+        <form onSubmit={this.handleSubmit} encType="multipart/form-data" method="post">
+          <div>
+            <TextField id="title" label="Title" variant="outlined" fullWidth onChange={this.handleTitleChange}/>
+          </div>
+          <br></br>
+          <div>
+            <TextField
+                id="desc"
+                label="Publication Description"
+                multiline
+                rows={4}
+                defaultValue=""
+                fullWidth
+                onChange={this.handleDescChange}
+            />
+          </div>
+          <br></br>
+          <div>
+            <TextField
+                id="deadline"
+                label="Deadline"
+                multiline
+                rows={4}
+                defaultValue=""
+                fullWidth
+                onChange={this.handleDeadlineChange}
+            />
+          </div>
+          <br></br>
+          
+
+            <Chip label="Upload Publication Files" style={{width:'100%'}} /> <br/><br/>      
+
+            <label htmlFor="file">
+                <Input id="file" name="file" type="file" style={{display:'none'}} onChange={this.handleFileChange} />
+                <Button variant="contained" component="span">
+                    <CloudUpload />&nbsp; Upload
+                </Button>
+            </label>
+
+            {
+              this.state.file?
+              <Chip label={this.state.file.name} style={{marginTop:'5px'}} onDelete={this.handleFileRemove} />
+              :
+              null
+            }
+
+            <Alert onClose={() => {}} variant="filled" id="alert" style={{marginTop:'10px',display:'none'}}>
+            Successfully Published!
+            </Alert><br/>
+
+            <Box sx={{ position: 'relative', display: 'inline-flex' }} id="progress" style={{marginTop:'10px',display:'none'}}>
+            <CircularProgress variant="determinate" size={70} value={this.state.progressPrecentage}/>
+            <Box
+              sx={{
+                top: 0,
+                left: 0,
+                bottom: 0,
+                right: 0,
+                position: 'absolute',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+              }}
+            >
+              <Typography
+                variant="caption"
+                component="div"
+                color="text.secondary"
+                fontSize={17}
+                fontWeight="bold"
+              >{`${this.state.progressPrecentage}%`}</Typography>
+            </Box>
+          </Box>
+
           <Button
-            size="small"
             variant="contained"
-            color="success"
-            className="buttonMargin"
-          >
-            Login
-          </Button>
-        </Link> */}
-
-        <hr></hr>
-
-        <form onSubmit={this.handleSubmit}>
-          <div>
-            <label>Title</label>
-            <input
-              required
-              type="text"
-              value={this.state.title}
-              onChange={this.handleTitleChange}
-            />
-          </div>
-          <br></br>
-          <div>
-            <label>Description</label>
-            <input
-              required
-              type="text"
-              value={this.state.desc}
-              onChange={this.handleDescChange}
-            />
-          </div>
-          <br></br>
-          <div>
-            <label>Deadline</label>
-            <input
-              required
-              type="date"
-              value={this.state.deadline}
-              onChange={this.handleDeadlineChange}
-            />
-          </div>
-          <br></br>
-          <div>
-            <input
-              required
-              type="file"
-              value={this.state.file}
-              onChange={this.handleFileChange}
-            />
-          </div>
-
-          {this.state.submit}
-
-          <Button
-            variant="contained"
-            color="success"
+            color="info"
             id="Submit"
-            size="small"
-            className="buttonMargin"
             type="submit"
+            fullWidth
+            style={{margin:'0px', marginTop:'20px'}}
           >
-            Submit
+            Publish
           </Button>
+
         </form>
       </div>
     );
