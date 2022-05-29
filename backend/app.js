@@ -13,6 +13,7 @@ const app = new Koa();
 app.use(bodyParser());
 app.use(serve('./uploads/publications'));
 app.use(cors());
+app.use(serve('./uploads/studentsubmissions'));
 
 app.use(usersRouter.routes()).use(usersRouter.allowedMethods());
 app.use(topicRouter.routes()).use(topicRouter.allowedMethods());

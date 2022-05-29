@@ -1,8 +1,6 @@
 import client from'./index.js';
 const submissions = client.db('store').collection('submissions');
 import {ObjectId} from 'mongodb';
-import * as mongoose from 'mongoose';
-// var ObjectId = mongoose.Types.ObjectId();
 
 export async function save ({title, desc, deadline, file}){
         const result = await submissions.insertOne({title, desc, deadline});

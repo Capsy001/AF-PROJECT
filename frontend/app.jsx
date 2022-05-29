@@ -26,14 +26,14 @@ import Publication from "./components/Admin/publication";
 
 import UpdateSubmission from "./components/Submission/updateSubmission";
 
-<<<<<<< HEAD
+
 import ViewPublication from "./components/viewPublication";
 import CreateStudentSubmission from "./components/Submission/createStudentSubmission";
 import ViewStudentSubmissions from "./components/Submission/viewStudentSubmissions";
 
-=======
+
 import ViewPublication from "./components/viewPublication"; 
->>>>>>> 61e9604845bce228acd6d70500c34920b3a62b05
+
 
 export default class App extends Component {
   constructor(props) {

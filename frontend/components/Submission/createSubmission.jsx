@@ -55,34 +55,32 @@ export default class CreateSubmission extends Component {
         
         <CustomHeader />
 
-        <div  style={{marginTop:'40px'}}>
-        </div>
-
+        <div  style={{marginTop:'40px', margin:"0px"}}>
+      
 
         <form onSubmit={this.handleSubmit} encType="multipart/form-data" method="post">
+        <h1>New Submission Type</h1>
           <div>
-            <label>Title</label>
-            <input id="title" label="Title" onChange={this.handleTitleChange}/>
+            <TextField variant="outlined" margin="normal"  id="title" label="Title" onChange={this.handleTitleChange}/>
           </div>
           <br></br>
           <div>
-          <label>Description</label>
-            <input id="desc" label="Description" onChange={this.handleDescChange}
+            <TextField variant="outlined" margin="normal" id="desc" label="Description" onChange={this.handleDescChange}
             />
           </div>
           <br></br>
           <div>
-          <label>Deadline</label>
-            <input id="deadline" type="date" onChange={this.handleDeadlineChange}
+            <TextField variant="outlined" margin="normal" id="deadline" type="date" onChange={this.handleDeadlineChange}
             />
           </div>
           <br></br>  
 
-          <button id="Submit" type="submit">
-            Publish
-          </button>
+          <Button  variant="contained" margin="normal" id="Submit" type="submit">
+            SUBMIT
+          </Button>
 
         </form>
+        </div>
       </div>
     );
   }

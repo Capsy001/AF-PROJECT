@@ -1,7 +1,7 @@
 import { React,Component } from "react";
 import { Button, Chip, Input } from "@mui/material";
 import { CloudUpload } from "@mui/icons-material";
-import { Button, TextField, Chip, Divider, Input, CircularProgress, Typography, Box } from "@mui/material";
+import { Button, TextField, Chip, Divider, Input, CircularProgress, Typography, Box, IconButton } from "@mui/material";
 import { CloudUpload } from "@mui/icons-material";
 import CustomHeader from "../header/customheader";
 import axios from "axios";
@@ -11,7 +11,7 @@ export default class CreateStudentSubmission extends Component {
     this.state = {
       groupid: "",
       topic: "",
-      uploaddate: "",
+      uploaddate: new Date(),
       file: "",
       progressPrecentage: 0,
     };
@@ -79,34 +79,23 @@ export default class CreateStudentSubmission extends Component {
         <CustomHeader />
 
         <div  style={{marginTop:'40px'}}>
-        </div>
 
 
         <form onSubmit={this.handleSubmit} encType="multipart/form-data" method="post">
+          <h1>Student Submission</h1>
           <div>
-            <label>Group ID</label>
-            <input id="groupid" label="Title" onChange={this.handleGroupIdChange}/>
+            <TextField variant="outlined" margin="normal" id="groupid" label="Group ID" onChange={this.handleGroupIdChange}/>
           </div>
           <br></br>
           <div>
-          <label>Title</label>
-            <input id="topic" label="Description" onChange={this.handleTopicChange}
+            <TextField variant="outlined" margin="normal" id="topic" label="Title" onChange={this.handleTopicChange}
             />
           </div>
           <br></br>
-          <div>
-          <label>Upload Date</label>
-            <input id="uploaddate" type="date" onChange={this.handleUploadDateChange}
-            />
-          </div>
-          <br></br>  
 
-            <label htmlFor="file">
-                <Input id="file" name="file" type="file" style={{display:'none'}} onChange={this.handleFileChange} />
-                <Button variant="contained" component="span">
-                    <CloudUpload />&nbsp; Upload
-                </Button>
-            </label>
+            <label htmlFor="contained-button-file">
+  <Input accept="image/*" name="file" id="contained-button-file" margin="normal" multiple type="file" onChange={this.handleFileChange} />
+</label>
 
             {
               this.state.file?
@@ -115,7 +104,7 @@ export default class CreateStudentSubmission extends Component {
               null
             }
 
-            <Box sx={{ position: 'relative', display: 'inline-flex' }} id="progress" style={{marginTop:'10px',display:'none'}}>
+            <Box sx={{ position: 'relative', display: 'inline-flex' }} id="progress" margin="normal" style={{marginTop:'10px',display:'none'}}>
             <CircularProgress variant="determinate" size={70} value={this.state.progressPrecentage}/>
             <Box
               sx={{
@@ -135,15 +124,17 @@ export default class CreateStudentSubmission extends Component {
                 color="text.secondary"
                 fontSize={17}
                 fontWeight="bold"
+                margin="normal"
               >{`${this.state.progressPrecentage}%`}</Typography>
             </Box>
           </Box>
-
-          <button id="Submit" type="submit">
-            Publish
-          </button>
+<br></br>
+          <Button variant="contained" id="Submit" margin="normal" type="submit">
+            SUBMIT
+          </Button>
 
         </form>
+        </div>
       </div>
     );
   }

@@ -6,6 +6,11 @@ import CustomHeader from "../header/customheader";
 import axios from "axios";
 import { Link } from "react-router-dom";
 
+import { Button, Chip, Divider, Card, CardContent } from "@mui/material";
+import { Campaign, FileDownload } from "@mui/icons-material";
+
+import { Button, TextField, Chip, Divider, Typography, CardActions } from "@mui/material";
+
 export default class ViewSubmissions extends Component {
   constructor(props) {
     super(props);
@@ -34,29 +39,28 @@ export default class ViewSubmissions extends Component {
       <div>
         
         <CustomHeader />
-
-        <div  style={{marginTop:'40px'}}>
-            <div>
-              <table>
-                <tr>
-                <td>Title</td>
-                <td>Description</td>
-                <td>Deadline</td>
-                </tr>
-              
-              {(this.state.data).map(data => 
-                <tr>
-                        <td>{data.title}</td>
-                        <td>{data.desc}</td>
-                        <td> {data.deadline}</td>
-                     <td><Link to="/updateSubmission"><Button>Update</Button></Link></td>
-                     <td><Button>Delete</Button></td>
-                     </tr>
-                )
-              }
-              </table>
-            </div>
-        </div>
+<h1 style={{marginLeft:'40%'}}>Assignment List</h1>
+       
+        {(this.state.data).map(data =>
+        <Card sx={{ width:"34%", height: 200, float:"left", marginLeft:10, marginTop:4, marginRight:10 }} style={{border:'1px solid #2e7d32'}}>
+                    <CardContent>
+                      <Typography gutterBottom variant="h5" component="div">
+                     Title : {data.title}
+                      </Typography>
+                      <Typography variant="body2" color="text.secondary">
+                      {data.desc}
+                      </Typography>
+                      <Typography variant="body2" color="text.secondary">
+                        Deadline : {data.deadline}
+                      </Typography>
+                      
+                      <Link to="/createStudentSubmissions"><Button  variant="contained" margin="normal" id="Submit" type="submit" style={{marginLeft:'100px', marginBottom:'10px', marginTop:'40px'}}>
+            UPOLAD ASSIGNMENT
+          </Button>
+          </Link>
+                    </CardContent>
+                  </Card>
+        )}
       </div>
     );
   }

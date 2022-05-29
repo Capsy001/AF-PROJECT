@@ -1,31 +1,29 @@
 import { save, getAll, removeById, getById, update} from '../dao/studentsubmissions.dao.js';
 
-//map to store userdata
+
 const studentsubmissions = new Map();
 
 
-//passwords are not encrypted for simplicity
-//topic is a unique field but studentsubmission id is also added
 const defaultStudentSubmission =
 {
-    groupid: "John Doe",
-    topic: "john@abc.com",
-    uploaddate:"john0",
+    groupid: "G01",
+    topic: "Topic1",
+    uploaddate:"2022-05-11",
     file:"",
 };
 
 const defaultStudentSubmission2 =
 {
-    groupid: "Kate Winslet",
-    topic: "kate@abc.com",
-    uploaddate:"kate0",
+    groupid: "G02",
+    topic: "Topic2",
+    uploaddate:"2022-05-16",
     file:"",
 };
 
 studentsubmissions.set(defaultStudentSubmission.topic, defaultStudentSubmission);
 studentsubmissions.set(defaultStudentSubmission2.topic, defaultStudentSubmission);
 
-//function for registering
+
 export const addStudentSubmission = async(studentsubmission) =>
 {
 
