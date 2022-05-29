@@ -6,10 +6,14 @@ import { Link } from "react-router-dom";
 import { Button } from "@mui/material";
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
+import {getTopics} from '../../ApiCalls/topic.apicall';
 
 export default class EvTopics extends Component {
   constructor() {
     super();
+    this.state = {
+      data: [],
+    };
   }
 
   handleLogout = (event) => {
@@ -42,7 +46,7 @@ export default class EvTopics extends Component {
     
   };
 
-  componentWillMount() {
+  async componentWillMount() {
     const logged = sessionStorage.getItem("logged");
     const role = sessionStorage.getItem("loggedRole");
     if(!role.includes("panel")){
@@ -52,6 +56,9 @@ export default class EvTopics extends Component {
       alert("User not logged in!");
       window.location.href = "/";
     }
+    const topics = await getTopics();
+    this.setState({ data: topics });
+    console.log(topics);
   }
 
   render() {
@@ -62,23 +69,32 @@ export default class EvTopics extends Component {
         <this.GetNav />
 
         <hr></hr>
-        <h2>Hi {sessionStorage.getItem("loggedName")}</h2>
-        <table>
-          <tbody>
-            <tr>
-              <th>Name</th>
-              <td>{sessionStorage.getItem("loggedName")}</td>
-            </tr>
-            <tr>
-              <th>Email</th>
-              <td>{sessionStorage.getItem("loggedEmail")}</td>
-            </tr>
-            <tr>
-              <th>Role</th>
-              <td>{sessionStorage.getItem("loggedRole")}</td>
-            </tr>
-          </tbody>
-        </table>
+        {
+            <table>
+              <tbody>
+              <tr>
+                <th>Topic</th>
+                <th>Description</th>
+                <th>Status</th>
+                <th>Action</th>
+              </tr>
+                {this.state.data.map((item) => {
+                  return (
+                    <tr>
+                      <td>{item.topic}</td>
+                      <td>{item.description}</td>
+                      <td>{item.status}</td>
+                      <td>
+                      <input type="submit" data-key={item._id} style={{display:'inline'}} value='approve'/>&nbsp;
+                      <input type="submit" data-key={item._id} style={{display:'inline'}} value='reject'/>&nbsp;
+                      <input type="submit" data-key={item._id} style={{display:'inline'}} value='ban'/>
+                      </td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+          }
       </div>
     );
   }
