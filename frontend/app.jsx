@@ -25,10 +25,17 @@ import ViewSubmissions from "./components/Submission/viewSubmissions";
 
 import UpdateSubmission from "./components/Submission/updateSubmission";
 
+
+import ViewPublication from "./components/viewPublication";
+import CreateStudentSubmission from "./components/Submission/createStudentSubmission";
+import ViewStudentSubmissions from "./components/Submission/viewStudentSubmissions";
+
+
 import ViewPublication from "./components/viewPublication"; 
 import ManagePublications from "./components/Admin/managePublications";
 import AddPublications from "./components/Admin/addPublication";
 import EditPublications from "./components/Admin/editPublications";
+
 
 export default class App extends Component {
   constructor(props) {
@@ -60,6 +67,8 @@ export default class App extends Component {
           <Route path="/addPublications" element={<AddPublications />} />
           <Route path="/managePublications" element={<ManagePublications />} />
           <Route path="/editPublications/:id" element={<EditPublications />} />
+          <Route path="/createStudentSubmissions" element={<CreateStudentSubmission />} />
+          <Route path="/viewStudentSubmissions" element={<ViewStudentSubmissions />} />
 
         </Routes>
       </BrowserRouter>

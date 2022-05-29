@@ -1,11 +1,5 @@
 import Router from "@koa/router"
 import { addSubmission, getAllSubmissions, deleteSubmission, getSubmission, updateSubmission } from "../api/submission.api.js";
-import koaBusboy from "koa-busboy";
-import fs from 'fs';
-
-const uploader = koaBusboy({
-    dest: './uploads/submissions/'
-})
 
 const submissionsRouter = new Router(
     {
@@ -13,24 +7,19 @@ const submissionsRouter = new Router(
     }
 );
 
-submissionsRouter.post('/new',uploader, async(ctx) =>
+submissionsRouter.post('/new', async(ctx) =>
 {
     const data = await ctx.request.body;
-    const saveFileName = './uploads/submissions/' + Math.floor(Math.random() * 1000) 
-                        + ctx.request.files[0].filename;
+
 
                         const submission = {
                             title: data.title,
                             desc: data.desc,
                             deadline: data.deadline,
-                            file: saveFileName
                         };
                     
                         console.log(ctx.request.body);
                     
-                        fs.rename(ctx.request.files[0].path,saveFileName, function (err) {    
-                            console.log("renamed!");    
-                        });
     const newsubmission = await addSubmission(submission);
     if(newsubmission){
         ctx.body = newsubmission;

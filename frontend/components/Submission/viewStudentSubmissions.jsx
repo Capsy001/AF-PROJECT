@@ -11,7 +11,7 @@ import { Campaign, FileDownload } from "@mui/icons-material";
 
 import { Button, TextField, Chip, Divider, Typography, CardActions } from "@mui/material";
 
-export default class ViewSubmissions extends Component {
+export default class ViewStudentSubmissions extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -27,7 +27,7 @@ export default class ViewSubmissions extends Component {
   }
 
   componentDidMount(){
-    axios.get("http://localhost:3000/submissions").then(response =>
+    axios.get("http://localhost:3000/studentsubmissions").then(response =>
     {
       this.handleData(response.data);
     });
@@ -39,25 +39,30 @@ export default class ViewSubmissions extends Component {
       <div>
         
         <CustomHeader />
-<h1 style={{marginLeft:'40%'}}>Assignment List</h1>
-       
-        {(this.state.data).map(data =>
-        <Card sx={{ width:"34%", height: 200, float:"left", marginLeft:10, marginTop:4, marginRight:10 }} style={{border:'1px solid #2e7d32'}}>
+<h1 style={{marginLeft:'40%'}}>Submitted Assignment List</h1>
+        
+        {(this.state.data).map(data => 
+        <Card sx={{ width:"27%", height: 250, float:"left", marginLeft:4, marginTop:4, marginRight:4 }} style={{border:'1px solid #2e7d32'}}>
                     <CardContent>
                       <Typography gutterBottom variant="h5" component="div">
-                     Title : {data.title}
+                     Group ID : {data.groupid}
+                      </Typography>
+                      <Typography variant="h6" color="text.secondary">
+                      Topic : {data.topic}
+                      </Typography>
+                      <Typography variant="h8" color="text.secondary">
+                        Uplaod Date : {data.uploaddate}
+                      </Typography>
+                      <Typography variant="h10" color="text.secondary">
+                      {data.file}
                       </Typography>
                       <Typography variant="body2" color="text.secondary">
-                      {data.desc}
+                      <a href={"http://localhost:3000/" + data.file} target="_blank">
+                        <Button variant="contained" size="small" style={{marginTop:'10px'}}><FileDownload/> Download</Button>
+                      </a>
                       </Typography>
-                      <Typography variant="body2" color="text.secondary">
-                        Deadline : {data.deadline}
-                      </Typography>
-                      
-                      <Link to="/createStudentSubmissions"><Button  variant="contained" margin="normal" id="Submit" type="submit" style={{marginLeft:'100px', marginBottom:'10px', marginTop:'40px'}}>
-            UPOLAD ASSIGNMENT
-          </Button>
-          </Link>
+                      {/* <Link to="/updateStudentSubmission"><Button>Update</Button></Link>
+                      <Button>Delete</Button> */}
                     </CardContent>
                   </Card>
         )}
