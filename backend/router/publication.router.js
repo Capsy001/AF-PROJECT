@@ -18,7 +18,7 @@ publicationRouter.post('/add',uploader, async(ctx) => {
 
     const data = ctx.request.body;
 
-    const saveFileName = './uploads/publications/' + Math.floor(Math.random() * 1000) 
+    const saveFileName = Math.floor(Math.random() * 1000) 
                         + ctx.request.files[0].filename;
 
     const publication = {
@@ -44,7 +44,6 @@ publicationRouter.post('/add',uploader, async(ctx) => {
 publicationRouter.post('/getAll', async(ctx) => {
 
     const result = await getAll();
-    console.log(result);
     ctx.body = result;
     ctx.status = 201;
 
