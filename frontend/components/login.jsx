@@ -3,7 +3,7 @@ import { Component } from "react";
 import "./login.module.css";
 import { Link } from "react-router-dom";
 import { login } from "../restcall";
-import { Button, Paper } from "@mui/material";
+import { Button, Paper, Chip } from "@mui/material";
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 
@@ -40,20 +40,9 @@ export default class Login extends Component {
         
           <h2>Login</h2>
 
-          <Link style={{ textDecoration: "none" }} to="/register">
-            <Button sx={{textAlign:"center"}}
-              size="small"
-              variant="contained"
-              color="success"
-              className="buttonMargin"
-            >
-              Register
-            </Button>
-          </Link>
-
           <hr></hr>
         <div>
-          <Paper sx={{ padding: "32px", width: "40%", textAlign:"center", justifyContent:"center", margin: "0 auto" }}>
+          <Paper sx={{ padding: "32px", width: "40%", textAlign:"center", justifyContent:"center", margin: "0 auto",borderBottom: '3px solid #00e676' }}>
             <form onSubmit={this.handleSubmit}>
               <div>
                 <TextField
@@ -61,6 +50,7 @@ export default class Login extends Component {
                   label="Email"
                   variant="outlined"
                   type="email"
+                  fullWidth
                   onChange={this.handleEmail}
                 />
               </div>
@@ -71,23 +61,42 @@ export default class Login extends Component {
                   label="Password"
                   variant="outlined"
                   type="password"
+                  fullWidth
                   onChange={this.handlePassword}
                 />
               </div>
               <br></br>
               <div>
                 <Button
-                  size="small"
+                  size="medium"
                   variant="contained"
                   color="success"
                   className="buttonMargin"
                   type="submit"
                 >
-                  Submit
+                  Login
                 </Button>
               </div>
             </form>
             </Paper>
+
+            <br/>
+            <Chip 
+                label="OR" 
+                style={{fontSize:'15px'}}
+                /><br/><br/>
+
+            <Link style={{ textDecoration: "none" }} to="/register">
+              <Button sx={{textAlign:"center",width:'44.7%'}}
+                size="small"
+                variant="contained"
+                color="info"
+                className="buttonMargin"
+              >
+                Register
+              </Button>
+            </Link>
+
           </div>
       </div>
     );

@@ -8,7 +8,7 @@ import { Campaign, FileDownload, Edit, Delete, Add} from "@mui/icons-material";
 import { Button, Fab, Chip, Divider, Typography, CardActions } from "@mui/material";
 import { Campaign, CloudUpload } from "@mui/icons-material";
 
-import CustomHeader from "../header/customheader";
+import AppBarNav from "./../AppBarNav";
 import axios from "axios";
 
 export default class ManagePublications extends Component {
@@ -52,7 +52,7 @@ export default class ManagePublications extends Component {
     return (
       <div className="registerForm">
         
-        <CustomHeader />
+        <AppBarNav />
 
         <div  style={{marginTop:'40px'}}>
 

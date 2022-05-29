@@ -7,7 +7,7 @@ import { Campaign, CloudUpload } from "@mui/icons-material";
 import { Button, TextField, Chip, Divider, Input, CircularProgress, Typography, Box, Alert } from "@mui/material";
 import { Campaign, CloudUpload } from "@mui/icons-material";
 
-import CustomHeader from "../header/customheader";
+import AppBarNav from "../AppBarNav";
 import axios from "axios";
 
 export default class EditPublications extends Component {
@@ -131,7 +131,7 @@ export default class EditPublications extends Component {
 
     return (
       <div className="registerForm">
-        <CustomHeader />
+        <AppBarNav />
 
         <div  style={{marginTop:'40px'}}>
 

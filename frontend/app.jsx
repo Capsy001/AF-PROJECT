@@ -25,11 +25,8 @@ import ViewSubmissions from "./components/Submission/viewSubmissions";
 
 import UpdateSubmission from "./components/Submission/updateSubmission";
 
-
-import ViewPublication from "./components/viewPublication";
 import CreateStudentSubmission from "./components/Submission/createStudentSubmission";
 import ViewStudentSubmissions from "./components/Submission/viewStudentSubmissions";
-
 
 import ViewPublication from "./components/viewPublication"; 
 import ManagePublications from "./components/Admin/managePublications";
