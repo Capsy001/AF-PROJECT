@@ -49,7 +49,7 @@ export default class CreateGroup extends Component {
     this.setState({ member4: event.target.value });
   };
 
-  async handleSubmit(event){
+  handleSubmit= async(event)=>{
     event.preventDefault();
 
     

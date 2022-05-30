@@ -28,6 +28,7 @@ export async function updateTopicsts(id,status)
     await axios.put("http://localhost:3000/topics/update/" + id, status).then((response) => {
         data = response.data;
     });
+    window.location.href='/panel/evTopics';
     return data;
 }
 
@@ -37,6 +38,7 @@ export async function banTopicsts(topic)
     await axios.post("http://localhost:3000/topics/ban/" , topic).then((response) => {
         data = response.data;
     });
+    window.location.href='/panel/evTopics';
     return data;
 }
 export default {getTopics, updateTopicsts, banTopicsts};
