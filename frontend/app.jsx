@@ -24,7 +24,7 @@ import CreateSubmission from "./components/Submission/createSubmission";
 import ViewSubmissions from "./components/Submission/viewSubmissions";
 
 import UpdateSubmission from "./components/Submission/updateSubmission";
-
+import PanelManagment from "./components/Admin/panelManagment";
 import CreateStudentSubmission from "./components/Submission/createStudentSubmission";
 import ViewStudentSubmissions from "./components/Submission/viewStudentSubmissions";
 
@@ -32,6 +32,7 @@ import ViewPublication from "./components/viewPublication";
 import ManagePublications from "./components/Admin/managePublications";
 import AddPublications from "./components/Admin/addPublication";
 import EditPublications from "./components/Admin/editPublications";
+
 
 
 export default class App extends Component {
@@ -48,6 +49,7 @@ export default class App extends Component {
           <Route path="/panel" element={<PanelDashboard />} />
           <Route path="/panel/evTopics" element={<EvTopics />} />
           <Route path="/panel/evPresentation" element={<EvPresentation />} />
+          <Route path="/panelManagement" element={<PanelManagment />} />
           <Route path="/addItems" element={<AddItem />} />
           <Route path="/editItems" element={<EditItem />} />
           <Route path="/viewItems" element={<ViewItem />} />

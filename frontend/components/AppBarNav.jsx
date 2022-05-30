@@ -75,6 +75,14 @@ class AppBarNav extends Component {
           </Link>
           <Divider orientation="vertical" variant="middle" flexItem />
 
+          <Divider orientation="vertical" variant="middle" flexItem />
+          <Link style={{ textDecoration: "none" }} to="/panelManagement">
+            <Button sx={{ color: "white" }} size="small" color="inherit">
+              Panel Member Managment
+            </Button>
+          </Link>
+          <Divider orientation="vertical" variant="middle" flexItem />
+
           { this.isAdmin ? 
             
             <Link style={{ textDecoration: "none" }} to="/managePublications">
@@ -90,6 +98,8 @@ class AppBarNav extends Component {
                 Publication(s)
               </Button>
             </Link>
+
+            
             
           }
 
