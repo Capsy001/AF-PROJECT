@@ -5,10 +5,10 @@ import { Link } from "react-router-dom";
 import { Button, Chip, Divider, Card, CardContent } from "@mui/material";
 import { Campaign, FileDownload } from "@mui/icons-material";
 
-import { Button, TextField, Chip, Divider, Typography, Box, Alert, CardActions } from "@mui/material";
+import { Button, TextField, Chip, Divider, Typography, CardActions } from "@mui/material";
 import { Campaign, CloudUpload } from "@mui/icons-material";
 
-import CustomHeader from "./header/customheader";
+import AppBarNav from "./AppBarNav";
 import axios from "axios";
 
 export default class ViewPublication extends Component {
@@ -38,7 +38,7 @@ export default class ViewPublication extends Component {
     return (
       <div className="registerForm">
         
-        <CustomHeader />
+        <AppBarNav />
 
         <div  style={{marginTop:'40px'}}>
 
@@ -64,7 +64,9 @@ export default class ViewPublication extends Component {
                       </Typography>
                     </CardContent>
                     <CardActions>
-                      <Button variant="outlined" size="small">Download</Button>
+                      <a href={"http://localhost:3000/" + data.file} target="_blank">
+                        <Button variant="outlined" size="small"><FileDownload/> Download</Button>
+                      </a>
                     </CardActions>
                   </Card>
                 )
