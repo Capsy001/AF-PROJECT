@@ -9,8 +9,17 @@ const submissionsRouter = new Router(
 
 submissionsRouter.post('/new', async(ctx) =>
 {
-    const submission = await ctx.request.body;
-    
+    const data = await ctx.request.body;
+
+
+                        const submission = {
+                            title: data.title,
+                            desc: data.desc,
+                            deadline: data.deadline,
+                        };
+                    
+                        console.log(ctx.request.body);
+                    
     const newsubmission = await addSubmission(submission);
     if(newsubmission){
         ctx.body = newsubmission;

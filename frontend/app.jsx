@@ -21,11 +21,18 @@ import ViewCart from "./components/viewCart";
 import CreateGroup from "./components/Groups/CreateGroup";
 import ViewUsers from "./components/viewUsers";
 import CreateSubmission from "./components/Submission/createSubmission";
-// <<<<<<< HEAD
 import ViewSubmissions from "./components/Submission/viewSubmissions";
-// =======
-import Publication from "./components/Admin/publication";
-// >>>>>>> 07b88f808a9cc382d36e22b826958344ffb87ebc
+
+import UpdateSubmission from "./components/Submission/updateSubmission";
+
+import CreateStudentSubmission from "./components/Submission/createStudentSubmission";
+import ViewStudentSubmissions from "./components/Submission/viewStudentSubmissions";
+
+import ViewPublication from "./components/viewPublication"; 
+import ManagePublications from "./components/Admin/managePublications";
+import AddPublications from "./components/Admin/addPublication";
+import EditPublications from "./components/Admin/editPublications";
+
 
 export default class App extends Component {
   constructor(props) {
@@ -49,11 +56,17 @@ export default class App extends Component {
           <Route exact path="/" element={<Login />} />
           <Route path="/viewUsers" element={<ViewUsers />} />
           <Route path="/createSubmissions" element={<CreateSubmission />} />
-{/* <<<<<<< HEAD */}
           <Route path="/viewSubmissions" element={<ViewSubmissions />} />
-{/* ======= */}
-          <Route path="/adminPublication" element={<Publication />} />
-{/* >>>>>>> 07b88f808a9cc382d36e22b826958344ffb87ebc */}
+
+          <Route path="/updateSubmission" element={<UpdateSubmission />} />
+
+          <Route path="/viewPublications" element={<ViewPublication />} />
+          <Route path="/addPublications" element={<AddPublications />} />
+          <Route path="/managePublications" element={<ManagePublications />} />
+          <Route path="/editPublications/:id" element={<EditPublications />} />
+          <Route path="/createStudentSubmissions" element={<CreateStudentSubmission />} />
+          <Route path="/viewStudentSubmissions" element={<ViewStudentSubmissions />} />
+
         </Routes>
       </BrowserRouter>
     );

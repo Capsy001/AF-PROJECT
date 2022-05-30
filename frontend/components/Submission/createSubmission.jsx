@@ -1,22 +1,19 @@
-import React from "react";
-import { Component } from "react";
-import { Link } from "react-router-dom";
-import { useNavigate } from "react-router";
-import { Navigate } from "react-router";
-import { createSubmission } from "../../submissionrestcall";
-import { Button, AppBar, Toolbar, Divider } from "@mui/material";
-import AppBarNav from "../appBarNav";
-
+import { React,Component } from "react";
+import { Button, Chip, Input } from "@mui/material";
+import { CloudUpload } from "@mui/icons-material";
+import { Button, TextField, Chip, Divider, Input, CircularProgress, Typography, Box } from "@mui/material";
+import { CloudUpload } from "@mui/icons-material";
+import CustomHeader from "../header/customheader";
+import axios from "axios";
 export default class CreateSubmission extends Component {
   constructor(props) {
     super(props);
-
     this.state = {
       title: "",
       desc: "",
       deadline: "",
-      file: ""
     };
+    this.handleSubmit.config = this.handleSubmit.bind(this);
   }
 
   handleTitleChange = (event) => {
@@ -31,97 +28,62 @@ export default class CreateSubmission extends Component {
     this.setState({ deadline: event.target.value });
   };
 
-  handleFileChange = (event) => {
-    this.setState({ file: event.target.value });
-  };
-
   handleSubmit = (event) => {
     event.preventDefault();
+    
+    var completed = 0;
 
     const submission = {
-      desc: this.state.desc,
       title: this.state.title,
+      desc: this.state.desc,
       deadline: this.state.deadline,
-      file: this.state.file
     };
 
+    axios.post("http://localhost:3000/submissions/new", submission).then(response =>
+    {
+      const data = response.data;
+      document.getElementById("progress").style.display = "none";
+      document.getElementById("alert").style.display = "flex";
+    });
 
-    createSubmission(submission);
   };
 
   render() {
+
     return (
-      <div className="registerForm">
-        <AppBarNav></AppBarNav>
-        <h2>Create Submission</h2>
+      <div>
+        
+        <CustomHeader />
 
-        {/* <Link style={{ textDecoration: "none" }} to="/">
-          <Button
-            size="small"
-            variant="contained"
-            color="success"
-            className="buttonMargin"
-          >
-            Login
+        <div  style={{marginTop:'40px', margin:"0px"}}>
+      
+
+        <form onSubmit={this.handleSubmit} encType="multipart/form-data" method="post">
+        <h1>New Submission Type</h1>
+          <div>
+            <TextField variant="outlined" margin="normal"  id="title" label="Title" onChange={this.handleTitleChange}/>
+          </div>
+          <br></br>
+          <div>
+            <TextField variant="outlined" margin="normal" id="desc" label="Description" onChange={this.handleDescChange}
+            />
+          </div>
+          <br></br>
+          <div>
+            <TextField variant="outlined" margin="normal" id="deadline" type="date" onChange={this.handleDeadlineChange}
+            />
+          </div>
+          <br></br>  
+
+          <Button  variant="contained" margin="normal" id="Submit" type="submit">
+            SUBMIT
           </Button>
-        </Link> */}
 
-        <hr></hr>
-
-        <form onSubmit={this.handleSubmit}>
-          <div>
-            <label>Title</label>
-            <input
-              required
-              type="text"
-              value={this.state.title}
-              onChange={this.handleTitleChange}
-            />
-          </div>
-          <br></br>
-          <div>
-            <label>Description</label>
-            <input
-              required
-              type="text"
-              value={this.state.desc}
-              onChange={this.handleDescChange}
-            />
-          </div>
-          <br></br>
-          <div>
-            <label>Deadline</label>
-            <input
-              required
-              type="date"
-              value={this.state.deadline}
-              onChange={this.handleDeadlineChange}
-            />
-          </div>
-          <br></br>
-          <div>
-            <input
-              required
-              type="file"
-              value={this.state.file}
-              onChange={this.handleFileChange}
-            />
-          </div>
-
-          {this.state.submit}
-
-          <Button
-            variant="contained"
-            color="success"
-            id="Submit"
-            size="small"
-            className="buttonMargin"
-            type="submit"
-          >
-            Submit
-          </Button>
         </form>
+        </div>
       </div>
     );
   }
 }
+
+
