@@ -54,7 +54,7 @@ export default class App extends Component {
           <Route path="/editItems" element={<EditItem />} />
           <Route path="/viewItems" element={<ViewItem />} />
           <Route path="/viewCart" element={<ViewCart />} />
-          <Route path='createGroup' element={<CreateGroup />} />
+          <Route path='/CreateGroup' element={<CreateGroup />} />
           <Route exact path="/" element={<Login />} />
           <Route path="/viewUsers" element={<ViewUsers />} />
           <Route path="/createSubmissions" element={<CreateSubmission />} />

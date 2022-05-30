@@ -55,7 +55,7 @@ export default class CreateGroup extends Component {
     
     try{
       const groupId= await getGroupId();
-      await console.log('ry' + groupId);
+      await console.log('ry ' + groupId);
     }catch(e){
       console.log(e);
     }
