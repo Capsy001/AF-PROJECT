@@ -6,11 +6,13 @@ import * as mongoose from 'mongoose';
 
 export async function save ({groupid, topic, description, status, supervisor, coSuperviser}){
         const banlistchk = await banTopics.findOne({topic:topic});
+        const topicduplication = await studentTopics.findOne({groupid:groupid});
+        console.log(topicduplication)
         if(banlistchk !== null){
             status = 'rejected';
         }
-        const result = await studentTopics.insertOne({groupid, topic, description, status, supervisor, coSuperviser});
-        return result.insertedId;
+        //const result = await studentTopics.insertOne({groupid, topic, description, status, supervisor, coSuperviser});
+        return 'result.insertedId';
     }
 
 export async function ban ({topic}){

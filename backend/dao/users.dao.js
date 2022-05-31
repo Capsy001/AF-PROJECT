@@ -8,7 +8,8 @@ import {ObjectId} from 'mongodb';
 export async function save ({id, name, username, email, password, role, reg}){
     const isavailableemail = await users.findOne({email:email});
     const isavailableusername = await users.findOne({username:username});
-    if(isavailableemail || isavailableusername){
+    const isavailablereg = await users.findOne({reg:reg});
+    if(isavailableemail || isavailableusername || isavailablereg){
         return 'userexist'
     }else{
         const result = await users.insertOne({id, name, username, email, password, role, reg});
