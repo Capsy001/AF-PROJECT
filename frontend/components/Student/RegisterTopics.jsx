@@ -1,14 +1,15 @@
 import React from "react";
 import { Component } from "react";
 import { login } from "../login";
-import "../login.css";
+import "../login.module.css";
 import { Link } from "react-router-dom";
 import { Button, Paper } from "@mui/material";
 import TextField from '@mui/material/TextField';
 import {newTopic} from '../../ApiCalls/topic.apicall';
+import {getGroupByReg} from '../../ApiCalls/group.apicall';
 import TextareaAutosize from '@mui/material/TextareaAutosize';
 
-export default class PanelDashboard extends Component {
+export default class RegisterTopics extends Component {
   constructor() {
     super();
 
@@ -31,24 +32,7 @@ export default class PanelDashboard extends Component {
     window.location.href = "/";
   };
 
-  GetNav = () => {
-      return (
-        <div>
-          <Link to="/panel/evTopics">
-            <button className="buttonMargin">Evaluate topics</button>
-          </Link>
 
-          <Link to="/panel/evPresentation">
-            <button className="buttonMargin">Evaluate presentation</button>
-          </Link>
-
-          <button className="buttonMargin" onClick={this.handleLogout}>
-            Logout
-          </button>
-        </div>
-    );
-    
-  };
 
   handleTopic = (event) => {
     this.setState({ topic: event.target.value });
@@ -58,13 +42,30 @@ export default class PanelDashboard extends Component {
     this.setState({ description: event.target.value });
   };
   handleSubmit = (event) => {
-    const regid = sessionStorage.getItem("loggedName");
+    const topic = {
+      groupid:this.state.groupid,
+      topic:this.state.topic,
+      description:this.state.description,
+      status: this.state.status
+    }
+
+    const data = newTopic(topic);
+    console.log(data)
 
   }
 
-  componentWillMount() {
+  async componentWillMount() {
     const logged = sessionStorage.getItem("logged");
     const role = sessionStorage.getItem("loggedRole");
+    const regid = sessionStorage.getItem("loggedName");
+    const groupid = await getGroupByReg(regid);
+    if(groupid){
+      this.setState({groupid:groupid});
+    }else{
+      alert("You need to register group first!.")
+      window.location.href = "/createGroup";
+    }
+    
     if(!role.includes("student")){
         window.location.href = "/";
     }
@@ -78,8 +79,6 @@ export default class PanelDashboard extends Component {
     return (
       <div className="loginForm">
         <h2>Register Topics</h2>
-
-        <this.GetNav />
 
         <hr></hr>
         
@@ -101,7 +100,7 @@ export default class PanelDashboard extends Component {
                   aria-label="Description"
                   placeholder="Description"
                   style={{ width: 200 }}
-                  onChange={this.description}
+                  onChange={this.handleDescription}
                 />
                 </div>
                 <br></br>

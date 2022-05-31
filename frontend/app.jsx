@@ -33,7 +33,7 @@ import AddPublications from "./components/Admin/addPublication";
 import EditPublications from "./components/Admin/editPublications";
 import SupervisorAccept from "./Staff/SupervisorAccept";
 import UpdateUser from "./components/updateUser";
-
+import RegisterTopics from "./components/Student/RegisterTopics";
 
 
 export default class App extends Component {
@@ -59,6 +59,7 @@ export default class App extends Component {
           <Route exact path="/" element={<Login />} />
           <Route path="/viewUsers" element={<ViewUsers />} />
           <Route path="/createSubmissions" element={<CreateSubmission />} />
+          <Route path="/registerTopics" element={<RegisterTopics />} />
           <Route path="/viewSubmissions" element={<ViewSubmissions />} />
           <Route path="/updateSubmission" element={<UpdateSubmission />} />
           <Route path="/viewPublications" element={<ViewPublication />} />
