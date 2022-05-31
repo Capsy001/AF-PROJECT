@@ -26,6 +26,20 @@ export default class ViewStudentSubmissions extends Component {
     });
   }
 
+  loadData(){
+    axios.get("http://localhost:3000/studentsubmissions").then(response =>
+    {
+      this.handleData(response.data);
+    });
+  }
+
+  handleDelete(id){
+    axios.delete(`http://localhost:3000/studentsubmissions/${id}`).then(response =>
+    {
+      this.loadData();
+    });
+  }
+
   componentDidMount(){
     axios.get("http://localhost:3000/studentsubmissions").then(response =>
     {
@@ -61,8 +75,11 @@ export default class ViewStudentSubmissions extends Component {
                         <Button variant="contained" size="small" style={{marginTop:'10px'}}><FileDownload/> Download</Button>
                       </a>
                       </Typography>
-                      {/* <Link to="/updateStudentSubmission"><Button>Update</Button></Link>
-                      <Button>Delete</Button> */}
+                      <br></br>
+          {/* <Link to={'/updateStudentSubmission/'+data._id} style={{textDecoration:'inherit',margin:'0px'}}>
+                        <Button variant="outlined" size="small" color="warning">Edit</Button>
+                      </Link>&nbsp;&nbsp;
+                      <Button variant="outlined" href="/viewStudentSubmissions" onClick={(e) => this.handleDelete(data._id)} size="small" color="error">Delete</Button> */}
                     </CardContent>
                   </Card>
         )}

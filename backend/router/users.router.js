@@ -39,17 +39,17 @@ usersRouter.delete('/:id', (ctx) => {
 
 });
 
-usersRouter.get('/:id', async ctx=> {
+usersRouter.get('/get/:id', async ctx=> {
     const id = ctx.params.id;
     ctx.body = await getUser(id);
 })
 
-usersRouter.put('/:id', async ctx=> {
+usersRouter.put('/update/:id', async ctx=> {
     const id = ctx.params.id;
-    let submission = ctx.request.body;
-    submission = await updateUser(id);
+    let user = ctx.request.body;
+    user = await updateUser(id, user);
     ctx.response.status = 200;
-    ctx.body = submission;
+    ctx.body = user;
 })
 
 usersRouter.post('/login', async(ctx) =>

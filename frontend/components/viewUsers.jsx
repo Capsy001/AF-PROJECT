@@ -1,166 +1,88 @@
+import { React, Component } from "react";
+import { Button} from "@mui/material";
+import { Campaign, FileDownload } from "@mui/icons-material";
+import { Campaign, CloudUpload } from "@mui/icons-material";
+import CustomHeader from "./header/customheader";
 import axios from "axios";
-import React from "react";
-import { Component } from "react";
 import { Link } from "react-router-dom";
-import { addItem, getAllItems, getAllItemsRaw } from "../restcall";
-import "./login.module.css";
-import axios from "axios";
-import { AppBar } from "@mui/material";
-import AppBarNav from "./appBarNav";
-import {
-  Button,
-  Stack,
-  AppBar,
-  Toolbar,
-  Divider,
-  createTheme,
-  colors,
-} from "@mui/material";
+
+import { Button, Chip, Divider, Card, CardContent } from "@mui/material";
+import { Campaign, FileDownload } from "@mui/icons-material";
+
+import { Button, TextField, Chip, Divider, Typography, CardActions } from "@mui/material";
 
 export default class ViewUsers extends Component {
-  constructor() {
-    super();
-
+  constructor(props) {
+    super(props);
     this.state = {
-        name: "",
-        email: "",
-        username:"",
-        password: "",
-        role: "",
-        data: [],
+      data : []
     };
+    this.handleData = this.handleData.bind(this);
   }
 
-
-
-  componentWillMount()
-  {
-
-
-    const logged = sessionStorage.getItem("logged");
-    if (logged == "false") {
-      alert("User not logged in!");
-      window.location.href = "/";
-    }
-
-      axios.get("http://localhost:3000/users/").then((response) => {
-        const data = response.data;
-        var users = [];
-
-        const keys = Object.keys(data);
-
-        for (var x in keys) {
-            users.push({
-            name: data[x][1].name,
-            email: data[x][1].email,
-            username: data[x][1].username,
-            password: data[x][1].password,
-            role: data[x][1].role,
-            id: data[x][1].id,
-            uid: data[x][1].uid,
-          });
-        }
-
-        this.setState({ data: users });
-      });
-
-      setTimeout(() => {
-        console.log(this.state.data);
-      }, 500);
-    
+  handleData(subdata){
+    this.setState({
+      data:subdata
+    });
   }
 
+  loadData(){
+    axios.get("http://localhost:3000/users").then(response =>
+    {
+      this.handleData(response.data);
+    });
+  }
 
+  handleDelete(id){
+    axios.delete(`http://localhost:3000/users/${id}`).then(response =>
+    {
+      this.loadData();
+    });
+  }
 
-
-
-
-  handleAddToCart = (event) => {
-    
-
-    alert(event.target.dataset.key);
-
-
-  };
-
-  handleAddToWishlist = (event) =>
-  {
-    
-    alert(event.target.dataset.key);
-
-
-  };
-
-
-
-
-  handleLogout = (event) => {
-    sessionStorage.setItem("logged", "false");
-
-    sessionStorage.setItem("loggedName", "NotLogged!");
-    sessionStorage.setItem("loggedEmail", "NotLogged!");
-    sessionStorage.setItem("loggedRole", "NotLogged!");
-
-    sessionStorage.clear;
-    window.location.href = "/";
-  };
+  componentDidMount(){
+    axios.get("http://localhost:3000/users").then(response =>
+    {
+      this.handleData(response.data);
+    });
+  }
 
   render() {
+
     return (
       <div>
-        <AppBarNav></AppBarNav>
-
-        <div className="loginForm">
-          <h2>View Items</h2>
-          <Link to="/dashboard">
-            <button className="buttonMargin">Dashboard</button>
-          </Link>
-
-          <Link to="/viewCart">
-            <button className="buttonMargin">View Cart</button>
-          </Link>
-
-          <Link to="/">
-            <button className="buttonMargin" onClick={this.handleLogout}>
-              Logout
-            </button>
-          </Link>
-
-          <hr></hr>
-          {
-            <table>
-              <tbody>
-                {this.state.data.map((user) => {
-                  return (
-                    <tr>
-                      <td>{user.name}</td>
-                      <td>{user.email}</td>
-                      <td>{user.username}</td>
-                      <td>{user.password}</td>
-                      <td>{user.role}</td>
-                      <td>
-                        <button
-                          data-key={user.id}
-                          onClick={this.handleAddToCart}
-                        >
-                          ++Cart
-                        </button>
-                      </td>
-                      <td>
-                        <button
-                          data-key={user.id}
-                          onClick={this.handleAddToWishlist}
-                        >
-                          ++Wishlist
-                        </button>
-                      </td>
-                    </tr>
-                  );
-                })}
-              </tbody>
-            </table>
-          }
-        </div>
+        
+        <CustomHeader />
+<h1 style={{marginLeft:'40%'}}>Users List</h1>
+       
+        {(this.state.data).map(data =>
+        <Card sx={{ width:"27%", height: 200, float:"left", marginLeft:3, marginTop:4, marginRight:3 }} style={{border:'1px solid #2e7d32'}}>
+                    <CardContent>
+                      <Typography gutterBottom variant="h5" component="div">
+                     {data.name}
+                      </Typography>
+                      <Typography variant="body2" color="text.secondary">
+                      {data.email}
+                      </Typography>
+                      <Typography variant="body2" color="text.secondary">
+                        {data.username}
+                      </Typography>
+                      <Typography gutterBottom variant="body2" component="div">
+                     {data.role}
+                      </Typography>
+                      
+                    
+          <br></br>
+          <Link to={'/updateUser/'+data._id} style={{textDecoration:'inherit',margin:'0px'}}>
+                        <Button variant="outlined" size="small" color="warning">Edit</Button>
+                      </Link>&nbsp;&nbsp;
+                      <Button variant="outlined" href="/viewUsers" onClick={(e) => this.handleDelete(data._id)} size="small" color="error">Delete</Button>
+                    </CardContent>
+                    <CardActions>
+                      
+                    </CardActions>
+                  </Card>
+        )}
       </div>
     );
   }

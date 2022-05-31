@@ -9,7 +9,6 @@ export const addUser = async(user) =>
 {
 
     const newUser = {
-        id: uuidv4(),
         name: user.name,
         email: user.email,
         username:user.username,
@@ -52,8 +51,8 @@ export const deleteUser = async id =>
             return await getById(id);
         }
 
-        export const updateUser = async (id, {name, email, username, password, role})=>{
-            return await update({id}, {id, name, email, username, password, role});
+        export const updateUser = async (id, user)=>{
+            return await update({id}, user);
         }
 
 export default {addUser, loginuser, getAllUsers, getUser, deleteUser, updateUser};

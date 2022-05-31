@@ -14,13 +14,13 @@ return cursor.toArray();
 }
 
 export async function removeById(id){
-    return await submissions.deleteOne({id});
+    return await submissions.deleteOne({_id:ObjectId(id)});
 }
 
 export const getById = async (id) =>{
     try{
-        const userdata = await submissions.findOne({_id:ObjectId(id)});
-        return userdata;
+        const subdata = await submissions.findOne({_id:ObjectId(id)});
+        return subdata;
     }catch(e){
         console.log(e)
     }
