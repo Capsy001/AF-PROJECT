@@ -42,31 +42,35 @@ export default class RegisterTopics extends Component {
     this.setState({ description: event.target.value });
   };
   handleSubmit = async (event) => {
-    const topic = {
-      groupid:this.state.groupid,
-      topic:this.state.topic,
-      description:this.state.description,
-      status: this.state.status
-    }
+    event.preventDefault();
 
-    const data = await newTopic(topic);
-    console.log(data)
+    const regid = sessionStorage.getItem("RegId");
+    console.log(regid)
+    const groupid = await getGroupByReg(regid);
+    console.log(groupid.length )
+    if(groupid.length !== 0){
+      this.setState({groupid:groupid});
+      const topic = {
+        groupid:this.state.groupid,
+        topic:this.state.topic,
+        description:this.state.description,
+        status: this.state.status
+      }
+  
+      const data = await newTopic(topic);
+      console.log(data)
+    }else{
+      alert("You need to register group first!.")
+      window.location.href = "/createGroup";
+    }
+    
 
   }
 
   async componentWillMount() {
     const logged = sessionStorage.getItem("logged");
     const role = sessionStorage.getItem("loggedRole");
-    const regid = sessionStorage.getItem("RegId");
-    console.log(regid)
-    const groupid = await getGroupByReg(regid);
-    console.log(groupid)
-    if(groupid){
-      this.setState({groupid:groupid});
-    }else{
-      alert("You need to register group first!.")
-      window.location.href = "/createGroup";
-    }
+    
     
     if(!role.includes("student")){
         window.location.href = "/";
