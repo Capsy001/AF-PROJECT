@@ -8,6 +8,12 @@ import TextField from '@mui/material/TextField';
 import {newTopic} from '../../ApiCalls/topic.apicall';
 import {getGroupByReg} from '../../ApiCalls/group.apicall';
 import TextareaAutosize from '@mui/material/TextareaAutosize';
+import AppBarNav from "../appBarNav";
+import {
+  Button,
+  Paper,
+  TextField
+} from "@mui/material";
 
 export default class RegisterTopics extends Component {
   constructor() {
@@ -83,6 +89,7 @@ export default class RegisterTopics extends Component {
   render() {
     return (
       <div className="loginForm">
+        <AppBarNav></AppBarNav>
         <h2>Register Topics</h2>
 
         <hr></hr>

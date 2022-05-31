@@ -62,6 +62,14 @@ class AppBarNav extends Component {
             </Button>
           </Link>
           <Divider orientation="vertical" variant="middle" flexItem />
+
+          <Link style={{ textDecoration: "none" }} to="/registerTopics">
+            <Button sx={{ color: "white" }} size="small" color="inherit">
+              Register Topics
+            </Button>
+          </Link>
+          <Divider orientation="vertical" variant="middle" flexItem />
+          
           <Link style={{ textDecoration: "none" }} to="/viewUsers">
             <Button sx={{ color: "white" }} size="small" color="inherit">
               View Users
