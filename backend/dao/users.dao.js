@@ -33,7 +33,7 @@ export const getById = async (id) =>{
 }
 
 export async function update(id, user){
-    const result = await users.replaceOne({_id:ObjectId(id)}, {name:user.name, email:user.email, username:user.username, password:user.password, role:user.role});
+    const result = await users.updateOne({_id:ObjectId(id)}, {$set: {name:user.name, email:user.email, username:user.username, password:user.password, role:user.role}});
     console.log(result)
     return result;
    };
