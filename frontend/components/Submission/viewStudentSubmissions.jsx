@@ -71,7 +71,7 @@ export default class ViewStudentSubmissions extends Component {
                       {data.file}
                       </Typography>
                       <Typography variant="body2" color="text.secondary">
-                      <a href={"http://localhost:3000/" + data.file} target="_blank">
+                      <a href={"http://localhost:3000/" + (data.file.split("/"))[3]} target="_blank">
                         <Button variant="contained" size="small" style={{marginTop:'10px'}}><FileDownload/> Download</Button>
                       </a>
                       </Typography>
