@@ -22,7 +22,11 @@ export async function getTopics()
             topic: data[x].topic,
             description: data[x].description,
             status: data[x].status,
+            supervisor: data[x].supervisor,
+            cosupervisor: data[x].cosupervisor
           });
+
+        
         }
     });
     return items;
