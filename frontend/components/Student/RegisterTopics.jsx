@@ -41,7 +41,7 @@ export default class RegisterTopics extends Component {
   handleDescription = (event) => {
     this.setState({ description: event.target.value });
   };
-  handleSubmit = (event) => {
+  handleSubmit = async (event) => {
     const topic = {
       groupid:this.state.groupid,
       topic:this.state.topic,
@@ -49,7 +49,7 @@ export default class RegisterTopics extends Component {
       status: this.state.status
     }
 
-    const data = newTopic(topic);
+    const data = await newTopic(topic);
     console.log(data)
 
   }
@@ -57,8 +57,10 @@ export default class RegisterTopics extends Component {
   async componentWillMount() {
     const logged = sessionStorage.getItem("logged");
     const role = sessionStorage.getItem("loggedRole");
-    const regid = sessionStorage.getItem("loggedName");
+    const regid = sessionStorage.getItem("RegId");
+    console.log(regid)
     const groupid = await getGroupByReg(regid);
+    console.log(groupid)
     if(groupid){
       this.setState({groupid:groupid});
     }else{
