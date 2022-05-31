@@ -43,6 +43,37 @@ export default class SupervisorAccept extends Component {
 
   }
 
+  disable1=(data)=>{
+      
+    data="jjk"
+      try{
+          
+        if(data==""){
+            console.log("")
+            return false;
+        }else if(data!=""){
+            return true;
+        }
+      }catch(e){
+
+      }
+      return false;
+  }
+
+  disable2=(data)=>{
+
+    try{
+      if(data=""){
+          return false;
+      }else if(data!=""){
+          return true;
+      }
+    }catch(e){
+
+    }
+    return false;
+}
+
   render() {
     return (
       <div>
@@ -112,6 +143,7 @@ export default class SupervisorAccept extends Component {
                         variant="outlined"
                         size="small"
                         topicid={data._id}
+                        disabled={this.disable1(data.supervisor)}
                       >
                         Accept As Supervisor
                       </Button>
@@ -119,6 +151,7 @@ export default class SupervisorAccept extends Component {
                         variant="outlined"
                         size="small"
                         topicid={data._id}
+                        disabled={this.disable2(data.cosupervisor)}
                       >
                         Accept As Co-Supervisor
                       </Button>

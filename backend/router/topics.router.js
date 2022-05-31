@@ -66,7 +66,7 @@ topicRouter.put('/update/:id', async(ctx) =>
 topicRouter.get('/', async ctx=>{
     ctx.body= await getAllSubmissions();
 })
-
+//dd
 topicRouter.delete('/:id', (ctx) => {
     const id = ctx.params.id;
     ctx.body =  deleteSubmission(id);

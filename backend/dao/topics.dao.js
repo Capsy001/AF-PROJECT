@@ -34,6 +34,7 @@ export async function updatestatus(id, topicupdate){
 export async function getAll(){
     const cursor = await studentTopics.find();
 
+    
 return cursor.toArray();
 }
 
