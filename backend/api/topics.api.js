@@ -8,7 +8,9 @@ export const addTopic = async(topic) =>
         groupid: topic.groupid,
         topic: topic.topic,
         description:topic.description,
-        status:"pending"
+        status:"pending",
+        supervisor:'',
+        coSuperviser:''
     };
     const result = await save(newTopic);
     console.log(result)

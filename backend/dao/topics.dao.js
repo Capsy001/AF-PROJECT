@@ -4,12 +4,12 @@ const banTopics = client.db('banlist').collection('studentTopics');
 import {ObjectId} from 'mongodb';
 import * as mongoose from 'mongoose';
 
-export async function save ({groupid, topic, description, status}){
+export async function save ({groupid, topic, description, status, supervisor, coSuperviser}){
         const banlistchk = await banTopics.findOne({topic:topic});
         if(banlistchk !== null){
             status = 'rejected';
         }
-        const result = await studentTopics.insertOne({groupid, topic, description, status});
+        const result = await studentTopics.insertOne({groupid, topic, description, status, supervisor, coSuperviser});
         return result.insertedId;
     }
 

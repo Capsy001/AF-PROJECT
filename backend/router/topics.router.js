@@ -10,7 +10,6 @@ const topicRouter = new Router(
 topicRouter.post('/new', async(ctx) =>
 {
     const topic = await ctx.request.body;
-    
     const newtopic = await addTopic(topic);
     try{
         ctx.body = newtopic;

@@ -2,10 +2,14 @@ import axios from "axios";
 
 //function to register new topic
 export async function newTopic(topicData){
+    const data = []
     await axios.post("http://localhost:3000/topics/new",topicData).then((response) => {
         const data = response.data;
         console.log(data);
+        data.push(data);
     })
+
+    return data;
 }
 
 //function to get all topics

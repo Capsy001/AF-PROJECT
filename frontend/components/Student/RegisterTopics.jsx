@@ -14,7 +14,6 @@ export default class RegisterTopics extends Component {
     super();
 
     this.state = {
-      groupid:'',
       topic:'',
       description:'',
       status:''
@@ -46,12 +45,12 @@ export default class RegisterTopics extends Component {
 
     const regid = sessionStorage.getItem("RegId");
     console.log(regid)
-    const groupid = await getGroupByReg(regid);
-    console.log(groupid.length )
-    if(groupid.length !== 0){
-      this.setState({groupid:groupid});
+    const groupdata = await getGroupByReg(regid);
+    console.log(groupdata.length )
+    if(groupdata.length !== 0){
+      console.log(groupdata[0].groupId)
       const topic = {
-        groupid:this.state.groupid,
+        groupid:groupdata[0].groupId,
         topic:this.state.topic,
         description:this.state.description,
         status: this.state.status
