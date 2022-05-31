@@ -5,9 +5,9 @@ const groupCounter= client.db('store').collection('counter')
 
 
 //create group
-export async function save ({member1, member2, member3, member4, groupid}){
+export async function save ({member1, member2, member3, member4, groupId}){
     
-        const result = await groups.insertOne({member1, member2, member3, member4, groupid});
+        const result = await groups.insertOne({member1, member2, member3, member4, groupId});
         return result.insertedId;
 }
     

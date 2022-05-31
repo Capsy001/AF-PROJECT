@@ -12,6 +12,8 @@ groupsRouter.post('/', async(ctx) =>
 {
     console.log("here");
     const group = await ctx.request.body;
+
+    console.log(group);
     
     const addedGroup = await createGroup(group);
 

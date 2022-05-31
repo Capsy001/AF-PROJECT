@@ -21,20 +21,28 @@ import {
   InputLabel,
   Select,
   MenuItem,
+  Chip
 } from "@mui/material";
 
 export default class CreateGroup extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.state = {
       member1: "",
       member2: "",
       member3: "",
       member4: "",
-      groupid: "",
+      groupId: "",
     };
+
+    this.handleSubmit=this.handleSubmit.bind(this);
+    this.handleMember1=this.handleMember1.bind(this);
+    this.handleMember2=this.handleMember2.bind(this);
+    this.handleMember3=this.handleMember3.bind(this);
+    this.handleMember4=this.handleMember4.bind(this);
   }
+
 
   handleMember1 = (event) => {
     this.setState({ member1: event.target.value });
@@ -49,29 +57,34 @@ export default class CreateGroup extends Component {
     this.setState({ member4: event.target.value });
   };
 
-  handleSubmit= async(event)=>{
+  async handleSubmit(event){
     event.preventDefault();
 
+    var groupId=5000000000;
     
     try{
-      const groupId= await getGroupId();
+      groupId= await getGroupId();
       await console.log('ry ' + groupId);
     }catch(e){
       console.log(e);
     }
     
-  
+  const member1=this.state.member1;
+  const member2=this.state.member2;
+  const member3=this.state.member3;
+  const member4=this.state.member4;
+
 
     const group={
-      member1: this.state.member1,
-      member2: this.state.member2,
-      member3: this.state.member3,
-      member4: this.state.member4,
+      member1: member1,
+      member2: member2,
+      member3: member3,
+      member4: member4,
       groupId: groupId
     }
     createGroup(group);
 
-   // console.log(groupId);
+   console.log(group);
    // alert("Group created!");
 
   }
@@ -166,6 +179,11 @@ export default class CreateGroup extends Component {
               </Button>
             </form>
           </Paper>
+
+          <Divider>
+          <Chip label="Group" style={{margin: '10px'}} />
+          </Divider>
+
         </div>
       </div>
     );

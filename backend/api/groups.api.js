@@ -7,10 +7,10 @@ export const createGroup = async(group) =>
 
     const newGroup = {
         member1: group.member1,
-        member2: group.member1,
-        member3: group.member1,
-        member4: group.member1,
-        groupid: group.groupid
+        member2: group.member2,
+        member3: group.member3,
+        member4: group.member4,
+        groupId: group.groupId
     };
     const result = await save(newGroup);
     console.log(result)

@@ -21,6 +21,13 @@ export async function login(email, password)
         sessionStorage.setItem('loggedEmail', data.email);
         sessionStorage.setItem('loggedRole', data.role);
         sessionStorage.setItem('loggedUID', data.uid);
+
+        try{
+          sessionStorage.setItem('loggedStudentID', data.reg);
+
+        }catch(e){
+          console.log("Not a student!");
+        }
     
         const name = sessionStorage.getItem('loggedName');
         console.log(name + " logged in!");
@@ -52,73 +59,3 @@ export async function register(user)
     }
     });
 }
-
-//function to add item with rest api
-export async function addItem(item)
-{
-  await axios.post("http://localhost:3000/items/", item).then(response =>
-  {
-    
-    alert("Item added: "+response.data.name);
-    
-    });
-}
-
-
-export async function getAllItems()
-{
-  await axios.get("http://localhost:3000/items/").then(response =>
-  {
-    const data = response.data;
-    itemArray=[]
-
-    const uid=sessionStorage.getItem("loggedUID");
-    const array = Object.keys(data);
-
-
-    for (key in array)
-    
-      if (data[key].uid == uid)
-      {
-        itemArray.push(data[key])
-      }
-    
-  });
-  
-  console.log(itemArray);
-
-  return itemArray;
-}
-
-
-
-export async function getAllItemsRaw()
-{
-
-  var data = null;
-
-  await fetch("http://localhost:3000/items", {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(this.state),
-  })
-    .then((response) =>
-    {
-      response.json().then(data => ({
-        data: data,
-        status: response.status
-      })).then(res =>
-      {
-        console.log(res.data)
-        data=res.data
-      })
-        
-    });
-  
-  
-  return data;
-        
-} 
-  
