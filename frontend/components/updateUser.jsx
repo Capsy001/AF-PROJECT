@@ -7,16 +7,17 @@ import { Campaign, CloudUpload } from "@mui/icons-material";
 import { Button, TextField, Chip, Divider, Input, CircularProgress, Typography, Box, Alert } from "@mui/material";
 import { Campaign, CloudUpload } from "@mui/icons-material";
 
-import AppBarNav from "../AppBarNav";
+import AppBarNav from "./AppBarNav";
 import axios from "axios";
 
-export default class UpdateSubmission extends Component {
+export default class UpdateUser extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      title: "",
-      desc: "",
-      deadline: "",
+      name: "",
+      email: "",
+      username: "",
+      role: "",
       data:[],
       edata:[],
     };
@@ -29,10 +30,13 @@ export default class UpdateSubmission extends Component {
   handleData(subdata){
     this.setState({
       data:{
-            title: <TextField id="outlined-required" label="Title" defaultValue={subdata.title} fullWidth onChange={this.handleTitleChange}/>,
-            desc: <TextField id="outlined-required" label="Title" defaultValue={subdata.desc} fullWidth onChange={this.handleDescChange}/>,
-            deadline: <TextField id="outlined-required" label="Title" defaultValue={subdata.deadline} fullWidth onChange={this.handleDeadlineChange}/>,
-           
+        name: <TextField id="outlined-required" label="name" defaultValue={subdata.name} fullWidth onChange={this.handleNameChange}/>,
+        email: <TextField id="outlined-required" label="email" defaultValue={subdata.email} fullWidth onChange={this.handleEmailChange}/>,
+        username: <TextField id="outlined-required" label="username" defaultValue={subdata.username} fullWidth onChange={this.handleUserNameChange}/>,
+        role: <TextField id="outlined-required" label="role" defaultValue={subdata.role} fullWidth onChange={this.handleRoleChange}/>,
+
+            fileDownload:
+             <a target="_blank" href={"http://localhost:3000/"+subdata.file}>Download Existing File</a>,
             publishBtn:
                     
                 <Button
@@ -51,9 +55,10 @@ export default class UpdateSubmission extends Component {
     });
 
     this.setState({
-        title: subdata.title,
-        desc: subdata.desc,
-        deadline: subdata.deadline,
+        name: subdata.name,
+        email: subdata.email,
+        username: subdata.username,
+        role: subdata.role,
         edata: subdata,
     });
      
@@ -63,22 +68,26 @@ export default class UpdateSubmission extends Component {
   componentDidMount(){
     console.log(this.id);
 
-    axios.get(`http://localhost:3000/submissions/get/${id}`+this.id).then(response =>
+    axios.get(`http://localhost:3000/users/get/${id}`).then(response =>
     {
       this.handleData(response.data[0]);
     });
   }
 
-  handleTitleChange = (event) => {
-    this.setState({ title: event.target.value });
+  handleNameChange = (event) => {
+    this.setState({ name: event.target.value });
   };
 
-  handleDescChange = (event) => {
-    this.setState({ desc: event.target.value });
+  handleEmailChange = (event) => {
+    this.setState({ email: event.target.value });
   };
 
-  handleDeadlineChange = (event) => {
-    this.setState({ desc: event.target.value });
+  handleUserNameChange = (event) => {
+    this.setState({ username: event.target.value });
+  };
+
+  handleRoleChange = (event) => {
+    this.setState({ role: event.target.value });
   };
 
   handleSubmit = (event) => {
@@ -87,23 +96,20 @@ export default class UpdateSubmission extends Component {
     var completed = 0;
 
     const submissions = {
-      title: this.state.title,
-      desc: this.state.desc,
-      deadline: this.state.deadline,
-      id: event.target.Submit.value
+        name: this.state.name,
+        email: this.state.email,
+        username: this.state.username,
+        role: this.state.role,
+      id: event.target.Submit.value,
     };
 
-    
 
-    
 
-    
+    config.onUploadProgress = config.onUploadProgress.bind(this);
 
-    axios.put(`http://localhost:3000/submissions/update/${id}`, submissions).then(response =>
+    axios.put(`http://localhost:3000/users/update/${id}`, submissions).then(response =>
     {
       const data = response.data;
-      //alert("Published!");
-      document.getElementById("progress").style.display = "none";
       document.getElementById("alert").style.display = "flex";
     });
 
@@ -122,29 +128,30 @@ export default class UpdateSubmission extends Component {
 
         <form onSubmit={this.handleSubmit} encType="multipart/form-data" method="post">
           <div>
-            {this.state.data.title}
+            {this.state.data.name}
           </div>
           <br></br>
           <div>
-            {this.state.data.desc}
+            {this.state.data.email}
           </div>
           <br></br>
           <div>
-            {this.state.data.deadline}
+            {this.state.data.username}
           </div>
-          <br></br>    
-
-            
-
-          
+          <br></br>
+          <div>
+            {this.state.data.role}
+          </div>
+          <br></br>
 
             <Alert onClose={() => {}} variant="filled" id="alert" style={{marginTop:'10px',display:'none'}}>
             Updated Succefully!
             </Alert><br/>
 
-           
-
-            <button className="btn btn-success" type="submit" style={{marginTop:'15px', marginLeft:"100px", width:"200px"}} onClick={this.handleSubmit}>
+            <div style={{display:'flex',justifyContent:'center'}}>
+            
+          </div>
+          <button className="btn btn-success" type="submit" style={{marginTop:'15px', marginLeft:"100px", width:"200px"}} onClick={this.handleSubmit}>
     <i className="far fa-check-square"></i>
 &nbsp; UPDATE
 </button>
