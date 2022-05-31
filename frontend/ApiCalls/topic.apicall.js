@@ -1,5 +1,12 @@
 import axios from "axios";
 
+//function to register new topic
+export async function newTopic(topicData){
+    await axios.post("http://localhost:3000/topics/new",topicData).then((response) => {
+        const data = response.data;
+        console.log(data);
+    })
+}
 
 //function to get all topics
 export async function getTopics()
@@ -21,7 +28,7 @@ export async function getTopics()
     return items;
 }
 
-//function to get all topics
+//function to update topics
 export async function updateTopicsts(id,status)
 {
     var data = '';
@@ -41,4 +48,4 @@ export async function banTopicsts(topic)
     window.location.href='/panel/evTopics';
     return data;
 }
-export default {getTopics, updateTopicsts, banTopicsts};
+export default {getTopics, updateTopicsts, banTopicsts, newTopic};

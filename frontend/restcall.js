@@ -21,6 +21,7 @@ export async function login(email, password)
         sessionStorage.setItem('loggedEmail', data.email);
         sessionStorage.setItem('loggedRole', data.role);
         sessionStorage.setItem('loggedUID', data.uid);
+        sessionStorage.setItem('RegId', data.reg);
     
         const name = sessionStorage.getItem('loggedName');
         console.log(name + " logged in!");

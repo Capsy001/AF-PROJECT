@@ -5,12 +5,18 @@ const groupCounter= client.db('store').collection('counter')
 
 
 //create group
-export async function save ({member1, member2, member3, member4, groupid}){
+export async function save ({member1, member2, member3, member4, groupId}){
     
-        const result = await groups.insertOne({member1, member2, member3, member4, groupid});
+        const result = await groups.insertOne({member1, member2, member3, member4, groupId});
         return result.insertedId;
 }
-    
+
+//get Group by Id
+export async function getGroupByReg(regId){
+  const result = await groups.find({$or:[{member1:regId},{member2:regId},{member3:regId},{member4:regId}]});
+  return result.toArray();
+}
+
 //getAndIncrementCount
 export async function groupCount (){
     
@@ -47,4 +53,4 @@ export async function groupCount (){
 
 
 //Export the functions
-export default {save};
+export default {save, getGroupByReg};

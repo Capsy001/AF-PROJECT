@@ -53,25 +53,25 @@ export default class CreateGroup extends Component {
     event.preventDefault();
 
     
+  
     try{
       const groupId= await getGroupId();
-      await console.log('ry ' + groupId);
-    }catch(e){
-      console.log(e);
-    }
+      await console.log('r5y ' + groupId);
+
+      const group={
+        member1: this.state.member1,
+        member2: this.state.member2,
+        member3: this.state.member3,
+        member4: this.state.member4,
+        groupId: groupId
+      }
+      console.log(groupId);
+      createGroup(group);
     
-  
-
-    const group={
-      member1: this.state.member1,
-      member2: this.state.member2,
-      member3: this.state.member3,
-      member4: this.state.member4,
-      groupId: groupId
+    }catch(e){
+      console.log(e)
     }
-    createGroup(group);
-
-   // console.log(groupId);
+        
    // alert("Group created!");
 
   }

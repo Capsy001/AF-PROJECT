@@ -5,10 +5,19 @@ import "../login.css";
 import { Link } from "react-router-dom";
 import { Button, Paper } from "@mui/material";
 import TextField from '@mui/material/TextField';
+import {newTopic} from '../../ApiCalls/topic.apicall';
+import TextareaAutosize from '@mui/material/TextareaAutosize';
 
 export default class PanelDashboard extends Component {
   constructor() {
     super();
+
+    this.state = {
+      groupid:'',
+      topic:'',
+      description:'',
+      status:''
+    }
   }
 
   handleLogout = (event) => {
@@ -41,6 +50,18 @@ export default class PanelDashboard extends Component {
     
   };
 
+  handleTopic = (event) => {
+    this.setState({ topic: event.target.value });
+  };
+
+  handleDescription = (event) => {
+    this.setState({ description: event.target.value });
+  };
+  handleSubmit = (event) => {
+    const regid = sessionStorage.getItem("loggedName");
+
+  }
+
   componentWillMount() {
     const logged = sessionStorage.getItem("logged");
     const role = sessionStorage.getItem("loggedRole");
@@ -70,7 +91,17 @@ export default class PanelDashboard extends Component {
                     label="Topic"
                     variant="outlined"
                     type="text"
-                    onChange={this.handleEmail}
+                    onChange={this.handleTopic}
+                />
+                </div>
+                <br></br>
+                <div>
+                <TextareaAutosize
+                  label="Description"
+                  aria-label="Description"
+                  placeholder="Description"
+                  style={{ width: 200 }}
+                  onChange={this.description}
                 />
                 </div>
                 <br></br>
