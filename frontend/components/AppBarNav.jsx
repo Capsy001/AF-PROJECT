@@ -103,6 +103,19 @@ class AppBarNav extends Component {
             
           }
 
+<Divider orientation="vertical" variant="middle" flexItem />
+
+        <Link style={{ textDecoration: "none" }} to="/supervisor">
+          <Button
+            sx={{ color: "white" }}
+            size="small"
+            color="inherit"
+            
+          >
+            Supervisor
+          </Button>
+        </Link>
+
           <Divider orientation="vertical" variant="middle" flexItem />
 
           <Link style={{ textDecoration: "none" }} to="/">
@@ -115,6 +128,9 @@ class AppBarNav extends Component {
               Logout
             </Button>
           </Link>
+
+         
+         
         </Toolbar>
       </AppBar>
     );

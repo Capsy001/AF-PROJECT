@@ -1,6 +1,7 @@
 import client from'./index.js';
 const users = client.db('store').collection('users')
 import * as mongoose from 'mongoose';
+import {ObjectId} from 'mongodb';
 
 
 //register user
@@ -23,16 +24,17 @@ return cursor.toArray();
 }
 
 export async function removeById(id){
-    return await users.deleteOne({id});
+    return await users.deleteOne({_id:ObjectId(id)});
 }
 
 export const getById = async (id) =>{
-    return await users.findOne({id});
+    return await users.findOne({_id:ObjectId(id)});
 }
 
-export async function update(id, {name, email, username, password, role}){
-    const result = await users.replaceOne({id}, {id, name, email, username, password, role});
-    return result.ops[0];
+export async function update(id, user){
+    const result = await users.replaceOne({_id:ObjectId(id)}, {name:user.name, email:user.email, username:user.username, password:user.password, role:user.role});
+    console.log(result)
+    return result;
    };
 
 //login user

@@ -42,8 +42,8 @@ export default class CreateSubmission extends Component {
     axios.post("http://localhost:3000/submissions/new", submission).then(response =>
     {
       const data = response.data;
-      document.getElementById("progress").style.display = "none";
-      document.getElementById("alert").style.display = "flex";
+      // document.getElementById("progress").style.display = "none";
+      // document.getElementById("alert").style.display = "flex";
     });
 
   };
