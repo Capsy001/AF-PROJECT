@@ -67,14 +67,17 @@ export default class ViewStudentSubmissions extends Component {
                       <Typography variant="h8" color="text.secondary">
                         Uplaod Date : {data.uploaddate}
                       </Typography>
-                      <Typography variant="h10" color="text.secondary">
+                      {/* <Typography variant="h10" color="text.secondary">
                       {data.file}
-                      </Typography>
+                      </Typography> */}
+                      <CardActions
+                      sx={{ margin: "0 auto", justifyContent: "center" }}>
                       <Typography variant="body2" color="text.secondary">
                       <a href={"http://localhost:3000/" + (data.file.split("/"))[3]} target="_blank">
-                        <Button variant="contained" size="small" style={{marginTop:'10px'}}><FileDownload/> Download</Button>
+                        <Button variant="contained" size="small" style={{marginTop:'20%'}}><FileDownload/> Download</Button>
                       </a>
                       </Typography>
+                      </CardActions>
                       <br></br>
           {/* <Link to={'/updateStudentSubmission/'+data._id} style={{textDecoration:'inherit',margin:'0px'}}>
                         <Button variant="outlined" size="small" color="warning">Edit</Button>
