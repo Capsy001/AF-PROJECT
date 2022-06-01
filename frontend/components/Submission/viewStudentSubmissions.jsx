@@ -59,20 +59,20 @@ export default class ViewStudentSubmissions extends Component {
         <Card sx={{ width:"27%", height: 250, float:"left", marginLeft:4, marginTop:4, marginRight:4 }} style={{border:'1px solid #2e7d32'}}>
                     <CardContent>
                       <Typography gutterBottom variant="h5" component="div">
-                     Group ID : {data.groupid}
+                     <div style={{textAlign:'center'}}>Group ID : {data.groupid}</div>
                       </Typography>
                       <Typography variant="h6" color="text.secondary">
-                      Topic : {data.topic}
+                      <div style={{textAlign:'center'}}>Topic : {data.topic}</div>
                       </Typography>
                       <Typography variant="h8" color="text.secondary">
-                        Uplaod Date : {data.uploaddate}
+                      <div style={{textAlign:'center'}}>Uplaod Date : {data.uploaddate}</div>
                       </Typography>
                       <Typography variant="h10" color="text.secondary">
-                      {data.file}
+                      <div style={{textAlign:'center'}}>{data.file}</div>
                       </Typography>
-                      <Typography variant="body2" color="text.secondary">
+                      <Typography variant="body2" color="text.secondary" style={{textAlign:'center'}}>
                       <a href={"http://localhost:3000/" + (data.file.split("/"))[3]} target="_blank">
-                        <Button variant="contained" size="small" style={{marginTop:'10px'}}><FileDownload/> Download</Button>
+                        <Button variant="contained" size="small" style={{marginTop:'10px', textDecoration:'inherit'}}><FileDownload/> Download</Button>
                       </a>
                       </Typography>
                       <br></br>

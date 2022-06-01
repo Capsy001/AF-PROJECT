@@ -11,7 +11,7 @@ import { Campaign, FileDownload } from "@mui/icons-material";
 
 import { Button, TextField, Chip, Divider, Typography, CardActions } from "@mui/material";
 
-export default class ViewSubmissions extends Component {
+export default class ManageSubmissions extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -68,17 +68,17 @@ export default class ViewSubmissions extends Component {
                         <div style={{textAlign:'center'}}>Deadline : {data.deadline}</div>
                       </Typography>
                       
-                      <Link to="/createStudentSubmissions"><Button  variant="contained" margin="normal" id="Submit" type="submit" style={{marginLeft:'100px', marginBottom:'10px', marginTop:'40px',textDecoration:'inherit'}}>
+                      {/* <Link to="/createStudentSubmissions"><Button  variant="contained" margin="normal" id="Submit" type="submit" style={{marginLeft:'100px', marginBottom:'10px', marginTop:'40px',textDecoration:'inherit'}}>
             UPOLAD ASSIGNMENT
           </Button>
-          </Link>
+          </Link> */}
           <br></br>
-          {/* <div style={{marginLeft:'30%'}}>
+          <div style={{marginLeft:'30%'}}>
           <Link to={'/updateSubmission/'+data._id} style={{textDecoration:'inherit',margin:'0px'}}>
                         <Button variant="contained" size="small" color="warning">Edit</Button>
                       </Link>&nbsp;&nbsp;
                       <Button variant="contained" href="/viewSubmissions" onClick={(e) => this.handleDelete(data._id)} size="small" color="error">Delete</Button>
-                      </div> */}
+                      </div>
                     </CardContent>
                     <CardActions>
                       

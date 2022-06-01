@@ -110,19 +110,19 @@ export default class UpdateUser extends Component {
     
     var completed = 0;
 
-    const submissions = {
+    const users = {
         name: this.state.name,
         email: this.state.email,
         username: this.state.username,
         role: this.state.role,
-      id: event.target.Submit.value,
+      
     };
 
 
 
     config.onUploadProgress = config.onUploadProgress.bind(this);
 
-    axios.put(`http://localhost:3000/users/update/${id}`, submissions).then(response =>
+    axios.put(`http://localhost:3000/users/update/${id}`, users).then(response =>
     {
       const data = response.data;
       document.getElementById("alert").style.display = "flex";

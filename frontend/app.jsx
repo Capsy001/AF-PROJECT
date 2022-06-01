@@ -34,6 +34,7 @@ import EditPublications from "./components/Admin/editPublications";
 import SupervisorAccept from "./Staff/SupervisorAccept";
 import UpdateUser from "./components/UpdateUser";
 import RegisterTopics from "./components/Student/RegisterTopics";
+import ManageSubmissions from "./components/Submission/manageSubmissions";
 
 
 export default class App extends Component {
@@ -72,6 +73,7 @@ export default class App extends Component {
           <Route path="supervisor" element={<SupervisorAccept />} />
 
           <Route path="/updateUser" element={<UpdateUser />} />
+          <Route path="/manageSubmissions" element={<ManageSubmissions />} />
 
 
         </Routes>

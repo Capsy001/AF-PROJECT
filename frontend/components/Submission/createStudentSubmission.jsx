@@ -78,7 +78,7 @@ export default class CreateStudentSubmission extends Component {
         
         <CustomHeader />
 
-        <div  style={{marginTop:'40px'}}>
+        <div  style={{marginTop:'100px',marginLeft:'400px',marginBottom:'100px', alignItems:'center', textAlign:'center', width:'40%', border:'3px solid #73AD21', padding:'10px'}}>
 
 
         <form onSubmit={this.handleSubmit} encType="multipart/form-data" method="post">
