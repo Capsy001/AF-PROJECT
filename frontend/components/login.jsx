@@ -90,7 +90,7 @@ export default class Login extends Component {
             <br/>
             <Chip 
                 label="OR" 
-                style={{fontSize:'15px'}}
+                style={{fontSize:'15px',color: '#868686',fontWeight:'bold'}}
                 /><br/><br/>
 
             <Link style={{ textDecoration: "none" }} to="/register">
