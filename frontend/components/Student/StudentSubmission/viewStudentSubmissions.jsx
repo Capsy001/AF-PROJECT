@@ -67,14 +67,26 @@ export default class ViewStudentSubmission extends Component {
                       <Typography variant="h8" color="text.secondary">
                       <div style={{textAlign:'center'}}>Uplaod Date : {data.uploaddate}</div>
                       </Typography>
+
                       <Typography variant="h10" color="text.secondary">
                       <div style={{textAlign:'center'}}>{data.file}</div>
                       </Typography>
-                      <Typography variant="body2" color="text.secondary" style={{textAlign:'center'}}>
+                      {/* <Typography variant="body2" color="text.secondary" style={{textAlign:'center'}}> */}
+                      {/* <a href={"http://localhost:3000/" + (data.file.split("/"))[3]} target="_blank">
+                        <Button variant="contained" size="small" style={{marginTop:'10px', textDecoration:'inherit'}}><FileDownload/> Download</Button> */}
+
+                      {/* <Typography variant="h10" color="text.secondary">
+                      {data.file}
+                      </Typography> */}
+                      <CardActions
+                      sx={{ margin: "0 auto", justifyContent: "center" }}>
+                      <Typography variant="body2" color="text.secondary">
                       <a href={"http://localhost:3000/" + (data.file.split("/"))[3]} target="_blank">
-                        <Button variant="contained" size="small" style={{marginTop:'10px', textDecoration:'inherit'}}><FileDownload/> Download</Button>
+                        <Button variant="contained" size="small" style={{marginTop:'20%', textDecoration:'inherit'}}><FileDownload/> Download</Button>
+
                       </a>
                       </Typography>
+                      </CardActions>
                       <br></br>
           {/* <Link to={'/updateStudentSubmissionType/'+data._id} style={{textDecoration:'inherit',margin:'0px'}}>
                         <Button variant="outlined" size="small" color="warning">Edit</Button>

@@ -68,7 +68,7 @@ export default class ViewSubmissionTypes extends Component {
                         <div style={{textAlign:'center'}}>Deadline : {data.deadline}</div>
                       </Typography>
                       
-                      <Link to="/createStudentSubmissions"><Button  variant="contained" margin="normal" id="Submit" type="submit" style={{marginLeft:'100px', marginBottom:'10px', marginTop:'40px',textDecoration:'inherit'}}>
+                      <Link to="/createStudentSubmission"><Button  variant="contained" margin="normal" id="Submit" type="submit" style={{marginLeft:'100px', marginBottom:'10px', marginTop:'40px',textDecoration:'inherit'}}>
             UPOLAD ASSIGNMENT
           </Button>
           </Link>
