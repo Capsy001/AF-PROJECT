@@ -105,28 +105,31 @@ export default class UpdateUser extends Component {
     this.setState({ role: event.target.value });
   };
 
-  handleSubmit = (event) => {
+  handleSubmit = async (event) => {
     event.preventDefault();
+    try{
+      var completed = 0;
+
+      const submissions = {
+          name: this.state.name,
+          email: this.state.email,
+          username: this.state.username,
+          role: this.state.role
+      };
+  
+  
+  
+  
+      await axios.put(`http://localhost:3000/users/update/` + this.id, submissions).then(response =>
+      {
+        const data = response.data;
+        console.log(data)
+        document.getElementById("alert").style.display = "flex";
+      });
+    }catch(e){
+      console.log(e)
+    }
     
-    var completed = 0;
-
-    const submissions = {
-        name: this.state.name,
-        email: this.state.email,
-        username: this.state.username,
-        role: this.state.role,
-      id: event.target.Submit.value,
-    };
-
-
-
-    config.onUploadProgress = config.onUploadProgress.bind(this);
-
-    axios.put(`http://localhost:3000/users/update/${id}`, submissions).then(response =>
-    {
-      const data = response.data;
-      document.getElementById("alert").style.display = "flex";
-    });
 
   };
 
