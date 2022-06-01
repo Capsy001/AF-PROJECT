@@ -40,6 +40,11 @@ export default class ViewUsers extends Component {
     });
   }
 
+  async handleEdit(id){
+    await sessionStorage.setItem('EditId', id);
+    window.location.href='/updateUser';
+  }
+
   componentDidMount(){
     axios.get("http://localhost:3000/users").then(response =>
     {
@@ -73,9 +78,7 @@ export default class ViewUsers extends Component {
                       
                     
           <br></br>
-          <Link to={'/updateUser/'+data._id} style={{textDecoration:'inherit',margin:'0px'}}>
-                        <Button variant="outlined" size="small" color="warning">Edit</Button>
-                      </Link>&nbsp;&nbsp;
+                      <Button variant="outlined" onClick={(e) => this.handleEdit(data._id)} size="small" color="warning">Edit</Button>
                       <Button variant="outlined" href="/viewUsers" onClick={(e) => this.handleDelete(data._id)} size="small" color="error">Delete</Button>
                     </CardContent>
                     <CardActions>

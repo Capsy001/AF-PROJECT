@@ -32,7 +32,7 @@ import ManagePublications from "./components/Admin/managePublications";
 import AddPublications from "./components/Admin/addPublication";
 import EditPublications from "./components/Admin/editPublications";
 import SupervisorAccept from "./Staff/SupervisorAccept";
-import UpdateUser from "./components/updateUser";
+import UpdateUser from "./components/UpdateUser";
 import RegisterTopics from "./components/Student/RegisterTopics";
 
 

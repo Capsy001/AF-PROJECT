@@ -21,57 +21,72 @@ export default class UpdateUser extends Component {
       data:[],
       edata:[],
     };
+    try{
+      this.id = sessionStorage.getItem('EditId');
+      this.handleSubmit.config = this.handleSubmit.bind(this);
+    }catch(e){
+      console.log(e)
+    }
     
-    this.currentLink = (window.location.href).split("/");
-    this.id = this.currentLink[this.currentLink.length-1];
-    this.handleSubmit.config = this.handleSubmit.bind(this);
+    
   }
 
   handleData(subdata){
-    this.setState({
-      data:{
-        name: <TextField id="outlined-required" label="name" defaultValue={subdata.name} fullWidth onChange={this.handleNameChange}/>,
-        email: <TextField id="outlined-required" label="email" defaultValue={subdata.email} fullWidth onChange={this.handleEmailChange}/>,
-        username: <TextField id="outlined-required" label="username" defaultValue={subdata.username} fullWidth onChange={this.handleUserNameChange}/>,
-        role: <TextField id="outlined-required" label="role" defaultValue={subdata.role} fullWidth onChange={this.handleRoleChange}/>,
-
-            fileDownload:
-             <a target="_blank" href={"http://localhost:3000/"+subdata.file}>Download Existing File</a>,
-            publishBtn:
-                    
-                <Button
-                variant="contained"
-                color="warning"
-                id="Submit"
-                type="submit"
-                value={subdata._id}
-                fullWidth
-                style={{margin:'0px', marginTop:'20px'}}
-                >
-                Update
-                </Button>
-            ,
-      }
-    });
-
-    this.setState({
-        name: subdata.name,
-        email: subdata.email,
-        username: subdata.username,
-        role: subdata.role,
-        edata: subdata,
-    });
+    try{
+      this.setState({
+        data:{
+          name: <TextField id="outlined-required" label="name" defaultValue={subdata.name} fullWidth onChange={this.handleNameChange}/>,
+          email: <TextField id="outlined-required" label="email" defaultValue={subdata.email} fullWidth onChange={this.handleEmailChange}/>,
+          username: <TextField id="outlined-required" label="username" defaultValue={subdata.username} fullWidth onChange={this.handleUserNameChange}/>,
+          role: <TextField id="outlined-required" label="role" defaultValue={subdata.role} fullWidth onChange={this.handleRoleChange}/>,
+  
+              fileDownload:
+               <a target="_blank" href={"http://localhost:3000/"+subdata.file}>Download Existing File</a>,
+              publishBtn:
+                      
+                  <Button
+                  variant="contained"
+                  color="warning"
+                  id="Submit"
+                  type="submit"
+                  value={subdata._id}
+                  fullWidth
+                  style={{margin:'0px', marginTop:'20px'}}
+                  >
+                  Update
+                  </Button>
+              ,
+        }
+      });
+  
+      this.setState({
+          name: subdata.name,
+          email: subdata.email,
+          username: subdata.username,
+          role: subdata.role,
+          edata: subdata,
+      });
+    }catch(e){
+      console.log(e);
+    }
+    
      
     console.log(this.state.data);
   }
 
-  componentDidMount(){
-    console.log(this.id);
+  async componentDidMount(){
+    try{
+      console.log(this.id);
 
-    axios.get(`http://localhost:3000/users/get/${id}`).then(response =>
-    {
-      this.handleData(response.data[0]);
-    });
+      await axios.get(`http://localhost:3000/users/get/` + this.id).then(response =>
+      {
+        console.log(response.data)
+        this.handleData(response.data);
+      });
+    }catch(e){
+      console.log(e)
+    }
+    
   }
 
   handleNameChange = (event) => {

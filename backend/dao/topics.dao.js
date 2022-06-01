@@ -8,11 +8,20 @@ export async function save ({groupid, topic, description, status, supervisor, co
         const banlistchk = await banTopics.findOne({topic:topic});
         const topicduplication = await studentTopics.findOne({groupid:groupid});
         console.log(topicduplication)
-        if(banlistchk !== null){
-            status = 'rejected';
+        const arr = [];
+        arr.push(topicduplication);
+        let obj = arr.find(o => o.status === 'approved');
+
+        if(obj===undefined){
+            if(banlistchk !== null){
+                status = 'rejected';
+            }
+            const result = await studentTopics.insertOne({groupid, topic, description, status, supervisor, coSuperviser});
+            return result.insertedId;
+        }else{
+            return 'topicexist';
         }
-        //const result = await studentTopics.insertOne({groupid, topic, description, status, supervisor, coSuperviser});
-        return 'result.insertedId';
+        
     }
 
 export async function ban ({topic}){
