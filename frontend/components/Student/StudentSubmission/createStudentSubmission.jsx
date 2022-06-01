@@ -3,9 +3,9 @@ import { Button, Chip, Input } from "@mui/material";
 import { CloudUpload } from "@mui/icons-material";
 import { Button, TextField, Chip, Divider, Input, CircularProgress, Typography, Box, IconButton } from "@mui/material";
 import { CloudUpload } from "@mui/icons-material";
-import CustomHeader from "../header/customheader";
+import CustomHeader from "../../header/customheader";
 import axios from "axios";
-export default class CreateStudentSubmission extends Component {
+export default class CreateStudentSubmissionType extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -82,7 +82,7 @@ export default class CreateStudentSubmission extends Component {
 
 
         <form onSubmit={this.handleSubmit} encType="multipart/form-data" method="post">
-          <h1>Student Submission</h1>
+          <h1>Student SubmissionType</h1>
           <div>
             <TextField variant="outlined" margin="normal" id="groupid" label="Group ID" onChange={this.handleGroupIdChange}/>
           </div>

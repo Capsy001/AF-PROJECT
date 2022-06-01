@@ -2,7 +2,7 @@ import { React, Component } from "react";
 import { Button} from "@mui/material";
 import { Campaign, FileDownload } from "@mui/icons-material";
 import { Campaign, CloudUpload } from "@mui/icons-material";
-import CustomHeader from "../header/customheader";
+import CustomHeader from "../../header/customheader";
 import axios from "axios";
 import { Link } from "react-router-dom";
 
@@ -11,7 +11,7 @@ import { Campaign, FileDownload } from "@mui/icons-material";
 
 import { Button, TextField, Chip, Divider, Typography, CardActions } from "@mui/material";
 
-export default class ViewStudentSubmissions extends Component {
+export default class ViewStudentSubmission extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -76,10 +76,10 @@ export default class ViewStudentSubmissions extends Component {
                       </a>
                       </Typography>
                       <br></br>
-          {/* <Link to={'/updateStudentSubmission/'+data._id} style={{textDecoration:'inherit',margin:'0px'}}>
+          {/* <Link to={'/updateStudentSubmissionType/'+data._id} style={{textDecoration:'inherit',margin:'0px'}}>
                         <Button variant="outlined" size="small" color="warning">Edit</Button>
                       </Link>&nbsp;&nbsp;
-                      <Button variant="outlined" href="/viewStudentSubmissions" onClick={(e) => this.handleDelete(data._id)} size="small" color="error">Delete</Button> */}
+                      <Button variant="outlined" href="/viewStudentSubmissionTypes" onClick={(e) => this.handleDelete(data._id)} size="small" color="error">Delete</Button> */}
                     </CardContent>
                   </Card>
         )}

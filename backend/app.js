@@ -3,7 +3,7 @@ import bodyParser from "koa-bodyparser";
 import usersRouter from "./router/users.router.js";
 import cors from '@koa/cors'
 import serve from "koa-static";
-import submissionsRouter from "./router/submission.router.js";
+import submissionsRouter from "./router/submissiontype.router.js";
 import publicationRouter from "./router/publication.router.js";
 import groupsRouter from "./router/groups.router.js";
 import topicRouter from "./router/topics.router.js";

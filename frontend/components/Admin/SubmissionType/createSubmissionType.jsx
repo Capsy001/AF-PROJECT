@@ -3,9 +3,9 @@ import { Button, Chip, Input } from "@mui/material";
 import { CloudUpload } from "@mui/icons-material";
 import { Button, TextField, Chip, Divider, Input, CircularProgress, Typography, Box } from "@mui/material";
 import { CloudUpload } from "@mui/icons-material";
-import CustomHeader from "../header/customheader";
+import CustomHeader from "../../header/customheader";
 import axios from "axios";
-export default class CreateSubmission extends Component {
+export default class CreateSubmissionType extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -33,13 +33,13 @@ export default class CreateSubmission extends Component {
     
     var completed = 0;
 
-    const submission = {
+    const submissiontype = {
       title: this.state.title,
       desc: this.state.desc,
       deadline: this.state.deadline,
     };
 
-    axios.post("http://localhost:3000/submissions/new", submission).then(response =>
+    axios.post("http://localhost:3000/submissiontypes/new", submissiontype).then(response =>
     {
       const data = response.data;
       // document.getElementById("progress").style.display = "none";
@@ -59,7 +59,7 @@ export default class CreateSubmission extends Component {
       
 
         <form onSubmit={this.handleSubmit} encType="multipart/form-data" method="post">
-        <h1>New Submission Type</h1>
+        <h1>New Submissiontype Type</h1>
           <div>
             <TextField variant="outlined" margin="normal"  id="title" label="Title" onChange={this.handleTitleChange}/>
           </div>

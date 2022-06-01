@@ -2,7 +2,7 @@ import { React, Component } from "react";
 import { Button} from "@mui/material";
 import { Campaign, FileDownload } from "@mui/icons-material";
 import { Campaign, CloudUpload } from "@mui/icons-material";
-import CustomHeader from "../header/customheader";
+import CustomHeader from "../../header/customheader";
 import axios from "axios";
 import { Link } from "react-router-dom";
 
@@ -11,7 +11,7 @@ import { Campaign, FileDownload } from "@mui/icons-material";
 
 import { Button, TextField, Chip, Divider, Typography, CardActions } from "@mui/material";
 
-export default class ManageSubmissions extends Component {
+export default class ManageSubmissionTypes extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -27,21 +27,25 @@ export default class ManageSubmissions extends Component {
   }
 
   loadData(){
-    axios.get("http://localhost:3000/submissions").then(response =>
+    axios.get("http://localhost:3000/submissiontypes").then(response =>
     {
       this.handleData(response.data);
     });
   }
+  async handleEdit(id){
+    await sessionStorage.setItem('EditId', id);
+    window.location.href='/updateSubmissionType';
+  }
 
   handleDelete(id){
-    axios.delete(`http://localhost:3000/submissions/${id}`).then(response =>
+    axios.delete(`http://localhost:3000/submissiontypes/${id}`).then(response =>
     {
       this.loadData();
     });
   }
 
   componentDidMount(){
-    axios.get("http://localhost:3000/submissions").then(response =>
+    axios.get("http://localhost:3000/submissiontypes").then(response =>
     {
       this.handleData(response.data);
     });
@@ -74,10 +78,8 @@ export default class ManageSubmissions extends Component {
           </Link> */}
           <br></br>
           <div style={{marginLeft:'30%'}}>
-          <Link to={'/updateSubmission/'+data._id} style={{textDecoration:'inherit',margin:'0px'}}>
-                        <Button variant="contained" size="small" color="warning">Edit</Button>
-                      </Link>&nbsp;&nbsp;
-                      <Button variant="contained" href="/viewSubmissions" onClick={(e) => this.handleDelete(data._id)} size="small" color="error">Delete</Button>
+                        <Button onClick={(e) => this.handleEdit(data._id)} variant="contained" size="small" color="warning">Edit</Button>
+                      <Button variant="contained" href="/manageSubmissionTypes" onClick={(e) => this.handleDelete(data._id)} size="small" color="error">Delete</Button>
                       </div>
                     </CardContent>
                     <CardActions>
