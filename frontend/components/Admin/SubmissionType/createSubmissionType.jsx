@@ -42,8 +42,7 @@ export default class CreateSubmissionType extends Component {
     axios.post("http://localhost:3000/submissiontypes/new", submissiontype).then(response =>
     {
       const data = response.data;
-      // document.getElementById("progress").style.display = "none";
-      // document.getElementById("alert").style.display = "flex";
+      
     });
 
   };
@@ -59,7 +58,7 @@ export default class CreateSubmissionType extends Component {
       
 
         <form onSubmit={this.handleSubmit} encType="multipart/form-data" method="post">
-        <h1>New Submissiontype Type</h1>
+        <h1>New Submission Type</h1>
           <div>
             <TextField variant="outlined" margin="normal"  id="title" label="Title" onChange={this.handleTitleChange}/>
           </div>

@@ -57,29 +57,26 @@ export default class ManageSubmissionTypes extends Component {
       <div>
         
         <CustomHeader />
-<h1 style={{marginLeft:'40%'}}>Assignment List</h1>
+<h1 style={{marginLeft:'40%'}}>Manage Assignment List</h1>
        
         {(this.state.data).map(data =>
-        <Card sx={{ width:"34%", height: 250, float:"left", marginLeft:10, marginTop:4, marginRight:10 }} style={{border:'1px solid #2e7d32'}}>
+        <Card sx={{ width:"34%", height: 200, float:"left", marginLeft:10, marginTop:4, marginRight:10 }} style={{border:'1px solid #2e7d32'}}>
                     <CardContent>
                       <Typography gutterBottom variant="h5" component="div">
-                     <div style={{textAlign:'center'}}>{data.title}</div>
+                     <div style={{textAlign:'center'}}><b>{data.title}</b></div>
                       </Typography>
-                      <Typography variant="body2" color="text.secondary">
+                      <Typography variant="h7" color="text.secondary">
                       <div style={{textAlign:'center'}}>{data.desc}</div>
                       </Typography>
-                      <Typography variant="body2" color="text.secondary">
-                        <div style={{textAlign:'center'}}>Deadline : {data.deadline}</div>
+                      <Typography variant="h7" color="text.secondary">
+                        <div style={{textAlign:'center', color:'red'}}>Deadline : {data.deadline}</div>
                       </Typography>
                       
-                      {/* <Link to="/createStudentSubmissions"><Button  variant="contained" margin="normal" id="Submit" type="submit" style={{marginLeft:'100px', marginBottom:'10px', marginTop:'40px',textDecoration:'inherit'}}>
-            UPOLAD ASSIGNMENT
-          </Button>
-          </Link> */}
+            
           <br></br>
           <div style={{marginLeft:'30%'}}>
-                        <Button onClick={(e) => this.handleEdit(data._id)} variant="contained" size="small" color="warning">Edit</Button>
-                      <Button variant="contained" href="/manageSubmissionTypes" onClick={(e) => this.handleDelete(data._id)} size="small" color="error">Delete</Button>
+                        <Button style={{marginLeft:'10px'}} onClick={(e) => this.handleEdit(data._id)} variant="contained" size="small" color="warning">Edit</Button>
+                      <Button style={{marginLeft:'10px'}} variant="contained" href="/manageSubmissionTypes" onClick={(e) => this.handleDelete(data._id)} size="small" color="error">Delete</Button>
                       </div>
                     </CardContent>
                     <CardActions>

@@ -51,7 +51,7 @@ class CustomHeader extends Component {
             </Link>
 
             <Divider orientation="vertical" variant="middle" flexItem />
-            <Link style={{ textDecoration: "none" }} to="/createSubmissionTypes">
+            <Link style={{ textDecoration: "none" }} to="/createSubmissionType">
               <Button sx={{ color: "white" }} size="small" color="inherit">
                 Create SubmissionTypes
               </Button>

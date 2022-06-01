@@ -36,7 +36,7 @@ export default class UpdateSubmissionType extends Component {
         data:{
           title: <TextField id="outlined-required" label="title" defaultValue={subdata.title} fullWidth onChange={this.handleTitleChange}/>,
           desc: <TextField id="outlined-required" label="desc" defaultValue={subdata.desc} fullWidth onChange={this.handleDescChange}/>,
-          deadline: <TextField id="outlined-required" label="deadline" defaultValue={subdata.deadline} fullWidth onChange={this.handleDeadlineChange}/>,
+          deadline: <TextField id="outlined-required" type="date" label="deadline" defaultValue={subdata.deadline} fullWidth onChange={this.handleDeadlineChange}/>,
   
               fileDownload:
                <a target="_blank" href={"http://localhost:3000/"+subdata.file}>Download Existing File</a>,
@@ -131,10 +131,10 @@ export default class UpdateSubmissionType extends Component {
       <div className="">
         <AppBarNav />
 
-        <div  style={{marginTop:'40px'}}>
+        <div  style={{marginTop:'100px',marginLeft:'400px',marginBottom:'100px', alignItems:'center', textAlign:'center', width:'40%', border:'3px solid #73AD21', padding:'10px'}}>
 
-        </div>
-
+        
+<h1>Update Submission Type</h1>
 
         <form onSubmit={this.handleSubmit} encType="multipart/form-data" method="post">
           <div>
@@ -150,19 +150,20 @@ export default class UpdateSubmissionType extends Component {
           </div>
           <br></br>
 
-            <Alert onClose={() => {}} variant="filled" id="alert" style={{marginTop:'10px',display:'none'}}>
+            <Alert href='/manageSubmissionTypes' onClose={() => {}} variant="filled" id="alert" style={{marginTop:'10px',display:'none'}}>
             Updated Succefully!
             </Alert><br/>
 
             <div style={{display:'flex',justifyContent:'center'}}>
             
           </div>
-          <button className="btn btn-success" type="submit" style={{marginTop:'15px', marginLeft:"100px", width:"200px"}} onClick={this.handleSubmit}>
+          <Button className="btn btn-success" type="submit" variant="contained" style={{textAlign:"center", width:"200px", background:"green"}} onClick={this.handleSubmit}>
     <i className="far fa-check-square"></i>
 &nbsp; UPDATE
-</button>
+</Button>
 
         </form>
+        </div>
       </div>
     );
   }

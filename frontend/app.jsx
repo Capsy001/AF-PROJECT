@@ -20,13 +20,13 @@ import ViewCart from "./components/viewCart";
 import CreateGroup from "./components/Groups/CreateGroup";
 import ViewUsers from "./components/viewUsers";
 import CreateSubmissionType from "./components/Admin/SubmissionType/createSubmissionType";
-import ViewSubmissionTypes from "./components/Admin/SubmissionType/viewSubmissionTypes";
+import ViewSubmissionTypes from "./components/Student/StudentSubmission/viewSubmissionTypes";
 import UpdateSubmissionType from "./components/Admin/SubmissionType/updateSubmissionType";
 
 import PanelManagment from "./components/Admin/panelManagment";
 
 import CreateStudentSubmission from "./components/Student/StudentSubmission/createStudentSubmission";
-import ViewStudentSubmissions from "./components/Student/StudentSubmission/viewStudentSubmissions";
+import ViewStudentSubmissions from "./components/Admin/SubmissionType/viewStudentSubmissions";
 import ViewPublication from "./components/viewPublication"; 
 import ManagePublications from "./components/Admin/managePublications";
 import AddPublications from "./components/Admin/addPublication";
