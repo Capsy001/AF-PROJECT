@@ -31,17 +31,17 @@ export default class UpdateUser extends Component {
     
   }
 
-  handleData(subdata){
+  handleData(userdata){
     try{
       this.setState({
         data:{
-          name: <TextField id="outlined-required" label="name" defaultValue={subdata.name} fullWidth onChange={this.handleNameChange}/>,
-          email: <TextField id="outlined-required" label="email" defaultValue={subdata.email} fullWidth onChange={this.handleEmailChange}/>,
-          username: <TextField id="outlined-required" label="username" defaultValue={subdata.username} fullWidth onChange={this.handleUserNameChange}/>,
-          role: <TextField id="outlined-required" label="role" defaultValue={subdata.role} fullWidth onChange={this.handleRoleChange}/>,
+          name: <TextField id="outlined-required" label="name" defaultValue={userdata.name} fullWidth onChange={this.handleNameChange}/>,
+          email: <TextField id="outlined-required" label="email" defaultValue={userdata.email} fullWidth onChange={this.handleEmailChange}/>,
+          username: <TextField id="outlined-required" label="username" defaultValue={userdata.username} fullWidth onChange={this.handleUserNameChange}/>,
+          role: <TextField id="outlined-required" label="role" defaultValue={userdata.role} fullWidth onChange={this.handleRoleChange}/>,
   
               fileDownload:
-               <a target="_blank" href={"http://localhost:3000/"+subdata.file}>Download Existing File</a>,
+               <a target="_blank" href={"http://localhost:3000/"+userdata.file}>Download Existing File</a>,
               publishBtn:
                       
                   <Button
@@ -49,7 +49,7 @@ export default class UpdateUser extends Component {
                   color="warning"
                   id="Submit"
                   type="submit"
-                  value={subdata._id}
+                  value={userdata._id}
                   fullWidth
                   style={{margin:'0px', marginTop:'20px'}}
                   >
@@ -60,11 +60,11 @@ export default class UpdateUser extends Component {
       });
   
       this.setState({
-          name: subdata.name,
-          email: subdata.email,
-          username: subdata.username,
-          role: subdata.role,
-          edata: subdata,
+          name: userdata.name,
+          email: userdata.email,
+          username: userdata.username,
+          role: userdata.role,
+          edata: userdata,
       });
     }catch(e){
       console.log(e);
@@ -139,9 +139,9 @@ export default class UpdateUser extends Component {
       <div className="">
         <AppBarNav />
 
-        <div  style={{marginTop:'40px'}}>
+        <div  style={{marginTop:'100px',marginLeft:'400px',marginBottom:'100px', alignItems:'center', textAlign:'center', width:'40%', border:'3px solid #73AD21', padding:'10px'}}>
 
-        </div>
+        <h1>Update User</h1>
 
 
         <form onSubmit={this.handleSubmit} encType="multipart/form-data" method="post">
@@ -169,12 +169,13 @@ export default class UpdateUser extends Component {
             <div style={{display:'flex',justifyContent:'center'}}>
             
           </div>
-          <button className="btn btn-success" type="submit" style={{marginTop:'15px', marginLeft:"100px", width:"200px"}} onClick={this.handleSubmit}>
+          <Button className="btn btn-success" type="submit" variant="contained" style={{textAlign:"center", width:"200px", background:"green"}} onClick={this.handleSubmit}>
     <i className="far fa-check-square"></i>
 &nbsp; UPDATE
-</button>
+</Button>
 
         </form>
+        </div>
       </div>
     );
   }

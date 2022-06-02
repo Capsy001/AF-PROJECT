@@ -59,7 +59,7 @@ export default class ViewStudentSubmission extends Component {
         <Card sx={{ width:"27%", height: 250, float:"left", marginLeft:4, marginTop:4, marginRight:4 }} style={{border:'1px solid #2e7d32'}}>
                     <CardContent>
                       <Typography gutterBottom variant="h5" component="div">
-                     <div style={{textAlign:'center'}}>Group ID : {data.groupid}</div>
+                     <div style={{textAlign:'center', color:'blue'}}>{data.groupid}</div>
                       </Typography>
                       <Typography variant="h6" color="text.secondary">
                       <div style={{textAlign:'center'}}>Topic : {data.topic}</div>
@@ -71,13 +71,7 @@ export default class ViewStudentSubmission extends Component {
                       <Typography variant="h10" color="text.secondary">
                       <div style={{textAlign:'center'}}>{data.file}</div>
                       </Typography>
-                      {/* <Typography variant="body2" color="text.secondary" style={{textAlign:'center'}}> */}
-                      {/* <a href={"http://localhost:3000/" + (data.file.split("/"))[3]} target="_blank">
-                        <Button variant="contained" size="small" style={{marginTop:'10px', textDecoration:'inherit'}}><FileDownload/> Download</Button> */}
-
-                      {/* <Typography variant="h10" color="text.secondary">
-                      {data.file}
-                      </Typography> */}
+                      
                       <CardActions
                       sx={{ margin: "0 auto", justifyContent: "center" }}>
                       <Typography variant="body2" color="text.secondary">
@@ -88,10 +82,6 @@ export default class ViewStudentSubmission extends Component {
                       </Typography>
                       </CardActions>
                       <br></br>
-          {/* <Link to={'/updateStudentSubmissionType/'+data._id} style={{textDecoration:'inherit',margin:'0px'}}>
-                        <Button variant="outlined" size="small" color="warning">Edit</Button>
-                      </Link>&nbsp;&nbsp;
-                      <Button variant="outlined" href="/viewStudentSubmissionTypes" onClick={(e) => this.handleDelete(data._id)} size="small" color="error">Delete</Button> */}
                     </CardContent>
                   </Card>
         )}
