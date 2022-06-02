@@ -58,7 +58,7 @@ export default class ViewSubmissionTypes extends Component {
     return (
       <div>
         
-        <AppBarNav></AppBarNav>
+        <CustomHeader />
 <h1 style={{marginLeft:'40%'}}>Assignment List</h1>
        
         {(this.state.data).map(data =>

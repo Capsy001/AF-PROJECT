@@ -56,7 +56,7 @@ export default class ManageSubmissionTypes extends Component {
     return (
       <div>
         
-        <AppBarNav></AppBarNav>
+        <CustomHeader />
 <h1 style={{marginLeft:'40%'}}>Manage Assignment List</h1>
        
         {(this.state.data).map(data =>
@@ -65,18 +65,18 @@ export default class ManageSubmissionTypes extends Component {
                       <Typography gutterBottom variant="h5" component="div">
                      <div style={{textAlign:'center'}}><b>{data.title}</b></div>
                       </Typography>
-                      <Typography variant="h7" color="text.secondary">
-                      <div style={{textAlign:'center'}}>{data.desc}</div>
+                      <Typography variant="h6" color="">
+                      <div style={{textAlign:'center', marginBottom:'12px'}}>{data.desc}</div>
                       </Typography>
-                      <Typography variant="h7" color="text.secondary">
-                        <div style={{textAlign:'center', color:'red'}}>Deadline : {data.deadline}</div>
+                      <Typography variant="h7" color="red">
+                        <div style={{textAlign:'center'}}>Deadline : {data.deadline}</div>
                       </Typography>
                       
             
           <br></br>
-          <div style={{marginLeft:'30%'}}>
-                        <Button style={{marginLeft:'10px'}} onClick={(e) => this.handleEdit(data._id)} variant="contained" size="small" color="warning">Edit</Button>
-                      <Button style={{marginLeft:'10px'}} variant="contained" href="/manageSubmissionTypes" onClick={(e) => this.handleDelete(data._id)} size="small" color="error">Delete</Button>
+          <div>
+                        <Button style={{marginLeft:'10px', width:'40%',float:'left'}} onClick={(e) => this.handleEdit(data._id)} variant="contained" size="small" color="warning">Edit</Button>
+                      <Button style={{marginLeft:'10px', width:'40%',float:'left'}} variant="contained" href="/manageSubmissionTypes" onClick={(e) => this.handleDelete(data._id)} size="small" color="error">Delete</Button>
                       </div>
                     </CardContent>
                     <CardActions>
