@@ -2,9 +2,9 @@ import axios from "axios";
 
 //function to register new topic
 export async function newTopic(topicData){
-    const data = []
+    var data = [];
     await axios.post("http://localhost:3000/topics/new",topicData).then((response) => {
-        const data = response.data;
+        data = response.data;
         console.log(data);
         data.push(data);
     })

@@ -76,7 +76,7 @@ export default class SupervisorAccept extends Component {
 
 
 handleSupervisor=(data)=>{
-   alert(data.topic);
+   
 
 }
 

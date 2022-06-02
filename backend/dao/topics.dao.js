@@ -4,7 +4,7 @@ const banTopics = client.db("banlist").collection("studentTopics");
 import { ObjectId } from "mongodb";
 import * as mongoose from "mongoose";
 
-export async function save ({groupid, topic, description, status, supervisor, coSuperviser}){
+export async function save ({groupid, topic, description, status, supervisor, cosupervisor}){
         const banlistchk = await banTopics.findOne({topic:topic});
         const topicduplication = await studentTopics.findOne({groupid:groupid});
         console.log(topicduplication)
@@ -32,11 +32,11 @@ export async function save ({groupid, topic, description, status, supervisor, co
       description,
       status,
       supervisor,
-      coSuperviser,
+      cosupervisor,
     });
     return result.insertedId;
   } else {
-    return "topicexist";
+    return "topicexist or user already has a topic!";
   }
 }
 
