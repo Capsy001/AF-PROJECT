@@ -52,31 +52,31 @@ export default class ViewStudentSubmission extends Component {
     return (
       <div>
         
-        <AppBarNav></AppBarNav>
+        <CustomHeader />
 <h1 style={{marginLeft:'40%'}}>Submitted Assignment List</h1>
         
         {(this.state.data).map(data => 
-        <Card sx={{ width:"27%", height: 250, float:"left", marginLeft:4, marginTop:4, marginRight:4 }} style={{border:'1px solid #2e7d32'}}>
+        <Card sx={{ width:"27%", height: 200, float:"left", marginLeft:4, marginTop:4, marginRight:4 }} style={{border:'1px solid #2e7d32'}}>
                     <CardContent>
                       <Typography gutterBottom variant="h5" component="div">
                      <div style={{textAlign:'center', color:'blue'}}>{data.groupid}</div>
                       </Typography>
-                      <Typography variant="h6" color="text.secondary">
-                      <div style={{textAlign:'center'}}>Topic : {data.topic}</div>
+                      <Typography variant="h5" color="">
+                      <div style={{textAlign:'center', marginBottom:"10px"}}>Topic : {data.topic}</div>
                       </Typography>
-                      <Typography variant="h8" color="text.secondary">
+                      <Typography variant="h7" color="red">
                       <div style={{textAlign:'center'}}>Uplaod Date : {data.uploaddate}</div>
                       </Typography>
 
-                      <Typography variant="h10" color="text.secondary">
+                      {/* <Typography variant="h10" color="text.secondary">
                       <div style={{textAlign:'center'}}>{data.file}</div>
-                      </Typography>
+                      </Typography> */}
                       
                       <CardActions
                       sx={{ margin: "0 auto", justifyContent: "center" }}>
                       <Typography variant="body2" color="text.secondary">
                       <a href={"http://localhost:3000/" + (data.file.split("/"))[3]} target="_blank">
-                        <Button variant="contained" size="small" style={{marginTop:'20%', textDecoration:'inherit'}}><FileDownload/> Download</Button>
+                        <Button variant="contained" size="small" style={{marginTop:'12%', textDecoration:'inherit'}}><FileDownload/> Download Assignment</Button>
 
                       </a>
                       </Typography>
