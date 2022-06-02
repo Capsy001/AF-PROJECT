@@ -3,6 +3,9 @@ import { Component } from "react";
 import Login from "./components/login";
 import Register from "./components/register";
 
+import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
+
+
 
 export default class App extends Component {
   constructor(props) {
