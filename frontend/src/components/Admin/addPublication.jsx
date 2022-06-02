@@ -6,7 +6,7 @@ import { Stack } from "@mui/material";
 import { Button, TextField, Chip, Divider, Input, CircularProgress, Typography, Box, Alert } from "@mui/material";
 import { Campaign, CloudUpload } from "@mui/icons-material";
 
-import AppBarNav from "../AppBarNav";
+import AppBarNav from "../appBarNav";
 import axios from "axios";
 
 export default class AddPublications extends Component {

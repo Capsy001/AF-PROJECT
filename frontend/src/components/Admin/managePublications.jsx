@@ -8,7 +8,7 @@ import { FileDownload, Edit, Delete, Add} from "@mui/icons-material";
 import { Button, Fab, Chip, Divider, Typography, CardActions } from "@mui/material";
 import { Campaign, CloudUpload } from "@mui/icons-material";
 
-import AppBarNav from "./../AppBarNav";
+import AppBarNav from "../appBarNav";
 import axios from "axios";
 
 export default class ManagePublications extends Component {

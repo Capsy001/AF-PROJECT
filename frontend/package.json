@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "react-scripts build",
-    "start": "parcel index.html --no-hmr --no-cache"
+    "start": "react-scripts start"
   },
   "author": "Ekanayake EMUY",
   "license": "ISC",

@@ -13,7 +13,7 @@ import {
   colors,
 } from "@mui/material";
 import styled from "@emotion/styled";
-import AppBarNav from "./AppBarNav";
+import AppBarNav from "./appBarNav";
 
 export default class Dashboard extends Component {
   constructor() {

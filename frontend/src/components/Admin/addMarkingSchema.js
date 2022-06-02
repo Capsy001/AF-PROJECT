@@ -6,7 +6,7 @@ import { CheckRounded, Add } from "@mui/icons-material";
 
 import { Button, TextField, Chip, Divider, Alert, FormControl } from "@mui/material";
 
-import AppBarNav from "../AppBarNav";
+import AppBarNav from "../appBarNav";
 import axios from "axios";
 
 export default class AddPublications extends Component {

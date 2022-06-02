@@ -8,7 +8,7 @@ import { FileDownload } from "@mui/icons-material";
 import { Button, TextField, Chip, Divider, Typography, CardActions } from "@mui/material";
 import { Campaign, CloudUpload } from "@mui/icons-material";
 
-import AppBarNav from "./AppBarNav";
+import AppBarNav from "./appBarNav";
 import axios from "axios";
 
 export default class ViewPublication extends Component {

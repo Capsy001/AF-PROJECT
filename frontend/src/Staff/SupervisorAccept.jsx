@@ -8,7 +8,7 @@ import {
   CardActions,
   Grid,
 } from "@mui/material";
-import AppBarNav from "../components/AppBarNav";
+import AppBarNav from "../components/appBarNav";
 import axios from "axios";
 import { getTopics } from "../ApiCalls/topic.apicall";
 import { textAlign } from "@mui/system";
