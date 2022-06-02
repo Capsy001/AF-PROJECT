@@ -20,9 +20,9 @@ export default class ViewSubmissionTypes extends Component {
     this.handleData = this.handleData.bind(this);
   }
 
-  handleData(ssubdata){
+  handleData(subdata){
     this.setState({
-      data:ssubdata
+      data:subdata
     });
   }
 
@@ -38,6 +38,11 @@ export default class ViewSubmissionTypes extends Component {
     {
       this.loadData();
     });
+  }
+
+  async handleEdit(id){
+    await sessionStorage.setItem('EditId', id);
+    window.location.href='/updateSubmissionType';
   }
 
   componentDidMount(){
@@ -75,9 +80,7 @@ export default class ViewSubmissionTypes extends Component {
           <br></br>
 
                     </CardContent>
-                    <CardActions>
-                      
-                    </CardActions>
+                    
                   </Card>
         )}
       </div>
