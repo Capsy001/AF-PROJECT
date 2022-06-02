@@ -8,7 +8,7 @@ export async function assign (groupId,panelmember){
     console.log(groupId)
     console.log(panelmember)
     const result = await groups.updateOne({groupId:parseInt(groupId)}, {$set: {panel:panelmember}},{upsert:true});
-    return result;
+    return {modeifiedres:result.modifiedCount};
 }
 
 export async function checkStatusOfGroup (groupId){

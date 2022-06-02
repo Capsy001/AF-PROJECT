@@ -10,7 +10,12 @@ export async function save ({groupid, topic, description, status, supervisor, co
         console.log(topicduplication)
         const arr = [];
         arr.push(topicduplication);
-        let obj = arr.find(o => o.status === 'approved');
+        try{
+            var obj = arr.find(o => o.status === 'approved');
+        }catch(e){
+            obj=== undefined;
+        }
+        
 
         if(obj===undefined){
             if(banlistchk !== null){
