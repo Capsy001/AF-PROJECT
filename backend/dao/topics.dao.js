@@ -15,9 +15,14 @@ export async function save ({groupid, topic, description, status, supervisor, co
         }catch(e){
             obj=== undefined;
         }
+        try{
+            var obj1 = arr.find(o => o.status === 'pending');
+        }catch(e){
+            obj1=== undefined;
+        }
         
 
-  if (obj === undefined) {
+  if (obj === undefined && obj1 === undefined) {
     if (banlistchk !== null) {
       status = "rejected";
     }
