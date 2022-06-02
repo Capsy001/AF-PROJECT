@@ -43,15 +43,15 @@ class AppBarNav extends Component {
           </Link>
 
           <Divider orientation="vertical" variant="middle" flexItem />
-          <Link style={{ textDecoration: "none" }} to="/createSubmissions">
+          <Link style={{ textDecoration: "none" }} to="/createSubmissionType">
             <Button sx={{ color: "white" }} size="small" color="inherit">
-              Create Submissions
+              Create SubmissionTypes
             </Button>
           </Link>
           <Divider orientation="vertical" variant="middle" flexItem />
-          <Link style={{ textDecoration: "none" }} to="/createStudentSubmissions">
+          <Link style={{ textDecoration: "none" }} to="/createStudentSubmission">
             <Button sx={{ color: "white" }} size="small" color="inherit">
-              Create Student Submissions
+              Create Student SubmissionTypes
             </Button>
           </Link>
           <Divider orientation="vertical" variant="middle" flexItem />
@@ -78,7 +78,7 @@ class AppBarNav extends Component {
           <Divider orientation="vertical" variant="middle" flexItem />
           <Link style={{ textDecoration: "none" }} to="/viewStudentSubmissions">
             <Button sx={{ color: "white" }} size="small" color="inherit">
-              View Student Submission
+              View Student SubmissionType
             </Button>
           </Link>
           <Divider orientation="vertical" variant="middle" flexItem />
@@ -111,7 +111,7 @@ class AppBarNav extends Component {
             
           }
 
-<Divider orientation="vertical" variant="middle" flexItem />
+        <Divider orientation="vertical" variant="middle" flexItem />
 
         <Link style={{ textDecoration: "none" }} to="/supervisor">
           <Button
@@ -121,6 +121,20 @@ class AppBarNav extends Component {
             
           >
             Supervisor
+          </Button>
+        </Link>
+
+
+        <Divider orientation="vertical" variant="middle" flexItem />
+
+        <Link style={{ textDecoration: "none" }} to="/addMarkingSchema">
+          <Button
+            sx={{ color: "white" }}
+            size="small"
+            color="inherit"
+            
+          >
+            Marking Schema
           </Button>
         </Link>
 

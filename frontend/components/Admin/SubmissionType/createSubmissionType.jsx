@@ -3,9 +3,9 @@ import { Button, Chip, Input } from "@mui/material";
 import { CloudUpload } from "@mui/icons-material";
 import { Button, TextField, Chip, Divider, Input, CircularProgress, Typography, Box } from "@mui/material";
 import { CloudUpload } from "@mui/icons-material";
-import CustomHeader from "../header/customheader";
+import CustomHeader from "../../header/customheader";
 import axios from "axios";
-export default class CreateSubmission extends Component {
+export default class CreateSubmissionType extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -33,17 +33,16 @@ export default class CreateSubmission extends Component {
     
     var completed = 0;
 
-    const submission = {
+    const submissiontype = {
       title: this.state.title,
       desc: this.state.desc,
       deadline: this.state.deadline,
     };
 
-    axios.post("http://localhost:3000/submissions/new", submission).then(response =>
+    axios.post("http://localhost:3000/submissiontypes/new", submissiontype).then(response =>
     {
       const data = response.data;
-      // document.getElementById("progress").style.display = "none";
-      // document.getElementById("alert").style.display = "flex";
+      
     });
 
   };
@@ -55,7 +54,7 @@ export default class CreateSubmission extends Component {
         
         <CustomHeader />
 
-        <div  style={{marginTop:'40px', margin:"0px"}}>
+        <div  style={{marginTop:'100px',marginLeft:'400px',marginBottom:'100px', alignItems:'center', textAlign:'center', width:'40%', border:'3px solid #73AD21', padding:'10px'}}>
       
 
         <form onSubmit={this.handleSubmit} encType="multipart/form-data" method="post">

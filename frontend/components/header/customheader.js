@@ -51,27 +51,33 @@ class CustomHeader extends Component {
             </Link>
 
             <Divider orientation="vertical" variant="middle" flexItem />
-            <Link style={{ textDecoration: "none" }} to="/createSubmissions">
+            <Link style={{ textDecoration: "none" }} to="/createSubmissionType">
               <Button sx={{ color: "white" }} size="small" color="inherit">
-                Create Submissions
+                Create SubmissionTypes
               </Button>
             </Link>
             <Divider orientation="vertical" variant="middle" flexItem />
-            <Link style={{ textDecoration: "none" }} to="/createStudentSubmissions">
+            <Link style={{ textDecoration: "none" }} to="/createStudentSubmission">
               <Button sx={{ color: "white" }} size="small" color="inherit">
-                Create Student Submissions
+                Create Student SubmissionTypes
               </Button>
             </Link>
             <Divider orientation="vertical" variant="middle" flexItem />
-            <Link style={{ textDecoration: "none" }} to="/viewSubmissions">
+            <Link style={{ textDecoration: "none" }} to="/viewSubmissionTypes">
               <Button sx={{ color: "white" }} size="small" color="inherit">
-                View Submissions
+                View SubmissionTypes
+              </Button>
+            </Link>
+            <Divider orientation="vertical" variant="middle" flexItem />
+            <Link style={{ textDecoration: "none" }} to="/manageSubmissionTypes">
+              <Button sx={{ color: "white" }} size="small" color="inherit">
+                Manage SubmissionTypes
               </Button>
             </Link>
             <Divider orientation="vertical" variant="middle" flexItem />
             <Link style={{ textDecoration: "none" }} to="/viewStudentSubmissions">
               <Button sx={{ color: "white" }} size="small" color="inherit">
-                View Student Submissions
+                View Student SubmissionTypes
               </Button>
             </Link>
             <Divider orientation="vertical" variant="middle" flexItem />

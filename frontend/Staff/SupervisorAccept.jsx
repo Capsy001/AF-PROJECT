@@ -45,7 +45,7 @@ export default class SupervisorAccept extends Component {
 
   disable1=(data)=>{
       
-    data="jjk"
+    data=""
       try{
           
         if(data==""){

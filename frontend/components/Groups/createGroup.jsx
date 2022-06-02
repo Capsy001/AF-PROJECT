@@ -182,7 +182,7 @@ export default class CreateGroup extends Component {
           </Paper>
 
           <Divider>
-          <Chip label="Group" style={{margin: '10px'}} />
+          <Chip label="" style={{margin: '10px'}} />
           </Divider>
 
         </div>

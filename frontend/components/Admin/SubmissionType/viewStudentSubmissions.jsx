@@ -2,7 +2,7 @@ import { React, Component } from "react";
 import { Button} from "@mui/material";
 import { Campaign, FileDownload } from "@mui/icons-material";
 import { Campaign, CloudUpload } from "@mui/icons-material";
-import CustomHeader from "../header/customheader";
+import CustomHeader from "../../header/customheader";
 import axios from "axios";
 import { Link } from "react-router-dom";
 
@@ -11,7 +11,7 @@ import { Campaign, FileDownload } from "@mui/icons-material";
 
 import { Button, TextField, Chip, Divider, Typography, CardActions } from "@mui/material";
 
-export default class ViewStudentSubmissions extends Component {
+export default class ViewStudentSubmission extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -59,27 +59,29 @@ export default class ViewStudentSubmissions extends Component {
         <Card sx={{ width:"27%", height: 250, float:"left", marginLeft:4, marginTop:4, marginRight:4 }} style={{border:'1px solid #2e7d32'}}>
                     <CardContent>
                       <Typography gutterBottom variant="h5" component="div">
-                     Group ID : {data.groupid}
+                     <div style={{textAlign:'center', color:'blue'}}>{data.groupid}</div>
                       </Typography>
                       <Typography variant="h6" color="text.secondary">
-                      Topic : {data.topic}
+                      <div style={{textAlign:'center'}}>Topic : {data.topic}</div>
                       </Typography>
                       <Typography variant="h8" color="text.secondary">
-                        Uplaod Date : {data.uploaddate}
+                      <div style={{textAlign:'center'}}>Uplaod Date : {data.uploaddate}</div>
                       </Typography>
+
                       <Typography variant="h10" color="text.secondary">
-                      {data.file}
+                      <div style={{textAlign:'center'}}>{data.file}</div>
                       </Typography>
+                      
+                      <CardActions
+                      sx={{ margin: "0 auto", justifyContent: "center" }}>
                       <Typography variant="body2" color="text.secondary">
                       <a href={"http://localhost:3000/" + (data.file.split("/"))[3]} target="_blank">
-                        <Button variant="contained" size="small" style={{marginTop:'10px'}}><FileDownload/> Download</Button>
+                        <Button variant="contained" size="small" style={{marginTop:'20%', textDecoration:'inherit'}}><FileDownload/> Download</Button>
+
                       </a>
                       </Typography>
+                      </CardActions>
                       <br></br>
-          {/* <Link to={'/updateStudentSubmission/'+data._id} style={{textDecoration:'inherit',margin:'0px'}}>
-                        <Button variant="outlined" size="small" color="warning">Edit</Button>
-                      </Link>&nbsp;&nbsp;
-                      <Button variant="outlined" href="/viewStudentSubmissions" onClick={(e) => this.handleDelete(data._id)} size="small" color="error">Delete</Button> */}
                     </CardContent>
                   </Card>
         )}

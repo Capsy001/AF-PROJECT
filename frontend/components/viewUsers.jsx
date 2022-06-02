@@ -20,9 +20,9 @@ export default class ViewUsers extends Component {
     this.handleData = this.handleData.bind(this);
   }
 
-  handleData(subdata){
+  handleData(userdata){
     this.setState({
-      data:subdata
+      data:userdata
     });
   }
 
@@ -64,22 +64,22 @@ export default class ViewUsers extends Component {
         <Card sx={{ width:"27%", height: 200, float:"left", marginLeft:3, marginTop:4, marginRight:3 }} style={{border:'1px solid #2e7d32'}}>
                     <CardContent>
                       <Typography gutterBottom variant="h5" component="div">
-                     {data.name}
+                     <div style={{textAlign:'center'}}>{data.name}</div>
                       </Typography>
                       <Typography variant="body2" color="text.secondary">
-                      {data.email}
+                      <div style={{textAlign:'center'}}>{data.email}</div>
                       </Typography>
                       <Typography variant="body2" color="text.secondary">
-                        {data.username}
+                      <div style={{textAlign:'center'}}>{data.username}</div>
                       </Typography>
                       <Typography gutterBottom variant="body2" component="div">
-                     {data.role}
+                      <div style={{textAlign:'center'}}>{data.role}</div>
                       </Typography>
                       
                     
           <br></br>
-                      <Button variant="outlined" onClick={(e) => this.handleEdit(data._id)} size="small" color="warning">Edit</Button>
-                      <Button variant="outlined" href="/viewUsers" onClick={(e) => this.handleDelete(data._id)} size="small" color="error">Delete</Button>
+                      <Button variant="contained" style={{width:'47%', float:'left', marginRight:'7px'}} onClick={(e) => this.handleEdit(data._id)} size="small" color="warning">Edit</Button>
+                      <Button variant="contained" style={{width:'47%', float:'left'}} href="/viewUsers" onClick={(e) => this.handleDelete(data._id)} size="small" color="error">Delete</Button>
                     </CardContent>
                     <CardActions>
                       

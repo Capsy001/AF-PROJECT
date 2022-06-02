@@ -1,6 +1,6 @@
-import { save, getAll, removeById, getById, update} from '../dao/submissions.dao.js';
+import { save, getAll, removeById, getById, update} from '../dao/submissiontypes.dao.js';
 
-const submissions = new Map();
+const submissiontypes = new Map();
 
 const defaultSubmission =
 {
@@ -16,17 +16,17 @@ const defaultSubmission2 =
     deadline:"2022-05-29"
 };
 
-submissions.set(defaultSubmission.desc, defaultSubmission);
-submissions.set(defaultSubmission2.desc, defaultSubmission);
+submissiontypes.set(defaultSubmission.desc, defaultSubmission);
+submissiontypes.set(defaultSubmission2.desc, defaultSubmission);
 
 
-export const addSubmission = async(submission) =>
+export const addSubmission = async(submissiontype) =>
 {
 
     const newSubmission = {
-        title: submission.title,
-        desc: submission.desc,
-        deadline:submission.deadline
+        title: submissiontype.title,
+        desc: submissiontype.desc,
+        deadline:submissiontype.deadline
     };
     const result = await save(newSubmission);
     console.log(result)
@@ -49,8 +49,8 @@ export const deleteSubmission = async id =>
             return await getById(id);
         }
 
-        export const updateSubmission = async (id, submission)=>{
-            return await update({id}, submission);
+        export const updateSubmission = async (id, submissiontype)=>{
+            return await update({id}, submissiontype);
         }
 
 export default {addSubmission, getAllSubmissions, deleteSubmission, getSubmission, updateSubmission};

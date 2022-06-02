@@ -1,10 +1,10 @@
 import Router from "@koa/router"
-import { addSubmission, getAllSubmissions, deleteSubmission, getSubmission, updateSubmission } from "../api/submission.api.js";
+import { addSubmission, getAllSubmissions, deleteSubmission, getSubmission, updateSubmission } from "../api/submissiontype.api.js";
 
 
 const submissionsRouter = new Router(
     {
-        prefix: '/submissions'
+        prefix: '/submissiontypes'
     }
 );
 
@@ -13,7 +13,7 @@ submissionsRouter.post('/new', async(ctx) =>
     const data = await ctx.request.body;
 
 
-                        const submission = {
+                        const submissiontype = {
                             title: data.title,
                             desc: data.desc,
                             deadline: data.deadline,
@@ -21,7 +21,7 @@ submissionsRouter.post('/new', async(ctx) =>
                     
                         console.log(ctx.request.body);
                     
-    const newsubmission = await addSubmission(submission);
+    const newsubmission = await addSubmission(submissiontype);
     if(newsubmission){
         ctx.body = newsubmission;
         ctx.set('Content-Type', 'application/json');
@@ -72,10 +72,10 @@ submissionsRouter.get('/get/:id', async ctx=> {
 
 submissionsRouter.put('/update/:id', async ctx=> {
     const id = ctx.params.id;
-    let submission = ctx.request.body;
-    ctx.body = await updateSubmission(id,submission);
+    let submissiontype = ctx.request.body;
+    ctx.body = await updateSubmission(id,submissiontype);
     ctx.response.status = 200;
-    ctx.body = submission;
+    ctx.body = submissiontype;
 })
 
 export default submissionsRouter;

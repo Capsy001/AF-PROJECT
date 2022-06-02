@@ -19,22 +19,23 @@ import ViewItem from "./components/viewItems";
 import ViewCart from "./components/viewCart";
 import CreateGroup from "./components/Groups/CreateGroup";
 import ViewUsers from "./components/viewUsers";
-import CreateSubmission from "./components/Submission/createSubmission";
-import ViewSubmissions from "./components/Submission/viewSubmissions";
-import UpdateSubmission from "./components/Submission/updateSubmission";
+import CreateSubmissionType from "./components/Admin/SubmissionType/createSubmissionType";
+import ViewSubmissionTypes from "./components/Student/StudentSubmission/viewSubmissionTypes";
+import UpdateSubmissionType from "./components/Admin/SubmissionType/updateSubmissionType";
 
 import PanelManagment from "./components/Admin/panelManagment";
 
-import CreateStudentSubmission from "./components/Submission/createStudentSubmission";
-import ViewStudentSubmissions from "./components/Submission/viewStudentSubmissions";
+import CreateStudentSubmission from "./components/Student/StudentSubmission/createStudentSubmission";
+import ViewStudentSubmissions from "./components/Admin/SubmissionType/viewStudentSubmissions";
 import ViewPublication from "./components/viewPublication"; 
 import ManagePublications from "./components/Admin/managePublications";
 import AddPublications from "./components/Admin/addPublication";
 import EditPublications from "./components/Admin/editPublications";
 import SupervisorAccept from "./Staff/SupervisorAccept";
-import UpdateUser from "./components/UpdateUser";
+import UpdateUser from "./components/updateUser";
 import RegisterTopics from "./components/Student/RegisterTopics";
-
+import ManageSubmissionTypes from "./components/Admin/SubmissionType/manageSubmissionTypes";
+import AddMarkingSchema from './components/Admin/addMarkingSchema';
 
 export default class App extends Component {
   constructor(props) {
@@ -58,21 +59,23 @@ export default class App extends Component {
           <Route path='/createGroup' element={<CreateGroup />} />
           <Route exact path="/" element={<Login />} />
           <Route path="/viewUsers" element={<ViewUsers />} />
-          <Route path="/createSubmissions" element={<CreateSubmission />} />
+          <Route path="/createSubmissionType" element={<CreateSubmissionType />} />
           <Route path="/registerTopics" element={<RegisterTopics />} />
-          <Route path="/viewSubmissions" element={<ViewSubmissions />} />
-          <Route path="/updateSubmission" element={<UpdateSubmission />} />
+          <Route path="/viewSubmissionTypes" element={<ViewSubmissionTypes />} />
+          <Route path="/updateSubmissionType" element={<UpdateSubmissionType />} />
           <Route path="/viewPublications" element={<ViewPublication />} />
           <Route path="/addPublications" element={<AddPublications />} />
           <Route path="/managePublications" element={<ManagePublications />} />
           <Route path="/editPublications/:id" element={<EditPublications />} />
-          <Route path="/createStudentSubmissions" element={<CreateStudentSubmission />} />
+          <Route path="/createStudentSubmission" element={<CreateStudentSubmission />} />
           <Route path="/viewStudentSubmissions" element={<ViewStudentSubmissions />} />
 
           <Route path="supervisor" element={<SupervisorAccept />} />
 
           <Route path="/updateUser" element={<UpdateUser />} />
+          <Route path="/manageSubmissionTypes" element={<ManageSubmissionTypes />} />
 
+          <Route path="/addMarkingSchema" element={<AddMarkingSchema />} />
 
         </Routes>
       </BrowserRouter>

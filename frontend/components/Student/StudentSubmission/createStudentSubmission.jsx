@@ -3,9 +3,9 @@ import { Button, Chip, Input } from "@mui/material";
 import { CloudUpload } from "@mui/icons-material";
 import { Button, TextField, Chip, Divider, Input, CircularProgress, Typography, Box, IconButton } from "@mui/material";
 import { CloudUpload } from "@mui/icons-material";
-import CustomHeader from "../header/customheader";
+import CustomHeader from "../../header/customheader";
 import axios from "axios";
-export default class CreateStudentSubmission extends Component {
+export default class CreateStudentSubmissionType extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -65,8 +65,7 @@ export default class CreateStudentSubmission extends Component {
     axios.post("http://localhost:3000/studentsubmissions/new", studentsubmission, config).then(response =>
     {
       const data = response.data;
-      // document.getElementById("progress").style.display = "none";
-      // document.getElementById("alert").style.display = "flex";
+      
     });
 
   };
@@ -78,7 +77,7 @@ export default class CreateStudentSubmission extends Component {
         
         <CustomHeader />
 
-        <div  style={{marginTop:'40px'}}>
+        <div  style={{marginTop:'100px',marginLeft:'400px',marginBottom:'100px', alignItems:'center', textAlign:'center', width:'40%', border:'3px solid #73AD21', padding:'10px'}}>
 
 
         <form onSubmit={this.handleSubmit} encType="multipart/form-data" method="post">
