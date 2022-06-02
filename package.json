@@ -6,17 +6,18 @@
   "type": "module",
   "scripts": {
     "build": "cd frontend && npm run build",
-        "install-client": "cd frontend && npm install",
-        "heroku-postbuild": "npm run install-client && npm run build",
-        "server": "nodemon app.js",
-        "develop": "concurrently --kill-others-on-fail \"npm run server\" \"npm run start --prefix frontend\"",
-        "start": "concurrently --kill-others-on-fail \"npm run server\" \"npm run start --prefix frontend\""
+    "install-client": "cd frontend && npm install",
+    "heroku-postbuild": "npm run install-client && npm run build",
+    "server": "nodemon app.js",
+    "develop": "concurrently --kill-others-on-fail \"npm run server\" \"npm run start --prefix frontend\"",
+    "start": "concurrently --kill-others-on-fail \"npm run server\" \"npm run start --prefix frontend\""
   },
   "author": "Ekanayake EMUY",
   "license": "ISC",
   "dependencies": {
     "@koa/cors": "^3.3.0",
     "@koa/router": "^10.1.1",
+    "concurrently": "^7.2.1",
     "dotenv": "^16.0.1",
     "fs": "^0.0.1-security",
     "koa": "^2.13.4",
