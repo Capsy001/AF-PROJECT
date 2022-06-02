@@ -1,94 +1,94 @@
-import client from'./index.js';
-const studentTopics = client.db('store').collection('studentTopics');
-const banTopics = client.db('banlist').collection('studentTopics');
-import {ObjectId} from 'mongodb';
-import * as mongoose from 'mongoose';
+import client from "./index.js";
+const studentTopics = client.db("store").collection("studentTopics");
+const banTopics = client.db("banlist").collection("studentTopics");
+import { ObjectId } from "mongodb";
+import * as mongoose from "mongoose";
 
-export async function save ({groupid, topic, description, status, supervisor, coSuperviser}){
-        const banlistchk = await banTopics.findOne({topic:topic});
-        const topicduplication = await studentTopics.findOne({groupid:groupid});
-        console.log(topicduplication)
-        const arr = [];
-        arr.push(topicduplication);
-        let obj = arr.find(o => o.status === 'approved');
+export async function save({
+  groupid,
+  topic,
+  description,
+  status,
+  supervisor,
+  coSuperviser,
+}) {
+  const banlistchk = await banTopics.findOne({ topic: topic });
+  const topicduplication = await studentTopics.findOne({ groupid: groupid });
+  console.log(topicduplication);
+  const arr = [];
+  arr.push(topicduplication);
+  let obj = arr.find((o) => o.status === "approved");
 
-        if(obj===undefined){
-            if(banlistchk !== null){
-                status = 'rejected';
-            }
-            const result = await studentTopics.insertOne({groupid, topic, description, status, supervisor, coSuperviser});
-            return result.insertedId;
-        }else{
-            return 'topicexist';
-        }
-        
+  if (obj === undefined) {
+    if (banlistchk !== null) {
+      status = "rejected";
     }
-
-export async function ban ({topic}){
-    const banlistchk = await banTopics.findOne({topic:topic});
-    if(banlistchk !== null){
-        const result = await banTopics.insertOne({topic});
-        return result.insertedId;
-    }else{
-        return 'alreadyinlist'
-    }
-    
-    
+    const result = await studentTopics.insertOne({
+      groupid,
+      topic,
+      description,
+      status,
+      supervisor,
+      coSuperviser,
+    });
+    return result.insertedId;
+  } else {
+    return "topicexist";
+  }
 }
 
-export async function updatestatus(id, topicupdate){
-    const result = await studentTopics.updateOne({"_id":ObjectId(id)}, {$set: {status:topicupdate.status}});
-    console.log(result)
-    return result;
+export async function ban({ topic }) {
+  const banlistchk = await banTopics.findOne({ topic: topic });
+  if (banlistchk !== null) {
+    const result = await banTopics.insertOne({ topic });
+    return result.insertedId;
+  } else {
+    return "alreadyinlist";
+  }
+}
+
+export async function updatestatus(id, topicupdate) {
+  const result = await studentTopics.updateOne(
+    { _id: ObjectId(id) },
+    { $set: { status: topicupdate.status } }
+  );
+  console.log(result);
+  return result;
+}
+
+export async function getAll() {
+  const cursor = await studentTopics.find();
+
+  return cursor.toArray();
+}
+
+export async function removeById(id) {
+  return await studentTopics.deleteOne({ id });
+}
+
+export const getById = async (id) => {
+  try {
+    const userdata = await studentTopics.findOne({ _id: ObjectId(id) });
+    return userdata;
+  } catch (e) {
+    console.log(e);
+  }
 };
 
-export async function getAll(){
-    const cursor = await studentTopics.find();
+export async function editSupervisors(group) {
+  const filter = { groupid: group.groupid };
+  const options = { upsert: false };
+  var updateDoc = null;
 
-    
-return cursor.toArray();
+  if (group.supervisor) {
+    updateDoc = { $set: { supervisor: group.supervisor } };
+  } else if (group.cosupervisor) {
+    updateDoc = { $set: { cosupervisor: group.cosupervisor } };
+  }
+
+  const result = await studentTopics.updateOne(filter, updateDoc, options);
+  return result;
 }
-
-export async function removeById(id){
-    return await studentTopics.deleteOne({id});
-}
-
-export const getById = async (id) =>{
-    try{
-        const userdata = await studentTopics.findOne({_id:ObjectId(id)});
-        return userdata;
-    }catch(e){
-        console.log(e)
-    }
-    
-}
-
-export async function editSupervisors(group){
-      
-    const filter = {groupid: group.groupID};
-    const options = { upsert: false };
-    const updateDoc=null;
-    if(group.supervisor){
-
-    updateDoc = {
-      $set: {supervisor: group.supervisor}
-    };
-
-}else if(group.cosupervisor){
-    updateDoc = {
-        $set: {cosupervisor: group.cosupervisor}
-      };
-
-}
-
-      const result= await groups.updateOne(filter, updateDoc, options);
-
-
-    }
-
-
-
-
 
 //Export the functions
-export default {save, ban, updatestatus, getAll, removeById, getById};
+export default { save, ban, updatestatus, getAll, removeById, getById };

@@ -106,6 +106,7 @@ topicRouter.put('/update/:id', async ctx=> {
 
 topicRouter.put('/supervisor', async ctx=> {
     
+    console.log('here')
     let group = ctx.request.body;
     ctx.body = await updateSupervisors(group);
     ctx.response.status = 200;
