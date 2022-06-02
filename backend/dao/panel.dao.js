@@ -4,9 +4,10 @@ const groups = client.db('store').collection('groups')
 import {ObjectId} from 'mongodb';
 import * as mongoose from 'mongoose';
 
-export async function assign ({groupid,panelmember}){
-    const result = await groups.updateOne({"_id":ObjectId(groupid)}, {$set: {panel:panelmember.panel}});
-    console.log(result)
+export async function assign (groupId,panelmember){
+    console.log(groupId)
+    console.log(panelmember)
+    const result = await groups.updateOne({groupId:parseInt(groupId)}, {$set: {panel:panelmember}},{upsert:true});
     return result;
 }
 

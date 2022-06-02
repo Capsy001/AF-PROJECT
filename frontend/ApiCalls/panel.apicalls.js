@@ -29,20 +29,12 @@ export async function getPanelMembers()
   return data;
 }
 
-//function to get group Id by student registation number
-export async function getGroupByReg(regId){
-  var data = [];
-  await axios.get('http://localhost:3000/groups/getById/' + regId).then(response => {
-    data = response.data;
-  })
-  return data;
-}
 
 //function to add group
-export async function createGroup(group)
+export async function assignGroup(id,data)
 {
 
-  await axios.post("http://localhost:3000/groups/", group).then(response =>
+  await axios.put("http://localhost:3000/panel/assign/" + id, data).then(response =>
     {
     const data = response.data;
     console.log(data)

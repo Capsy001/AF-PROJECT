@@ -3,7 +3,7 @@ import { Component } from "react";
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
 import AppBarNav from "../appBarNav";
-import {getGroups, getPanelMembers} from '../../ApiCalls/panel.apicalls';
+import {getGroups, getPanelMembers, assignGroup} from '../../ApiCalls/panel.apicalls';
 import {
   Button,
   Stack,
@@ -25,10 +25,29 @@ export default class PanelManagment extends Component {
     super(props);
     this.state = {
       data : [],
-      data2:[]
+      data2:[],
+      panelM:[],
+      groupM:''
     };
   }
 
+  handleSubmit = async(event) => {
+    event.preventDefault();
+    const data = {
+      panel:(this.state.panelM)
+    }
+    await assignGroup((this.state.groupM),(this.state.panelM));
+  }
+
+  handleGroupChange = async(event, values) => {
+    await this.setState({ groupM: values });
+    console.log(this.state.groupM)
+  };
+
+  handlePanelChange = async(event, values) => {
+    await this.setState({ panelM: values });
+    console.log(this.state.panelM)
+  };
 
   async componentWillMount(){
     const items = await getGroups();
@@ -56,10 +75,11 @@ export default class PanelManagment extends Component {
               margin: "0 auto",
             }}
           >
-            <form>
+            <form onSubmit={this.handleSubmit}>
               <div>
               <Autocomplete
                 disablePortal
+                onChange={this.handleGroupChange}
                 id="combo-box-demo"
                 options={(this.state.data).map((option) => option.groupId)}
                 renderInput={(params) => <TextField {...params} label="Groups" />}
@@ -67,10 +87,13 @@ export default class PanelManagment extends Component {
               </div>
               <br></br>
               <div>
+                
               <Autocomplete
+                multiple
                 disablePortal
+                onChange={this.handlePanelChange}
                 id="combo-box-demo"
-                options={(this.state.data2).map((option) => option.name)}
+                options={(this.state.data2).map((option) => option.email)}
                 renderInput={(params) => <TextField {...params} label="PanleMembers" />}
               />
               </div>
@@ -85,7 +108,7 @@ export default class PanelManagment extends Component {
                 className="buttonMargin"
                 type="submit"
               >
-                Submit
+                Assign
               </Button>
               </div>
             </form>

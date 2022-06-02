@@ -24,10 +24,7 @@ export const getGroup = async(groupId) => {
 export const assignPanel = async(groupId,panelmembers) =>
 {
 
-    const updatests = {
-        panel: panelmembers.panel
-    };
-    const result = await assign(groupId,updatests);
+    const result = await assign(groupId,panelmembers);
     console.log(result)
     return result;
 };
