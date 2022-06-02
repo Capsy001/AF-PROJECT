@@ -91,7 +91,7 @@ export default class AddPublications extends Component {
         </div>
 
 
-        <form onSubmit={this.handleSubmit} encType="multipart/form-data" method="post">
+        <form onSubmit={this.handleSubmit} encType="multipart/form-data" method="post" style={{width:'50%',marginTop:'20px'}}>
           <div>
             <TextField id="title" label="Title" variant="outlined" fullWidth onChange={this.handleTitleChange}/>
           </div>

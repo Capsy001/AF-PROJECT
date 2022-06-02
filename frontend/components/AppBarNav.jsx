@@ -111,7 +111,7 @@ class AppBarNav extends Component {
             
           }
 
-<Divider orientation="vertical" variant="middle" flexItem />
+        <Divider orientation="vertical" variant="middle" flexItem />
 
         <Link style={{ textDecoration: "none" }} to="/supervisor">
           <Button
@@ -121,6 +121,20 @@ class AppBarNav extends Component {
             
           >
             Supervisor
+          </Button>
+        </Link>
+
+
+        <Divider orientation="vertical" variant="middle" flexItem />
+
+        <Link style={{ textDecoration: "none" }} to="/addMarkingSchema">
+          <Button
+            sx={{ color: "white" }}
+            size="small"
+            color="inherit"
+            
+          >
+            Marking Schema
           </Button>
         </Link>
 

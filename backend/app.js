@@ -3,11 +3,11 @@ import bodyParser from "koa-bodyparser";
 import usersRouter from "./router/users.router.js";
 import cors from '@koa/cors'
 import serve from "koa-static";
-import submissionsRouter from "./router/submissiontype.router.js";
 import publicationRouter from "./router/publication.router.js";
 import groupsRouter from "./router/groups.router.js";
 import topicRouter from "./router/topics.router.js";
 import studentsubmissionsRouter from "./router/studentsubmission.router.js";
+import markingRouter from "./router/marking.router.js";
 
 const app = new Koa();
 app.use(bodyParser());
@@ -17,10 +17,10 @@ app.use(serve('./uploads/studentsubmissions'));
 
 app.use(usersRouter.routes()).use(usersRouter.allowedMethods());
 app.use(topicRouter.routes()).use(topicRouter.allowedMethods());
-app.use(submissionsRouter.routes()).use(submissionsRouter.allowedMethods());
 app.use(publicationRouter.routes()).use(publicationRouter.allowedMethods());
 app.use(groupsRouter.routes()).use(groupsRouter.allowedMethods());
 app.use(studentsubmissionsRouter.routes()).use(studentsubmissionsRouter.allowedMethods());
+app.use(markingRouter.routes()).use(markingRouter.allowedMethods());
 
 app.use(ctx =>
 {
