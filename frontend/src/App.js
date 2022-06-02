@@ -3,7 +3,7 @@ import { Component } from "react";
 import Login from "./components/login";
 import Register from "./components/register";
 
-import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 // Start dashboards
 import Dashboard from "./components/dashboard";
