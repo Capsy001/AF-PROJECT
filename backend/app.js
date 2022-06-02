@@ -3,19 +3,32 @@ import bodyParser from "koa-bodyparser";
 import usersRouter from "./router/users.router.js";
 import cors from '@koa/cors'
 import serve from "koa-static";
+import koaRouter from 'koa-router'; // importing Koa-Router
 import publicationRouter from "./router/publication.router.js";
 import groupsRouter from "./router/groups.router.js";
 import topicRouter from "./router/topics.router.js";
 import studentsubmissionsRouter from "./router/studentsubmission.router.js";
 import panelRouter from "./router/panel.router.js";
 import markingRouter from "./router/marking.router.js";
+import path from "path";
+
+const PORT = process.env.PORT || 4000
 
 const app = new Koa();
+const router = new koaRouter()
+const __dirname = path.resolve();
+// Step 1:
+app.use(serve(path.join(__dirname, "../client/build")));
+// Step 2:
+router.get((":splat*"), function (request, response) {
+  response.sendFile(path.join(__dirname, "../client/build", "index.html"));
+});
 app.use(bodyParser());
 app.use(serve('./uploads/publications'));
 app.use(cors());
 app.use(serve('./uploads/studentsubmissions'));
 
+app.use(router.routes()).use(router.allowedMethods());
 app.use(usersRouter.routes()).use(usersRouter.allowedMethods());
 app.use(topicRouter.routes()).use(topicRouter.allowedMethods());
 app.use(publicationRouter.routes()).use(publicationRouter.allowedMethods());

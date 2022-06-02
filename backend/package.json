@@ -5,18 +5,25 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "start": "nodemon app.js"
+    "build": "cd ..\/client && npm run build",
+        "install-client": "cd ..\/client && npm install",
+        "heroku-postbuild": "npm run install-client && npm run build",
+        "server": "nodemon server.js",
+        "develop": "concurrently --kill-others-on-fail \"npm run server\" \"npm run start --prefix client\"",
+        "start": "concurrently --kill-others-on-fail \"npm run server\" \"npm run start --prefix client\""
   },
   "author": "Ekanayake EMUY",
   "license": "ISC",
   "dependencies": {
     "@koa/cors": "^3.3.0",
     "@koa/router": "^10.1.1",
+    "dotenv": "^16.0.1",
     "fs": "^0.0.1-security",
     "koa": "^2.13.4",
     "koa-body": "^5.0.0",
     "koa-bodyparser": "^4.3.0",
     "koa-busboy": "^1.2.0",
+    "koa-router": "^10.1.1",
     "koa-static": "^5.0.0",
     "mongodb": "^4.6.0",
     "mongoose": "^6.3.4",
