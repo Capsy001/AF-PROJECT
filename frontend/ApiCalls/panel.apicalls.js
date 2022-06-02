@@ -1,7 +1,7 @@
 import axios from "axios";
 
 
-//function to get groupID
+//function to get groups
 export async function getGroups()
 {
   var data = [];
@@ -15,20 +15,26 @@ export async function getGroups()
   return data;
 }
 
-//function to get group Id by student registation number
-export async function getGroupByReg(regId){
+//function to get panelmembers
+export async function getPanelMembers()
+{
   var data = [];
-  await axios.get('http://localhost:3000/groups/getById/' + regId).then(response => {
+
+  await axios.get("http://localhost:3000/panel/").then(response =>
+  {
     data = response.data;
-  })
+  }).then(x=>{
+    
+  });
   return data;
 }
 
+
 //function to add group
-export async function createGroup(group)
+export async function assignGroup(id,data)
 {
 
-  await axios.post("http://localhost:3000/groups/", group).then(response =>
+  await axios.put("http://localhost:3000/panel/assign/" + id, data).then(response =>
     {
     const data = response.data;
     console.log(data)

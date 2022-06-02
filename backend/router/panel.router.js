@@ -31,12 +31,9 @@ panelRouter.put('/assign/:id', async(ctx) =>
 {
     const id = ctx.params.id;
     const data = await ctx.request.body;
-    console.log(data.panel)
-    const panelass = {
-        panel:data.panel
-    }
+    console.log(data)
     
-    const panelassign = await assignPanel(id,panelass);
+    const panelassign = await assignPanel(id,data);
     try{
         ctx.body = panelassign;
         ctx.set('Content-Type', 'application/json');
