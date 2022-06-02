@@ -87,7 +87,7 @@ export default class CreateGroup extends Component {
 
    console.log(group);
    alert("Group created!");
-   window.location.href = "/registerTopics"
+   window.location.href = "/registerTopics";
 
   }
 
