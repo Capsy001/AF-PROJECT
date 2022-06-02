@@ -30,7 +30,7 @@ export default class UpdateSubmissionType extends Component {
     
   }
 
-  handleData(subdata){
+  async handleData(subdata){
     try{
       this.setState({
         data:{
@@ -86,19 +86,19 @@ export default class UpdateSubmissionType extends Component {
     
   }
 
-  handleTitleChange = (event) => {
+  handleTitleChange = async(event) => {
     this.setState({ title: event.target.value });
   };
 
-  handleDescChange = (event) => {
+  handleDescChange = async(event) => {
     this.setState({ desc: event.target.value });
   };
 
-  handleDeadlineChange = (event) => {
+  handleDeadlineChange = async(event) => {
     this.setState({ deadline: event.target.value });
   };
 
-  handleSubmit = async (event) => {
+  handleSubmit = async(event) => {
     event.preventDefault();
     try{
       var completed = 0;

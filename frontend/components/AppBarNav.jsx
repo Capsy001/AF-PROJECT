@@ -51,7 +51,7 @@ class AppBarNav extends Component {
           <Divider orientation="vertical" variant="middle" flexItem />
           <Link style={{ textDecoration: "none" }} to="/createStudentSubmission">
             <Button sx={{ color: "white" }} size="small" color="inherit">
-              Create Student SubmissionTypes
+              Create Student Submission
             </Button>
           </Link>
           <Divider orientation="vertical" variant="middle" flexItem />

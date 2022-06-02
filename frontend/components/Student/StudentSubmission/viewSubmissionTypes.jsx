@@ -20,9 +20,9 @@ export default class ViewSubmissionTypes extends Component {
     this.handleData = this.handleData.bind(this);
   }
 
-  handleData(subdata){
+  handleData(ssubdata){
     this.setState({
-      data:subdata
+      data:ssubdata
     });
   }
 
@@ -40,18 +40,12 @@ export default class ViewSubmissionTypes extends Component {
     });
   }
 
-  async handleEdit(id){
-    await sessionStorage.setItem('EditId', id);
-    window.location.href='/updateSubmissionType';
-  }
-
   componentDidMount(){
     axios.get("http://localhost:3000/submissiontypes").then(response =>
     {
       this.handleData(response.data);
     });
   }
-  
 
   render() {
 
@@ -62,7 +56,7 @@ export default class ViewSubmissionTypes extends Component {
 <h1 style={{marginLeft:'40%'}}>Assignment List</h1>
        
         {(this.state.data).map(data =>
-        <Card sx={{ width:"34%", height: 200, float:"left", marginLeft:10, marginTop:4, marginRight:10 }} style={{border:'1px solid #2e7d32'}}>
+        <Card sx={{ width:"34%", height: 200, float:"left", marginLeft:10, marginTop:4, marginRight:10, marginBottom:4 }} style={{border:'1px solid #2e7d32'}}>
                     <CardContent>
                       <Typography gutterBottom variant="h5" component="div">
                      <div style={{textAlign:'center', color:'blue'}}><b>{data.title}</b></div>
@@ -81,7 +75,9 @@ export default class ViewSubmissionTypes extends Component {
           <br></br>
 
                     </CardContent>
-                    
+                    <CardActions>
+                      
+                    </CardActions>
                   </Card>
         )}
       </div>

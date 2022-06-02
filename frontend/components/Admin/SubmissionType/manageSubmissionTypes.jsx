@@ -20,13 +20,13 @@ export default class ManageSubmissionTypes extends Component {
     this.handleData = this.handleData.bind(this);
   }
 
-  handleData(subdata){
+  async handleData(subdata){
     this.setState({
       data:subdata
     });
   }
 
-  loadData(){
+  async loadData(){
     axios.get("http://localhost:3000/submissiontypes").then(response =>
     {
       this.handleData(response.data);
@@ -37,14 +37,15 @@ export default class ManageSubmissionTypes extends Component {
     window.location.href='/updateSubmissionType';
   }
 
-  handleDelete(id){
+  async handleDelete(id){
     axios.delete(`http://localhost:3000/submissiontypes/${id}`).then(response =>
     {
       this.loadData();
+      alert("Submission Type Delete Successfully")
     });
   }
 
-  componentDidMount(){
+  async componentDidMount(){
     axios.get("http://localhost:3000/submissiontypes").then(response =>
     {
       this.handleData(response.data);
@@ -60,7 +61,7 @@ export default class ManageSubmissionTypes extends Component {
 <h1 style={{marginLeft:'40%'}}>Manage Assignment List</h1>
        
         {(this.state.data).map(data =>
-        <Card sx={{ width:"34%", height: 200, float:"left", marginLeft:10, marginTop:4, marginRight:10 }} style={{border:'1px solid #2e7d32'}}>
+        <Card sx={{ width:"34%", height: 200, float:"left", marginLeft:10, marginTop:4, marginRight:10, marginBottom:4 }} style={{border:'1px solid #2e7d32'}}>
                     <CardContent>
                       <Typography gutterBottom variant="h5" component="div">
                      <div style={{textAlign:'center'}}><b>{data.title}</b></div>
