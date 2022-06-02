@@ -111,6 +111,14 @@ export default class Register extends Component {
           }}
         >
           <form onSubmit={this.handleSubmit}>
+          <h2 style={{marginTop:'0px'
+                        ,color: '#fff',
+                        background: '#00e676',
+                        borderRadius: '100px',
+                        display: 'inline-block',
+                        padding: '6px 40px',
+                        fontFamily: 'sans-serif',
+          }}>Register</h2>
             <div>
               <TextField
                 label="Name"

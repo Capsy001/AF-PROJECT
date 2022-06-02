@@ -41,13 +41,16 @@ export default class Login extends Component {
           <Paper sx={{ padding: "32px", width: "40%", textAlign:"center", justifyContent:"center", margin: "0 auto",borderBottom: '3px solid #00e676'
                     ,marginTop:'100px'
                     }}>
+
+
+                      
             <h2 style={{marginTop:'0px'
                         ,color: '#fff',
                         background: '#00e676',
                         borderRadius: '100px',
                         display: 'inline-block',
                         padding: '6px 40px',
-                        fontFamily: 'Optima',
+                        fontFamily: 'sans-serif',
           }}>Login</h2>
 
             <form onSubmit={this.handleSubmit}>

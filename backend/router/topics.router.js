@@ -1,5 +1,6 @@
 import Router from "@koa/router"
-import { addTopic, banTopic, updateTopic, getAllSubmissions, deleteSubmission, getSubmission } from "../api/topics.api.js";
+import { addTopic, banTopic, updateTopic, getAllSubmissions, deleteSubmission, getSubmission, updateSupervisors } from "../api/topics.api.js";
+
 
 const topicRouter = new Router(
     {
@@ -10,6 +11,7 @@ const topicRouter = new Router(
 topicRouter.post('/new', async(ctx) =>
 {
     const topic = await ctx.request.body;
+    
     const newtopic = await addTopic(topic);
     try{
         ctx.body = newtopic;
@@ -65,7 +67,7 @@ topicRouter.put('/update/:id', async(ctx) =>
 topicRouter.get('/', async ctx=>{
     ctx.body= await getAllSubmissions();
 })
-//dd
+
 topicRouter.delete('/:id', (ctx) => {
     const id = ctx.params.id;
     ctx.body =  deleteSubmission(id);
@@ -100,6 +102,14 @@ topicRouter.put('/update/:id', async ctx=> {
     ctx.body = await updateSubmission(id,submission);
     ctx.response.status = 200;
     ctx.body = submission;
+})
+
+topicRouter.put('/supervisor', async ctx=> {
+    
+    console.log('here')
+    let group = ctx.request.body;
+    ctx.body = await updateSupervisors(group);
+    ctx.response.status = 200;
 })
 
 export default topicRouter;
