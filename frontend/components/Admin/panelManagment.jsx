@@ -3,7 +3,7 @@ import { Component } from "react";
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
 import AppBarNav from "../appBarNav";
-import {getGroups} from '../../ApiCalls/panel.apicalls';
+import {getGroups, getPanelMembers} from '../../ApiCalls/panel.apicalls';
 import {
   Button,
   Stack,
@@ -24,14 +24,18 @@ export default class PanelManagment extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      data : []
+      data : [],
+      data2:[]
     };
   }
 
 
   async componentWillMount(){
-    const data = await getGroups();
-    this.setState({data : data});
+    const items = await getGroups();
+    this.setState({data : items});
+
+    const items2 = await getPanelMembers();
+    this.setState({data2 : items2});
   }
 
   render() {
@@ -57,9 +61,17 @@ export default class PanelManagment extends Component {
               <Autocomplete
                 disablePortal
                 id="combo-box-demo"
-                options={top100Films.map((option) => option.title)}
-                sx={{ width: 300 }}
-                renderInput={(params) => <TextField {...params} label="Movie" />}
+                options={(this.state.data).map((option) => option.groupId)}
+                renderInput={(params) => <TextField {...params} label="Groups" />}
+              />
+              </div>
+              <br></br>
+              <div>
+              <Autocomplete
+                disablePortal
+                id="combo-box-demo"
+                options={(this.state.data2).map((option) => option.name)}
+                renderInput={(params) => <TextField {...params} label="PanleMembers" />}
               />
               </div>
               <br></br>
@@ -72,7 +84,6 @@ export default class PanelManagment extends Component {
                 size="small"
                 className="buttonMargin"
                 type="submit"
-                onClick={this.handleSubmit}
               >
                 Submit
               </Button>
@@ -80,7 +91,6 @@ export default class PanelManagment extends Component {
             </form>
           </Paper>
         </div>
-        <p>hi</p>
       </div>
     );
   }

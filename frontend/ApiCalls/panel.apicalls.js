@@ -1,12 +1,26 @@
 import axios from "axios";
 
 
-//function to get groupID
+//function to get groups
 export async function getGroups()
 {
   var data = [];
 
   await axios.get("http://localhost:3000/panel/Groups").then(response =>
+  {
+    data = response.data;
+  }).then(x=>{
+    
+  });
+  return data;
+}
+
+//function to get panelmembers
+export async function getPanelMembers()
+{
+  var data = [];
+
+  await axios.get("http://localhost:3000/panel/").then(response =>
   {
     data = response.data;
   }).then(x=>{
