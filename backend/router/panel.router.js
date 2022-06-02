@@ -1,5 +1,5 @@
 import Router from "@koa/router"
-import { getAllPanelMembers, getGroup, assignPanel } from "../api/panel.api.js";
+import { getAllPanelMembers, getGroup, assignPanel, getAllGroups } from "../api/panel.api.js";
 
 const panelRouter = new Router(
     {
@@ -10,6 +10,12 @@ const panelRouter = new Router(
 
 panelRouter.get('/', async ctx=>{
     ctx.body= await getAllPanelMembers();
+    ctx.set('Content-Type', 'application/json');
+    ctx.status = 201;
+})
+
+panelRouter.get('/Groups', async ctx=>{
+    ctx.body= await getAllGroups();
     ctx.set('Content-Type', 'application/json');
     ctx.status = 201;
 })

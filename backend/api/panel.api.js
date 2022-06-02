@@ -1,9 +1,16 @@
-import { getPanelMembers, checkStatusOfGroup, assign} from '../dao/panel.dao.js';
+import { getPanelMembers, checkStatusOfGroup, assign, getGroups} from '../dao/panel.dao.js';
 
 //function to get all panel members
 export const getAllPanelMembers = async() =>
 {
     const res = getPanelMembers();
+    return res;
+}
+
+//function to get all groups
+export const getAllGroups = async() =>
+{
+    const res = getGroups();
     return res;
 }
 
@@ -25,4 +32,4 @@ export const assignPanel = async(groupId,panelmembers) =>
     return result;
 };
 
-export default {getAllPanelMembers, getGroup, assignPanel};
+export default {getAllPanelMembers, getGroup, assignPanel, getAllGroups};

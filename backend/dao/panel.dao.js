@@ -25,6 +25,11 @@ export async function getPanelMembers (){
     return cursor.toArray();
 }
 
+export async function getGroups (){
+    const cursor = await groups.find();
+    return cursor.toArray();
+}
+
 
 //Export the functions
-export default {getPanelMembers, checkStatusOfGroup, assign};
+export default {getPanelMembers, checkStatusOfGroup, assign, getGroups};
