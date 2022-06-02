@@ -56,7 +56,7 @@ export default class ManageSubmissionTypes extends Component {
     return (
       <div>
         
-        <CustomHeader />
+        <AppBarNav></AppBarNav>
 <h1 style={{marginLeft:'40%'}}>Manage Assignment List</h1>
        
         {(this.state.data).map(data =>

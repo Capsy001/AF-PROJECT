@@ -9,6 +9,7 @@ import topicRouter from "./router/topics.router.js";
 import studentsubmissionsRouter from "./router/studentsubmission.router.js";
 import panelRouter from "./router/panel.router.js";
 import markingRouter from "./router/marking.router.js";
+import submissionsRouter from "./router/submissiontype.router.js";
 
 const app = new Koa();
 app.use(bodyParser());
@@ -23,6 +24,7 @@ app.use(groupsRouter.routes()).use(groupsRouter.allowedMethods());
 app.use(studentsubmissionsRouter.routes()).use(studentsubmissionsRouter.allowedMethods());
 app.use(panelRouter.routes()).use(panelRouter.allowedMethods());
 app.use(markingRouter.routes()).use(markingRouter.allowedMethods());
+app.use(submissionsRouter.routes()).use(submissionsRouter.allowedMethods());
 
 app.use(ctx =>
 {

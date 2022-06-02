@@ -52,7 +52,7 @@ export default class CreateSubmissionType extends Component {
     return (
       <div>
         
-        <CustomHeader />
+        <AppBarNav></AppBarNav>
 
         <div  style={{marginTop:'100px',marginLeft:'400px',marginBottom:'100px', alignItems:'center', textAlign:'center', width:'40%', border:'3px solid #73AD21', padding:'10px'}}>
       
