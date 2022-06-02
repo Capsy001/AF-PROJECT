@@ -44,11 +44,6 @@ export default class App extends Component {
         <Routes>
           <Route path="/register" element={<Register />} />
           <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/panel" element={<PanelDashboard />} />
-          <Route path="/panel/evTopics" element={<EvTopics />} />
-          <Route path="/panel/evPresentation" element={<EvPresentation />} />
-          <Route path="/panelManagement" element={<PanelManagment />} />
-          <Route path='/createGroup' element={<CreateGroup />} />
           <Route exact path="/" element={<Login />} />
 
         </Routes>
