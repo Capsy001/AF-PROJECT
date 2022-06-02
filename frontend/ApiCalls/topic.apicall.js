@@ -56,4 +56,9 @@ export async function banTopicsts(topic)
     window.location.href='/panel/evTopics';
     return data;
 }
+
+
+
+
+
 export default {getTopics, updateTopicsts, banTopicsts, newTopic};

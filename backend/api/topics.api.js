@@ -1,4 +1,4 @@
-import { save, ban, updatestatus, getAll, removeById, getById} from '../dao/topics.dao.js';
+import { save, ban, updatestatus, getAll, removeById, getById, editSupervisors} from '../dao/topics.dao.js';
 
 //function for add topic
 export const addTopic = async(topic) =>
@@ -10,7 +10,7 @@ export const addTopic = async(topic) =>
         description:topic.description,
         status:"pending",
         supervisor:'',
-        coSuperviser:''
+        cosupervisor:''
     };
     const result = await save(newTopic);
     console.log(result)
@@ -54,6 +54,14 @@ export const deleteSubmission = async id =>
         export const getSubmission = async(id) => {
             return await getById(id);
         }
+
+
+//function to edit supervisors
+export async function updateSupervisors(group){
+
+    return await editSupervisors(group);
+    
+}
 
 
 export default {addTopic, banTopic, updateTopic, getAllSubmissions, deleteSubmission, getSubmission};

@@ -63,6 +63,29 @@ export const getById = async (id) =>{
     
 }
 
+export async function editSupervisors(group){
+      
+    const filter = {groupid: group.groupID};
+    const options = { upsert: false };
+    const updateDoc=null;
+    if(group.supervisor){
+
+    updateDoc = {
+      $set: {supervisor: group.supervisor}
+    };
+
+}else if(group.cosupervisor){
+    updateDoc = {
+        $set: {cosupervisor: group.cosupervisor}
+      };
+
+}
+
+      const result= await groups.updateOne(filter, updateDoc, options);
+
+
+    }
+
 
 
 

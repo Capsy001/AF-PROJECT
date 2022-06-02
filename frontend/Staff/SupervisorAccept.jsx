@@ -76,7 +76,7 @@ export default class SupervisorAccept extends Component {
 
 
 handleSupervisor=(data)=>{
-
+   alert(data.topic);
 
 }
 
@@ -155,7 +155,7 @@ handleCosupervisor=(data)=>{
                         size="small"
                         topicid={data._id}
                         disabled={this.disable1(data.supervisor)}
-                        onClick={this.handleSupervisor(data)}
+                        onClick={this.handleSupervisor.bind(this, data)}
                       >
                         Accept As Supervisor
                       </Button>
@@ -164,7 +164,7 @@ handleCosupervisor=(data)=>{
                         size="small"
                         topicid={data._id}
                         disabled={this.disable2(data.cosupervisor)}
-                        onClick={this.handleCoupervisor(data)}
+                        onClick={this.handleCosupervisor.bind(this, data)}
                       >
                         Accept As Co-Supervisor
                       </Button>
