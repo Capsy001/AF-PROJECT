@@ -9,6 +9,8 @@ import { InputLabel, Select,MenuItem } from "@mui/material";
 import { CheckRounded, Add } from "@mui/icons-material";
 
 import { Button, TextField, Chip, Divider, Alert, FormControl } from "@mui/material";
+import AppBarNav from "../../AppBarNav";
+import { getGroupByReg } from "../../../ApiCalls/group.apicall";
 export default class CreateStudentSubmissionType extends Component {
   constructor(props) {
     super(props);
@@ -19,6 +21,7 @@ export default class CreateStudentSubmissionType extends Component {
       file: "",
       progressPrecentage: 0,
       assignmentTypes:[],
+      currentgroup:""
     };
     this.handleSubmit.config = this.handleSubmit.bind(this);
     // this.id = sessionStorage.getItem(assignmentID);
@@ -43,18 +46,22 @@ export default class CreateStudentSubmissionType extends Component {
   handleFileRemove = (event) =>{
     this.setState({ file:'' });
   };
-
-  componentWillMount(){
+/////////////////////////////////
+  async componentWillMount(){
     axios.get("http://localhost:3000/submissiontypes/").then(response =>
     {
       const data = response.data;
       this.handleData(data);
     });
-  }
 
-  handleSelect(id){
+    const groupid=await getGroupByReg(sessionStorage.getItem("RegId"))
+    this.setState({currentgroup:groupid[0].groupId})
+    console.log(groupid[0].groupId)
+  }
+////////////////////////////////
+  handleSelect(data){
     this.setState({
-        selectedType: id
+        selectedType: data._id
     });
   }
 
@@ -71,11 +78,11 @@ export default class CreateStudentSubmissionType extends Component {
     var completed = 0;
 
     const studentsubmission = {
-      groupid: this.state.groupid,
+      groupid: this.state.currentgroup,
       topic: this.state.topic,
       uploaddate: this.state.uploaddate,
       file: this.state.file,
-      assignmentTitle: this.state.selectedType,
+      assignmentId: this.state.selectedType,
     };
 
     document.getElementById("progress").style.display = "inline-flex";
@@ -100,6 +107,7 @@ export default class CreateStudentSubmissionType extends Component {
       this.setState({
         assignmentTitle:[],
         selectedType : "",
+        assignmentId: ""
     });
       
     });
@@ -111,13 +119,18 @@ export default class CreateStudentSubmissionType extends Component {
     return (
       <div>
         
-        <CustomHeader />
+        <AppBarNav></AppBarNav>
 
-        <div  style={{marginTop:'100px',marginLeft:'400px',marginBottom:'100px', alignItems:'center', textAlign:'center', width:'40%', border:'3px solid #73AD21', padding:'10px'}}>
+        <Divider><Chip label="Submit Your Assignment" sx={{fontSize:'20px', margin:"10px"}}></Chip></Divider>
 
+        <div  style={{margin: "0 auto", alignItems:'center', textAlign:'center', width:'40%', border:'3px solid #73AD21', padding:'10px'}}>
+
+        
 
         <form onSubmit={this.handleSubmit} encType="multipart/form-data" method="post">
-          <h1>Student Submission</h1>
+
+        
+          
           <div>
         <FormControl fullWidth>
             <InputLabel id="demo-simple-select-label">Assignment Title</InputLabel>
@@ -130,18 +143,16 @@ export default class CreateStudentSubmissionType extends Component {
             >
                 {
                     this.state.assignmentTypes.map(data =>
-                        <MenuItem value={data._id} key={data._id} onClick={(e) => this.handleSelect(data.title)}>{data.title}</MenuItem>
+                        <MenuItem value={data._id} key={data._id} onClick={(e) => this.handleSelect(data)}>{data.title}</MenuItem>
                     )
                 }
             </Select>
             </FormControl>
         </div>
-          <div>
-            <TextField variant="outlined" margin="normal" id="groupid" label="Group ID" onChange={this.handleGroupIdChange}/>
-          </div>
+          
           <br></br>
           <div>
-            <TextField variant="outlined" margin="normal" id="topic" label="Title" onChange={this.handleTopicChange}
+            <TextField variant="outlined" margin="normal" id="topic" label="Comment" onChange={this.handleTopicChange}
             />
           </div>
           <br></br>

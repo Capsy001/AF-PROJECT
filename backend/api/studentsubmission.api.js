@@ -34,7 +34,7 @@ export const addStudentSubmission = async(studentsubmission) =>
         topic: studentsubmission.topic,
         uploaddate:studentsubmission.uploaddate,
         file:studentsubmission.file,
-        assignmentTitle:studentsubmission.assignmentTitle,
+        assignmentId:studentsubmission.assignmentId,
     };
     const result = await save(newStudentSubmission);
     console.log(result)

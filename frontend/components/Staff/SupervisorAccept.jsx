@@ -88,8 +88,16 @@ handleSupervisor=async (data)=>{
 
 }
 
-handleCosupervisor=(data)=>{
+handleCosupervisor=async (data)=>{
+  console.log(data)
 
+  const update= {
+     groupid:data.groupid,
+     cosupervisor: sessionStorage.getItem("loggedEmail")
+     }
+ 
+     const result=await updateSupervisor(update);
+     window.location.href="/supervisor"
     
 }
 

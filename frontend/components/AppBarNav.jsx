@@ -84,6 +84,7 @@ class AppBarNav extends Component {
                   Publications
                 </Button>
               </Link>
+              <Divider orientation="vertical" variant="middle" flexItem />
             </>
           ) : (
             <></>
@@ -135,7 +136,7 @@ class AppBarNav extends Component {
               View Submissions
             </Button>
           </Link>
-          <Divider orientation="vertical" variant="middle" flexItem />
+      
 
           <Divider orientation="vertical" variant="middle" flexItem />
           <Link style={{ textDecoration: "none" }} to="/panelManagement">
