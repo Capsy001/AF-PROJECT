@@ -20,38 +20,38 @@ export default class ViewSubmissionTypes extends Component {
     this.handleData = this.handleData.bind(this);
   }
 
-  handleData(ssubdata){
+  async handleData(ssubdata){
     this.setState({
       data:ssubdata
     });
   }
 
-  loadData(){
+  async loadData(){
     axios.get("http://localhost:3000/submissiontypes").then(response =>
     {
       this.handleData(response.data);
     });
   }
 
-  handleDelete(id){
+  async handleDelete(id){
     axios.delete(`http://localhost:3000/submissiontypes/${id}`).then(response =>
     {
       this.loadData();
     });
   }
 
-  componentDidMount(){
+  async componentDidMount(){
     axios.get("http://localhost:3000/submissiontypes").then(response =>
     {
       this.handleData(response.data);
     });
   }
 
-  handleSubmit(data){
-    Console.log(data.topic);
-    sessionStorage.setItem('assignmentID', data.id);
-    window.location.href='/createStudentSubmission';
-  }
+  // async handleSubmit(data){
+  //   Console.log(data.topic);
+  //   sessionStorage.setItem('assignmentID', data.id);
+  //   window.location.href='/createStudentSubmission';
+  // }
 
   render() {
 
@@ -73,7 +73,7 @@ export default class ViewSubmissionTypes extends Component {
                       <Typography variant="h7" color="text.secondary">
                         <div style={{textAlign:'center', color:'red'}}>Deadline : {data.deadline}</div>
                       </Typography>
-                      <Button onClick={handleSubmit(data)}></Button>
+                      {/* <Button onClick={handleSubmit(data)}></Button> */}
                       <Link to="/createStudentSubmission"><Button  variant="contained" margin="normal" id="Submit" type="submit" style={{marginLeft:'100px', marginBottom:'10px', marginTop:'10px',textDecoration:'none'}}>
             UPOLAD ASSIGNMENT
           </Button>

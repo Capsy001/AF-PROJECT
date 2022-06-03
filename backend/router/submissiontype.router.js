@@ -16,7 +16,7 @@ submissionsRouter.post('/new', async(ctx) =>
                         const submissiontype = {
                             title: data.title,
                             desc: data.desc,
-                            deadline: data.deadline,
+                            deadline: data.deadline
                         };
                     
                         console.log(ctx.request.body);
