@@ -38,7 +38,7 @@ export default class CreateSubmissionType extends Component {
       deadline: this.state.deadline,
     };
 
-    axios.post("http://localhost:5000/submissiontypes/new", submissiontype).then(response =>
+    axios.post("http://localhost:3000/submissiontypes/new", submissiontype).then(response =>
     {
       const data = response.data;
       

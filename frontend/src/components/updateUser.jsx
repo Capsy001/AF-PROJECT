@@ -40,7 +40,7 @@ export default class UpdateUser extends Component {
           role: <TextField id="outlined-required" label="role" defaultValue={userdata.role} fullWidth onChange={this.handleRoleChange}/>,
   
               fileDownload:
-               <a target="_blank" href={"http://localhost:5000/"+userdata.file}>Download Existing File</a>,
+               <a target="_blank" href={"http://localhost:3000/"+userdata.file}>Download Existing File</a>,
               publishBtn:
                       
                   <Button
@@ -77,7 +77,7 @@ export default class UpdateUser extends Component {
     try{
       console.log(this.id);
 
-      await axios.get(`http://localhost:5000/users/get/` + this.id).then(response =>
+      await axios.get(`http://localhost:3000/users/get/` + this.id).then(response =>
       {
         console.log(response.data)
         this.handleData(response.data);
@@ -119,7 +119,7 @@ export default class UpdateUser extends Component {
   
   
   
-      await axios.put(`http://localhost:5000/users/update/` + this.id, submissions).then(response =>
+      await axios.put(`http://localhost:3000/users/update/` + this.id, submissions).then(response =>
       {
         const data = response.data;
         console.log(data)

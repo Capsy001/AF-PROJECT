@@ -12,7 +12,7 @@ import panelRouter from "./router/panel.router.js";
 import markingRouter from "./router/marking.router.js";
 import path from "path";
 
-const PORT = process.env.PORT || 5000
+const PORT = process.env.PORT || 3000
 
 const app = new Koa();
 const router = new koaRouter()
@@ -43,7 +43,7 @@ app.use(ctx =>
     ctx.body = '<h1>No data is available1</h1>'
 });
 
-app.listen(5000, () =>
+app.listen(3000, () =>
 {
     console.log("App running on port 3000!");
 })

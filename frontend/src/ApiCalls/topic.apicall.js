@@ -3,7 +3,7 @@ import axios from "axios";
 //function to register new topic
 export async function newTopic(topicData){
     const data1 = []
-    await axios.post("http://localhost:5000/topics/new",topicData).then((response) => {
+    await axios.post("http://localhost:3000/topics/new",topicData).then((response) => {
         const data = response.data;
         console.log(data);
         data1.push(data);
@@ -16,7 +16,7 @@ export async function newTopic(topicData){
 export async function getTopics()
 {
     var items = [];
-    await axios.get("http://localhost:5000/topics/").then((response) => {
+    await axios.get("http://localhost:3000/topics/").then((response) => {
         const data = response.data;
         const keys = Object.keys(data);
         for (var x in data) {
@@ -40,7 +40,7 @@ export async function getTopics()
 export async function updateTopicsts(id,status)
 {
     var data = '';
-    await axios.put("http://localhost:5000/topics/update/" + id, status).then((response) => {
+    await axios.put("http://localhost:3000/topics/update/" + id, status).then((response) => {
         data = response.data;
     });
     window.location.href='/panel/evTopics';
@@ -50,7 +50,7 @@ export async function updateTopicsts(id,status)
 export async function banTopicsts(topic)
 {
     var data = '';
-    await axios.post("http://localhost:5000/topics/ban/" , topic).then((response) => {
+    await axios.post("http://localhost:3000/topics/ban/" , topic).then((response) => {
         data = response.data;
     });
     window.location.href='/panel/evTopics';

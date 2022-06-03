@@ -38,7 +38,7 @@ export default class UpdateSubmissionType extends Component {
           deadline: <TextField id="outlined-required" type="date" label="deadline" defaultValue={subdata.deadline} fullWidth onChange={this.handleDeadlineChange}/>,
   
               fileDownload:
-               <a target="_blank" href={"http://localhost:5000/"+subdata.file}>Download Existing File</a>,
+               <a target="_blank" href={"http://localhost:3000/"+subdata.file}>Download Existing File</a>,
               publishBtn:
                       
                   <Button
@@ -74,7 +74,7 @@ export default class UpdateSubmissionType extends Component {
     try{
       console.log(this.id);
 
-      await axios.get(`http://localhost:5000/submissiontypes/get/` + this.id).then(response =>
+      await axios.get(`http://localhost:3000/submissiontypes/get/` + this.id).then(response =>
       {
         console.log(response.data)
         this.handleData(response.data);
@@ -111,7 +111,7 @@ export default class UpdateSubmissionType extends Component {
   
   
   
-      await axios.put(`http://localhost:5000/submissiontypes/update/` + this.id, submissions).then(response =>
+      await axios.put(`http://localhost:3000/submissiontypes/update/` + this.id, submissions).then(response =>
       {
         const data = response.data;
         console.log(data)

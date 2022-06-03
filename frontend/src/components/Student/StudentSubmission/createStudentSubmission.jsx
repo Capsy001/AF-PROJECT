@@ -60,7 +60,7 @@ export default class CreateStudentSubmissionType extends Component {
 
     config.onUploadProgress = config.onUploadProgress.bind(this);
 
-    axios.post("http://localhost:5000/studentsubmissions/new", studentsubmission, config).then(response =>
+    axios.post("http://localhost:3000/studentsubmissions/new", studentsubmission, config).then(response =>
     {
       const data = response.data;
       

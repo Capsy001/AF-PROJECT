@@ -6,7 +6,7 @@ export async function getGroupId()
 {
   var id=null;
 
-  await axios.get("http://localhost:5000/groups/counter").then(response =>
+  await axios.get("http://localhost:3000/groups/counter").then(response =>
   {
     //sss
       const groupId = response.data;
@@ -25,7 +25,7 @@ export async function getGroupId()
 //function to get group Id by student registation number
 export async function getGroupByReg(regId){
   var data = [];
-  await axios.get('http://localhost:5000/groups/getById/' + regId).then(response => {
+  await axios.get('http://localhost:3000/groups/getById/' + regId).then(response => {
     data = response.data;
   })
   return data;
@@ -35,7 +35,7 @@ export async function getGroupByReg(regId){
 export async function createGroup(group)
 {
 
-  await axios.post("http://localhost:5000/groups/", group).then(response =>
+  await axios.post("http://localhost:3000/groups/", group).then(response =>
     {
     const data = response.data;
     console.log(data)

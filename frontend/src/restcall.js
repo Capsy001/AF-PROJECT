@@ -7,7 +7,7 @@ export async function login(email, password)
   try{
     const user = { email: email, password: password };
 
-    await axios.post("http://localhost:5000/users/login", user).then(response =>
+    await axios.post("http://localhost:3000/users/login", user).then(response =>
       {
       const data = response.data;
         console.log(data)
@@ -47,7 +47,7 @@ export async function login(email, password)
 //function to register with rest api
 export async function register(user)
 {
-  await axios.post("http://localhost:5000/users/new", user).then(response =>
+  await axios.post("http://localhost:3000/users/new", user).then(response =>
   {
     
     const data = response.data;

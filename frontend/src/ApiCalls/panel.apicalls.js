@@ -6,7 +6,7 @@ export async function getGroups()
 {
   var data = [];
 
-  await axios.get("http://localhost:5000/panel/Groups").then(response =>
+  await axios.get("http://localhost:3000/panel/Groups").then(response =>
   {
     data = response.data;
   }).then(x=>{
@@ -20,7 +20,7 @@ export async function getPanelMembers()
 {
   var data = [];
 
-  await axios.get("http://localhost:5000/panel/").then(response =>
+  await axios.get("http://localhost:3000/panel/").then(response =>
   {
     data = response.data;
   }).then(x=>{
@@ -34,7 +34,7 @@ export async function getPanelMembers()
 export async function assignGroup(id,data)
 {
 
-  await axios.put("http://localhost:5000/panel/assign/" + id, data).then(response =>
+  await axios.put("http://localhost:3000/panel/assign/" + id, data).then(response =>
     {
     const data = response.data;
     console.log(data)

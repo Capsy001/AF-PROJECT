@@ -25,14 +25,14 @@ export default class ViewUsers extends Component {
   }
 
   loadData(){
-    axios.get("http://localhost:5000/users").then(response =>
+    axios.get("http://localhost:3000/users").then(response =>
     {
       this.handleData(response.data);
     });
   }
 
   handleDelete(id){
-    axios.delete(`http://localhost:5000/users/${id}`).then(response =>
+    axios.delete(`http://localhost:3000/users/${id}`).then(response =>
     {
       this.loadData();
     });
@@ -44,7 +44,7 @@ export default class ViewUsers extends Component {
   }
 
   componentDidMount(){
-    axios.get("http://localhost:5000/users").then(response =>
+    axios.get("http://localhost:3000/users").then(response =>
     {
       this.handleData(response.data);
     });
