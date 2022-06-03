@@ -27,7 +27,7 @@ export default class AddPublications extends Component {
   handlePointRemove = (data) =>{
     var tempArr = [];
     for(let x of this.state.markingPoints){
-        if(x != data){
+        if(x.point != data){
             tempArr.push(x);
         }
     }
@@ -80,11 +80,16 @@ export default class AddPublications extends Component {
   addMarkingPoint(){
     event.preventDefault();
     var val = this.state.markingPoints;
-    val.push(document.getElementById('point').value);
+    val.push({
+      point:document.getElementById('point').value,
+      marks:document.getElementById('marks').value
+    });
     document.getElementById('point').value = "";
+    document.getElementById('marks').value = "";
     this.setState({
         markingPoints: val
     });
+    console.log(this.state.markingPoints);
   }
 
   render() {
@@ -131,7 +136,13 @@ export default class AddPublications extends Component {
             <TextField
                 id="point"
                 label="Enter a Marking Point"
-                style={{width:"78%"}}
+                style={{width:"50%"}}
+                onChange={this.handleDescChange}
+            />
+            <TextField
+                id="marks"
+                label="Marks for the point"
+                style={{width:"25%"}}
                 onChange={this.handleDescChange}
             />
             <Button
@@ -150,7 +161,7 @@ export default class AddPublications extends Component {
             {
               this.state.markingPoints.length != 0?
                 this.state.markingPoints.map(data => 
-                    <Chip label={data} style={{marginTop:'5px',marginLeft:'3px'}} key={this.count++} onDelete={(e) => this.handlePointRemove(data)} />
+                    <Chip label={data.point+':'+data.marks} style={{marginTop:'5px',marginLeft:'3px'}} key={this.count++} onDelete={(e) => this.handlePointRemove(data.point)} />
                 )
               :
               null
