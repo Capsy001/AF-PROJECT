@@ -64,7 +64,7 @@ class AppBarNav extends Component {
 
               <Link
                 style={{ textDecoration: "none" }}
-                to="/createStudentSubmission"
+                to="/viewSubmissionTypes"
               >
                 <Button sx={{ color: "white" }} size="small" color="inherit">
                   +SUBMISSIONS

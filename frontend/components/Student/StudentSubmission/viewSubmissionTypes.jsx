@@ -10,6 +10,7 @@ import { Button, Chip, Divider, Card, CardContent } from "@mui/material";
 import { Campaign, FileDownload } from "@mui/icons-material";
 
 import { Button, TextField, Chip, Divider, Typography, CardActions } from "@mui/material";
+import AppBarNav from "../../AppBarNav";
 
 export default class ViewSubmissionTypes extends Component {
   constructor(props) {
@@ -58,7 +59,7 @@ export default class ViewSubmissionTypes extends Component {
     return (
       <div>
         
-        <CustomHeader />
+        <AppBarNav></AppBarNav>
 <h1 style={{marginLeft:'40%'}}>Assignment List</h1>
        
         {(this.state.data).map(data =>
