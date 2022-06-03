@@ -18,6 +18,7 @@ h2{
     color: #00e676;
     justify-content: center;
     text-align: center;
+    
 }
 
 form {
@@ -47,6 +48,10 @@ body{
 
 #searchbar{
     margin: 0 auto;
+}
+
+#logo{
+    width: 50%;
 }
 
 

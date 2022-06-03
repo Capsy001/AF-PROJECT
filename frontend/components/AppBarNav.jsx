@@ -152,7 +152,8 @@ class AppBarNav extends Component {
           {//End admin tabs
 }
 
-
+{//start staff tabs
+}
 {sessionStorage.getItem("loggedRole") == "staff" ? 
 
 <>
@@ -163,6 +164,24 @@ class AppBarNav extends Component {
           </Link>
 
           <Divider orientation="vertical" variant="middle" flexItem />
+
+          <Link style={{ textDecoration: "none" }} to="/viewStudentSubmissions">
+            <Button sx={{ color: "white" }} size="small" color="inherit">
+              View Submissions
+            </Button>
+          </Link>
+          <Divider orientation="vertical" variant="middle" flexItem />
+
+          <Link style={{ textDecoration: "none" }} to="/panel/evTopics">
+            <Button sx={{ color: "white" }} size="small" color="inherit">
+              Evaluate Topics
+            </Button>
+          </Link>
+          <Divider orientation="vertical" variant="middle" flexItem />
+
+
+
+          
 </>
 
 :
@@ -173,6 +192,8 @@ class AppBarNav extends Component {
 
 
 
+}
+{//end staff tabs
 }
           
 

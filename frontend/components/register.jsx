@@ -86,20 +86,10 @@ export default class Register extends Component {
   render() {
     return (
       <div className="registerForm" style={{ textAlign: "center" }}>
-        <h2>Register</h2>
 
-        <Link style={{ textDecoration: "none" }} to="/">
-          <Button
-            size="small"
-            variant="contained"
-            color="success"
-            className="buttonMargin"
-          >
-            Login
-          </Button>
-        </Link>
+<img style={{width: "20%"}} src={require('../resources/SLIIT.png')} /> 
 
-        <hr></hr>
+        
 
         <Paper
           sx={{
@@ -108,6 +98,7 @@ export default class Register extends Component {
             textAlign: "center",
             justifyContent: "center",
             margin: "0 auto",
+            borderBottom: '3px solid #00e676'
           }}
         >
           <form onSubmit={this.handleSubmit}>
@@ -215,6 +206,18 @@ export default class Register extends Component {
             </Button>
           </form>
         </Paper>
+
+        <Link style={{ textDecoration: "none" }} to="/">
+          <Button
+          sx={{width:"45%", margin: "10px"}}
+            size="small"
+            variant="contained"
+            color="primary"
+            className="buttonMargin"
+          >
+            Login
+          </Button>
+        </Link>
       </div>
     );
   }
