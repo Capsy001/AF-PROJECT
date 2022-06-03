@@ -2,7 +2,7 @@ import client from'./index.js';
 const users = client.db('store').collection('users')
 import * as mongoose from 'mongoose';
 import {ObjectId} from 'mongodb';
-const CryptoJS = require("crypto-js");
+import CryptoJS from "crypto-js";
 var key = "ASECRET";
 
 //register user

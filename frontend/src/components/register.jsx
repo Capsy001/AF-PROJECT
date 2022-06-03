@@ -11,7 +11,7 @@ import Select, { SelectChangeEvent } from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
 import InputLabel from '@mui/material/InputLabel';
 import { Button, Paper } from "@mui/material";
-const CryptoJS = require("crypto-js");
+import CryptoJS from "crypto-js";
 var key = "ASECRET";
 
 export default class Register extends Component {
