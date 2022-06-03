@@ -10,29 +10,10 @@ import Dashboard from "./components/dashboard";
 import PanelDashboard from "./components/Panel/paneldashbord";
 // End dashboards
 
-//Start Panel routes
-import Chating from "./components/Groups/SupervisorChat";
 import EvTopics from "./components/Panel/evTopics";
 import EvPresentation from "./components/Panel/evPresentation";
 import CreateGroup from "./components/Groups/CreateGroup";
-import ViewUsers from "./components/viewUsers";
-import CreateSubmissionType from "./components/Admin/SubmissionType/createSubmissionType";
-import ViewSubmissionTypes from "./components/Student/StudentSubmission/viewSubmissionTypes";
-import UpdateSubmissionType from "./components/Admin/SubmissionType/updateSubmissionType";
-
 import PanelManagment from "./components/Admin/panelManagment";
-
-import CreateStudentSubmission from "./components/Student/StudentSubmission/createStudentSubmission";
-import ViewStudentSubmissions from "./components/Admin/SubmissionType/viewStudentSubmissions";
-import ViewPublication from "./components/viewPublication"; 
-import ManagePublications from "./components/Admin/managePublications";
-import AddPublications from "./components/Admin/addPublication";
-import EditPublications from "./components/Admin/editPublications";
-import SupervisorAccept from "./Staff/SupervisorAccept";
-import UpdateUser from "./components/updateUser";
-import RegisterTopics from "./components/Student/RegisterTopics";
-import ManageSubmissionTypes from "./components/Admin/SubmissionType/manageSubmissionTypes";
-import AddMarkingSchema from './components/Admin/addMarkingSchema';
 
 export default class App extends Component {
   constructor(props) {
