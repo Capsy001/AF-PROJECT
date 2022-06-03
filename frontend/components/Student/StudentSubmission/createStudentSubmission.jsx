@@ -75,7 +75,7 @@ export default class CreateStudentSubmissionType extends Component {
       topic: this.state.topic,
       uploaddate: this.state.uploaddate,
       file: this.state.file,
-      assignmentType: this.state.selectedType,
+      assignmentTitle: this.state.selectedType,
     };
 
     document.getElementById("progress").style.display = "inline-flex";
@@ -98,7 +98,7 @@ export default class CreateStudentSubmissionType extends Component {
       }
 
       this.setState({
-        assignmentType:[],
+        assignmentTitle:[],
         selectedType : "",
     });
       
@@ -120,7 +120,7 @@ export default class CreateStudentSubmissionType extends Component {
           <h1>Student Submission</h1>
           <div>
         <FormControl fullWidth>
-            <InputLabel id="demo-simple-select-label">Assignment Type</InputLabel>
+            <InputLabel id="demo-simple-select-label">Assignment Title</InputLabel>
             <Select
                 labelId="demo-simple-select-label"
                 id="demo-simple-select"

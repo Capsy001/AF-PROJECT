@@ -60,7 +60,7 @@ export default class ViewStudentSubmission extends Component {
 
         
         {(this.state.data).map(data => 
-        <Card sx={{ width:"27%", float:"left", marginLeft:4, marginTop:4, marginRight:4 }} style={{border:'1px solid #2e7d32'}}>
+        <Card sx={{ width:"27%", height: 300, float:"left", marginLeft:4, marginTop:4, marginRight:4 }} style={{border:'1px solid #2e7d32'}}>
                     <CardContent>
                     <Typography gutterBottom variant="h5" component="div">
                      <div style={{textAlign:'center', color:'blue'}}>{data.assignmentType}</div>
