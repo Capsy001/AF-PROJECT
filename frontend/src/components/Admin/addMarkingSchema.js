@@ -37,7 +37,7 @@ export default class AddPublications extends Component {
   };
 
   componentWillMount(){
-    axios.get("http://localhost:3000/marking/get").then(response =>
+    axios.get("http://localhost:5000/marking/get").then(response =>
     {
       const data = response.data;
       this.handleData(data);
@@ -65,7 +65,7 @@ export default class AddPublications extends Component {
       markingPoints: this.state.markingPoints,
     };
 
-    axios.post("http://localhost:3000/marking/save", marking).then(response =>
+    axios.post("http://localhost:5000/marking/save", marking).then(response =>
     {
       const data = response.data;
       document.getElementById("alert").style.display = "inline-flex";

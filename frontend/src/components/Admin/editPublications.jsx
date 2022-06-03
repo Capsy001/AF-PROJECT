@@ -39,7 +39,7 @@ export default class EditPublications extends Component {
                     fullWidth
                     onChange={this.handleDescChange}/>,
             fileDownload:
-             <a target="_blank" href={"http://localhost:3000/"+pdata.file}>Download Existing File</a>,
+             <a target="_blank" href={"http://localhost:5000/"+pdata.file}>Download Existing File</a>,
             publishBtn:
                     
                 <Button
@@ -69,7 +69,7 @@ export default class EditPublications extends Component {
   componentDidMount(){
     console.log(this.id);
 
-    axios.get("http://localhost:3000/publication/findOne?id="+this.id).then(response =>
+    axios.get("http://localhost:5000/publication/findOne?id="+this.id).then(response =>
     {
       this.handleData(response.data[0]);
     });
@@ -116,7 +116,7 @@ export default class EditPublications extends Component {
 
     config.onUploadProgress = config.onUploadProgress.bind(this);
 
-    axios.post("http://localhost:3000/publication/update", publication, config).then(response =>
+    axios.post("http://localhost:5000/publication/update", publication, config).then(response =>
     {
       const data = response.data;
       //alert("Published!");

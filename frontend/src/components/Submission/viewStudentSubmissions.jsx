@@ -25,21 +25,21 @@ export default class ViewStudentSubmissions extends Component {
   }
 
   loadData(){
-    axios.get("http://localhost:3000/studentsubmissions").then(response =>
+    axios.get("http://localhost:5000/studentsubmissions").then(response =>
     {
       this.handleData(response.data);
     });
   }
 
   handleDelete(id){
-    axios.delete(`http://localhost:3000/studentsubmissions/${id}`).then(response =>
+    axios.delete(`http://localhost:5000/studentsubmissions/${id}`).then(response =>
     {
       this.loadData();
     });
   }
 
   componentDidMount(){
-    axios.get("http://localhost:3000/studentsubmissions").then(response =>
+    axios.get("http://localhost:5000/studentsubmissions").then(response =>
     {
       this.handleData(response.data);
     });
@@ -71,7 +71,7 @@ export default class ViewStudentSubmissions extends Component {
                       <CardActions
                       sx={{ margin: "0 auto", justifyContent: "center" }}>
                       <Typography variant="body2" color="text.secondary">
-                      <a href={"http://localhost:3000/" + (data.file.split("/"))[3]} target="_blank">
+                      <a href={"http://localhost:5000/" + (data.file.split("/"))[3]} target="_blank">
                         <Button variant="contained" size="small" style={{marginTop:'20%'}}><FileDownload/> Download</Button>
                       </a>
                       </Typography>

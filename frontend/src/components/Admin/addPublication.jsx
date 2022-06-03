@@ -60,7 +60,7 @@ export default class AddPublications extends Component {
 
     config.onUploadProgress = config.onUploadProgress.bind(this);
 
-    axios.post("http://localhost:3000/publication/add", publication, config).then(response =>
+    axios.post("http://localhost:5000/publication/add", publication, config).then(response =>
     {
       const data = response.data;
       //alert("Published!");
