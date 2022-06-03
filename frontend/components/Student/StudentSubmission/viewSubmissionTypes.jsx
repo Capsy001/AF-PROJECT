@@ -49,7 +49,7 @@ export default class ViewSubmissionTypes extends Component {
 
   handleSubmit(data){
     Console.log(data.topic);
-    await sessionStorage.setItem('assignmentID', data.id);
+    sessionStorage.setItem('assignmentID', data.id);
     window.location.href='/createStudentSubmission';
   }
 

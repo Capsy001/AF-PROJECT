@@ -33,7 +33,7 @@ export default class ManageSubmissionTypes extends Component {
     });
   }
   async handleEdit(id){
-    await sessionStorage.setItem('EditId', id);
+     sessionStorage.setItem('EditId', id);
     window.location.href='/updateSubmissionType';
   }
 

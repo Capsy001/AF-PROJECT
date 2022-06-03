@@ -76,13 +76,44 @@ export default class SupervisorAccept extends Component {
 
 
 handleSupervisor=(data)=>{
-   
+  alert(data.topic)
 
 }
 
 handleCosupervisor=(data)=>{
 
     
+}
+
+
+getButtons=(data)=>{
+
+  const supervisor=data.data.supervisor==""?false:true
+  const cosupervisor=data.data.cosupervisor==""?false:true
+
+  console.log("super: "+supervisor);
+  console.log("cosuper: "+cosupervisor);
+
+
+   return (<><Button
+                        variant="outlined"
+                        size="small"
+                        topicid={data._id}
+                        disabled={supervisor}
+                        onClick={this.handleSupervisor.bind(this, data)}
+                      >
+                        Accept As Supervisor
+                      </Button>
+                      <Button
+                        variant="outlined"
+                        size="small"
+                        topicid={data._id}
+                        disabled={cosupervisor}
+                        onClick={this.handleCosupervisor.bind(this, data)}
+                      >
+                        Accept As Co-Supervisor
+                      </Button></>);
+
 }
 
   render() {
@@ -131,8 +162,8 @@ handleCosupervisor=(data)=>{
 
 
               }).map((data) => (
-                <Grid item xs={6}>
-                  <Card
+                <Grid item xs={6} key={data.groupid}>
+                  <Card key={data.groupid}
                     sx={{ marginLeft: 4, marginTop: 4, marginRight: 4 }}
                     style={{
                       borderLeft: "3px solid #2e7d32",
@@ -150,24 +181,11 @@ handleCosupervisor=(data)=>{
                     <CardActions
                       sx={{ margin: "0 auto", justifyContent: "center" }}
                     >
-                      <Button
-                        variant="outlined"
-                        size="small"
-                        topicid={data._id}
-                        disabled={this.disable1(data.supervisor)}
-                        onClick={this.handleSupervisor.bind(this, data)}
-                      >
-                        Accept As Supervisor
-                      </Button>
-                      <Button
-                        variant="outlined"
-                        size="small"
-                        topicid={data._id}
-                        disabled={this.disable1(data.cosupervisor)}
-                        onClick={this.handleCosupervisor.bind(this, data)}
-                      >
-                        Accept As Co-Supervisor
-                      </Button>
+                      
+                        <this.getButtons data={data}></this.getButtons>
+
+
+
                     </CardActions>
                   </Card>
                 </Grid>
