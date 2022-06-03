@@ -6,6 +6,7 @@ import serve from "koa-static";
 import koaRouter from 'koa-router'; // importing Koa-Router
 import publicationRouter from "./router/publication.router.js";
 import groupsRouter from "./router/groups.router.js";
+import chatRouter from "./router/chat.router.js";
 import topicRouter from "./router/topics.router.js";
 import studentsubmissionsRouter from "./router/studentsubmission.router.js";
 import panelRouter from "./router/panel.router.js";
@@ -30,6 +31,7 @@ app.use(serve('./uploads/studentsubmissions'));
 
 app.use(router.routes()).use(router.allowedMethods());
 app.use(usersRouter.routes()).use(usersRouter.allowedMethods());
+app.use(chatRouter.routes()).use(chatRouter.allowedMethods());
 app.use(topicRouter.routes()).use(topicRouter.allowedMethods());
 app.use(publicationRouter.routes()).use(publicationRouter.allowedMethods());
 app.use(groupsRouter.routes()).use(groupsRouter.allowedMethods());

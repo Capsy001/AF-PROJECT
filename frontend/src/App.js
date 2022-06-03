@@ -11,6 +11,7 @@ import PanelDashboard from "./components/Panel/paneldashbord";
 // End dashboards
 
 //Start Panel routes
+import Chating from "./components/Groups/SupervisorChat";
 import EvTopics from "./components/Panel/evTopics";
 import EvPresentation from "./components/Panel/evPresentation";
 import CreateGroup from "./components/Groups/CreateGroup";
@@ -61,7 +62,7 @@ export default class App extends Component {
           <Route path="/editPublications/:id" element={<EditPublications />} />
           <Route path="/createStudentSubmission" element={<CreateStudentSubmission />} />
           <Route path="/viewStudentSubmissions" element={<ViewStudentSubmissions />} />
-
+          <Route path="/chat" element={<Chating />} />
           <Route path="supervisor" element={<SupervisorAccept />} />
 
           <Route path="/updateUser" element={<UpdateUser />} />

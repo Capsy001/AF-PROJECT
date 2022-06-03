@@ -21,7 +21,8 @@ export async function login(email, password)
           sessionStorage.setItem('loggedName', data.name);
           sessionStorage.setItem('loggedEmail', data.email);
           sessionStorage.setItem('loggedRole', data.role);
-          sessionStorage.setItem('loggedUID', data.uid);
+          sessionStorage.setItem('loggedUID', data._id);
+          sessionStorage.setItem('loggedUsername', data.username);
           sessionStorage.setItem('RegId', data.reg);
   
           try{
