@@ -11,9 +11,9 @@ import {
   CardActions,
   Grid,
 } from "@mui/material";
-import AppBarNav from "../components/AppBarNav";
+import AppBarNav from "../AppBarNav";
 import axios from "axios";
-import { getTopics } from "../ApiCalls/topic.apicall";
+import { getTopics } from "../../ApiCalls/topic.apicall";
 import { textAlign } from "@mui/system";
 
 export default class SupervisorAccept extends Component {
@@ -44,12 +44,11 @@ export default class SupervisorAccept extends Component {
   }
 
   disable1=(data)=>{
-      
-    data=""
+      console.log(data);
       try{
           
         if(data==""){
-            console.log("")
+            
             return false;
         }else if(data!=""){
             return true;
@@ -62,6 +61,7 @@ export default class SupervisorAccept extends Component {
 
   disable2=(data)=>{
 
+    console.log(data);
     try{
       if(data=""){
           return false;
@@ -163,7 +163,7 @@ handleCosupervisor=(data)=>{
                         variant="outlined"
                         size="small"
                         topicid={data._id}
-                        disabled={this.disable2(data.cosupervisor)}
+                        disabled={this.disable1(data.cosupervisor)}
                         onClick={this.handleCosupervisor.bind(this, data)}
                       >
                         Accept As Co-Supervisor

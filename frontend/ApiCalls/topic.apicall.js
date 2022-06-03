@@ -9,6 +9,11 @@ export async function newTopic(topicData){
     await axios.post("http://localhost:3000/topics/new",topicData).then((response) => {
         data = response.data;
         console.log(data);
+
+        
+            alert("Result: "+data);
+        
+
         data1.push(data);
     })
 
