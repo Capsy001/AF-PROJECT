@@ -17,7 +17,7 @@ import AddItem from "./components/addItems";
 import EditItem from "./components/editItem";
 import ViewItem from "./components/viewItems";
 import ViewCart from "./components/viewCart";
-import CreateGroup from "./components/Groups/CreateGroup";
+import CreateGroup from "./components/Groups/createGroup";
 import ViewUsers from "./components/viewUsers";
 import CreateSubmissionType from "./components/Admin/SubmissionType/createSubmissionType";
 import ViewSubmissionTypes from "./components/Student/StudentSubmission/viewSubmissionTypes";
@@ -33,7 +33,7 @@ import AddPublications from "./components/Admin/addPublication";
 import EditPublications from "./components/Admin/editPublications";
 import SupervisorAccept from "./components/Staff/SupervisorAccept";
 import UpdateUser from "./components/updateUser";
-import RegisterTopics from "./components/Student/RegisterTopics";
+import RegisterTopics from "./components/student/RegisterTopics"
 import ManageSubmissionTypes from "./components/Admin/SubmissionType/manageSubmissionTypes";
 import AddMarkingSchema from './components/Admin/addMarkingSchema';
 

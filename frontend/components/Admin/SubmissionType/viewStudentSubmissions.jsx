@@ -10,6 +10,7 @@ import { Button, Chip, Divider, Card, CardContent } from "@mui/material";
 import { Campaign, FileDownload } from "@mui/icons-material";
 
 import { Button, TextField, Chip, Divider, Typography, CardActions } from "@mui/material";
+import AppBarNav from "../../AppBarNav";
 
 export default class ViewStudentSubmission extends Component {
   constructor(props) {
@@ -52,8 +53,11 @@ export default class ViewStudentSubmission extends Component {
     return (
       <div>
         
-        <CustomHeader />
-<h1 style={{marginLeft:'40%'}}>Submitted Assignment List</h1>
+        <AppBarNav></AppBarNav>
+        <Divider >
+          <Chip sx={{margin:"10px"}} label="Submitted Assignments"></Chip>
+        </Divider>
+
         
         {(this.state.data).map(data => 
         <Card sx={{ width:"27%", height: 200, float:"left", marginLeft:4, marginTop:4, marginRight:4 }} style={{border:'1px solid #2e7d32'}}>

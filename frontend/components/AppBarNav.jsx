@@ -1,11 +1,18 @@
 import React from "react";
 import { Component } from "react";
 import { Link } from "react-router-dom";
-import { Button, Stack, AppBar, Toolbar, Divider, createTheme, colors } from "@mui/material";
+import {
+  Button,
+  Stack,
+  AppBar,
+  Toolbar,
+  Divider,
+  createTheme,
+  colors,
+} from "@mui/material";
 
 class AppBarNav extends Component {
-  constructor()
-  {
+  constructor() {
     super();
     this.isAdmin = false;
   }
@@ -25,9 +32,9 @@ class AppBarNav extends Component {
     const logged = sessionStorage.getItem("logged");
     const role = sessionStorage.getItem("loggedRole");
 
-    if(sessionStorage.getItem("loggedRole") == 'admin'){
+    if (sessionStorage.getItem("loggedRole") == "admin") {
       this.isAdmin = true;
-    }else{
+    } else {
       this.isAdmin = false;
     }
   }
@@ -41,44 +48,91 @@ class AppBarNav extends Component {
               Dashboard
             </Button>
           </Link>
-
-          <Divider orientation="vertical" variant="middle" flexItem />
-          <Link style={{ textDecoration: "none" }} to="/createSubmissionType">
-            <Button sx={{ color: "white" }} size="small" color="inherit">
-              Create SubmissionTypes
-            </Button>
-          </Link>
-          <Divider orientation="vertical" variant="middle" flexItem />
-          <Link style={{ textDecoration: "none" }} to="/createStudentSubmission">
-            <Button sx={{ color: "white" }} size="small" color="inherit">
-              Create Student Submission
-            </Button>
-          </Link>
           <Divider orientation="vertical" variant="middle" flexItem />
 
-          <Link style={{ textDecoration: "none" }} to="/createGroup">
-            <Button sx={{ color: "white" }} size="small" color="inherit">
-              Create Group
-            </Button>
-          </Link>
-          <Divider orientation="vertical" variant="middle" flexItem />
+          {
+            // start Student tabs
+          }
+          {sessionStorage.getItem("loggedRole") == "student" ? (
+            <>
+              <Link style={{ textDecoration: "none" }} to="/createGroup">
+                <Button sx={{ color: "white" }} size="small" color="inherit">
+                  +Groups
+                </Button>
+              </Link>
+              <Divider orientation="vertical" variant="middle" flexItem />
 
-          <Link style={{ textDecoration: "none" }} to="/registerTopics">
-            <Button sx={{ color: "white" }} size="small" color="inherit">
-              Register Topics
-            </Button>
-          </Link>
-          <Divider orientation="vertical" variant="middle" flexItem />
+              <Link
+                style={{ textDecoration: "none" }}
+                to="/createStudentSubmission"
+              >
+                <Button sx={{ color: "white" }} size="small" color="inherit">
+                  +SUBMISSIONS
+                </Button>
+              </Link>
+              <Divider orientation="vertical" variant="middle" flexItem />
+
+              <Link style={{ textDecoration: "none" }} to="/registerTopics">
+                <Button sx={{ color: "white" }} size="small" color="inherit">
+                  +Topics
+                </Button>
+              </Link>
+              <Divider orientation="vertical" variant="middle" flexItem />
+
+              <Link style={{ textDecoration: "none" }} to="/viewPublications">
+                <Button sx={{ color: "white" }} size="small" color="inherit">
+                  Publications
+                </Button>
+              </Link>
+            </>
+          ) : (
+            <></>
+          )}
+          {
+            //End Student tabs
+          }
+
           
-          <Link style={{ textDecoration: "none" }} to="/viewUsers">
+
+{//Start admin tabs
+}
+          {this.isAdmin ? 
+            <>
+              <Link style={{ textDecoration: "none" }} to="/managePublications">
+                <Button sx={{ color: "white" }} size="small" color="inherit">
+                  +Publications
+                </Button>
+              </Link>
+              <Divider orientation="vertical" variant="middle" flexItem />
+
+              <Link
+                style={{ textDecoration: "none" }}
+                to="/createSubmissionType"
+              >
+                <Button sx={{ color: "white" }} size="small" color="inherit">
+                  +ASSIGNMENTS
+                </Button>
+              </Link>
+              <Divider orientation="vertical" variant="middle" flexItem />
+
+              <Link style={{ textDecoration: "none" }} to="/viewUsers">
+                <Button sx={{ color: "white" }} size="small" color="inherit">
+                  Users
+                </Button>
+              </Link>
+              <Divider orientation="vertical" variant="middle" flexItem />
+
+              <Link style={{ textDecoration: "none" }} to="/addMarkingSchema">
             <Button sx={{ color: "white" }} size="small" color="inherit">
-              View Users
+              +Marking Scheme
             </Button>
           </Link>
+
           <Divider orientation="vertical" variant="middle" flexItem />
+
           <Link style={{ textDecoration: "none" }} to="/viewStudentSubmissions">
             <Button sx={{ color: "white" }} size="small" color="inherit">
-              View Student SubmissionType
+              View Submissions
             </Button>
           </Link>
           <Divider orientation="vertical" variant="middle" flexItem />
@@ -86,59 +140,45 @@ class AppBarNav extends Component {
           <Divider orientation="vertical" variant="middle" flexItem />
           <Link style={{ textDecoration: "none" }} to="/panelManagement">
             <Button sx={{ color: "white" }} size="small" color="inherit">
-              Panel Member Managment
+              Panels
             </Button>
           </Link>
           <Divider orientation="vertical" variant="middle" flexItem />
-
-          { this.isAdmin ? 
-            
-            <Link style={{ textDecoration: "none" }} to="/managePublications">
-              <Button sx={{ color: "white" }} size="small" color="inherit">
-                Publication
-              </Button>
-            </Link>
-
-            : 
-
-            <Link style={{ textDecoration: "none" }} to="/viewPublications">
-              <Button sx={{ color: "white" }} size="small" color="inherit">
-                Publication(s)
-              </Button>
-            </Link>
-
-            
-            
+            </>
+           : 
+            <></>
           }
 
-        <Divider orientation="vertical" variant="middle" flexItem />
-
-        <Link style={{ textDecoration: "none" }} to="/supervisor">
-          <Button
-            sx={{ color: "white" }}
-            size="small"
-            color="inherit"
-            
-          >
-            Supervisor
-          </Button>
-        </Link>
+          {//End admin tabs
+}
 
 
-        <Divider orientation="vertical" variant="middle" flexItem />
+{sessionStorage.getItem("loggedRole") == "staff" ? 
 
-        <Link style={{ textDecoration: "none" }} to="/addMarkingSchema">
-          <Button
-            sx={{ color: "white" }}
-            size="small"
-            color="inherit"
-            
-          >
-            Marking Schema
-          </Button>
-        </Link>
+<>
+<Link style={{ textDecoration: "none" }} to="/supervisor">
+            <Button sx={{ color: "white" }} size="small" color="inherit">
+              Supervisor
+            </Button>
+          </Link>
 
           <Divider orientation="vertical" variant="middle" flexItem />
+</>
+
+:
+
+<>
+
+</>
+
+
+
+}
+          
+
+          
+
+          
 
           <Link style={{ textDecoration: "none" }} to="/">
             <Button
@@ -150,9 +190,6 @@ class AppBarNav extends Component {
               Logout
             </Button>
           </Link>
-
-         
-         
         </Toolbar>
       </AppBar>
     );

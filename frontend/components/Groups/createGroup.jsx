@@ -7,7 +7,7 @@ import { Button } from "@mui/material";
 import { getGroupId, createGroup } from "../../ApiCalls/group.apicall";
 import { addItem } from "../../restcall";
 
-import AppBarNav from "../appBarNav";
+import AppBarNav from "../AppBarNav";
 import {
   Button,
   Stack,

@@ -10,6 +10,7 @@ import { Button, Chip, Divider, Card, CardContent } from "@mui/material";
 import { Campaign, FileDownload } from "@mui/icons-material";
 
 import { Button, TextField, Chip, Divider, Typography, CardActions } from "@mui/material";
+import AppBarNav from "./AppBarNav";
 
 export default class ViewUsers extends Component {
   constructor(props) {
@@ -58,8 +59,11 @@ export default class ViewUsers extends Component {
     return (
       <div>
         
-        <CustomHeader />
-<h1 style={{marginLeft:'40%'}}>Users List</h1>
+        <AppBarNav></AppBarNav>
+
+<Divider><Chip label="Users" sx={{margin:"10px"}}></Chip></Divider>
+        
+
        
         {(this.state.data).map(data =>
         <Card sx={{ width:"27%", height: 200, float:"left", marginLeft:3, marginTop:4, marginRight:3 }} style={{border:'1px solid #2e7d32'}}>
