@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import { Button } from "@mui/material";
 import { getGroupId, createGroup } from "../../ApiCalls/group.apicall";
 import { addItem } from "../../restcall";
+import { getGroupByReg } from "../../ApiCalls/group.apicall";
 
 import AppBarNav from "../AppBarNav";
 import {
@@ -34,6 +35,7 @@ export default class CreateGroup extends Component {
       member3: "",
       member4: "",
       groupId: "",
+      currentGroup:""
     };
 
     this.handleSubmit=this.handleSubmit.bind(this);
@@ -61,6 +63,18 @@ export default class CreateGroup extends Component {
     event.preventDefault();
 
     var groupId=5000000000;
+
+    const regId=sessionStorage.getItem("RegId")
+    const result=await getGroupByReg(regId)
+
+    try{
+      console.log(result)
+      if(result){
+        alert("You already have a Group: Group "+result[0].groupId);
+        window.location.href="/registerTopics"
+        return;
+      }
+    }catch(e){}
     
   
     try{
@@ -101,6 +115,18 @@ export default class CreateGroup extends Component {
     sessionStorage.clear;
     window.location.href = "/";
   };
+
+  async componentWillMount(){
+    try{const group=await getGroupByReg(sessionStorage.getItem("RegId"))
+      
+    const groupid=group[0].groupId
+    this.setState({currentGroup:groupid})}catch(e){}
+    
+  }
+
+    
+      
+  
 
   render() {
     return (
@@ -183,7 +209,7 @@ export default class CreateGroup extends Component {
           </Paper>
 
           <Divider>
-          <Chip label="" style={{margin: '10px'}} />
+          <Chip label={"Group: "+this.state.currentGroup} sx={{margin:"10px", fontSize:"20px"}}>  </Chip>
           </Divider>
 
         </div>

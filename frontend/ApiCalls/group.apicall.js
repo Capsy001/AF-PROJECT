@@ -42,3 +42,5 @@ export async function createGroup(group)
       
     });
 }
+
+export default {getGroupByReg}
