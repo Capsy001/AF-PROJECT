@@ -16,6 +16,7 @@ export default class CreateStudentSubmissionType extends Component {
       progressPrecentage: 0,
     };
     this.handleSubmit.config = this.handleSubmit.bind(this);
+    this.id = sessionStorage.getItem(assignmentID);
   }
 
   handleGroupIdChange = (event) => {
@@ -65,6 +66,9 @@ export default class CreateStudentSubmissionType extends Component {
     axios.post("http://localhost:3000/studentsubmissions/new", studentsubmission, config).then(response =>
     {
       const data = response.data;
+      if(response.data){
+        alert("Assignment Successfully Submitted")
+      }
       
     });
 

@@ -16,19 +16,19 @@ export default class CreateSubmissionType extends Component {
     this.handleSubmit.config = this.handleSubmit.bind(this);
   }
 
-  handleTitleChange = (event) => {
+  handleTitleChange = async(event) => {
     this.setState({ title: event.target.value });
   };
 
-  handleDescChange = (event) => {
+  handleDescChange = async(event) => {
     this.setState({ desc: event.target.value });
   };
 
-  handleDeadlineChange = (event) => {
+  handleDeadlineChange = async(event) => {
     this.setState({ deadline: event.target.value });
   };
 
-  handleSubmit = (event) => {
+  handleSubmit = async(event) => {
     event.preventDefault();
     
     var completed = 0;
@@ -42,7 +42,9 @@ export default class CreateSubmissionType extends Component {
     axios.post("http://localhost:3000/submissiontypes/new", submissiontype).then(response =>
     {
       const data = response.data;
-      
+      if(response.data){
+        alert("New Submission Type Successfully Created")
+      }
     });
 
   };

@@ -20,23 +20,24 @@ export default class ViewUsers extends Component {
     this.handleData = this.handleData.bind(this);
   }
 
-  handleData(userdata){
+  async handleData(userdata){
     this.setState({
       data:userdata
     });
   }
 
-  loadData(){
+  async loadData(){
     axios.get("http://localhost:3000/users").then(response =>
     {
       this.handleData(response.data);
     });
   }
 
-  handleDelete(id){
+  async handleDelete(id){
     axios.delete(`http://localhost:3000/users/${id}`).then(response =>
     {
       this.loadData();
+      alert("User Delete Successfully")
     });
   }
 
@@ -45,7 +46,7 @@ export default class ViewUsers extends Component {
     window.location.href='/updateUser';
   }
 
-  componentDidMount(){
+  async componentDidMount(){
     axios.get("http://localhost:3000/users").then(response =>
     {
       this.handleData(response.data);

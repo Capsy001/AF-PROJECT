@@ -31,7 +31,7 @@ export default class UpdateUser extends Component {
     
   }
 
-  handleData(userdata){
+  async handleData(userdata){
     try{
       this.setState({
         data:{
@@ -89,23 +89,23 @@ export default class UpdateUser extends Component {
     
   }
 
-  handleNameChange = (event) => {
+  handleNameChange = async(event) => {
     this.setState({ name: event.target.value });
   };
 
-  handleEmailChange = (event) => {
+  handleEmailChange = async(event) => {
     this.setState({ email: event.target.value });
   };
 
-  handleUserNameChange = (event) => {
+  handleUserNameChange = async(event) => {
     this.setState({ username: event.target.value });
   };
 
-  handleRoleChange = (event) => {
+  handleRoleChange = async(event) => {
     this.setState({ role: event.target.value });
   };
 
-  handleSubmit = async (event) => {
+  handleSubmit = async(event) => {
     event.preventDefault();
     try{
       var completed = 0;

@@ -59,7 +59,7 @@ class CustomHeader extends Component {
             <Divider orientation="vertical" variant="middle" flexItem />
             <Link style={{ textDecoration: "none" }} to="/createStudentSubmission">
               <Button sx={{ color: "white" }} size="small" color="inherit">
-                Create Student SubmissionTypes
+                Create Student Submissions
               </Button>
             </Link>
             <Divider orientation="vertical" variant="middle" flexItem />
@@ -77,7 +77,7 @@ class CustomHeader extends Component {
             <Divider orientation="vertical" variant="middle" flexItem />
             <Link style={{ textDecoration: "none" }} to="/viewStudentSubmissions">
               <Button sx={{ color: "white" }} size="small" color="inherit">
-                View Student SubmissionTypes
+                View Student Submissions
               </Button>
             </Link>
             <Divider orientation="vertical" variant="middle" flexItem />
