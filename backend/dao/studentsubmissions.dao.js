@@ -2,8 +2,8 @@ import client from'./index.js';
 const studentsubmissions = client.db('store').collection('studentsubmissions');
 import {ObjectId} from 'mongodb';
 
-export async function save ({groupid, topic, uploaddate, file}){
-        const result = await studentsubmissions.insertOne({groupid, topic, uploaddate, file});
+export async function save ({groupid, topic, uploaddate, file, assignmentTitle}){
+        const result = await studentsubmissions.insertOne({groupid, topic, uploaddate, file,assignmentTitle});
         return result.insertedId;
     }
 
@@ -28,7 +28,7 @@ export const getById = async (id) =>{
 }
 
 export async function update(id, studentsubmission){
-    const result = await studentsubmissions.replaceOne({"_id":ObjectId(id)}, {groupid:studentsubmission.groupid, topic:studentsubmission.topic, uploaddate:studentsubmission.uploaddate, file:studentsubmission.file});
+    const result = await studentsubmissions.replaceOne({"_id":ObjectId(id)}, {groupid:studentsubmission.groupid, topic:studentsubmission.topic, uploaddate:studentsubmission.uploaddate, file:studentsubmission.file, assignmentTitle:studentsubmission.assignmentTitle});
     console.log(result)
     return result;
    };

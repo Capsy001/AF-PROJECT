@@ -2,6 +2,7 @@ import Router from "@koa/router"
 import { addStudentSubmission, getAllStudentSubmissions, deleteStudentSubmission, getStudentSubmission, updateStudentSubmission } from "../api/studentsubmission.api.js";
 import koaBusboy from "koa-busboy";
 import fs from 'fs';
+import { getAllSubmissions } from "../api/submissiontype.api.js";
 
 const uploader = koaBusboy({
     dest: './uploads/studentsubmissions/'
@@ -23,7 +24,8 @@ studentsubmissionsRouter.post('/new',uploader, async(ctx) =>
                             groupid: data.groupid,
                             topic: data.topic,
                             uploaddate: data.uploaddate,
-                            file: saveFileName
+                            file: saveFileName,
+                            assignmentTitle: data.assignmentTitle,
                         };
                     
                         console.log(ctx.request.body);
@@ -46,6 +48,13 @@ studentsubmissionsRouter.post('/new',uploader, async(ctx) =>
         ctx.status = 201;
     }
     
+});
+studentsubmissionsRouter.get('/get', async(ctx) => {
+
+    const result = await getAllSubmissions();
+    ctx.body = result;
+    ctx.status = 201;
+
 });
 
 studentsubmissionsRouter.get('/', async ctx=>{
