@@ -16,6 +16,7 @@ export default class CreateStudentSubmissionType extends Component {
       progressPrecentage: 0,
     };
     this.handleSubmit.config = this.handleSubmit.bind(this);
+    this.id = sessionStorage.getItem(assignmentID);
   }
 
   handleGroupIdChange = (event) => {

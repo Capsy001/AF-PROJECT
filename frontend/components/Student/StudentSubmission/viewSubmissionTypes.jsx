@@ -47,6 +47,12 @@ export default class ViewSubmissionTypes extends Component {
     });
   }
 
+  handleSubmit(data){
+    Console.log(data.topic);
+    await sessionStorage.setItem('assignmentID', data.id);
+    window.location.href='/createStudentSubmission';
+  }
+
   render() {
 
     return (
@@ -67,7 +73,7 @@ export default class ViewSubmissionTypes extends Component {
                       <Typography variant="h7" color="text.secondary">
                         <div style={{textAlign:'center', color:'red'}}>Deadline : {data.deadline}</div>
                       </Typography>
-                      
+                      <Button onClick={handleSubmit(data)}></Button>
                       <Link to="/createStudentSubmission"><Button  variant="contained" margin="normal" id="Submit" type="submit" style={{marginLeft:'100px', marginBottom:'10px', marginTop:'10px',textDecoration:'none'}}>
             UPOLAD ASSIGNMENT
           </Button>
