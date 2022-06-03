@@ -45,7 +45,7 @@ app.use(ctx =>
     ctx.body = '<h1>No data is available1</h1>'
 });
 
-app.listen(PORT, () =>
+app.listen(5000, () =>
 {
     console.log(`App running on port ${PORT}!`);
 })

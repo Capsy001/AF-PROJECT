@@ -3,7 +3,7 @@ import { Component } from "react";
 import Login from "./components/login";
 import Register from "./components/register";
 
-import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 // Start dashboards
 import Dashboard from "./components/dashboard";
@@ -12,7 +12,6 @@ import PanelDashboard from "./components/Panel/paneldashbord";
 
 //Start Panel routes
 import EvTopics from "./components/Panel/evTopics";
-import EvPresentation from "./components/Panel/evPresentation";
 import CreateGroup from "./components/Groups/CreateGroup";
 import ViewUsers from "./components/viewUsers";
 import CreateSubmissionType from "./components/Admin/SubmissionType/createSubmissionType";
@@ -46,14 +45,27 @@ export default class App extends Component {
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/panel" element={<PanelDashboard />} />
           <Route path="/panel/evTopics" element={<EvTopics />} />
-          <Route path="/panel/evPresentation" element={<EvPresentation />} />
           <Route path="/panelManagement" element={<PanelManagment />} />
-          <Route path="/addItems" element={<AddItem />} />
-          <Route path="/editItems" element={<EditItem />} />
-          <Route path="/viewItems" element={<ViewItem />} />
-          <Route path="/viewCart" element={<ViewCart />} />
           <Route path='/createGroup' element={<CreateGroup />} />
           <Route exact path="/" element={<Login />} />
+          <Route path="/viewUsers" element={<ViewUsers />} />
+          <Route path="/createSubmissionType" element={<CreateSubmissionType />} />
+          <Route path="/registerTopics" element={<RegisterTopics />} />
+          <Route path="/viewSubmissionTypes" element={<ViewSubmissionTypes />} />
+          <Route path="/updateSubmissionType" element={<UpdateSubmissionType />} />
+          <Route path="/viewPublications" element={<ViewPublication />} />
+          <Route path="/addPublications" element={<AddPublications />} />
+          <Route path="/managePublications" element={<ManagePublications />} />
+          <Route path="/editPublications/:id" element={<EditPublications />} />
+          <Route path="/createStudentSubmission" element={<CreateStudentSubmission />} />
+          <Route path="/viewStudentSubmissions" element={<ViewStudentSubmissions />} />
+
+          <Route path="supervisor" element={<SupervisorAccept />} />
+
+          <Route path="/updateUser" element={<UpdateUser />} />
+          <Route path="/manageSubmissionTypes" element={<ManageSubmissionTypes />} />
+
+          <Route path="/addMarkingSchema" element={<AddMarkingSchema />} />
 
         </Routes>
       </BrowserRouter>
