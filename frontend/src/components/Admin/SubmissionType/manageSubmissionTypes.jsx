@@ -25,7 +25,7 @@ export default class ManageSubmissionTypes extends Component {
   }
 
   loadData(){
-    axios.get("http://localhost:3000/submissiontypes").then(response =>
+    axios.get("http://localhost:5000/submissiontypes").then(response =>
     {
       this.handleData(response.data);
     });
@@ -36,14 +36,14 @@ export default class ManageSubmissionTypes extends Component {
   }
 
   handleDelete(id){
-    axios.delete(`http://localhost:3000/submissiontypes/${id}`).then(response =>
+    axios.delete(`http://localhost:5000/submissiontypes/${id}`).then(response =>
     {
       this.loadData();
     });
   }
 
   componentDidMount(){
-    axios.get("http://localhost:3000/submissiontypes").then(response =>
+    axios.get("http://localhost:5000/submissiontypes").then(response =>
     {
       this.handleData(response.data);
     });

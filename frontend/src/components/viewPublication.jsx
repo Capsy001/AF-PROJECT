@@ -27,7 +27,7 @@ export default class ViewPublication extends Component {
   }
 
   componentDidMount(){
-    axios.post("http://localhost:3000/publication/getAll").then(response =>
+    axios.post("http://localhost:5000/publication/getAll").then(response =>
     {
       this.handleData(response.data);
     });
@@ -64,7 +64,7 @@ export default class ViewPublication extends Component {
                       </Typography>
                     </CardContent>
                     <CardActions>
-                      <a href={"http://localhost:3000/" + data.file} target="_blank">
+                      <a href={"http://localhost:5000/" + data.file} target="_blank">
                         <Button variant="outlined" size="small"><FileDownload/> Download</Button>
                       </a>
                     </CardActions>

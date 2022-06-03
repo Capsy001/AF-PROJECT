@@ -27,21 +27,21 @@ export default class ManagePublications extends Component {
   }
 
   loadData(){
-    axios.post("http://localhost:3000/publication/getAll").then(response =>
+    axios.post("http://localhost:5000/publication/getAll").then(response =>
     {
       this.handleData(response.data);
     });
   }
 
   handleDelete(id){
-    axios.get("http://localhost:3000/publication/delete?id="+id).then(response =>
+    axios.get("http://localhost:5000/publication/delete?id="+id).then(response =>
     {
       this.loadData();
     });
   }
 
   componentDidMount(){
-    axios.post("http://localhost:3000/publication/getAll").then(response =>
+    axios.post("http://localhost:5000/publication/getAll").then(response =>
     {
       this.handleData(response.data);
     });
@@ -87,7 +87,7 @@ export default class ManagePublications extends Component {
                       </Typography>
                     </CardContent>
                     <CardActions>
-                      <a href={"http://localhost:3000/" + data.file} target="_blank">
+                      <a href={"http://localhost:5000/" + data.file} target="_blank">
                         <Button variant="outlined" size="small"><FileDownload/> Download</Button>
                       </a>&nbsp;&nbsp;
                       <Link to={'/editPublications/'+data._id} style={{textDecoration:'inherit',margin:'0px'}}>
