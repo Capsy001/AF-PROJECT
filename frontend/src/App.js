@@ -51,24 +51,6 @@ export default class App extends Component {
           <Route path="/panelManagement" element={<PanelManagment />} />
           <Route path='/createGroup' element={<CreateGroup />} />
           <Route exact path="/" element={<Login />} />
-          <Route path="/viewUsers" element={<ViewUsers />} />
-          <Route path="/createSubmissionType" element={<CreateSubmissionType />} />
-          <Route path="/registerTopics" element={<RegisterTopics />} />
-          <Route path="/viewSubmissionTypes" element={<ViewSubmissionTypes />} />
-          <Route path="/updateSubmissionType" element={<UpdateSubmissionType />} />
-          <Route path="/viewPublications" element={<ViewPublication />} />
-          <Route path="/addPublications" element={<AddPublications />} />
-          <Route path="/managePublications" element={<ManagePublications />} />
-          <Route path="/editPublications/:id" element={<EditPublications />} />
-          <Route path="/createStudentSubmission" element={<CreateStudentSubmission />} />
-          <Route path="/viewStudentSubmissions" element={<ViewStudentSubmissions />} />
-          <Route path="/chat" element={<Chating />} />
-          <Route path="supervisor" element={<SupervisorAccept />} />
-
-          <Route path="/updateUser" element={<UpdateUser />} />
-          <Route path="/manageSubmissionTypes" element={<ManageSubmissionTypes />} />
-
-          <Route path="/addMarkingSchema" element={<AddMarkingSchema />} />
 
         </Routes>
       </BrowserRouter>
