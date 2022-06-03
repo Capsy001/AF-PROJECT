@@ -1,6 +1,4 @@
 import axios from "axios";
-import {baseURL} from './authapi.js';
-
 //function to login with rest api
 export async function login(email, password)
 {
