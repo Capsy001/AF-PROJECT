@@ -1,5 +1,5 @@
 import axios from "axios";
-
+import {baseURL} from './authapi.js';
 
 //function to login with rest api
 export async function login(email, password)
@@ -7,7 +7,7 @@ export async function login(email, password)
   try{
     const user = { email: email, password: password };
 
-    await axios.post("http://localhost:3000/users/login", user).then(response =>
+    await axios.post(`${baseURL}/users/login`, user).then(response =>
       {
       const data = response.data;
         console.log(data)
