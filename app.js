@@ -12,7 +12,7 @@ import panelRouter from "./router/panel.router.js";
 import markingRouter from "./router/marking.router.js";
 import path from "path";
 
-const PORT = process.env.PORT || 4000
+const PORT = process.env.PORT || 3000
 
 const app = new Koa();
 const router = new koaRouter()

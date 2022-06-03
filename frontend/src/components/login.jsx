@@ -28,7 +28,7 @@ export default class Login extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-
+    console.log('sub')
     const result = login(this.state.email, this.state.password);
 
     //window.location.href = "/register";
