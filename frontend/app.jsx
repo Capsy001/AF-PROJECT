@@ -36,6 +36,7 @@ import UpdateUser from "./components/updateUser";
 import RegisterTopics from "./components/student/RegisterTopics"
 import ManageSubmissionTypes from "./components/Admin/SubmissionType/manageSubmissionTypes";
 import AddMarkingSchema from './components/Admin/addMarkingSchema';
+import MarkSubmissions from "./components/Staff/markSubmissions";
 
 export default class App extends Component {
   constructor(props) {
@@ -76,6 +77,8 @@ export default class App extends Component {
           <Route path="/manageSubmissionTypes" element={<ManageSubmissionTypes />} />
 
           <Route path="/addMarkingSchema" element={<AddMarkingSchema />} />
+
+          <Route path="/markSubmissions" element={<MarkSubmissions />} />
 
         </Routes>
       </BrowserRouter>

@@ -158,7 +158,8 @@ class AppBarNav extends Component {
 {sessionStorage.getItem("loggedRole") == "staff" ? 
 
 <>
-<Link style={{ textDecoration: "none" }} to="/supervisor">
+
+          <Link style={{ textDecoration: "none" }} to="/supervisor">
             <Button sx={{ color: "white" }} size="small" color="inherit">
               Supervisor
             </Button>
@@ -183,6 +184,13 @@ class AppBarNav extends Component {
 
 
           
+          <Link style={{ textDecoration: "none" }} to="/markSubmissions">
+            <Button sx={{ color: "white" }} size="small" color="inherit">
+              +Marks
+            </Button>
+          </Link>
+
+          <Divider orientation="vertical" variant="middle" flexItem />
 </>
 
 :
