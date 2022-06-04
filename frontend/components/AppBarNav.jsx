@@ -201,6 +201,14 @@ class AppBarNav extends Component {
           </Link>
 
           <Divider orientation="vertical" variant="middle" flexItem />
+
+          <Link style={{ textDecoration: "none" }} to="/chat">
+            <Button sx={{ color: "white" }} size="small" color="inherit">
+              Chat
+            </Button>
+          </Link>
+
+          <Divider orientation="vertical" variant="middle" flexItem />
 </>
 
 :

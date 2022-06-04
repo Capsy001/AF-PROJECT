@@ -22,7 +22,7 @@ export async function checkStatusOfGroup (groupId){
 }
 
 export async function getPanelMembers (){
-    const cursor = await users.find({role:'panel'});
+    const cursor = await users.find({role:'staff'});
     return cursor.toArray();
 }
 

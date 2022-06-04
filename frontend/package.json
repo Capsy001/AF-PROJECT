@@ -4,9 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-
     "start": "parcel index.html --no-hmr --no-cache"
-
   },
   "author": "Ekanayake EMUY",
   "license": "ISC",
@@ -20,7 +18,8 @@
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
     "react-router": "^6.3.0",
-    "react-router-dom": "^6.3.0"
+    "react-router-dom": "^6.3.0",
+    "react-simple-chat": "^1.1.4"
   },
   "devDependencies": {
     "buffer": "^6.0.3",

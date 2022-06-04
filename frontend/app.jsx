@@ -12,11 +12,8 @@ import PanelDashboard from "./components/Panel/paneldashbord";
 
 //Start Panel routes
 import EvTopics from "./components/Panel/evTopics";
+import SupervisorChat from "./components/Groups/SupervisorChat";
 import EvPresentation from "./components/Panel/evPresentation";
-import AddItem from "./components/addItems";
-import EditItem from "./components/editItem";
-import ViewItem from "./components/viewItems";
-import ViewCart from "./components/viewCart";
 import CreateGroup from "./components/Groups/createGroup";
 import ViewUsers from "./components/viewUsers";
 import CreateSubmissionType from "./components/Admin/SubmissionType/createSubmissionType";
@@ -52,13 +49,10 @@ export default class App extends Component {
           <Route path="/register" element={<Register />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/panel" element={<PanelDashboard />} />
+          <Route path="/chat" element={<SupervisorChat />} />
           <Route path="/panel/evTopics" element={<EvTopics />} />
           <Route path="/panel/evPresentation" element={<EvPresentation />} />
           <Route path="/panelManagement" element={<PanelManagment />} />
-          <Route path="/addItems" element={<AddItem />} />
-          <Route path="/editItems" element={<EditItem />} />
-          <Route path="/viewItems" element={<ViewItem />} />
-          <Route path="/viewCart" element={<ViewCart />} />
           <Route path='/createGroup' element={<CreateGroup />} />
           <Route exact path="/" element={<Login />} />
           <Route path="/viewUsers" element={<ViewUsers />} />
