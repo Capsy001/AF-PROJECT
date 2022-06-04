@@ -22,8 +22,11 @@
     "react-simple-chat": "^1.1.4"
   },
   "devDependencies": {
+    "@testing-library/react": "^13.3.0",
     "buffer": "^6.0.3",
+    "jest-dom": "^4.0.0",
     "process": "^0.11.10",
+    "react-test-renderer": "^18.1.0",
     "rimraf": "^3.0.2"
   }
 }
