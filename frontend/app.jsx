@@ -13,6 +13,7 @@ import PanelDashboard from "./components/Panel/paneldashbord";
 //Start Panel routes
 import EvTopics from "./components/Panel/evTopics";
 import SupervisorChat from "./components/Groups/SupervisorChat";
+import StudentChat from "./components/Groups/StudentChat";
 import EvPresentation from "./components/Panel/evPresentation";
 import CreateGroup from "./components/Groups/createGroup";
 import ViewUsers from "./components/viewUsers";
@@ -50,6 +51,7 @@ export default class App extends Component {
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/panel" element={<PanelDashboard />} />
           <Route path="/chat" element={<SupervisorChat />} />
+          <Route path="/chats" element={<StudentChat />} />
           <Route path="/panel/evTopics" element={<EvTopics />} />
           <Route path="/panel/evPresentation" element={<EvPresentation />} />
           <Route path="/panelManagement" element={<PanelManagment />} />

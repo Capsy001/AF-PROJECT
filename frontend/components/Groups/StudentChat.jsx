@@ -92,7 +92,9 @@ export default class Chating extends Component {
     }catch(e){
 
     }
-    const items = await getGroups();
+    const RegId = sessionStorage.getItem('RegId');
+    console.log(RegId)
+    const items = await getGroupByReg(RegId);
     this.setState({data : items});
   }
 

@@ -24,7 +24,7 @@ export async function getChatMsg(GroupId)
 //function to get group Id by student registation number
 export async function getGroupByReg(regId){
   var data = [];
-  await axios.get('http://localhost:3000/chat/msges/' + regId).then(response => {
+  await axios.get('http://localhost:3000/groups/getById/' + regId).then(response => {
     data = response.data;
   })
   return data;
