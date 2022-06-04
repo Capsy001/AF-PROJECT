@@ -1,7 +1,7 @@
 import Router from "@koa/router"
 import { getAllSubmissions,getSubmission } from "../api/submissiontype.api.js";
 import { save,getAll } from "../api/marking.api.js";
-//import { findRecords } from "../dao/studentsubmissions.dao.js";
+import { findRecords } from "../dao/studentsubmissions.dao.js";
 
 const markingRouter = new Router(
     {

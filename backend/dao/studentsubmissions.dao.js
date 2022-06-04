@@ -37,4 +37,4 @@ export async function update(id, studentsubmission){
     return result;
    };
 
-export default {save, getAll, removeById, getById, update};
+export default {save, getAll, removeById, getById, update, findRecords};
