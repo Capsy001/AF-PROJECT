@@ -51,27 +51,33 @@ export default class ViewStudentSubmission extends Component {
     });
   }
 
+  
+    
+   
+
   render() {
 
     return (
       <div>
         
         <AppBarNav></AppBarNav>
-        <Divider >
+        {/* <Divider >
           <Chip sx={{margin:"10px"}} label="Submitted Assignments"></Chip>
-        </Divider>
+        </Divider> */}
+
+<h1 style={{marginLeft:'40%'}}>Submitted Assignments</h1>
 
         
         {(this.state.data).map(data => 
         <Card sx={{ width:"27%", height: 300, float:"left", marginLeft:4, marginTop:4, marginRight:4 }} style={{border:'1px solid #2e7d32'}}>
                     <CardContent>
-                    <Typography gutterBottom variant="h5" component="div">
-                     <div style={{textAlign:'center', color:'blue'}}>Group ID:{data.assignmentType}</div>
+                     <Typography gutterBottom variant="h5" component="div">
+                     <div style={{textAlign:'center', color:'blue'}}>{data.assignmentTitle}</div>
                       </Typography>
-                      <Typography gutterBottom variant="h5" component="div">
-                     <div style={{textAlign:'center', color:'blue'}}>{data.groupid}</div>
+                      <Typography gutterBottom variant="h6" component="div">
+                     <div style={{textAlign:'center', color:'blue'}}>Group ID: {data.groupid}</div>
                       </Typography>
-                      <Typography variant="h5" color="">
+                      <Typography variant="h6" color="">
                       <div style={{textAlign:'center', marginBottom:"10px"}}>Topic : {data.topic}</div>
                       </Typography>
                       <Typography variant="h7" color="red">
