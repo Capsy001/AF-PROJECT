@@ -1,6 +1,7 @@
 import React from "react";
 import { Component } from "react";
-import { login } from "../login";
+
+
 import "../login.module.css";
 import { Link } from "react-router-dom";
 import { Button, Card, CardContent, Paper, Typography } from "@mui/material";
@@ -9,11 +10,7 @@ import {getTopicByGroupId, newTopic} from '../../ApiCalls/topic.apicall';
 import {getGroupByReg} from '../../ApiCalls/group.apicall';
 import TextareaAutosize from '@mui/material/TextareaAutosize';
 import AppBarNav from "../appBarNav";
-import {
-  Button,
-  Paper,
-  TextField
-} from "@mui/material";
+
 
 export default class RegisterTopics extends Component {
   constructor() {
