@@ -38,6 +38,7 @@ import ManageSubmissionTypes from "./components/Admin/SubmissionType/manageSubmi
 import AddMarkingSchema from './components/Admin/addMarkingSchema';
 import MarkSubmissions from "./components/Staff/markSubmissions";
 import ViewSubmission from "./components/Staff/viewSubmission";
+import ViewMySubmissions from "./components/Student/StudentSubmission/viewMySubmissions";
 
 export default class App extends Component {
   constructor(props) {
@@ -81,6 +82,7 @@ export default class App extends Component {
 
           <Route path="/markSubmissions" element={<MarkSubmissions />} />
           <Route path="/viewSubmission/:id" element={<ViewSubmission />} />
+          <Route path="/viewMySubmissions" element={<ViewMySubmissions />} />
 
         </Routes>
       </BrowserRouter>

@@ -10,6 +10,7 @@ import studentsubmissionsRouter from "./router/studentsubmission.router.js";
 import panelRouter from "./router/panel.router.js";
 import markingRouter from "./router/marking.router.js";
 import submissionsRouter from "./router/submissiontype.router.js";
+import addMarks from "./router/addMarks.router.js";
 
 const app = new Koa();
 app.use(bodyParser());
@@ -25,6 +26,7 @@ app.use(studentsubmissionsRouter.routes()).use(studentsubmissionsRouter.allowedM
 app.use(panelRouter.routes()).use(panelRouter.allowedMethods());
 app.use(markingRouter.routes()).use(markingRouter.allowedMethods());
 app.use(submissionsRouter.routes()).use(submissionsRouter.allowedMethods());
+app.use(addMarks.routes()).use(addMarks.allowedMethods());
 
 app.use(ctx =>
 {
