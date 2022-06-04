@@ -2,7 +2,7 @@ import client from'./index.js';
 const submissiontypes = client.db('store').collection('submissiontypes');
 import {ObjectId} from 'mongodb';
 
-export async function save ({title, desc, deadline, file}){
+export async function save ({title, desc, deadline}){
         const result = await submissiontypes.insertOne({title, desc, deadline});
         return result.insertedId;
     }

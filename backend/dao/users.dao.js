@@ -2,7 +2,8 @@ import client from'./index.js';
 const users = client.db('store').collection('users')
 import * as mongoose from 'mongoose';
 import {ObjectId} from 'mongodb';
-
+import CryptoJS from"crypto-js";
+var key = "ASECRET";
 
 //register user
 export async function save ({id, name, username, email, password, role, reg}){
@@ -42,8 +43,11 @@ export async function update(id, user){
 export async function login (user) {
     const email = user.email;
     const password = user.password;
-    const userdata = await users.findOne({email:email,password:password});
-    return userdata;
+    const userdata = await users.findOne({email:email});
+    if((CryptoJS.AES.decrypt((userdata.password),key)).toString(CryptoJS.enc.Utf8) === password){
+        return userdata;
+    }
+    
 }
 
 

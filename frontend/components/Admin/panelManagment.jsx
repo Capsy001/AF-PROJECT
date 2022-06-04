@@ -16,6 +16,7 @@ import {
   TextField,
   InputLabel,
   Select,
+  Alert,
   MenuItem,
   Chip
 } from "@mui/material";
@@ -36,7 +37,20 @@ export default class PanelManagment extends Component {
     const data = {
       panel:(this.state.panelM)
     }
-    await assignGroup((this.state.groupM),(this.state.panelM));
+    const res = await assignGroup((this.state.groupM),(this.state.panelM));
+    
+    try{
+      console.log(res);
+      if(res[0].modeifiedres > 0){
+        document.getElementById("alert").style.display = "flex";
+        document.getElementById("alertun").style.display = "none";
+      }else{
+        document.getElementById("alert").style.display = "none";
+        document.getElementById("alertun").style.display = "flex";
+      }
+    }catch(e){
+      console.log(e)
+    }
   }
 
   handleGroupChange = async(event, values) => {
@@ -113,6 +127,12 @@ export default class PanelManagment extends Component {
               </div>
             </form>
           </Paper>
+          <Alert href='/manageSubmissionTypes' onClose={() => {}} variant="filled" id="alert" style={{marginTop:'10px',display:'none'}}>
+            Added Succefully!
+          </Alert><br/>
+          <Alert href='/manageSubmissionTypes' onClose={() => {}} variant="filled" color ='error' id="alertun" style={{marginTop:'10px',display:'none'}}>
+            Updated Unuccefully!
+          </Alert><br/>
         </div>
       </div>
     );

@@ -95,6 +95,14 @@ class AppBarNav extends Component {
                 </Button>
               </Link>
               <Divider orientation="vertical" variant="middle" flexItem />
+
+              <Link style={{ textDecoration: "none" }} to="/chats">
+              <Button sx={{ color: "white" }} size="small" color="inherit">
+                Chat
+              </Button>
+            </Link>
+
+            <Divider orientation="vertical" variant="middle" flexItem />
             </>
           ) : (
             <></>
@@ -197,6 +205,14 @@ class AppBarNav extends Component {
           <Link style={{ textDecoration: "none" }} to="/markSubmissions">
             <Button sx={{ color: "white" }} size="small" color="inherit">
               +Marks
+            </Button>
+          </Link>
+
+          <Divider orientation="vertical" variant="middle" flexItem />
+
+          <Link style={{ textDecoration: "none" }} to="/chat">
+            <Button sx={{ color: "white" }} size="small" color="inherit">
+              Chat
             </Button>
           </Link>
 
