@@ -93,5 +93,15 @@ export async function editSupervisors(group) {
   return result;
 }
 
+export async function getTopicByGroup(id){
+
+  
+  const filter = { groupid: id };
+  console.log(filter)
+  const result= await studentTopics.findOne(filter);
+console.log(result)
+  return result;
+}
+
 //Export the functions
-export default { save, ban, updatestatus, getAll, removeById, getById };
+export default { save, ban, updatestatus, getAll, removeById, getById, getTopicByGroup };
