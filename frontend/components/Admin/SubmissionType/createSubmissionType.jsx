@@ -62,17 +62,15 @@ export default class CreateSubmissionType extends Component {
         <div  style={{marginTop:'50px',marginLeft:'400px',marginBottom:'100px', alignItems:'center', textAlign:'center', width:'40%', border:'3px solid #73AD21', padding:'10px'}}>
         <form onSubmit={this.handleSubmit} encType="multipart/form-data" method="post">
           <div>
-            <TextField variant="outlined" margin="normal"  id="title" label="Title" onChange={this.handleTitleChange}/>
+            <TextField variant="outlined" margin="normal"  id="title" label="Title" onChange={this.handleTitleChange} required/>
           </div>
           <br></br>
           <div>
-            <TextareaAutosize variant="outlined" margin="normal" id="desc" label="Description" placeholder="Description" style={{ width: 200, height: 70 }} onChange={this.handleDescChange}
-            />
+            <TextareaAutosize variant="outlined" margin="normal" id="desc" label="Description" placeholder="Description" style={{ width: 200, height: 70 }} onChange={this.handleDescChange} required/>
           </div>
           <br></br>
           <div>
-            <TextField variant="outlined" margin="normal" id="deadline" type="date" onChange={this.handleDeadlineChange}
-            />
+            <TextField variant="outlined" margin="normal" id="deadline" type="date" onChange={this.handleDeadlineChange} required/>
           </div>
           <br></br>  
           <Button  variant="contained" color="success" margin="normal" id="Submit" type="submit">
