@@ -33,7 +33,7 @@ import AddPublications from "./components/Admin/addPublication";
 import EditPublications from "./components/Admin/editPublications";
 import SupervisorAccept from "./components/Staff/SupervisorAccept";
 import UpdateUser from "./components/updateUser";
-import RegisterTopics from "./components/student/RegisterTopics"
+import RegisterTopics from "./components/Student/RegisterTopics"
 import ManageSubmissionTypes from "./components/Admin/SubmissionType/manageSubmissionTypes";
 import AddMarkingSchema from './components/Admin/addMarkingSchema';
 import MarkSubmissions from "./components/Staff/markSubmissions";

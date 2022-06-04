@@ -19,20 +19,20 @@ export default class ViewStudentSubmission extends Component {
     this.handleData = this.handleData.bind(this);
   }
 
-  async handleData(subdata){
+handleData(subdata){
     this.setState({
       data:subdata
     });
   }
 
-  async loadData(){
+loadData(){
     axios.get("http://localhost:3000/studentsubmissions").then(response =>
     {
       this.handleData(response.data);
     });
   }
 
-  async handleDelete(id){
+handleDelete(id){
     axios.delete(`http://localhost:3000/studentsubmissions/${id}`).then(response =>
     {
       this.loadData();
@@ -52,7 +52,7 @@ export default class ViewStudentSubmission extends Component {
       <div>
         <AppBarNav></AppBarNav>
 
-        <Divider><Chip label="View Submitted Assignments" sx={{fontSize:'25px', margin:"10px", marginBottom:'20px', marginTop:'20px'}}></Chip></Divider>
+        <Divider><Chip label="View Submitted document Submissions" sx={{fontSize:'25px', margin:"10px", marginBottom:'20px', marginTop:'20px'}}></Chip></Divider>
 
         {(this.state.data).map(data => 
         <Card sx={{ width:"27%", height: 300, float:"left", marginLeft:4, marginTop:4, marginRight:4 }} style={{border:'1px solid #2e7d32'}}>

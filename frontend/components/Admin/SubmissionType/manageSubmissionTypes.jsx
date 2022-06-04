@@ -19,25 +19,25 @@ export default class ManageSubmissionTypes extends Component {
     this.handleData = this.handleData.bind(this);
   }
 
-  async handleData(subdata){
+handleData(subdata){
     this.setState({
       data:subdata
     });
   }
 
-  async loadData(){
+loadData(){
     axios.get("http://localhost:3000/submissiontypes").then(response =>
     {
       this.handleData(response.data);
     });
   }
 
-  async handleEdit(id){
+handleEdit(id){
      sessionStorage.setItem('EditId', id);
     window.location.href='/updateSubmissionType';
   }
 
-  async handleDelete(id){
+handleDelete(id){
     axios.delete(`http://localhost:3000/submissiontypes/${id}`).then(response =>
     {
       this.loadData();
@@ -57,7 +57,7 @@ export default class ManageSubmissionTypes extends Component {
       <div>
         <AppBarNav></AppBarNav>
 
-        <Divider><Chip label="Manage Assignment List" sx={{fontSize:'25px', margin:"10px", marginBottom:'20px', marginTop:'20px'}}></Chip></Divider>
+        <Divider><Chip label="Manage List of Submission Types" sx={{fontSize:'25px', margin:"10px", marginBottom:'20px', marginTop:'20px'}}></Chip></Divider>
        
         {(this.state.data).map(data =>
         <Card sx={{ width:"34%", height: 200, float:"left", marginLeft:10, marginTop:4, marginRight:10, marginBottom:4 }} style={{border:'1px solid #2e7d32'}}>

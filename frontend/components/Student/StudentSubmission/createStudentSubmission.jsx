@@ -116,13 +116,13 @@ export default class CreateStudentSubmissionType extends Component {
       <div>
         <AppBarNav></AppBarNav>
 
-        <Divider><Chip label="Submit Your Assignment" sx={{fontSize:'25px', margin:"10px", marginTop:'20px'}}></Chip></Divider>
+        <Divider><Chip label="Submit Your Document Submission" sx={{fontSize:'25px', margin:"10px", marginTop:'20px'}}></Chip></Divider>
 
         <div  style={{margin: "0 auto", alignItems:'center', textAlign:'center', width:'40%', border:'3px solid #73AD21', padding:'10px', marginTop:'10px'}}>
         <form onSubmit={this.handleSubmit} encType="multipart/form-data" method="post">
           <div>
         <FormControl fullWidth>
-            <InputLabel id="demo-simple-select-label">Assignment Title</InputLabel>
+            <InputLabel id="demo-simple-select-label">Submission Type</InputLabel>
             <Select
                 labelId="demo-simple-select-label"
                 id="demo-simple-select"
@@ -140,12 +140,11 @@ export default class CreateStudentSubmissionType extends Component {
         </div>
           <br></br>
           <div>
-            <TextField variant="outlined" margin="normal" id="topic" label="Topic" style={{ width: 410 }} onChange={this.handleTopicChange}
-            />
+            <TextField variant="outlined" margin="normal" id="topic" label="Topic" style={{ width: 410 }} onChange={this.handleTopicChange} required/>
           </div>
           <br></br>
             <label htmlFor="contained-button-file">
-  <Input accept="image/*" name="file" id="contained-button-file" margin="normal" multiple type="file" onChange={this.handleFileChange} />
+  <Input accept="image/*" name="file" id="contained-button-file" margin="normal" multiple type="file" onChange={this.handleFileChange} required/>
 </label>
             {
               this.state.file?

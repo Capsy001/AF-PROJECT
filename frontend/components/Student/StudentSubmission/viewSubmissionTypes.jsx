@@ -19,20 +19,20 @@ export default class ViewSubmissionTypes extends Component {
     this.handleData = this.handleData.bind(this);
   }
 
-  async handleData(ssubdata){
+handleData(ssubdata){
     this.setState({
       data:ssubdata
     });
   }
 
-  async loadData(){
+loadData(){
     axios.get("http://localhost:3000/submissiontypes").then(response =>
     {
       this.handleData(response.data);
     });
   }
 
-  async handleDelete(id){
+handleDelete(id){
     axios.delete(`http://localhost:3000/submissiontypes/${id}`).then(response =>
     {
       this.loadData();
@@ -51,7 +51,7 @@ export default class ViewSubmissionTypes extends Component {
       <div>
         <AppBarNav></AppBarNav>
 
-        <Divider><Chip label="Assignment List" sx={{fontSize:'25px', margin:"10px", marginBottom:'20px', marginTop:'20px'}}></Chip></Divider>
+        <Divider><Chip label="List of Submission Types" sx={{fontSize:'25px', margin:"10px", marginBottom:'20px', marginTop:'20px'}}></Chip></Divider>
 
        <Grid container>
         {(this.state.data).map(data =>
@@ -68,7 +68,7 @@ export default class ViewSubmissionTypes extends Component {
                     </CardContent>
                     <CardActions>
                     <a href="/createStudentSubmission" style={{textDecoration:'none'}}><Button variant="contained" margin="normal" type="submit" style={{marginLeft:'100px', marginBottom:'10px', marginTop:'10px',textDecoration:'none'}}>
-            UPOLAD ASSIGNMENT
+            UPOLAD DOCUMENT
           </Button></a>
                     </CardActions>
                   </Card>

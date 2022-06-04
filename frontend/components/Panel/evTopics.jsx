@@ -3,7 +3,7 @@ import { Component } from "react";
 import { login } from "../login";
 import "../login.module.css";
 import { Link } from "react-router-dom";
-import { AppBar, Button } from "@mui/material";
+import { AppBar, Button, Divider, Chip } from "@mui/material";
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import {getTopics, updateTopicsts, banTopicsts} from '../../ApiCalls/topic.apicall';
@@ -104,6 +104,8 @@ export default class EvTopics extends Component {
         <AppBarNav></AppBarNav>
 
         <hr></hr>
+
+        <Divider><Chip label="Evaluate Topics" sx={{fontSize:'20px', margin:"10px", marginBottom:'20px', marginTop:'20px'}}></Chip></Divider>
         {
           <TableContainer component={Paper} sx={{ width:"75%", margin: "0 auto" }}>
             <Table sx={{ border:"none" }} aria-label="simple table">
@@ -127,7 +129,7 @@ export default class EvTopics extends Component {
                       <TableCell align="center">
                       <Button variant="contained"  type="submit" data-key={item._id}  value='approve' onClick={this.handleapprove}>Approve</Button>&nbsp;
                       <Button variant="contained" color="error" type="submit" data-key={item._id}  value='reject' onClick={this.handlereject}>Reject</Button>&nbsp;
-                      <Button variant="contained" color="warning" type="submit" data-key={item.topic}  value='ban' onClick={this.handleban}>Ban</Button>&nbsp;
+                      
                       </TableCell>
                       </TableRow>
                   );

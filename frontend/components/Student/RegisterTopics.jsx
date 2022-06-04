@@ -3,9 +3,9 @@ import { Component } from "react";
 import { login } from "../login";
 import "../login.module.css";
 import { Link } from "react-router-dom";
-import { Button, Paper } from "@mui/material";
+import { Button, Card, CardContent, Paper, Typography } from "@mui/material";
 import TextField from '@mui/material/TextField';
-import {newTopic} from '../../ApiCalls/topic.apicall';
+import {getTopicByGroupId, newTopic} from '../../ApiCalls/topic.apicall';
 import {getGroupByReg} from '../../ApiCalls/group.apicall';
 import TextareaAutosize from '@mui/material/TextareaAutosize';
 import AppBarNav from "../appBarNav";
@@ -22,7 +22,12 @@ export default class RegisterTopics extends Component {
     this.state = {
       topic:'',
       description:'',
-      status:''
+      status:'',
+
+      currenttopic:"",
+      currentstatus:"",
+      currentsupervisor:"",
+      currentcosupervisor:""
     }
   }
 
@@ -84,6 +89,24 @@ export default class RegisterTopics extends Component {
       alert("User not logged in!");
       window.location.href = "/";
     }
+
+
+    const groupid=await getGroupByReg(sessionStorage.getItem("RegId"));
+    
+    const topic=await getTopicByGroupId(groupid);
+
+    console.log(topic)
+
+    try{
+      this.setState({
+
+      currenttopic: topic.topic,
+      currentstatus:topic.status,
+      currentsupervisor:topic.supervisor,
+      currentcosupervisor:topic.cosupervisor
+      })
+    }catch(e){}
+
   }
 
   render() {
@@ -111,7 +134,7 @@ export default class RegisterTopics extends Component {
                   label="Description"
                   aria-label="Description"
                   placeholder="Description"
-                  style={{ width: 200 }}
+                  style={{ width: 200, height: 200 }}
                   onChange={this.handleDescription}
                 />
                 </div>
@@ -129,6 +152,23 @@ export default class RegisterTopics extends Component {
                 </div>
             </form>
         </Paper>
+
+        <Card sx={{width:"50%",margin:"0 auto", marginTop:"10px", borderTop:"3px solid #00e676"}}>
+          <CardContent sx={{textAlign:"center"}}>
+            <Typography variant="subtitle1">
+                <b>Current Topic: </b>{this.state.currenttopic}
+            </Typography>
+            <Typography variant="subtitle1">
+                <b>Status: </b>{this.state.currentstatus}
+            </Typography>
+            <Typography variant="subtitle1">
+                <b>Supervisor: </b>{this.state.currentsupervisor}
+            </Typography>
+            <Typography variant="subtitle1">
+                <b>Cosupervisor: </b>{this.state.currentcosupervisor}
+            </Typography>
+          </CardContent>
+        </Card>
 
       </div>
     );
