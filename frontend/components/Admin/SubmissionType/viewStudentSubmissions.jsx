@@ -85,7 +85,7 @@ export default class ViewStudentSubmission extends Component {
                       <CardActions
                       sx={{ margin: "0 auto", justifyContent: "center" }}>
                       <Typography variant="body2" color="text.secondary">
-                      <a href={"http://localhost:3000/" + (data.file.split("/"))[3]} target="_blank">
+                      <a href={"http://localhost:3000/" + (data.file.split("/"))[3]} style={{textDecoration:'none'}} target="_blank">
                         <Button variant="contained" size="small" style={{marginTop:'12%', textDecoration:'inherit'}}><FileDownload/> Download Assignment</Button>
 
                       </a>
