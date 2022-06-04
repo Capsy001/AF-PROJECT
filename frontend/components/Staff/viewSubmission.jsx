@@ -151,7 +151,7 @@ splitFile(dataS){
                             return(
                             <TextField
                             id="outlined-number"
-                            label="Number"
+                            label="Marks"
                             type="number"
                             helperText={data.point}
                             max={data.marks}
