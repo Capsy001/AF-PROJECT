@@ -140,7 +140,7 @@ export default class CreateStudentSubmissionType extends Component {
         </div>
           <br></br>
           <div>
-            <TextField variant="outlined" margin="normal" id="topic" label="Comment" onChange={this.handleTopicChange}
+            <TextField variant="outlined" margin="normal" id="topic" label="Topic" style={{ width: 410 }} onChange={this.handleTopicChange}
             />
           </div>
           <br></br>

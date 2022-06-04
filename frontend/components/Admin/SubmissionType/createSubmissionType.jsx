@@ -6,6 +6,7 @@ import { CloudUpload } from "@mui/icons-material";
 import CustomHeader from "../../header/customheader";
 import axios from "axios";
 import AppBarNav from "../../AppBarNav";
+import TextareaAutosize from '@mui/material/TextareaAutosize';
 export default class CreateSubmissionType extends Component {
   constructor(props) {
     super(props);
@@ -65,7 +66,7 @@ export default class CreateSubmissionType extends Component {
           </div>
           <br></br>
           <div>
-            <TextField variant="outlined" margin="normal" id="desc" label="Description" onChange={this.handleDescChange}
+            <TextareaAutosize variant="outlined" margin="normal" id="desc" label="Description" placeholder="Description" style={{ width: 200, height: 70 }} onChange={this.handleDescChange}
             />
           </div>
           <br></br>
