@@ -19,20 +19,20 @@ export default class ViewSubmissionTypes extends Component {
     this.handleData = this.handleData.bind(this);
   }
 
-  async handleData(ssubdata){
+handleData(ssubdata){
     this.setState({
       data:ssubdata
     });
   }
 
-  async loadData(){
+loadData(){
     axios.get("http://localhost:3000/submissiontypes").then(response =>
     {
       this.handleData(response.data);
     });
   }
 
-  async handleDelete(id){
+handleDelete(id){
     axios.delete(`http://localhost:3000/submissiontypes/${id}`).then(response =>
     {
       this.loadData();

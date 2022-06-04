@@ -24,7 +24,7 @@ export default class UpdateSubmissionType extends Component {
     } 
   }
 
-  async handleData(subdata){
+handleData(subdata){
     try{
       this.setState({
         data:{

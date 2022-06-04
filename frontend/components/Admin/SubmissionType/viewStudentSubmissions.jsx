@@ -19,20 +19,20 @@ export default class ViewStudentSubmission extends Component {
     this.handleData = this.handleData.bind(this);
   }
 
-  async handleData(subdata){
+handleData(subdata){
     this.setState({
       data:subdata
     });
   }
 
-  async loadData(){
+loadData(){
     axios.get("http://localhost:3000/studentsubmissions").then(response =>
     {
       this.handleData(response.data);
     });
   }
 
-  async handleDelete(id){
+handleDelete(id){
     axios.delete(`http://localhost:3000/studentsubmissions/${id}`).then(response =>
     {
       this.loadData();
