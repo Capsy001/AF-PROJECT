@@ -12,6 +12,7 @@
   "dependencies": {
     "@koa/cors": "^3.3.0",
     "@koa/router": "^10.1.1",
+    "crypto-js": "^4.1.1",
     "fs": "^0.0.1-security",
     "koa": "^2.13.4",
     "koa-body": "^5.0.0",

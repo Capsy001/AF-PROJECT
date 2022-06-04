@@ -12,6 +12,8 @@ import Select, { SelectChangeEvent } from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
 import InputLabel from '@mui/material/InputLabel';
 import { Button, Paper } from "@mui/material";
+import CryptoJS from"crypto-js";
+var key = "ASECRET";
 
 export default class Register extends Component {
   constructor(props) {
@@ -68,14 +70,14 @@ export default class Register extends Component {
       email: this.state.email,
       name: this.state.name,
       username: this.state.username,
-      password: this.state.password,
+      password: (CryptoJS.AES.encrypt((this.state.password), key)).toString(),
       password2: this.state.password2,
       role: this.state.role,
       reg: this.state.registationnum,
     };
 
 
-    if (user.password != user.password2) {
+    if (this.state.password != this.state.password2) {
       alert("Passwords do not match!");
       return;
     }
