@@ -89,7 +89,7 @@ export async function editSupervisors(group) {
     updateDoc = { $set: { cosupervisor: group.cosupervisor } };
   }
 
-  const result = await studentTopics.updateOne(filter, updateDoc, options);
+  const result = await studentTopics.updateMany(filter, updateDoc, options);
   return result;
 }
 
@@ -98,9 +98,21 @@ export async function getTopicByGroup(id){
   
   const filter = { groupid: id };
   console.log(filter)
-  const result= await studentTopics.findOne(filter);
-console.log(result)
-  return result;
+  const result= await studentTopics.find(filter).toArray();
+
+  console.log(result);
+
+  var approved=null;
+
+  result.map((value)=>{
+      if(value.status=="approved"){
+        approved=value;
+      }
+  })
+
+  console.log(approved)
+
+  return approved;
 }
 
 //Export the functions
