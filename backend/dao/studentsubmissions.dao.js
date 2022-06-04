@@ -32,5 +32,4 @@ export async function update(id, studentsubmission){
     return result;
    };
 
-//Export the functions
 export default {save, getAll, removeById, getById, update};
