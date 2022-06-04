@@ -140,12 +140,11 @@ export default class CreateStudentSubmissionType extends Component {
         </div>
           <br></br>
           <div>
-            <TextField variant="outlined" margin="normal" id="topic" label="Topic" style={{ width: 410 }} onChange={this.handleTopicChange}
-            />
+            <TextField variant="outlined" margin="normal" id="topic" label="Topic" style={{ width: 410 }} onChange={this.handleTopicChange} required/>
           </div>
           <br></br>
             <label htmlFor="contained-button-file">
-  <Input accept="image/*" name="file" id="contained-button-file" margin="normal" multiple type="file" onChange={this.handleFileChange} />
+  <Input accept="image/*" name="file" id="contained-button-file" margin="normal" multiple type="file" onChange={this.handleFileChange} required/>
 </label>
             {
               this.state.file?
