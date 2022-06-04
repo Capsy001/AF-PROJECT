@@ -57,7 +57,7 @@ export default class ManageSubmissionTypes extends Component {
       <div>
         <AppBarNav></AppBarNav>
 
-        <Divider><Chip label="Manage Assignment List" sx={{fontSize:'25px', margin:"10px", marginBottom:'20px', marginTop:'20px'}}></Chip></Divider>
+        <Divider><Chip label="Manage List of Submission Types" sx={{fontSize:'25px', margin:"10px", marginBottom:'20px', marginTop:'20px'}}></Chip></Divider>
        
         {(this.state.data).map(data =>
         <Card sx={{ width:"34%", height: 200, float:"left", marginLeft:10, marginTop:4, marginRight:10, marginBottom:4 }} style={{border:'1px solid #2e7d32'}}>

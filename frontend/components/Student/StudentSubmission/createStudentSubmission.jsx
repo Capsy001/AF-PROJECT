@@ -116,7 +116,7 @@ export default class CreateStudentSubmissionType extends Component {
       <div>
         <AppBarNav></AppBarNav>
 
-        <Divider><Chip label="Submit Your Assignment" sx={{fontSize:'25px', margin:"10px", marginTop:'20px'}}></Chip></Divider>
+        <Divider><Chip label="Submit Your Document Submission" sx={{fontSize:'25px', margin:"10px", marginTop:'20px'}}></Chip></Divider>
 
         <div  style={{margin: "0 auto", alignItems:'center', textAlign:'center', width:'40%', border:'3px solid #73AD21', padding:'10px', marginTop:'10px'}}>
         <form onSubmit={this.handleSubmit} encType="multipart/form-data" method="post">

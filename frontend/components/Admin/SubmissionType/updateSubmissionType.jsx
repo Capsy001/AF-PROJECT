@@ -112,7 +112,7 @@ export default class UpdateSubmissionType extends Component {
       <div className="">
         <AppBarNav />
 
-        <Divider><Chip label="Update Assignment Type" sx={{fontSize:'25px', margin:"10px", marginBottom:'20px', marginTop:'20px'}}></Chip></Divider>
+        <Divider><Chip label="Update Submission Type" sx={{fontSize:'25px', margin:"10px", marginBottom:'20px', marginTop:'20px'}}></Chip></Divider>
 
         <div  style={{marginLeft:'400px',marginBottom:'100px', alignItems:'center', textAlign:'center', width:'40%', border:'3px solid #73AD21', padding:'10px'}}>
         <form onSubmit={this.handleSubmit} encType="multipart/form-data" method="post">
