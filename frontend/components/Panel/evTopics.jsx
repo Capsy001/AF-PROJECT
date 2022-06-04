@@ -129,7 +129,7 @@ export default class EvTopics extends Component {
                       <TableCell align="center">
                       <Button variant="contained"  type="submit" data-key={item._id}  value='approve' onClick={this.handleapprove}>Approve</Button>&nbsp;
                       <Button variant="contained" color="error" type="submit" data-key={item._id}  value='reject' onClick={this.handlereject}>Reject</Button>&nbsp;
-                      <Button variant="contained" color="warning" type="submit" data-key={item.topic}  value='ban' onClick={this.handleban}>Ban</Button>&nbsp;
+                      
                       </TableCell>
                       </TableRow>
                   );

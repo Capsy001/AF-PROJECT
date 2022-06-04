@@ -104,11 +104,15 @@ export async function getTopicByGroup(id){
 
   var approved=null;
 
+  if(result.length>1){
   result.map((value)=>{
       if(value.status=="approved"){
         approved=value;
       }
   })
+}else{
+  approved=result[0]
+}
 
   console.log(approved)
 

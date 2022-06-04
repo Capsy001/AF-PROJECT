@@ -30,7 +30,7 @@ export default class CreateGroup extends Component {
     super(props);
 
     this.state = {
-      member1: "",
+      member1: sessionStorage.getItem("RegId"),
       member2: "",
       member3: "",
       member4: "",
@@ -149,6 +149,7 @@ export default class CreateGroup extends Component {
             <form onSubmit={this.handleSubmit}>
               <div>
                 <TextField
+                disabled
                   label="Member 1"
                   variant="outlined"
                   required
