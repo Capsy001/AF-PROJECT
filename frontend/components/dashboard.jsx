@@ -109,7 +109,6 @@ export default class Dashboard extends Component {
   componentWillMount() {
     const logged = sessionStorage.getItem("logged");
     const role = sessionStorage.getItem("loggedRole");
-
     if (sessionStorage.getItem("loggedRole") == "admin") {
       this.isAdmin = true;
     } else {

@@ -3,6 +3,8 @@ import { addStudentSubmission, getAllStudentSubmissions, deleteStudentSubmission
 import koaBusboy from "koa-busboy";
 import fs from 'fs';
 import { getAllSubmissions } from "../api/submissiontype.api.js";
+import { getGroupByRegApi } from "../api/groups.api.js";
+import { findRecords } from '../dao/studentsubmissions.dao.js';
 
 const uploader = koaBusboy({
     dest: './uploads/studentsubmissions/'
@@ -65,6 +67,13 @@ studentsubmissionsRouter.delete('/:id', (ctx) => {
     ctx.body =  deleteStudentSubmission(id);
     ctx.status = 204;
 });
+
+studentsubmissionsRouter.get('/filterByGroup/:regId', async ctx=>{
+    const regId = ctx.params.regId;
+    const reg = await getGroupByRegApi(regId);
+    const sub = await findRecords({groupid:reg[0].groupId+""});
+    ctx.body= sub;
+})
 
 studentsubmissionsRouter.get('/get/:id', async ctx=> {
     try{

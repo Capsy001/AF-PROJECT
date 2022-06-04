@@ -29,7 +29,7 @@ export const addStudentSubmission = async(studentsubmission) =>
 {
 
     const newStudentSubmission = {
-        groupid: studentsubmission.groupid,
+        groupId: studentsubmission.groupid,
         topic: studentsubmission.topic,
         uploaddate:studentsubmission.uploaddate,
         file:studentsubmission.file,

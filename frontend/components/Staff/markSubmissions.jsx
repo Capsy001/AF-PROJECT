@@ -32,9 +32,11 @@ export default class MarkSubmissions extends Component {
   }
 
   async componentDidMount() {
-    axios.post("http://localhost:3000/marking/getCustomS").then(response =>
+    const email = sessionStorage.getItem('loggedEmail');
+    axios.post("http://localhost:3000/marking/getCustomS/"+email).then(response =>
     {
       const data = response.data;
+      
       this.handleData(data);
       console.log(data);
     });
@@ -135,16 +137,22 @@ handleCosupervisor=(data)=>{
                       </Typography>
                     </CardContent>
                         <Link to={"/viewSubmission/"+data.assignment._id}>
-                            <Button
-                            variant="contained"
-                            color="info"
-                            id="Submit"
-                            type="submit"
-                            fullWidth
-                            style={{margin:'0px', marginTop:'0px',borderRadius:'0px'}}
+                            
+                        {data.submissions.length > 0 ?
+                        
+                        <Button
+                        variant="contained"
+                        color="info"
+                        id="Submit"
+                        type="submit"
+                        fullWidth
+                        style={{margin:'0px', marginTop:'0px',borderRadius:'0px'}}
                         >
-                            Start Marking
+                          Start Marking
                         </Button>
+
+                          :null
+                        }
                       </Link>
                   </Card>
                 </Grid>

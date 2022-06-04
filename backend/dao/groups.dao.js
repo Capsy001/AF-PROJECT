@@ -17,6 +17,11 @@ export async function getGroupByReg(regId){
   return result.toArray();
 }
 
+export async function getPanel(condition){  
+  const result = await groups.find(condition).project({groupId:1,_id:0});
+  return result.toArray();
+}
+
 //getAndIncrementCount
 export async function groupCount (){
     
@@ -34,8 +39,6 @@ export async function groupCount (){
         currentCount: count
       },
     };
-    
-
 
     const result2 = await groupCounter.updateOne(filter, updateDoc, options);
         return result;
