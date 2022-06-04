@@ -11,6 +11,7 @@ const defaultStudentSubmission =
     topic: "Topic1",
     uploaddate:"2022-05-11",
     file:"",
+    assignmentId:"",
     assignmentTitle:"",
 };
 
@@ -20,6 +21,7 @@ const defaultStudentSubmission2 =
     topic: "Topic2",
     uploaddate:"2022-05-16",
     file:"",
+    assignmentId:"",
     assignmentTitle:"",
 };
 
@@ -36,6 +38,7 @@ export const addStudentSubmission = async(studentsubmission) =>
         uploaddate:studentsubmission.uploaddate,
         file:studentsubmission.file,
         assignmentId:studentsubmission.assignmentId,
+        assignmentTitle:studentsubmission.assignmentTitle,
     };
     const result = await save(newStudentSubmission);
     console.log(result)
