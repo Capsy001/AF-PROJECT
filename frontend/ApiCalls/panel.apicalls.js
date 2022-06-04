@@ -33,11 +33,13 @@ export async function getPanelMembers()
 //function to add group
 export async function assignGroup(id,data)
 {
-
+var dataa = [];
   await axios.put("http://localhost:3000/panel/assign/" + id, data).then(response =>
     {
     const data = response.data;
     console.log(data)
-      
+    dataa.push(data);
     });
+
+    return dataa;
 }
