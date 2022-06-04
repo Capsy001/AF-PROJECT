@@ -33,10 +33,13 @@ export default class ViewSubmission extends Component {
   }
 
   async componentDidMount() {
-    axios.post("http://localhost:3000/marking/getCustomS").then(response =>
+    const email = sessionStorage.getItem('loggedEmail');
+    axios.post("http://localhost:3000/marking/getCustomS/"+email).then(response =>
     {
       const data = response.data;
-      this.handleData(data);
+      if(data != 'empty'){
+        this.handleData();
+      }
       console.log(data);
     });
   }
@@ -139,8 +142,8 @@ splitFile(dataS){
             }}
           >
             <Grid container>
-            {this.state.data.map((data) => {
-        
+              
+                {this.state.data.map((data) => {
                 return(
                     data.submissions.map((dataS) => 
                     
@@ -202,7 +205,9 @@ splitFile(dataS){
                 </Grid>
         
                 ))
+                
     })}
+    
             </Grid>
           </div>
         </div>

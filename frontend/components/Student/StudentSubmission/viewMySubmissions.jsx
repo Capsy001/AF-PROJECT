@@ -49,7 +49,8 @@ export default class ViewMySubmissions extends Component {
   }
 
   async componentDidMount(){
-    axios.get("http://localhost:3000/studentsubmissions/").then(response =>
+    const reg = sessionStorage.getItem("RegId");
+    axios.get("http://localhost:3000/studentsubmissions/filterByGroup/"+reg).then(response =>
     {
       this.handleData(response.data);
     });
@@ -103,7 +104,11 @@ export default class ViewMySubmissions extends Component {
                             <div style={{textAlign:'center', fontWeight:'bold',marginBottom:'10px'}}>Marks : {this.calMarks(markData.pointMarks)}</div>
                           </Typography>  
                           :
-                          null
+                          
+                          <Typography variant="h7" color="text.secondary">
+                            <div style={{textAlign:'center', fontWeight:'bold',marginBottom:'10px'}}>Not Marked Yet</div>
+                          </Typography>
+
                           )
                         }
                       )

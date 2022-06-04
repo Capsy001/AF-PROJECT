@@ -2,6 +2,7 @@ import Router from "@koa/router"
 import { getAllSubmissions,getSubmission } from "../api/submissiontype.api.js";
 import { save,getAll } from "../api/marking.api.js";
 import { findRecords } from "../dao/studentsubmissions.dao.js";
+import { getPanel } from "../dao/groups.dao.js";
 
 const markingRouter = new Router(
     {
@@ -31,17 +32,34 @@ markingRouter.post('/save', async(ctx) => {
 
 });
 
-markingRouter.post('/getCustomS', async(ctx) => {
-
+markingRouter.post('/getCustomS/:staffEmail', async(ctx) => {
+    const email = ctx.params.staffEmail;
     const marking = await getAll();
     let result = [];
+    let group = await getPanel({panel:[email]});
 
     let assignment;
     let submissions;
 
+    let groupArr = [];
+
+    if(group.length == 0){
+        ctx.body = "empty";
+        ctx.state = 201;
+    }else{
+
+    
+    group.map(data => {
+        groupArr.push({
+            groupid: data.groupId+""
+        });
+    });
+
     for(let i = 0;i < marking.length;i++){
         assignment = await getSubmission(marking[i].assignmentType);
-        submissions = await findRecords({assignmentId:marking[i].assignmentType});
+        submissions = await findRecords({
+            $and:[{assignmentId:marking[i].assignmentType},{$or:groupArr}]
+        });
         result.push({
             assignment:assignment,
             submissions:submissions,
@@ -51,6 +69,7 @@ markingRouter.post('/getCustomS', async(ctx) => {
 
     ctx.body = result;
     ctx.status = 201;
+    }
 
 });
 
