@@ -11,13 +11,11 @@ import topicRouter from "./router/topics.router.js";
 import studentsubmissionsRouter from "./router/studentsubmission.router.js";
 import panelRouter from "./router/panel.router.js";
 import markingRouter from "./router/marking.router.js";
-<<<<<<< HEAD:backend/app.js
 import submissionsRouter from "./router/submissiontype.router.js";
-=======
 import path from "path";
 
-const PORT = process.env.PORT || 5000
->>>>>>> heroku:app.js
+const PORT = process.env.PORT || 3000
+import addMarks from "./router/addMarks.router.js";
 
 const app = new Koa();
 const router = new koaRouter()
@@ -43,6 +41,7 @@ app.use(studentsubmissionsRouter.routes()).use(studentsubmissionsRouter.allowedM
 app.use(panelRouter.routes()).use(panelRouter.allowedMethods());
 app.use(markingRouter.routes()).use(markingRouter.allowedMethods());
 app.use(submissionsRouter.routes()).use(submissionsRouter.allowedMethods());
+app.use(addMarks.routes()).use(addMarks.allowedMethods());
 
 app.use(ctx =>
 {
@@ -50,7 +49,7 @@ app.use(ctx =>
     ctx.body = '<h1>No data is available1</h1>'
 });
 
-app.listen(5000, () =>
+app.listen(PORT, () =>
 {
     console.log(`App running on port ${PORT}!`);
 })

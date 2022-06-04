@@ -122,7 +122,7 @@ export default class CreateStudentSubmissionType extends Component {
         <form onSubmit={this.handleSubmit} encType="multipart/form-data" method="post">
           <div>
         <FormControl fullWidth>
-            <InputLabel id="demo-simple-select-label">Assignment Title</InputLabel>
+            <InputLabel id="demo-simple-select-label">Submission Type</InputLabel>
             <Select
                 labelId="demo-simple-select-label"
                 id="demo-simple-select"

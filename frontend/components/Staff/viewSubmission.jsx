@@ -1,14 +1,14 @@
 import React from "react";
 import { Component } from "react";
 import { Link } from "react-router-dom";
-import { Button, Chip, Divider, Card, CardContent } from "@mui/material";
+import { Button, Chip, Divider, Card, CardContent,InputAdornment,OutlinedInput,FormHelperText } from "@mui/material";
 import {
   Button,
   Chip,
   Divider,
   Typography,
   Grid,
-  TextField,
+  FormControl,
 } from "@mui/material";
 import AppBarNav from "../AppBarNav";
 import axios from "axios";
@@ -86,7 +86,26 @@ handleSupervisor=(data)=>{
 
 handleSubmit(event) {
     event.preventDefault();
-    console.log(event.target);
+    let pointVal = [];
+    this.state.data[0].marking.markingPoints.map(data =>{
+      pointVal.push({
+        [data.point]:{got:event.target.elements[data.point].value,max:data.marks}
+      });
+    });
+
+    let marks = {
+      submissionsId:event.target.elements.submissionsId.value,
+      pointMarks:pointVal,
+    }
+
+    axios.post("http://localhost:3000/addMarks/save",marks).then(response =>
+    {
+      const data = response.data;
+      console.log(data);
+    });
+
+    console.log(marks);
+
 }
 
 splitFile(dataS){
@@ -127,7 +146,7 @@ splitFile(dataS){
                     
 
                 <Grid item xs={6} key={dataS.groupid}>
-                    <form onSubmit={(e) => this.handleSubmit(e)}>
+                    <form onSubmit={(e) => this.handleSubmit(e)} name={dataS.assignmentId}>
                     <Card key={dataS.groupid}
                     sx={{ marginLeft: 4, marginTop: 4, marginRight: 4 }}
                     style={{
@@ -149,23 +168,29 @@ splitFile(dataS){
                     {
                         data.marking.markingPoints.map((data) => {
                             return(
-                            <TextField
-                            id="outlined-number"
-                            label="Marks"
-                            type="number"
-                            helperText={data.point}
-                            max={data.marks}
-                            InputLabelProps={{
-                              shrink: true,
+                          
+                          <FormControl sx={{ m: 1, width: '25ch' }} variant="outlined">
+                          <OutlinedInput
+                            id="outlined-adornment-weight"
+                            name={data.point}
+                            endAdornment={<InputAdornment position="end">/{data.marks}</InputAdornment>}
+                            aria-describedby="outlined-weight-helper-text"
+                            inputProps={{
+                              'aria-label': 'weight',
                             }}
-                          />)
+                          />
+                          <FormHelperText id="outlined-weight-helper-text">{data.point} marks</FormHelperText>
+                        </FormControl>
+
+                          )
                         })
                     }
                         <Button
                         variant="contained"
                         color="info"
-                        id="Submit"
-                        value={dataS.groupid}
+                        id="submissionsId"
+                        name="submissionId"
+                        value={dataS._id}
                         type="submit"
                         fullWidth
                         style={{margin:'0px', marginTop:'0px',borderRadius:'0px'}}
