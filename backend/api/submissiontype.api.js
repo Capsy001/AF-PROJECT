@@ -45,12 +45,12 @@ export const deleteSubmission = async id =>
     return await removeById(id);
 }
 
-        export const getSubmission = async(id) => {
-            return await getById(id);
-        }
+export const getSubmission = async(id) => {
+    return await getById(id);
+}
 
-        export const updateSubmission = async (id, submissiontype)=>{
-            return await update({id}, submissiontype);
-        }
+export const updateSubmission = async (id, submissiontype)=>{
+    return await update({id}, submissiontype);
+}
 
 export default {addSubmission, getAllSubmissions, deleteSubmission, getSubmission, updateSubmission};

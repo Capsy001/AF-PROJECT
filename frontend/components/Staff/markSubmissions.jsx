@@ -4,11 +4,9 @@ import { Link } from "react-router-dom";
 import { Button, Chip, Divider, Card, CardContent } from "@mui/material";
 import {
   Button,
-  TextField,
   Chip,
   Divider,
   Typography,
-  CardActions,
   Grid,
 } from "@mui/material";
 import AppBarNav from "../AppBarNav";
@@ -30,6 +28,7 @@ export default class MarkSubmissions extends Component {
     this.setState({
        data: sdata,   
     });
+    
   }
 
   async componentDidMount() {
@@ -89,37 +88,6 @@ handleCosupervisor=(data)=>{
     
 }
 
-
-getButtons=(data)=>{
-
-  const supervisor=data.data.supervisor==""?false:true
-  const cosupervisor=data.data.cosupervisor==""?false:true
-
-  console.log("super: "+supervisor);
-  console.log("cosuper: "+cosupervisor);
-
-
-   return (<><Button
-                        variant="outlined"
-                        size="small"
-                        topicid={data._id}
-                        disabled={supervisor}
-                        onClick={this.handleSupervisor.bind(this, data)}
-                      >
-                        Accept As Supervisor
-                      </Button>
-                      <Button
-                        variant="outlined"
-                        size="small"
-                        topicid={data._id}
-                        disabled={cosupervisor}
-                        onClick={this.handleCosupervisor.bind(this, data)}
-                      >
-                        Accept As Co-Supervisor
-                      </Button></>);
-
-}
-
   render() {
     return (
       <div>
@@ -128,7 +96,7 @@ getButtons=(data)=>{
         <div style={{ marginTop: "40px" }}>
           <Divider>
             <Chip
-              label="Supervisors"
+              label="Assignment Marking"
               style={{
                 padding: "20px",
                 paddingLeft: "50px",
@@ -156,22 +124,28 @@ getButtons=(data)=>{
                     }}
                   >
                     <CardContent>
-                      <Typography gutterBottom variant="h5" component="div">
-                        {data.title}
+                      <Typography variant="body2" color="text.secondary">
+                        Assignment Title: {data.assignment.title}
                       </Typography>
                       <Typography variant="body2" color="text.secondary">
-                        Group: {data.groupid}
+                        DeadLine: {data.assignment.deadline}
+                      </Typography>
+                      <Typography variant="body2" color="text.secondary">
+                        Submissions: {data.submissions.length}
                       </Typography>
                     </CardContent>
-                    <CardActions
-                      sx={{ margin: "0 auto", justifyContent: "center" }}
-                    >
-                      
-                        <this.getButtons data={data}></this.getButtons>
-
-
-
-                    </CardActions>
+                        <Link to={"/viewSubmission/"+data.assignment._id}>
+                            <Button
+                            variant="contained"
+                            color="info"
+                            id="Submit"
+                            type="submit"
+                            fullWidth
+                            style={{margin:'0px', marginTop:'0px',borderRadius:'0px'}}
+                        >
+                            Start Marking
+                        </Button>
+                      </Link>
                   </Card>
                 </Grid>
               ))}

@@ -1,7 +1,7 @@
 import Router from "@koa/router"
-import { getAllSubmissions,getAllSubmission } from "../api/submissiontype.api.js";
+import { getAllSubmissions,getSubmission } from "../api/submissiontype.api.js";
 import { save,getAll } from "../api/marking.api.js";
-import { getById } from "../dao/studentsubmissions.dao.js";
+import { findRecords } from "../dao/studentsubmissions.dao.js";
 
 const markingRouter = new Router(
     {
@@ -31,16 +31,22 @@ markingRouter.post('/save', async(ctx) => {
 
 });
 
-markingRouter.post('/getCustom', async(ctx) => {
+markingRouter.post('/getCustomS', async(ctx) => {
 
     const marking = await getAll();
-    const assignment = await getAllSubmission(marking.assignmentType);
-    const submissions = await getById(marking.assignmentType);
+    let result = [];
 
-    const result = {
-        marking: marking,
-        assignment: assignment,
-        submissions: submissions,
+    let assignment;
+    let submissions;
+
+    for(let i = 0;i < marking.length;i++){
+        assignment = await getSubmission(marking[i].assignmentType);
+        submissions = await findRecords({assignmentId:marking[i].assignmentType});
+        result.push({
+            assignment:assignment,
+            submissions:submissions,
+            marking:marking[i]
+        });
     }
 
     ctx.body = result;
