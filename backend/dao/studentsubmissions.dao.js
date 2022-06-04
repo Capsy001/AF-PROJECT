@@ -2,8 +2,8 @@ import client from'./index.js';
 const studentsubmissions = client.db('store').collection('studentsubmissions');
 import {ObjectId} from 'mongodb';
 
-export async function save ({groupid, topic, uploaddate, file, assignmentTitle}){
-        const result = await studentsubmissions.insertOne({groupid, topic, uploaddate, file,assignmentTitle});
+export async function save ({groupid, topic, uploaddate, file, assignmentId, assignmentTitle}){
+        const result = await studentsubmissions.insertOne({groupid, topic, uploaddate, file, assignmentId, assignmentTitle});
         return result.insertedId;
     }
 

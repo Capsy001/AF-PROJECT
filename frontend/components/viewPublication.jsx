@@ -2,7 +2,7 @@ import React from "react";
 import { Component } from "react";
 import { Link } from "react-router-dom";
 
-import { Button, Chip, Divider, Card, CardContent } from "@mui/material";
+import { Button, Chip, Divider, Card, CardContent, Grid } from "@mui/material";
 import { Campaign, FileDownload } from "@mui/icons-material";
 
 import { Button, TextField, Chip, Divider, Typography, CardActions } from "@mui/material";
@@ -52,9 +52,15 @@ export default class ViewPublication extends Component {
 
             <div style={{justifyContent:'center',display:'flex',marginTop:'20px'}}>
               
+              <Grid container>
               {
                 (this.state.data).map(data => 
-                  <Card sx={{ width: 645 }} style={{borderLeft:'3px solid #2e7d32'}}>
+                  <Grid item xs={6}>
+                  <Card sx={{ marginLeft: 4, marginTop: 4, marginRight: 4 }}
+                    style={{
+                      borderLeft: "3px solid #2e7d32",
+                      display: "block",
+                    }}>
                     <CardContent>
                       <Typography gutterBottom variant="h5" component="div">
                         {data.title}
@@ -69,8 +75,10 @@ export default class ViewPublication extends Component {
                       </a>
                     </CardActions>
                   </Card>
+                  </Grid>
                 )
               }
+              </Grid>
               
             </div>
         </div>

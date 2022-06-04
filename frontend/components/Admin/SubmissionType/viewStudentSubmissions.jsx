@@ -22,6 +22,7 @@ export default class ViewStudentSubmission extends Component {
   }
 
   async handleData(subdata){
+    
     this.setState({
       data:subdata
     });
@@ -31,6 +32,7 @@ export default class ViewStudentSubmission extends Component {
     axios.get("http://localhost:3000/studentsubmissions").then(response =>
     {
       this.handleData(response.data);
+      
     });
   }
 
@@ -45,30 +47,13 @@ export default class ViewStudentSubmission extends Component {
     axios.get("http://localhost:3000/studentsubmissions").then(response =>
     {
       this.handleData(response.data);
+      console.log(response.data)
     });
   }
 
-  filterData(data,searchKey){
-
-    const result = data.filter((data) =>
-    data.assignmentType.toLowerCase().includes(searchKey)||
-    data.groupid.toLowerCase().includes(searchKey)||
-    data.topic.toLowerCase().includes(searchKey)
-    )
-    this.setState({data:result})
-    }
+  
     
-    handleSearchArea = (e) =>{
-    
-        const searchKey=e.currentTarget.value;
-    
-        axios.get("http://localhost:3000/studentsubmissions").then(response =>{
-    if(response.data){
-    
-        this.filterData(response.data,searchKey)
-    }
-    });
-  }
+   
 
   render() {
 
@@ -81,27 +66,18 @@ export default class ViewStudentSubmission extends Component {
         </Divider> */}
 
 <h1 style={{marginLeft:'40%'}}>Submitted Assignments</h1>
-<div>
-    <input
-    className="form-control"
-    style={{width:"380px", marginLeft:"100px"}}
-    type="search"
-    placeholder="Search Room Title or Room Short Code or ExtraBed"
-    name="searchQuery"
-    onChange={this.handleSearchArea}>
-    </input>
-    </div>
+
         
         {(this.state.data).map(data => 
         <Card sx={{ width:"27%", height: 300, float:"left", marginLeft:4, marginTop:4, marginRight:4 }} style={{border:'1px solid #2e7d32'}}>
                     <CardContent>
-                    <Typography gutterBottom variant="h5" component="div">
-                     <div style={{textAlign:'center', color:'blue'}}>{data.assignmentType}</div>
+                     <Typography gutterBottom variant="h5" component="div">
+                     <div style={{textAlign:'center', color:'blue'}}>{data.assignmentTitle}</div>
                       </Typography>
-                      <Typography gutterBottom variant="h5" component="div">
-                     <div style={{textAlign:'center', color:'blue'}}>{data.groupid}</div>
+                      <Typography gutterBottom variant="h6" component="div">
+                     <div style={{textAlign:'center', color:'blue'}}>Group ID: {data.groupid}</div>
                       </Typography>
-                      <Typography variant="h5" color="">
+                      <Typography variant="h6" color="">
                       <div style={{textAlign:'center', marginBottom:"10px"}}>Topic : {data.topic}</div>
                       </Typography>
                       <Typography variant="h7" color="red">
@@ -115,7 +91,7 @@ export default class ViewStudentSubmission extends Component {
                       <CardActions
                       sx={{ margin: "0 auto", justifyContent: "center" }}>
                       <Typography variant="body2" color="text.secondary">
-                      <a href={"http://localhost:3000/" + (data.file.split("/"))[3]} target="_blank">
+                      <a href={"http://localhost:3000/" + (data.file.split("/"))[3]} style={{textDecoration:'none'}} target="_blank">
                         <Button variant="contained" size="small" style={{marginTop:'12%', textDecoration:'inherit'}}><FileDownload/> Download Assignment</Button>
 
                       </a>

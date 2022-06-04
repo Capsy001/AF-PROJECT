@@ -64,7 +64,7 @@ class AppBarNav extends Component {
 
               <Link
                 style={{ textDecoration: "none" }}
-                to="/createStudentSubmission"
+                to="/viewSubmissionTypes"
               >
                 <Button sx={{ color: "white" }} size="small" color="inherit">
                   +SUBMISSIONS
@@ -84,6 +84,7 @@ class AppBarNav extends Component {
                   Publications
                 </Button>
               </Link>
+              <Divider orientation="vertical" variant="middle" flexItem />
             </>
           ) : (
             <></>
@@ -135,7 +136,7 @@ class AppBarNav extends Component {
               View Submissions
             </Button>
           </Link>
-          <Divider orientation="vertical" variant="middle" flexItem />
+      
 
           <Divider orientation="vertical" variant="middle" flexItem />
           <Link style={{ textDecoration: "none" }} to="/panelManagement">
@@ -152,13 +153,40 @@ class AppBarNav extends Component {
           {//End admin tabs
 }
 
-
+{//start staff tabs
+}
 {sessionStorage.getItem("loggedRole") == "staff" ? 
 
 <>
-<Link style={{ textDecoration: "none" }} to="/supervisor">
+
+          <Link style={{ textDecoration: "none" }} to="/supervisor">
             <Button sx={{ color: "white" }} size="small" color="inherit">
               Supervisor
+            </Button>
+          </Link>
+
+          <Divider orientation="vertical" variant="middle" flexItem />
+
+          <Link style={{ textDecoration: "none" }} to="/viewStudentSubmissions">
+            <Button sx={{ color: "white" }} size="small" color="inherit">
+              View Submissions
+            </Button>
+          </Link>
+          <Divider orientation="vertical" variant="middle" flexItem />
+
+          <Link style={{ textDecoration: "none" }} to="/panel/evTopics">
+            <Button sx={{ color: "white" }} size="small" color="inherit">
+              Evaluate Topics
+            </Button>
+          </Link>
+          <Divider orientation="vertical" variant="middle" flexItem />
+
+
+
+          
+          <Link style={{ textDecoration: "none" }} to="/markSubmissions">
+            <Button sx={{ color: "white" }} size="small" color="inherit">
+              +Marks
             </Button>
           </Link>
 
@@ -173,6 +201,8 @@ class AppBarNav extends Component {
 
 
 
+}
+{//end staff tabs
 }
           
 

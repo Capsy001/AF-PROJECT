@@ -13,7 +13,7 @@ import {
 } from "@mui/material";
 import AppBarNav from "../AppBarNav";
 import axios from "axios";
-import { getTopics } from "../../ApiCalls/topic.apicall";
+import { getTopics, updateSupervisor } from "../../ApiCalls/topic.apicall";
 import { textAlign } from "@mui/system";
 
 export default class SupervisorAccept extends Component {
@@ -75,13 +75,29 @@ export default class SupervisorAccept extends Component {
 }
 
 
-handleSupervisor=(data)=>{
-  alert(data.topic)
+handleSupervisor=async (data)=>{
+  console.log(data)
+
+ const update= {
+    groupid:data.groupid,
+    supervisor: sessionStorage.getItem("loggedEmail")
+    }
+
+    const result=await updateSupervisor(update);
+    window.location.href="/supervisor"
 
 }
 
-handleCosupervisor=(data)=>{
+handleCosupervisor=async (data)=>{
+  console.log(data)
 
+  const update= {
+     groupid:data.groupid,
+     cosupervisor: sessionStorage.getItem("loggedEmail")
+     }
+ 
+     const result=await updateSupervisor(update);
+     window.location.href="/supervisor"
     
 }
 
@@ -100,7 +116,7 @@ getButtons=(data)=>{
                         size="small"
                         topicid={data._id}
                         disabled={supervisor}
-                        onClick={this.handleSupervisor.bind(this, data)}
+                        onClick={this.handleSupervisor.bind(this, data.data)}
                       >
                         Accept As Supervisor
                       </Button>
@@ -109,7 +125,7 @@ getButtons=(data)=>{
                         size="small"
                         topicid={data._id}
                         disabled={cosupervisor}
-                        onClick={this.handleCosupervisor.bind(this, data)}
+                        onClick={this.handleCosupervisor.bind(this, data.data)}
                       >
                         Accept As Co-Supervisor
                       </Button></>);

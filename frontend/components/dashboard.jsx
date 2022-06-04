@@ -4,6 +4,7 @@ import { login } from "../restcall";
 import "./login.module.css";
 import { Link } from "react-router-dom";
 import {
+  Chip,
   Button,
   Stack,
   AppBar,
@@ -11,9 +12,18 @@ import {
   Divider,
   createTheme,
   colors,
+  Typography,
 } from "@mui/material";
 import styled from "@emotion/styled";
 import AppBarNav from "./AppBarNav";
+
+import Table from '@mui/material/Table';
+import TableBody from '@mui/material/TableBody';
+import TableCell from '@mui/material/TableCell';
+import TableContainer from '@mui/material/TableContainer';
+import TableHead from '@mui/material/TableHead';
+import TableRow from '@mui/material/TableRow';
+import Paper from '@mui/material/Paper';
 
 export default class Dashboard extends Component {
   constructor() {
@@ -124,27 +134,30 @@ export default class Dashboard extends Component {
 
         <AppBarNav></AppBarNav>
 
+      <Divider><Chip sx={{margin:"10px"}} label="Dashboard"></Chip></Divider>
+        
 
-        <h2>Dashboard</h2>
+        
+        <Typography variant="h2" sx={{fontSize:'50px'}}>Hi {sessionStorage.getItem("loggedName")}</Typography>
+        <TableContainer sx={{ width: "50%",margin: "0 auto" }}  component={Paper}>
+        <Table sx={{ border:"none" }}>
+        <TableBody>
+        <TableRow>
+        <TableCell align="center">Name</TableCell>
+              <TableCell align="center">{sessionStorage.getItem("loggedName")}</TableCell>
+              </TableRow>
+            <TableRow>
+            <TableCell align="center">Email</TableCell>
+            <TableCell align="center">{sessionStorage.getItem("loggedEmail")}</TableCell>
+              </TableRow>
+            <TableRow>
+            <TableCell align="center">Role</TableCell>
+            <TableCell align="center">{sessionStorage.getItem("loggedRole")}</TableCell>
+              </TableRow>
+            </TableBody>
+        </Table>
 
-        <hr></hr>
-        <h2>Hi {sessionStorage.getItem("loggedName")}</h2>
-        <table>
-          <tbody>
-            <tr>
-              <th>Name</th>
-              <td>{sessionStorage.getItem("loggedName")}</td>
-            </tr>
-            <tr>
-              <th>Email</th>
-              <td>{sessionStorage.getItem("loggedEmail")}</td>
-            </tr>
-            <tr>
-              <th>Role</th>
-              <td>{sessionStorage.getItem("loggedRole")}</td>
-            </tr>
-          </tbody>
-        </table>
+        </TableContainer>
       </div>
     );
   }

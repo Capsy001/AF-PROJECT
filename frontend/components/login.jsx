@@ -6,6 +6,7 @@ import { login } from "../restcall";
 import { Button, Paper, Chip } from "@mui/material";
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
+import { width } from "@mui/system";
 
 
 export default class Login extends Component {
@@ -36,10 +37,14 @@ export default class Login extends Component {
 
   render() {
     return (
-      <div className="loginForm" style={{textAlign: "center"}}>        
+      <div className="loginForm" style={{textAlign: "center"}}>
+
+        <img style={{width: "20%"}} src={require('../resources/SLIIT.png')} />  
+
+
         <div>
           <Paper sx={{ padding: "32px", width: "40%", textAlign:"center", justifyContent:"center", margin: "0 auto",borderBottom: '3px solid #00e676'
-                    ,marginTop:'100px'
+                    ,marginTop:'50px'
                     }}>
 
 

@@ -3,10 +3,19 @@ import { Component } from "react";
 import { login } from "../login";
 import "../login.module.css";
 import { Link } from "react-router-dom";
-import { Button } from "@mui/material";
+import { AppBar, Button } from "@mui/material";
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import {getTopics, updateTopicsts, banTopicsts} from '../../ApiCalls/topic.apicall';
+import AppBarNav from "../AppBarNav";
+
+import Table from '@mui/material/Table';
+import TableBody from '@mui/material/TableBody';
+import TableCell from '@mui/material/TableCell';
+import TableContainer from '@mui/material/TableContainer';
+import TableHead from '@mui/material/TableHead';
+import TableRow from '@mui/material/TableRow';
+import Paper from '@mui/material/Paper';
 
 export default class EvTopics extends Component {
   constructor() {
@@ -63,6 +72,7 @@ export default class EvTopics extends Component {
   }
 
   handleban = async(event) =>{
+    
     const topic = event.target.dataset.key;
     const object={
       topic:topic
@@ -74,7 +84,7 @@ export default class EvTopics extends Component {
   async componentWillMount() {
     const logged = sessionStorage.getItem("logged");
     const role = sessionStorage.getItem("loggedRole");
-    if(!role.includes("panel")){
+    if(!role.includes("staff")){
         window.location.href = "/";
     }
     if (logged == "false") {
@@ -89,36 +99,43 @@ export default class EvTopics extends Component {
   render() {
     return (
       <div className="loginForm">
-        <h2>Dashboard</h2>
+        
 
-        <this.GetNav />
+        <AppBarNav></AppBarNav>
 
         <hr></hr>
         {
-            <table>
-              <tbody>
-              <tr>
-                <th>Topic</th>
-                <th>Description</th>
-                <th>Status</th>
-                <th>Action</th>
-              </tr>
+          <TableContainer component={Paper} sx={{ width:"75%", margin: "0 auto" }}>
+            <Table sx={{ border:"none" }} aria-label="simple table">
+              
+              <TableHead>
+              <TableRow>
+              <TableCell>Topic</TableCell>
+              <TableCell>Description</TableCell>
+              <TableCell>Status</TableCell>
+              <TableCell align="center">Action</TableCell>
+                </TableRow>
+              </TableHead>
+
+              <TableBody>
                 {this.state.data.map((item) => {
                   return (
-                    <tr>
-                      <td>{item.topic}</td>
-                      <td>{item.description}</td>
-                      <td>{item.status}</td>
-                      <td>
-                      <input type="submit" data-key={item._id} style={{display:'inline'}} value='approve' onClick={this.handleapprove}/>&nbsp;
-                      <input type="submit" data-key={item._id} style={{display:'inline'}} value='reject' onClick={this.handlereject}/>&nbsp;
-                      <input type="submit" data-key={item.topic} style={{display:'inline'}} value='ban' onClick={this.handleban}/>
-                      </td>
-                    </tr>
+                    <TableRow>
+                      <TableCell>{item.topic}</TableCell>
+                      <TableCell>{item.description}</TableCell>
+                      <TableCell>{item.status}</TableCell>
+                      <TableCell align="center">
+                      <Button variant="contained"  type="submit" data-key={item._id}  value='approve' onClick={this.handleapprove}>Approve</Button>&nbsp;
+                      <Button variant="contained" color="error" type="submit" data-key={item._id}  value='reject' onClick={this.handlereject}>Reject</Button>&nbsp;
+                      <Button variant="contained" color="warning" type="submit" data-key={item.topic}  value='ban' onClick={this.handleban}>Ban</Button>&nbsp;
+                      </TableCell>
+                      </TableRow>
                   );
                 })}
-              </tbody>
-            </table>
+                </TableBody>
+              
+              </Table>
+            </TableContainer>
           }
       </div>
     );

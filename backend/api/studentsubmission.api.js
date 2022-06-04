@@ -4,12 +4,14 @@ import { save, getAll, removeById, getById, update} from '../dao/studentsubmissi
 const studentsubmissions = new Map();
 
 
+
 const defaultStudentSubmission =
 {
     groupid: "G01",
     topic: "Topic1",
     uploaddate:"2022-05-11",
     file:"",
+    assignmentId:"",
     assignmentTitle:"",
 };
 
@@ -19,6 +21,7 @@ const defaultStudentSubmission2 =
     topic: "Topic2",
     uploaddate:"2022-05-16",
     file:"",
+    assignmentId:"",
     assignmentTitle:"",
 };
 
@@ -34,6 +37,7 @@ export const addStudentSubmission = async(studentsubmission) =>
         topic: studentsubmission.topic,
         uploaddate:studentsubmission.uploaddate,
         file:studentsubmission.file,
+        assignmentId:studentsubmission.assignmentId,
         assignmentTitle:studentsubmission.assignmentTitle,
     };
     const result = await save(newStudentSubmission);

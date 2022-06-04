@@ -4,17 +4,19 @@ import axios from "axios";
 export async function newTopic(topicData){
 
 
-    const data1 = []
+    var data1 = []
 
     await axios.post("http://localhost:3000/topics/new",topicData).then((response) => {
-        data = response.data;
-        console.log(data);
+        data1 = response.data;
+        console.log(data1);
 
         
-            alert("Result: "+data);
+            alert("Result: "+data1);
         
-
-        data1.push(data);
+        try{
+            data1.push(data1);
+        }catch(e){}
+        
     })
 
     return data1;
@@ -67,6 +69,28 @@ export async function banTopicsts(topic)
 
 
 
+//add supervisor details to topic
+export async function updateSupervisor(update)
+{
+    var data=null;
+    
+    await axios.put("http://localhost:3000/topics/supervisor" , update).then((response) => {
+        data = response.data;
+
+        try{
+            if(data.modifiedCount==1){
+                alert("Accepted!");
+            }else{
+                alert("Error occured!");
+            }
+        }catch(e){}
+    });
+    
+    return data;
+}
 
 
-export default {getTopics, updateTopicsts, banTopicsts, newTopic};
+
+
+
+export default {getTopics, updateTopicsts, banTopicsts, newTopic, updateSupervisor};

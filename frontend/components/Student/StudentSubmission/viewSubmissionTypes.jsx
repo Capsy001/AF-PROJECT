@@ -1,5 +1,5 @@
 import { React, Component } from "react";
-import { Button} from "@mui/material";
+import { Button, Grid} from "@mui/material";
 import { Campaign, FileDownload } from "@mui/icons-material";
 import { Campaign, CloudUpload } from "@mui/icons-material";
 import CustomHeader from "../../header/customheader";
@@ -10,6 +10,7 @@ import { Button, Chip, Divider, Card, CardContent } from "@mui/material";
 import { Campaign, FileDownload } from "@mui/icons-material";
 
 import { Button, TextField, Chip, Divider, Typography, CardActions } from "@mui/material";
+import AppBarNav from "../../AppBarNav";
 
 export default class ViewSubmissionTypes extends Component {
   constructor(props) {
@@ -58,34 +59,35 @@ export default class ViewSubmissionTypes extends Component {
     return (
       <div>
         
-        <CustomHeader />
-<h1 style={{marginLeft:'40%'}}>Assignment List</h1>
-       
+        <AppBarNav></AppBarNav>
+        <Divider><Chip label="Assignment List" sx={{fontSize:'20px', margin:"10px"}}></Chip></Divider>
+
+       <Grid container>
         {(this.state.data).map(data =>
-        <Card sx={{ width:"34%", float:"left", marginLeft:10, marginTop:4, marginRight:10, marginBottom:4 }} style={{border:'1px solid #2e7d32'}}>
+        <Grid xs={4} item>
+        <Card sx={{ margin: "5px"}} style={{borderLeft:'3px solid #2e7d32'}}>
                     <CardContent>
                       <Typography gutterBottom variant="h5" component="div">
-                     <div style={{textAlign:'center', color:'blue', marginTop:'10px'}}><b>{data.title}</b></div>
+                     <div style={{textAlign:'center', fontFamily:"sans-serif"}}><b>{data.title}</b></div>
                       </Typography>
                       <Typography variant="h7" color="text.secondary">
-                      <div style={{textAlign:'center', marginTop:'10px'}}>{data.desc}</div>
-                      </Typography>
-                      <Typography variant="h7" color="text.secondary">
-                        <div style={{textAlign:'center', color:'red', marginTop:'20px'}}>Deadline : {data.deadline}</div>
+                        <div style={{textAlign:'center', color:'red'}}>Deadline : {data.deadline}</div>
                       </Typography>
                       {/* <Button onClick={handleSubmit(data)}></Button> */}
-                      <Link to="/createStudentSubmission"><Button  variant="contained" margin="normal" id="Submit" type="submit" style={{width:'60%', marginTop:'10px', marginRight:'20%', marginLeft:'20%'}}>
-            UPOLAD ASSIGNMENT
-          </Button>
-          </Link>
+                      
           <br></br>
 
                     </CardContent>
                     <CardActions>
-                      
+                    <a href="/createStudentSubmission" style={{textDecoration:'none'}}><Button variant="contained" margin="normal" type="submit" style={{marginLeft:'100px', marginBottom:'10px', marginTop:'10px',textDecoration:'none'}}>
+            UPOLAD ASSIGNMENT
+          </Button></a>
+          
                     </CardActions>
                   </Card>
+                  </Grid>
         )}
+        </Grid>
       </div>
     );
   }
