@@ -1,4 +1,5 @@
 import axios from "axios";
+import { getGroupByReg } from "./group.apicall";
 
 //function to register new topic
 export async function newTopic(topicData){
@@ -89,8 +90,23 @@ export async function updateSupervisor(update)
     return data;
 }
 
+//function to get topic details of the group id
+export async function getTopicByGroupId(groupid)
+{
+    const group=groupid[0].groupId
+    
+
+    var data = null;
+    await axios.get("http://localhost:3000/topics/group/"+group).then((response) => {
+        data = response.data;
+        console.log(data);
+        
+    });
+    return data;
+}
 
 
 
 
-export default {getTopics, updateTopicsts, banTopicsts, newTopic, updateSupervisor};
+
+export default {getTopics, updateTopicsts, banTopicsts, newTopic, updateSupervisor, getTopicByGroupId};

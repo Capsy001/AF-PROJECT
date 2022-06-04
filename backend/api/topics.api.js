@@ -1,4 +1,4 @@
-import { save, ban, updatestatus, getAll, removeById, getById, editSupervisors} from '../dao/topics.dao.js';
+import { save, ban, updatestatus, getAll, removeById, getById, editSupervisors, getTopicByGroup} from '../dao/topics.dao.js';
 
 //function for add topic
 export const addTopic = async(topic) =>
@@ -63,5 +63,10 @@ export async function updateSupervisors(group){
     
 }
 
+export async function getTopicByGID(id){
 
-export default {addTopic, banTopic, updateTopic, getAllSubmissions, deleteSubmission, getSubmission};
+    return await getTopicByGroup(id);
+}
+
+
+export default {addTopic, banTopic, updateTopic, getAllSubmissions, deleteSubmission, getSubmission, getTopicByGID};
