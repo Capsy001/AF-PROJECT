@@ -21,7 +21,6 @@ export default class CreateStudentSubmissionType extends Component {
       assignmentTypes:[],
     };
     this.handleSubmit.config = this.handleSubmit.bind(this);
-    // this.id = sessionStorage.getItem(assignmentID);
   }
 
   handleGroupIdChange = (event) => {
@@ -51,6 +50,7 @@ export default class CreateStudentSubmissionType extends Component {
       this.handleData(data);
     });
   }
+  
 
   handleSelect(id){
     this.setState({
@@ -141,7 +141,7 @@ export default class CreateStudentSubmissionType extends Component {
           </div>
           <br></br>
           <div>
-            <TextField variant="outlined" margin="normal" id="topic" label="Title" onChange={this.handleTopicChange}
+            <TextField variant="outlined" margin="normal" id="topic" label="Topic" onChange={this.handleTopicChange}
             />
           </div>
           <br></br>

@@ -48,16 +48,49 @@ export default class ViewStudentSubmission extends Component {
     });
   }
 
+  filterData(data,searchKey){
+
+    const result = data.filter((data) =>
+    data.assignmentType.toLowerCase().includes(searchKey)||
+    data.groupid.toLowerCase().includes(searchKey)||
+    data.topic.toLowerCase().includes(searchKey)
+    )
+    this.setState({data:result})
+    }
+    
+    handleSearchArea = (e) =>{
+    
+        const searchKey=e.currentTarget.value;
+    
+        axios.get("http://localhost:3000/studentsubmissions").then(response =>{
+    if(response.data){
+    
+        this.filterData(response.data,searchKey)
+    }
+    });
+  }
+
   render() {
 
     return (
       <div>
         
         <AppBarNav></AppBarNav>
-        <Divider >
+        {/* <Divider >
           <Chip sx={{margin:"10px"}} label="Submitted Assignments"></Chip>
-        </Divider>
+        </Divider> */}
 
+<h1 style={{marginLeft:'40%'}}>Submitted Assignments</h1>
+<div>
+    <input
+    className="form-control"
+    style={{width:"380px", marginLeft:"100px"}}
+    type="search"
+    placeholder="Search Room Title or Room Short Code or ExtraBed"
+    name="searchQuery"
+    onChange={this.handleSearchArea}>
+    </input>
+    </div>
         
         {(this.state.data).map(data => 
         <Card sx={{ width:"27%", height: 300, float:"left", marginLeft:4, marginTop:4, marginRight:4 }} style={{border:'1px solid #2e7d32'}}>

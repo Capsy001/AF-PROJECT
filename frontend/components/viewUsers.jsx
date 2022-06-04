@@ -61,7 +61,9 @@ export default class ViewUsers extends Component {
         
         <AppBarNav></AppBarNav>
 
-<Divider><Chip label="Users" sx={{margin:"10px"}}></Chip></Divider>
+{/* <Divider><Chip label="Users" sx={{margin:"10px"}}></Chip></Divider> */}
+
+<h1 style={{marginLeft:'40%'}}>List of Users</h1>
         
 
        

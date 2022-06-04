@@ -76,8 +76,8 @@ export default class ManageSubmissionTypes extends Component {
             
           <br></br>
           <div>
-                        <Button style={{marginLeft:'10px', width:'40%',float:'left'}} onClick={(e) => this.handleEdit(data._id)} variant="contained" size="small" color="warning">Edit</Button>
-                      <Button style={{marginLeft:'10px', width:'40%',float:'left'}} variant="contained" href="/manageSubmissionTypes" onClick={(e) => this.handleDelete(data._id)} size="small" color="error">Delete</Button>
+                        <Button style={{marginLeft:'5%', width:'40%',float:'left'}} onClick={(e) => this.handleEdit(data._id)} variant="contained" size="small" color="warning">Edit</Button>
+                      <Button style={{marginLeft:'5%', width:'40%',float:'left'}} variant="contained" href="/manageSubmissionTypes" onClick={(e) => this.handleDelete(data._id)} size="small" color="error">Delete</Button>
                       </div>
                     </CardContent>
                     <CardActions>

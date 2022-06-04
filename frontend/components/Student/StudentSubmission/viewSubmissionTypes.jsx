@@ -62,19 +62,19 @@ export default class ViewSubmissionTypes extends Component {
 <h1 style={{marginLeft:'40%'}}>Assignment List</h1>
        
         {(this.state.data).map(data =>
-        <Card sx={{ width:"34%", height: 200, float:"left", marginLeft:10, marginTop:4, marginRight:10, marginBottom:4 }} style={{border:'1px solid #2e7d32'}}>
+        <Card sx={{ width:"34%", float:"left", marginLeft:10, marginTop:4, marginRight:10, marginBottom:4 }} style={{border:'1px solid #2e7d32'}}>
                     <CardContent>
                       <Typography gutterBottom variant="h5" component="div">
-                     <div style={{textAlign:'center', color:'blue'}}><b>{data.title}</b></div>
+                     <div style={{textAlign:'center', color:'blue', marginTop:'10px'}}><b>{data.title}</b></div>
                       </Typography>
                       <Typography variant="h7" color="text.secondary">
-                      <div style={{textAlign:'center'}}>{data.desc}</div>
+                      <div style={{textAlign:'center', marginTop:'10px'}}>{data.desc}</div>
                       </Typography>
                       <Typography variant="h7" color="text.secondary">
-                        <div style={{textAlign:'center', color:'red'}}>Deadline : {data.deadline}</div>
+                        <div style={{textAlign:'center', color:'red', marginTop:'20px'}}>Deadline : {data.deadline}</div>
                       </Typography>
                       {/* <Button onClick={handleSubmit(data)}></Button> */}
-                      <Link to="/createStudentSubmission"><Button  variant="contained" margin="normal" id="Submit" type="submit" style={{marginLeft:'100px', marginBottom:'10px', marginTop:'10px',textDecoration:'none'}}>
+                      <Link to="/createStudentSubmission"><Button  variant="contained" margin="normal" id="Submit" type="submit" style={{width:'60%', marginTop:'10px', marginRight:'20%', marginLeft:'20%'}}>
             UPOLAD ASSIGNMENT
           </Button>
           </Link>
