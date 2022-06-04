@@ -31,9 +31,7 @@ export default class CreateSubmissionType extends Component {
 
   handleSubmit = async(event) => {
     event.preventDefault();
-    
     var completed = 0;
-
     const submissiontype = {
       title: this.state.title,
       desc: this.state.desc,
@@ -47,22 +45,21 @@ export default class CreateSubmissionType extends Component {
         alert("New Submission Type Successfully Created")
       }
     });
-
   };
 
   render() {
-
     return (
       <div>
-        
-        
         <AppBarNav></AppBarNav>
 
-        <div  style={{marginTop:'100px',marginLeft:'400px',marginBottom:'100px', alignItems:'center', textAlign:'center', width:'40%', border:'3px solid #73AD21', padding:'10px'}}>
-      
+        <div style={{textAlign:'left', marginTop:'20px'}}>
+        <a href='/manageSubmissionTypes' style={{textDecoration:'none'}}><Button variant="contained" margin="normal" id="Submit" type="submit">Manage Assignment Types</Button></a>
+        </div>
 
+        <Divider><Chip label="New Assignment Type" sx={{fontSize:'25px', margin:"10px", marginBottom:'20px', marginTop:'20px'}}></Chip></Divider>
+
+        <div  style={{marginTop:'50px',marginLeft:'400px',marginBottom:'100px', alignItems:'center', textAlign:'center', width:'40%', border:'3px solid #73AD21', padding:'10px'}}>
         <form onSubmit={this.handleSubmit} encType="multipart/form-data" method="post">
-        <h1>New Submission Type</h1>
           <div>
             <TextField variant="outlined" margin="normal"  id="title" label="Title" onChange={this.handleTitleChange}/>
           </div>
@@ -77,11 +74,9 @@ export default class CreateSubmissionType extends Component {
             />
           </div>
           <br></br>  
-
-          <Button  variant="contained" margin="normal" id="Submit" type="submit">
+          <Button  variant="contained" color="success" margin="normal" id="Submit" type="submit">
             SUBMIT
           </Button>
-
         </form>
         </div>
       </div>

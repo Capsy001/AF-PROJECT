@@ -23,8 +23,7 @@ export const getById = async (id) =>{
         return subdata;
     }catch(e){
         console.log(e)
-    }
-    
+    } 
 }
 
 export async function update(id, submissiontype){
@@ -32,8 +31,6 @@ export async function update(id, submissiontype){
     console.log(result)
     return result;
    };
-
-
 
 //Export the functions
 export default {save, getAll, removeById, getById, update};

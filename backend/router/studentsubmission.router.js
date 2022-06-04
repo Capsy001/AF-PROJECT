@@ -48,14 +48,12 @@ studentsubmissionsRouter.post('/new',uploader, async(ctx) =>
         ctx.set('Content-Type', 'application/json');
         ctx.status = 201;
     }
-    
 });
-studentsubmissionsRouter.get('/get', async(ctx) => {
 
+studentsubmissionsRouter.get('/get', async(ctx) => {
     const result = await getAllSubmissions();
     ctx.body = result;
     ctx.status = 201;
-
 });
 
 studentsubmissionsRouter.get('/', async ctx=>{
@@ -66,7 +64,6 @@ studentsubmissionsRouter.delete('/:id', (ctx) => {
     const id = ctx.params.id;
     ctx.body =  deleteStudentSubmission(id);
     ctx.status = 204;
-
 });
 
 studentsubmissionsRouter.get('/get/:id', async ctx=> {

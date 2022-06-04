@@ -7,10 +7,10 @@ import CustomHeader from "../../header/customheader";
 import axios from "axios";
 import { InputLabel, Select,MenuItem } from "@mui/material";
 import { CheckRounded, Add } from "@mui/icons-material";
-
 import { Button, TextField, Chip, Divider, Alert, FormControl } from "@mui/material";
 import AppBarNav from "../../AppBarNav";
 import { getGroupByReg } from "../../../ApiCalls/group.apicall";
+
 export default class CreateStudentSubmissionType extends Component {
   constructor(props) {
     super(props);
@@ -24,7 +24,6 @@ export default class CreateStudentSubmissionType extends Component {
       currentgroup:""
     };
     this.handleSubmit.config = this.handleSubmit.bind(this);
-    // this.id = sessionStorage.getItem(assignmentID);
   }
 
   handleGroupIdChange = (event) => {
@@ -46,19 +45,18 @@ export default class CreateStudentSubmissionType extends Component {
   handleFileRemove = (event) =>{
     this.setState({ file:'' });
   };
-/////////////////////////////////
+
   async componentWillMount(){
     axios.get("http://localhost:3000/submissiontypes/").then(response =>
     {
       const data = response.data;
       this.handleData(data);
     });
-
     const groupid=await getGroupByReg(sessionStorage.getItem("RegId"))
     this.setState({currentgroup:groupid[0].groupId})
     console.log(groupid[0].groupId)
   }
-////////////////////////////////
+
   handleSelect(data){
     this.setState({
         selectedType: data._id,
@@ -75,9 +73,7 @@ export default class CreateStudentSubmissionType extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    
     var completed = 0;
-
     const studentsubmission = {
       groupid: this.state.currentgroup,
       topic: this.state.topic,
@@ -112,28 +108,18 @@ export default class CreateStudentSubmissionType extends Component {
         assignmentId: "",
         selectedType1 : "",
     });
-      
     });
-
   };
 
   render() {
-
     return (
       <div>
-        
         <AppBarNav></AppBarNav>
 
-        <Divider><Chip label="Submit Your Assignment" sx={{fontSize:'20px', margin:"10px"}}></Chip></Divider>
+        <Divider><Chip label="Submit Your Assignment" sx={{fontSize:'25px', margin:"10px", marginTop:'20px'}}></Chip></Divider>
 
-        <div  style={{margin: "0 auto", alignItems:'center', textAlign:'center', width:'40%', border:'3px solid #73AD21', padding:'10px'}}>
-
-        
-
+        <div  style={{margin: "0 auto", alignItems:'center', textAlign:'center', width:'40%', border:'3px solid #73AD21', padding:'10px', marginTop:'10px'}}>
         <form onSubmit={this.handleSubmit} encType="multipart/form-data" method="post">
-
-        
-          
           <div>
         <FormControl fullWidth>
             <InputLabel id="demo-simple-select-label">Assignment Title</InputLabel>
@@ -152,25 +138,21 @@ export default class CreateStudentSubmissionType extends Component {
             </Select>
             </FormControl>
         </div>
-          
           <br></br>
           <div>
             <TextField variant="outlined" margin="normal" id="topic" label="Comment" onChange={this.handleTopicChange}
             />
           </div>
           <br></br>
-
             <label htmlFor="contained-button-file">
   <Input accept="image/*" name="file" id="contained-button-file" margin="normal" multiple type="file" onChange={this.handleFileChange} />
 </label>
-
             {
               this.state.file?
               <Chip label={this.state.file.name} style={{marginTop:'5px'}} onDelete={this.handleFileRemove} />
               :
               null
             }
-
             <Box sx={{ position: 'relative', display: 'inline-flex' }} id="progress" margin="normal" style={{marginTop:'10px',display:'none'}}>
             <CircularProgress variant="determinate" size={70} value={this.state.progressPrecentage}/>
             <Box
@@ -196,10 +178,9 @@ export default class CreateStudentSubmissionType extends Component {
             </Box>
           </Box>
 <br></br>
-          <Button variant="contained" id="Submit" margin="normal" type="submit">
+          <Button variant="contained" color="success" id="Submit" margin="normal" type="submit">
             SUBMIT
           </Button>
-
         </form>
         </div>
       </div>

@@ -24,7 +24,6 @@ export const getById = async (id) =>{
     }catch(e){
         console.log(e)
     }
-    
 }
 
 export async function update(id, studentsubmission){
@@ -32,8 +31,6 @@ export async function update(id, studentsubmission){
     console.log(result)
     return result;
    };
-
-
 
 //Export the functions
 export default {save, getAll, removeById, getById, update};

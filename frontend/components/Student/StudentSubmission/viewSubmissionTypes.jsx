@@ -5,10 +5,8 @@ import { Campaign, CloudUpload } from "@mui/icons-material";
 import CustomHeader from "../../header/customheader";
 import axios from "axios";
 import { Link } from "react-router-dom";
-
 import { Button, Chip, Divider, Card, CardContent } from "@mui/material";
 import { Campaign, FileDownload } from "@mui/icons-material";
-
 import { Button, TextField, Chip, Divider, Typography, CardActions } from "@mui/material";
 import AppBarNav from "../../AppBarNav";
 
@@ -48,19 +46,12 @@ export default class ViewSubmissionTypes extends Component {
     });
   }
 
-  // async handleSubmit(data){
-  //   Console.log(data.topic);
-  //   sessionStorage.setItem('assignmentID', data.id);
-  //   window.location.href='/createStudentSubmission';
-  // }
-
   render() {
-
     return (
       <div>
-        
         <AppBarNav></AppBarNav>
-        <Divider><Chip label="Assignment List" sx={{fontSize:'20px', margin:"10px"}}></Chip></Divider>
+
+        <Divider><Chip label="Assignment List" sx={{fontSize:'25px', margin:"10px", marginBottom:'20px', marginTop:'20px'}}></Chip></Divider>
 
        <Grid container>
         {(this.state.data).map(data =>
@@ -72,17 +63,13 @@ export default class ViewSubmissionTypes extends Component {
                       </Typography>
                       <Typography variant="h7" color="text.secondary">
                         <div style={{textAlign:'center', color:'red'}}>Deadline : {data.deadline}</div>
-                      </Typography>
-                      {/* <Button onClick={handleSubmit(data)}></Button> */}
-                      
+                      </Typography>      
           <br></br>
-
                     </CardContent>
                     <CardActions>
                     <a href="/createStudentSubmission" style={{textDecoration:'none'}}><Button variant="contained" margin="normal" type="submit" style={{marginLeft:'100px', marginBottom:'10px', marginTop:'10px',textDecoration:'none'}}>
             UPOLAD ASSIGNMENT
           </Button></a>
-          
                     </CardActions>
                   </Card>
                   </Grid>

@@ -1,9 +1,6 @@
 import { save, getAll, removeById, getById, update} from '../dao/studentsubmissions.dao.js';
 
-
 const studentsubmissions = new Map();
-
-
 
 const defaultStudentSubmission =
 {
@@ -28,7 +25,6 @@ const defaultStudentSubmission2 =
 studentsubmissions.set(defaultStudentSubmission.topic, defaultStudentSubmission);
 studentsubmissions.set(defaultStudentSubmission2.topic, defaultStudentSubmission);
 
-
 export const addStudentSubmission = async(studentsubmission) =>
 {
 
@@ -45,8 +41,6 @@ export const addStudentSubmission = async(studentsubmission) =>
     return result;
 };
 
-
-
 export const getAllStudentSubmissions = () =>
 {
     return getAll();
@@ -57,11 +51,11 @@ export const deleteStudentSubmission = async id =>
     return await removeById(id);
 }
 
-        export const getStudentSubmission = async(id) => {
+export const getStudentSubmission = async(id) => {
             return await getById(id);
         }
 
-        export const updateStudentSubmission = async (id, studentsubmission)=>{
+export const updateStudentSubmission = async (id, studentsubmission)=>{
             return await update({id}, studentsubmission);
         }
 

@@ -19,7 +19,6 @@ const defaultSubmission2 =
 submissiontypes.set(defaultSubmission.desc, defaultSubmission);
 submissiontypes.set(defaultSubmission2.desc, defaultSubmission);
 
-
 export const addSubmission = async(submissiontype) =>
 {
 
@@ -32,8 +31,6 @@ export const addSubmission = async(submissiontype) =>
     console.log(result)
     return result;
 };
-
-
 
 export const getAllSubmissions = () =>
 {

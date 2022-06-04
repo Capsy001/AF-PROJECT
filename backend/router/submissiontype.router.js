@@ -1,7 +1,6 @@
 import Router from "@koa/router"
 import { addSubmission, getAllSubmissions, deleteSubmission, getSubmission, updateSubmission } from "../api/submissiontype.api.js";
 
-
 const submissionsRouter = new Router(
     {
         prefix: '/submissiontypes'
@@ -35,7 +34,6 @@ submissionsRouter.post('/new', async(ctx) =>
         ctx.set('Content-Type', 'application/json');
         ctx.status = 201;
     }
-    
 });
 
 submissionsRouter.get('/', async ctx=>{
@@ -46,7 +44,6 @@ submissionsRouter.delete('/:id', (ctx) => {
     const id = ctx.params.id;
     ctx.body =  deleteSubmission(id);
     ctx.status = 204;
-
 });
 
 submissionsRouter.get('/get/:id', async ctx=> {
