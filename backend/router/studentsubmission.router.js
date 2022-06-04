@@ -26,6 +26,7 @@ studentsubmissionsRouter.post('/new',uploader, async(ctx) =>
                             uploaddate: data.uploaddate,
                             file: saveFileName,
                             assignmentId: data.assignmentId,
+                            assignmentTitle: data.assignmentTitle,
                         };
                     
                         console.log(ctx.request.body);
