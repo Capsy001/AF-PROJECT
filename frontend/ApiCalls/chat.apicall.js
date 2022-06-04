@@ -30,6 +30,15 @@ export async function getGroupByReg(regId){
   return data;
 }
 
+//function to get group Id by student registation number
+export async function getGroupById(regId){
+  var data = [];
+  await axios.get('http://localhost:3000/chat/msges/' + regId).then(response => {
+    data = response.data;
+  })
+  return data;
+}
+
 //function to add group
 export async function CreateChat(Chat)
 {
@@ -42,4 +51,4 @@ export async function CreateChat(Chat)
     });
 }
 
-export default {CreateChat, getGroupByReg};
+export default {CreateChat, getGroupByReg, getGroupById};
