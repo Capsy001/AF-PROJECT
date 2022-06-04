@@ -26,6 +26,11 @@ export const getById = async (id) =>{
     }
 }
 
+export async function findRecords(condition){
+    const cursor = await studentsubmissions.find(condition);
+    return cursor.toArray();
+}
+
 export async function update(id, studentsubmission){
     const result = await studentsubmissions.replaceOne({"_id":ObjectId(id)}, {groupid:studentsubmission.groupid, topic:studentsubmission.topic, uploaddate:studentsubmission.uploaddate, file:studentsubmission.file, assignmentTitle:studentsubmission.assignmentTitle});
     console.log(result)
