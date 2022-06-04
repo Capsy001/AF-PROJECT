@@ -52,7 +52,7 @@ export default class CreateSubmissionType extends Component {
       <div>
         <AppBarNav></AppBarNav>
 
-        <div style={{textAlign:'left', marginTop:'20px'}}>
+        <div style={{textAlign:'right', marginTop:'20px'}}>
         <a href='/manageSubmissionTypes' style={{textDecoration:'none'}}><Button variant="contained" margin="normal" id="Submit" type="submit">Manage Assignment Types</Button></a>
         </div>
 

@@ -10,8 +10,6 @@ const submissionsRouter = new Router(
 submissionsRouter.post('/new', async(ctx) =>
 {
     const data = await ctx.request.body;
-
-
                         const submissiontype = {
                             title: data.title,
                             desc: data.desc,

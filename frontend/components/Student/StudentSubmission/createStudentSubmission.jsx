@@ -17,7 +17,7 @@ export default class CreateStudentSubmissionType extends Component {
     this.state = {
       groupid: "",
       topic: "",
-      uploaddate: new Date(),
+      uploaddate: Date().toLocaleString(),
       file: "",
       progressPrecentage: 0,
       assignmentTypes:[],
