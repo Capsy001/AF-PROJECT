@@ -79,9 +79,9 @@ export default class ViewSubmissionTypes extends Component {
 
                     </CardContent>
                     <CardActions>
-                    <Link to="/createStudentSubmission"><Button  variant="contained" margin="normal" id="Submit" type="submit" style={{marginLeft:'100px', marginBottom:'10px', marginTop:'10px',textDecoration:'none'}}>
+                    <a href="/createStudentSubmission" style={{textDecoration:'none'}}><Button variant="contained" margin="normal" type="submit" style={{marginLeft:'100px', marginBottom:'10px', marginTop:'10px',textDecoration:'none'}}>
             UPOLAD ASSIGNMENT
-          </Button>
+          </Button></a>
           </Link>
                     </CardActions>
                   </Card>
