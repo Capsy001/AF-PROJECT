@@ -61,7 +61,8 @@ export default class CreateStudentSubmissionType extends Component {
 ////////////////////////////////
   handleSelect(data){
     this.setState({
-        selectedType: data._id
+        selectedType: data._id,
+        selectedType1: data.title,
     });
   }
 
@@ -83,6 +84,7 @@ export default class CreateStudentSubmissionType extends Component {
       uploaddate: this.state.uploaddate,
       file: this.state.file,
       assignmentId: this.state.selectedType,
+      assignmentTitle: this.state.selectedType1,
     };
 
     document.getElementById("progress").style.display = "inline-flex";
@@ -107,7 +109,8 @@ export default class CreateStudentSubmissionType extends Component {
       this.setState({
         assignmentTitle:[],
         selectedType : "",
-        assignmentId: ""
+        assignmentId: "",
+        selectedType1 : "",
     });
       
     });
@@ -143,7 +146,7 @@ export default class CreateStudentSubmissionType extends Component {
             >
                 {
                     this.state.assignmentTypes.map(data =>
-                        <MenuItem value={data._id} key={data._id} onClick={(e) => this.handleSelect(data)}>{data.title}</MenuItem>
+                        <MenuItem value={data.title} key={data.title} onClick={(e) => this.handleSelect(data)}>{data.title}</MenuItem>
                     )
                 }
             </Select>
@@ -203,5 +206,3 @@ export default class CreateStudentSubmissionType extends Component {
     );
   }
 }
-
-
