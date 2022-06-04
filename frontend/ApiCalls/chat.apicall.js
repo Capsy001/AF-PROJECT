@@ -6,7 +6,7 @@ export async function getChatMsg(GroupId)
 {
   var resData = [];
 
-  await axios.get("http://localhost:5000/chat/msges/" + GroupId).then(response =>
+  await axios.get("http://localhost:3000/chat/msges/" + GroupId).then(response =>
   {
     //sss
       const res = response.data;
@@ -24,7 +24,7 @@ export async function getChatMsg(GroupId)
 //function to get group Id by student registation number
 export async function getGroupByReg(regId){
   var data = [];
-  await axios.get('http://localhost:5000/chat/msges/' + regId).then(response => {
+  await axios.get('http://localhost:3000/chat/msges/' + regId).then(response => {
     data = response.data;
   })
   return data;
@@ -34,7 +34,7 @@ export async function getGroupByReg(regId){
 export async function CreateChat(Chat)
 {
 
-  await axios.post("http://localhost:5000/chat/new", Chat).then(response =>
+  await axios.post("http://localhost:3000/chat/new", Chat).then(response =>
     {
     const data = response.data;
     console.log(data)
