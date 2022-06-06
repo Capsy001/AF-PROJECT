@@ -3,7 +3,7 @@ import { Component } from "react";
 import Autocomplete from '@mui/material/Autocomplete';
 import AppBarNav from "../appBarNav";
 import {getGroups, getPanelMembers, assignGroup} from '../../ApiCalls/panel.apicalls';
-import {CreateChat, getGroupByReg} from '../../ApiCalls/chat.apicall';
+import {CreateChat, getGroupByReg, getGroupById} from '../../ApiCalls/chat.apicall';
 
 import {
   Button,
@@ -53,10 +53,11 @@ export default class Chating extends Component {
 
   handleSubmit = async(event) => {
     event.preventDefault();
-    const getChat = await getGroupByReg(this.state.groupM);
+    const getChat = await getGroupById(this.state.groupM);
     console.log(getChat)
     this.setState({messages:getChat});
     this.setState({ Title: 'Chat room for Group: ' + this.state.groupM})
+    this.setState({minimized:false});
   }
 
   handleMsg = async(msg) => {
@@ -71,7 +72,7 @@ export default class Chating extends Component {
 
       const resMsgData = CreateChat(ChatMsg);
       console.log(resMsgData)
-      const getChat = await getGroupByReg(this.state.groupM);
+      const getChat = await getGroupById(this.state.groupM);
       console.log(getChat)
       this.setState({messages:getChat});
     }catch(e){
@@ -86,7 +87,7 @@ export default class Chating extends Component {
       console.log(userId)
       this.setState({ userId:userId});
 
-      const getChat = await getGroupByReg(this.state.groupM);
+      const getChat = await getGroupById(this.state.groupM);
       console.log(getChat)
       this.setState({messages:getChat});
     }catch(e){
@@ -120,6 +121,7 @@ export default class Chating extends Component {
               <div>
               <Autocomplete
                 disablePortal
+
                 onChange={this.handleGroupChange}
                 id="combo-box-demo"
                 options={(this.state.data).map((option) => option.groupId)}

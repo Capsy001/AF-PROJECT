@@ -3,7 +3,7 @@ import { Component } from "react";
 import Autocomplete from '@mui/material/Autocomplete';
 import AppBarNav from "../appBarNav";
 import {getGroups, getPanelMembers, assignGroup} from '../../ApiCalls/panel.apicalls';
-import {CreateChat, getGroupByReg} from '../../ApiCalls/chat.apicall';
+import {CreateChat, getGroupByReg, getGroupById} from '../../ApiCalls/chat.apicall';
 
 import {
   Button,
@@ -54,10 +54,10 @@ export default class Chating extends Component {
 
   handleSubmit = async(event) => {
     event.preventDefault();
-    const getChat = await getGroupByReg(this.state.groupM);
+    const getChat = await getGroupById(this.state.groupM);
     console.log(getChat)
     this.setState({messages:getChat});
-    this.setState({ Title: 'Chat room for Group: ' + this.state.groupM})
+    this.setState({ Title: 'Chat room for Group: ' + this.state.groupM});
   }
 
   handleMsg = async(msg) => {
@@ -77,7 +77,7 @@ export default class Chating extends Component {
 
       const resMsgData = CreateChat(ChatMsg);
       console.log(resMsgData)
-      const getChat = await getGroupByReg(this.state.groupM);
+      const getChat = await getGroupById(this.state.groupM);
       console.log(getChat)
       this.setState({messages:getChat});
     }catch(e){
@@ -95,14 +95,15 @@ export default class Chating extends Component {
       console.log(username)
       this.setState({ username:username});
       
-      const getChat = await getGroupByReg(this.state.groupM);
+      const getChat = await getGroupById(this.state.groupM);
       console.log(getChat)
       this.setState({messages:getChat});
+      const items = await getGroups();
+      this.setState({data : items});
     }catch(e){
-
+      console.log(e)
     }
-    const items = await getGroups();
-    this.setState({data : items});
+    
   }
 
   render() {
