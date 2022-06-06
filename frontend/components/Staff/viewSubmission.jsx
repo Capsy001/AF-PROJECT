@@ -38,8 +38,9 @@ export default class ViewSubmission extends Component {
     {
       const data = response.data;
       if(data != 'empty'){
-        this.handleData();
+        this.handleData(data);
       }
+      console.log("ahb");
       console.log(data);
     });
   }
